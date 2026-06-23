@@ -12,7 +12,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent
 TASK_FILE = ROOT / "classification-tasks.json"
-RESULT_FILE = ROOT / "results" / "classification-results-api-v2.jsonl"
+RESULT_FILE = ROOT / "results" / "classification-results-deterministic.jsonl"
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
 TASK_TYPE_DEFINITIONS = {
@@ -87,6 +87,10 @@ Return:
         "stream": False,
         "format": OUTPUT_SCHEMA,
         "keep_alive": 0,
+        "options": {
+            "temperature": 0,
+            "seed": 42,
+        },
     }
 
     request = urllib.request.Request(
@@ -234,3 +238,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
