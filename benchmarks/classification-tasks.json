@@ -1,0 +1,27 @@
+﻿[
+  {
+    "id": "extract-claims",
+    "task": "Read an MCAT article and return a list of factual claims.",
+    "expected": "source_extraction"
+  },
+  {
+    "id": "generate-lesson",
+    "task": "Create a lesson JSON from the approved context packet.",
+    "expected": "lesson_generation"
+  },
+  {
+    "id": "repair-schema",
+    "task": "Fix this module so it passes the JSON schema validator.",
+    "expected": "schema_repair"
+  },
+  {
+    "id": "edit-code",
+    "task": "Modify build-course.py to sort modules numerically.",
+    "expected": "code_edit"
+  },
+  {
+    "id": "audit-grounding",
+    "task": "Compare the lesson against its source and report unsupported claims.",
+    "expected": "grounding_audit"
+  }
+]
