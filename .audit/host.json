@@ -1,0 +1,20 @@
+﻿{
+    "Manufacturer":  "Microsoft Corporation",
+    "Model":  "Microsoft Surface Laptop, 7th Edition",
+    "TotalRAMGB":  15.61,
+    "AvailableRAMGB":  2.35,
+    "CPU":  [
+                "Snapdragon(R) X 10-core X1P64100 @ 3.40 GHz"
+            ],
+    "LogicalProcessors":  10,
+    "GPU":  [
+                "Qualcomm(R) Adreno(TM) X1-85 GPU"
+            ],
+    "Disk":  [
+                 {
+                     "Drive":  "C:",
+                     "SizeGB":  474.67,
+                     "FreeGB":  231.86
+                 }
+             ]
+}

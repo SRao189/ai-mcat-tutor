@@ -1,0 +1,169 @@
+{
+  "id": "module-1",
+  "title": "Thermodynamics",
+  "objectives": [
+    "Understand the key concepts of thermodynamics including energy forms and the laws of thermodynamics",
+    "Apply the Gibbs free energy equation to determine reaction spontaneity",
+    "Explain the relationship between standard free energy, equilibrium, and actual cellular conditions",
+    "Use Le Châtelier's principle to predict reaction direction based on concentrations"
+  ],
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Key Concepts",
+      "content": "Energy exists in two primary forms: kinetic energy (movement of molecules) and potential energy (stored in chemical bonds). The most important potential energy storage molecule in biological systems is ATP, with energy stored in the ester bonds between its phosphate groups.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:22-24"
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Laws of Thermodynamics",
+      "content": "The First Law states that the energy of the universe is constant; when system energy decreases, surroundings energy increases, and vice versa. The Second Law states that disorder (entropy, S) of the universe tends to increase, and spontaneous reactions increase universal disorder. Entropy change is calculated as ∆S = S_final – S_initial. If ∆S is negative, disorder has decreased.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:28-37"
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "Gibbs Free Energy",
+      "content": "Gibbs free energy (∆G) determines reaction spontaneity. The equation is ∆G = ∆H – T∆S, where ∆H is enthalpy change (bond energy + P∆V), T is temperature in Kelvin, and ∆S is entropy change. In cells, since volume change is approximately zero (∆V ≈ 0), ∆H ≈ ∆E (bond energy). A negative ∆G indicates a spontaneous (exergonic) reaction where energy exits the system. A positive ∆G indicates a nonspontaneous (endergonic) reaction requiring energy input. When ∆G = 0, the system is at equilibrium. Enthalpy change (∆H) indicates heat flow: negative ∆H is exothermic (releases heat), positive ∆H is endothermic (requires heat input). Most metabolic reactions are exothermic, helping maintain body temperature. All sign conventions are from the system's perspective: negative ∆G means the system goes to lower free energy.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:40-60"
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "Standard Free Energy",
+      "content": "Standard free energy (∆G°′) is defined under biochemical standard conditions: 1 M concentration for all solutes except H⁺, with pH 7. The relationship between standard free energy and equilibrium is given by ∆G°′ = –RT ln K'_eq, where K'_eq is the equilibrium constant calculated as [C]^c[D]^d / [A]^a[B]^b at equilibrium. When K'_eq = 1, ∆G°′ = 0 (since ln 1 = 0).",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:63-70"
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "Reaction Quotient and Actual Free Energy",
+      "content": "The actual free energy change in a cell is determined by ∆G = ∆G°′ + RT ln Q, where Q is the reaction quotient using actual cellular concentrations, not equilibrium concentrations. When Q < K_eq, ∆G < 0 and the forward reaction is spontaneous. When Q > K_eq, ∆G > 0 and the reverse reaction is spontaneous. When Q = K_eq, ∆G = 0 and the system is at equilibrium. Two factors determine spontaneity in cells: intrinsic properties (K_eq) and concentrations (RT ln Q). Le Châtelier's principle states that adding reactants (Q < K) drives the reaction forward, while adding products (Q > K) drives it backward.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:73-87"
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "∆S = S_final – S_initial",
+      "meaning": "Change in entropy equals final entropy minus initial entropy.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:35"
+      ]
+    },
+    {
+      "expression": "∆G = ∆H – T∆S",
+      "meaning": "Gibbs free energy change equals enthalpy change minus temperature times entropy change.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:40"
+      ]
+    },
+    {
+      "expression": "∆G°′ = –RT ln K'_eq",
+      "meaning": "Standard free energy change equals negative R times T times the natural logarithm of the equilibrium constant.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:66"
+      ]
+    },
+    {
+      "expression": "∆G = ∆G°′ + RT ln Q",
+      "meaning": "Actual free energy change equals standard free energy change plus R times T times the natural logarithm of the reaction quotient.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:73"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Can ∆G be negative if ∆G°′ is positive?",
+      "steps": [
+        "Recall that ∆G = ∆G°′ + RT ln Q",
+        "If ∆G°′ is positive, the reaction is nonspontaneous under standard conditions",
+        "However, if RT ln Q is sufficiently negative, the overall ∆G can become negative",
+        "This occurs when Q is much smaller than K_eq, meaning reactant concentrations are high and product concentrations are low"
+      ],
+      "answer": "Yes, if RT ln Q is sufficiently negative.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:92"
+      ]
+    },
+    {
+      "question": "What happens to a reaction at equilibrium when more reactant is added?",
+      "steps": [
+        "At equilibrium, Q = K_eq and ∆G = 0",
+        "Adding more reactant increases the concentration of reactants",
+        "This decreases Q (since Q = [products]/[reactants])",
+        "When Q < K_eq, ∆G becomes negative",
+        "According to Le Châtelier's principle, the system responds by shifting the reaction forward to consume the added reactant"
+      ],
+      "answer": "The reaction shifts forward to consume the added reactant.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:86-87"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "Is the following statement true or false? '∆G < 0 means the reaction is fast.'",
+      "answer": "False",
+      "explanation": "∆G < 0 indicates a spontaneous (thermodynamically favorable) reaction, but says nothing about the reaction rate. Kinetics (activation energy) determines speed, not thermodynamics.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:93"
+      ],
+      "reviewTarget": "thermodynamics vs kinetics"
+    },
+    {
+      "question": "What does a large K_eq value indicate about the relative free energy of products versus reactants?",
+      "answer": "Products have lower free energy than reactants",
+      "explanation": "A large K_eq means the equilibrium favors products. Since ∆G°′ = –RT ln K_eq, a large K_eq results in a negative ∆G°′, indicating products are at lower free energy than reactants.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:94"
+      ],
+      "reviewTarget": "standard free energy and equilibrium"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Which of the following best describes the relationship between ∆G, ∆G°′, and Q?",
+      "choices": [
+        "∆G = ∆G°′ + RT ln K_eq",
+        "∆G = ∆G°′ + RT ln Q",
+        "∆G°′ = ∆G + RT ln Q",
+        "Q = ∆G°′ + RT ln ∆G"
+      ],
+      "answer": "∆G = ∆G°′ + RT ln Q",
+      "explanation": "The equation ∆G = ∆G°′ + RT ln Q relates the actual free energy change to the standard free energy change and the reaction quotient using actual concentrations.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:73"
+      ],
+      "reviewTarget": "reaction quotient and actual free energy"
+    },
+    {
+      "question": "In a system at equilibrium, if radiolabeled B is added, where will the label be found after equilibrium is re-established?",
+      "choices": [
+        "Only in B",
+        "Only in A",
+        "In both A and B",
+        "Nowhere, since the system is at equilibrium"
+      ],
+      "answer": "In both A and B",
+      "explanation": "At dynamic equilibrium, reactions continue in both directions. Adding radiolabeled B will lead to the formation of labeled A as the forward reaction proceeds, and labeled B will remain as the reverse reaction occurs.",
+      "sourceRefs": [
+        "wiki/course/context/module-1-context.md:97"
+      ],
+      "reviewTarget": "equilibrium dynamics"
+    }
+  ],
+  "sourceRefs": [
+    "wiki/course/context/module-1-context.md",
+    "wiki/thermodynamics.md",
+    "wiki/.understand-anything/knowledge-graph.json"
+  ],
+  "sourceGaps": []
+}

@@ -1,0 +1,93 @@
+﻿Folder PATH listing for volume Local Disk
+Volume serial number is 04A2-102A
+C:.
+|   CLAUDE.md
+|   CLAUDE.md.backup-20260621-042748
+|   CLAUDE.md.backup-20260621-050523
+|   package-lock.json
+|   PIPELINE.md
+|   
++---.audit
+|       project-inventory.csv
+|       project-tree.txt
+|       
++---.claude
+|   |   settings.json
+|   |   settings.local.json
+|   |   settings.local.json.backup-20260621-052628
+|   |   
+|   \---memory
+|           course-generation-method.md
+|           
++---.verify-tmp
+|   \---profile-warn
+|       |   CrashpadMetrics-active.pma
+|       |   
+|       \---Default
+|               Shortcuts
+|               Shortcuts-journal
+|               
++---app
+|       course-data.js
+|       index.html
+|       
++---course-data
+|       module-1.json
+|       module-2.json
+|       module-3.json
+|       module-4.json
+|       module-5.json
+|       
++---raw
+|   |   Chapter 3.pdf
+|   |   Chapter 3.txt
+|   |   Chapter 4.pdf
+|   |   Chapter 4.txt
+|   |   
+|   \---archive
+|           Chapter3.txt
+|           Chapter4.txt
+|           
++---schemas
+|       module.schema.json
+|       
++---scripts
+|       audit-module.py
+|       build-context.py
+|       build-course.py
+|       validate-module.py
+|       
++---tasks
+|       generate-module-1.txt
+|       
++---validation
+|       module-1-grounding-audit.md
+|       module-1-report.json
+|       module-2-report.json
+|       module-3-report.json
+|       module-4-report.json
+|       module-5-report.json
+|       
+\---wiki
+    |   acids-bases.md
+    |   chapter-3-summary.md
+    |   index.md
+    |   kinetics.md
+    |   oxidation-reduction.md
+    |   thermodynamics.md
+    |   
+    +---.understand-anything
+    |       knowledge-graph.json
+    |       meta.json
+    |       
+    \---course
+        |   index.md
+        |   module-0-orientation.md
+        |   
+        \---context
+                module-1-context.md
+                module-2-context.md
+                module-3-context.md
+                module-4-context.md
+                module-5-context.md
+                

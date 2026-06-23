@@ -1,0 +1,149 @@
+{
+  "id": "module-2",
+  "title": "Kinetics and Activation Energy",
+  "objectives": [
+    "Distinguish what thermodynamics tells you from what kinetics tells you about a reaction",
+    "Define activation energy and the transition state",
+    "Explain how catalysts and enzymes affect reaction rate without changing ∆G or K_eq"
+  ],
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Thermodynamics vs. Kinetics",
+      "content": "Thermodynamics (measured by ∆G) tells you whether a reaction will occur and where it ends up: a negative ∆G means the reaction is spontaneous (energetically favorable), but this says nothing about reaction rate or pathway. Kinetics (measured by activation energy, E_a) tells you how fast a reaction occurs; the study of reaction rates is called chemical kinetics. \"Spontaneous\" in the thermodynamic sense does not mean \"fast\" in everyday usage — wood burning is spontaneous (∆G < 0) but still needs a match (activation energy) to start.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:19-29"
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Activation Energy and the Transition State",
+      "content": "Activation energy (E_a) is the minimum energy required to reach the transition state, written [TS]‡. The transition state is an unstable, high-energy intermediate that exists only momentarily before either forming products or reverting back to reactants. E_a acts as the barrier preventing spontaneous reactions from proceeding at a significant rate.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:31-41"
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "Catalysts and Enzymes",
+      "content": "Catalysts lower E_a by stabilizing the transition state, do not change ∆G (the thermodynamics of the reaction is unchanged), and are not consumed — they are regenerated each reaction cycle. Enzymes are biological catalysts with a purely kinetic role: they affect rate, not equilibrium. Enzymes can increase reaction rate enormously (from years to seconds) but do not alter the equilibrium concentrations of reactants or products.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:43-53"
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "Reaction Coordinate and Key Concept Summary",
+      "content": "On a reaction coordinate graph, the x-axis is reaction progress and the y-axis is free energy; ∆G equals the free energy of products minus the free energy of reactants and is unchanged by a catalyst, while a catalyst lowers the height of the transition-state peak (E_a). Summarizing which quantities are thermodynamic versus kinetic, and whether a catalyst affects them: ∆G (thermodynamic, not affected by catalyst), K_eq (thermodynamic, not affected by catalyst), E_a (kinetic, lowered by catalyst), reaction rate (kinetic, increased by catalyst), and equilibrium concentrations (thermodynamic, not affected by catalyst).",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:55-88"
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "∆G = G_products – G_reactants",
+      "meaning": "Gibbs free energy change equals the free energy of products minus the free energy of reactants; this value is unchanged by a catalyst.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:78"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Wood burning has a negative ∆G, meaning it is thermodynamically spontaneous. Why doesn't a pile of wood spontaneously combust at room temperature without a match?",
+      "steps": [
+        "∆G < 0 only tells you the reaction is energetically favorable (thermodynamically spontaneous) — it says nothing about reaction rate or pathway",
+        "Reaction rate is governed by kinetics, specifically the activation energy (E_a), the minimum energy needed to reach the transition state",
+        "Without enough energy input to clear the E_a barrier, the reaction proceeds too slowly to be observed",
+        "The match supplies the energy needed to reach the transition state, after which the reaction proceeds on its own"
+      ],
+      "answer": "Because a spontaneous reaction (∆G < 0) is not necessarily a fast one — wood burning still has an activation energy barrier (E_a) that must be overcome, and the match provides that initial energy.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:21-29"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "Is the following statement true or false? 'Adding an enzyme to a reaction changes its equilibrium constant (K_eq).'",
+      "answer": "False",
+      "explanation": "Enzymes are catalysts with a purely kinetic role — they lower E_a and increase rate but do not alter equilibrium concentrations of reactants or products, so K_eq is unchanged.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:50-53"
+      ],
+      "reviewTarget": "catalysts and enzymes"
+    },
+    {
+      "question": "What is the transition state [TS]‡?",
+      "answer": "An unstable, high-energy intermediate that exists momentarily during a reaction before forming products or reverting to reactants",
+      "explanation": "The transition state sits at the peak of the reaction coordinate graph and represents the highest-energy point the system must pass through; activation energy is the energy needed to reach it.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:33-39"
+      ],
+      "reviewTarget": "activation energy and the transition state"
+    },
+    {
+      "question": "A catalyst is added to a reaction. Which of the following changes?",
+      "choices": [
+        "∆G",
+        "K_eq",
+        "Activation energy (E_a)",
+        "Equilibrium concentrations of products"
+      ],
+      "answer": "Activation energy (E_a)",
+      "explanation": "Catalysts lower E_a by stabilizing the transition state; ∆G, K_eq, and equilibrium concentrations are thermodynamic quantities that catalysts do not change.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:82-88"
+      ],
+      "reviewTarget": "reaction coordinate and key concept summary"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Which of the following best distinguishes thermodynamics from kinetics?",
+      "choices": [
+        "Thermodynamics tells you how fast a reaction goes; kinetics tells you if it is spontaneous",
+        "Thermodynamics tells you if a reaction will occur and where it ends; kinetics tells you how fast it occurs",
+        "Thermodynamics and kinetics both measure reaction rate",
+        "Thermodynamics only applies to enzyme-catalyzed reactions"
+      ],
+      "answer": "Thermodynamics tells you if a reaction will occur and where it ends; kinetics tells you how fast it occurs",
+      "explanation": "∆G (thermodynamics) indicates spontaneity and the final equilibrium position, while E_a and rate (kinetics) indicate how quickly the reaction proceeds.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:19-26"
+      ],
+      "reviewTarget": "thermodynamics vs. kinetics"
+    },
+    {
+      "question": "An enzyme increases the rate of a reaction from years to seconds. What happens to the equilibrium concentrations of reactants and products?",
+      "choices": [
+        "They shift toward more products than before",
+        "They shift toward more reactants than before",
+        "They remain the same as without the enzyme",
+        "They cannot be determined without more information"
+      ],
+      "answer": "They remain the same as without the enzyme",
+      "explanation": "Enzymes have a purely kinetic role — they speed up forward and reverse reactions equally and do not alter the equilibrium concentrations of reactants or products.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:50-53"
+      ],
+      "reviewTarget": "catalysts and enzymes"
+    },
+    {
+      "question": "On a reaction coordinate graph, what does the height of the peak [TS]‡ represent relative to the reactants?",
+      "answer": "The activation energy (E_a) — the minimum energy barrier that must be overcome to reach the transition state",
+      "explanation": "The transition state sits at the top of the reaction coordinate curve; the energy difference between the reactants and this peak is E_a.",
+      "sourceRefs": [
+        "wiki/course/context/module-2-context.md:55-78"
+      ],
+      "reviewTarget": "reaction coordinate and key concept summary"
+    }
+  ],
+  "sourceRefs": [
+    "wiki/course/context/module-2-context.md",
+    "wiki/kinetics.md",
+    "wiki/.understand-anything/knowledge-graph.json"
+  ],
+  "sourceGaps": []
+}

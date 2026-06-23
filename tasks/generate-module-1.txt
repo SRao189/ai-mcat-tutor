@@ -1,0 +1,21 @@
+﻿Read only:
+
+- `wiki/course/context/module-1-context.md`
+- `schemas/module.schema.json`
+
+Write only:
+
+- `course-data/module-1.json`
+
+Requirements:
+
+- Use only facts present in the context packet.
+- Do not use outside knowledge.
+- Mark unsupported requests in `sourceGaps`.
+- Every factual section, equation, example, and question must include
+  one or more source references.
+- Follow the JSON schema exactly.
+- Keep the module under 2,500 words.
+- Do not read unrelated files.
+- Do not edit any other file.
+- Stop immediately after writing `course-data/module-1.json`.

@@ -1,0 +1,869 @@
+{
+  "version": "1.0.0",
+  "kind": "knowledge",
+  "project": {
+    "name": "MCAT Tutor Wiki Index",
+    "languages": [
+      "markdown"
+    ],
+    "frameworks": [
+      "karpathy-wiki"
+    ],
+    "description": "Knowledge graph for MCAT Tutor Wiki Index",
+    "analyzedAt": "2026-06-21T06:48:16.678747+00:00",
+    "gitCommitHash": ""
+  },
+  "nodes": [
+    {
+      "id": "article:acids-bases",
+      "type": "article",
+      "name": "Acids and Bases",
+      "filePath": "acids-bases.md",
+      "summary": "- **Acid** = proton (H\u207a) donor - **Base** = proton (H\u207a) acceptor - Any anion or neutral species with a lone pair can be a base",
+      "tags": [],
+      "complexity": "simple",
+      "knowledgeMeta": {
+        "wikilinks": [
+          "thermodynamics",
+          "buffers-physiology"
+        ],
+        "content": "# Acids and Bases\n\n## Definitions\n\n### Br\u00f8nsted-Lowry (Most important for MCAT)\n- **Acid** = proton (H\u207a) donor\n- **Base** = proton (H\u207a) acceptor\n- Any anion or neutral species with a lone pair can be a base\n\n**Example:**\n```\nH\u2082CO\u2083 + H\u2082O \u21cc H\u2083O\u207a + HCO\u2083\u207b\nAcids: H\u2082CO\u2083, H\u2083O\u207a\nBases: HCO\u2083\u207b, H\u2082O\n```\n\n### Lewis (Broader)\n- **Acid** = electron-pair acceptor\n- **Base** = electron-pair donor\n- Forms coordinate covalent bonds\n\n**Example (heme group):** O\u2082 binds to Fe\u00b2\u207a\n- O\u2082 donates electron pair \u2192 **Lewis base**\n- Fe\u00b2\u207a accepts electron pair \u2192 **Lewis acid**\n\n## Conjugate Acid-Base Pairs\n\n**Conjugate base** = acid minus H\u207a\n**Conjugate acid** = base plus H\u207a\n\n```\nNH\u2083 + H\u2082O \u21cc NH\u2084\u207a + OH\u207b\n          \u2191      \u2191\n        base   acid\n        \nForward:  NH\u2083 = base, H\u2082O = acid\n          NH\u2084\u207a = conj. acid of NH\u2083\n          OH\u207b = conj. base of H\u2082O\n\nReverse:  NH\u2084\u207a = acid, OH\u207b = base\n          NH\u2083 = conj. base of NH\u2084\u207a\n          H\u2082O = conj. acid of OH\u207b\n```\n\n## Acid/Base Strength\n\n### Acid Dissociation Constant (K<sub>a</sub>)\n```\nHA + H\u2082O \u21cc H\u2083O\u207a + A\u207b\nK\u2090 = [H\u2083O\u207a][A\u207b] / [HA]\n```\n- Larger K<sub>a</sub> \u2192 stronger acid\n- pK<sub>a</sub> = \u2013log K<sub>a</sub>\n- **Lower pK<sub>a</sub> \u2192 stronger acid**\n\n### Base Dissociation Constant (K<sub>b</sub>)\n```\nB + H\u2082O \u21cc HB\u207a + OH\u207b\nK_b = [HB\u207a][OH\u207b] / [B]\n```\n- Larger K<sub>b</sub> \u2192 stronger base\n- pK<sub>b</sub> = \u2013log K<sub>b</sub>\n- **Lower pK<sub>b</sub> \u2192 stronger base**\n\n## Amphoteric Substances\n- Can act as **both** acid and base\n- Conjugate base of a weak polyprotic acid is always amphoteric\n- Example: HCO\u2083\u207b (bicarbonate)\n  - As base: HCO\u2083\u207b + H\u2082O \u21cc H\u2082CO\u2083 + OH\u207b\n  - As acid: HCO\u2083\u207b + H\u2082O \u21cc CO\u2083\u00b2\u207b + H\u2083O\u207a\n- **Amino acids** are all amphoteric\n\n## pH and pOH\n\n**pH = \u2013log[H\u207a]** (or \u2013log[H\u2083O\u207a])\n- [H\u207a] = 10\u207b\u1d56\u1d34\n- Pure water: [H\u207a] = 10\u207b\u2077 M \u2192 pH = 7 (neutral at 25\u00b0C)\n\n| pH Range | Solution |\n|----------|----------|\n| < 7 | Acidic |\n| = 7 | Neutral |\n| > 7 | Basic |\n\n**pOH = \u2013log[OH\u207b]**\n- [OH\u207b] = 10\u207b\u1d56\u1d3c\u1d34\n- At 25\u00b0C: **pH + pOH = 14**\n\n## Buffer Solutions\n\n**Buffer** = resists pH change when small amounts of acid/base added\n- Contains weak acid + conjugate base (or weak base + conjugate acid)\n- In roughly equal concentrations\n\n### Bicarbonate Buffer System (Most important in blood)\n```\nReaction 1:  H\u2082CO\u2083 \u21cc H\u207a + HCO\u2083\u207b\nReaction 2:  CO\u2082 + H\u2082O \u21cc H\u2082CO\u2083\n```\n\n**During exercise:** Muscles produce lactic acid \u2192 H\u207a increases\n- Reaction 1 shifts LEFT (Le Ch\u00e2telier's principle)\n- Free H\u207a reduced \u2192 pH drop minimized\n\n**Holding breath:** CO\u2082 accumulates \u2192 Reaction 2 shifts RIGHT \u2192 more H\u2082CO\u2083 \u2192 more H\u207a \u2192 **pH decreases**\n\n## Quick Reference\n\n| Property | Stronger Acid | Stronger Base |\n|----------|---------------|---------------|\n| K value | Larger K<sub>a</sub> | Larger K<sub>b</sub> |\n| pK value | **Lower** pK<sub>a</sub> | **Lower** pK<sub>b</sub> |\n| pH | Lower | Higher |\n\n**Examples:**\n- Lactic acid (pK<sub>a</sub> = 3.9) > Uric acid (pK<sub>a</sub> = 5.6)\n- Lowest [H\u2083O\u207a] = highest pH (seawater pH 8.5)\n- Least acidic = highest pK<sub>a</sub> (bicarbonate pK<sub>a</s",
+        "backlinks": [
+          "article:chapter-3-summary",
+          "article:thermodynamics"
+        ]
+      }
+    },
+    {
+      "id": "article:chapter-3-summary",
+      "type": "article",
+      "name": "Chapter 3: Biochemistry Basics \u2014 Summary",
+      "filePath": "chapter-3-summary.md",
+      "summary": "This chapter covers foundational biochemistry concepts tested on the MCAT: thermodynamics, kinetics, redox reactions, and acid/base chemistry.",
+      "tags": [],
+      "complexity": "simple",
+      "knowledgeMeta": {
+        "wikilinks": [
+          "thermodynamics",
+          "kinetics",
+          "oxidation-reduction",
+          "acids-bases"
+        ],
+        "content": "# Chapter 3: Biochemistry Basics \u2014 Summary\n\n## Overview\nThis chapter covers foundational biochemistry concepts tested on the MCAT: thermodynamics, kinetics, redox reactions, and acid/base chemistry.\n\n---\n\n## Major Topics\n\n### 1. [[thermodynamics]]\n- **Gibbs free energy:** \u2206G = \u2206H \u2013 T\u2206S\n- **Spontaneity:** \u2206G < 0 (exergonic) vs \u2206G > 0 (endergonic)\n- **Standard free energy:** \u2206G\u00b0\u2032 = \u2013RT ln K'<sub>eq</sub> (pH 7, 1 M solutes)\n- **Actual cellular \u2206G:** \u2206G = \u2206G\u00b0\u2032 + RT ln Q\n- **Le Ch\u00e2telier's principle:** Q vs K<sub>eq</sub> drives reaction direction\n- **Key:** Two factors determine spontaneity in cells \u2014 intrinsic properties (K<sub>eq</sub>) + concentrations (RT ln Q)\n\n### 2. [[kinetics]]\n- **Thermodynamics** \u2260 **Kinetics** (\u2206G says nothing about rate)\n- **Activation energy (E<sub>a</sub>):** Barrier to reaching transition state [TS]\u2021\n- **Catalysts/Enzymes:** Lower E<sub>a</sub> by stabilizing TS, **do not change \u2206G or K<sub>eq</sub>**\n- **Enzymes:** Biological catalysts, kinetic role only\n\n### 3. [[oxidation-reduction]]\n- **Oxidation** = loss of e\u207b/H / gain of O\n- **Reduction** = gain of e\u207b/H / loss of O\n- **Redox pairs:** One oxidized, one reduced (always coupled)\n- **Metabolism:** Catabolism = oxidative (releases energy); Anabolism = reductive (requires ATP)\n- **Glucose oxidation:** C\u2086H\u2081\u2082O\u2086 + 6 O\u2082 \u2192 6 CO\u2082 + 6 H\u2082O\n\n### 4. [[acids-bases]]\n- **Br\u00f8nsted-Lowry:** Acid = H\u207a donor, Base = H\u207a acceptor\n- **Lewis:** Acid = e\u207b pair acceptor, Base = e\u207b pair donor\n- **Conjugate pairs:** Differ by one H\u207a\n- **Strength:** Lower pK<sub>a</sub> = stronger acid; Lower pK<sub>b</sub> = stronger base\n- **Amphoteric:** Can act as acid or base (e.g., HCO\u2083\u207b, amino acids)\n- **pH = \u2013log[H\u207a]; pH + pOH = 14 (at 25\u00b0C)**\n- **Buffers:** Weak acid + conjugate base resist pH change\n- **Bicarbonate buffer:** CO\u2082 + H\u2082O \u21cc H\u2082CO\u2083 \u21cc H\u207a + HCO\u2083\u207b (key in blood)\n\n---\n\n## Key Equations to Memorize\n\n| Equation | Use |\n|----------|-----|\n| \u2206G = \u2206H \u2013 T\u2206S | Thermodynamic spontaneity |\n| \u2206G\u00b0\u2032 = \u2013RT ln K'<sub>eq</sub> | Standard free energy \u2194 equilibrium |\n| \u2206G = \u2206G\u00b0\u2032 + RT ln Q | Actual cellular \u2206G from concentrations |\n| pH = \u2013log[H\u207a] | Acidity |\n| pH + pOH = 14 | Acid-base relationship (25\u00b0C) |\n| pK<sub>a</sub> = \u2013log K<sub>a</sub> | Acid strength |\n| pK<sub>b</sub> = \u2013log K<sub>b</sub> | Base strength |\n\n---\n\n## High-Yield Facts for MCAT\n\n1. **ATP** = primary energy currency (high-energy phosphate bonds)\n2. **\u2206G < 0** = spontaneous; **\u2206G = 0** = equilibrium\n3. **Enzymes** lower E<sub>a</sub>, **do not** change \u2206G or K<sub>eq</sub>\n4. **Catalysts** speed up both forward and reverse reactions equally\n5. **Redox:** OIL RIG (Oxidation Is Loss, Reduction Is Gain)\n6. **pK<sub>a</sub>:** Lower = stronger acid; Higher = weaker acid/more basic\n7. **Bicarbonate buffer** = main blood buffer; CO\u2082 accumulation \u2192 pH drops\n8. **Amphoteric** substances (HCO\u2083\u207b, amino acids) can donate or accept H\u207a\n\n---\n\n## Practice Questions Cross-Reference\n\n| Topic | Question Numbers |\n|-------|------------------|\n| Enzymes/E<s",
+        "backlinks": []
+      }
+    },
+    {
+      "id": "article:kinetics",
+      "type": "article",
+      "name": "Kinetics and Activation Energy",
+      "filePath": "kinetics.md",
+      "summary": "**Thermodynamics** (\u2206G): Tells you *if* a reaction will occur and *where* it ends - \u2206G < 0 = spontaneous (energetically favorable) - Says **nothing** about reaction rate or pathway",
+      "tags": [],
+      "complexity": "simple",
+      "knowledgeMeta": {
+        "wikilinks": [
+          "thermodynamics",
+          "enzymes"
+        ],
+        "content": "# Kinetics and Activation Energy\n\n## Thermodynamics vs. Kinetics\n\n**Thermodynamics** (\u2206G): Tells you *if* a reaction will occur and *where* it ends\n- \u2206G < 0 = spontaneous (energetically favorable)\n- Says **nothing** about reaction rate or pathway\n\n**Kinetics** (E<sub>a</sub>): Tells you *how fast* a reaction occurs\n- Study of reaction rates = chemical kinetics\n\n**Key distinction:** \"Spontaneous\" in thermodynamics \u2260 \"fast\" in common usage\n- Example: Wood burning is spontaneous (\u2206G < 0) but needs a match (activation energy) to start\n\n## Activation Energy (E<sub>a</sub>)\n\n**Definition:** Minimum energy required to reach the transition state [TS]\u2021\n\n**Transition state:**\n- Unstable, high-energy intermediate\n- intermediate\n- Exists momentarily \u2192 either forms products or reverts to reactants\n- Written as [TS]\u2021 in square brackets with double-cross symbol\n\n**E<sub>a</sub> is the barrier** preventing spontaneous reactions from proceeding at significant rates\n\n## Catalysts\n\n**Properties:**\n1. Lower E<sub>a</sub> by stabilizing the transition state\n2. **Do not change \u2206G** (thermodynamics unchanged)\n3. Not consumed \u2014 regenerated each reaction cycle\n\n**Enzymes** = biological catalysts\n- Kinetic role only (affect rate, not equilibrium)\n- Can increase rate enormously (years \u2192 seconds)\n- **Do not alter** equilibrium concentrations of reactants/products\n\n## Reaction Coordinate Graph\n\n```\nFree Energy\n  \u2191\n  \u2502    [TS]\u2021 (no catalyst)\n  \u2502   / \\\n  \u2502  /   \\       Ea without catalyst\n  \u2502 /     \\\n  \u2502/       \\______________ Products\n  \u2502\n  \u2502    [TS]\u2021 (with catalyst)\n  \u2502   / \\\n  \u2502  /   \\       Ea with catalyst (lower)\n  \u2502 /     \\\n  \u2502/       \\______________ Products\n  \u2502\n  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2192 Reaction Coordinate\n  Reactants\n```\n\n- x-axis: reaction progress (reaction coordinate)\n- y-axis: free energy\n- \u2206G = G<sub>products</sub> \u2013 G<sub>reactants</sub> (unchanged by catalyst)\n\n## Key Concept Summary\n\n| Concept | Thermodynamic or Kinetic? | Affected by Catalyst? |\n|---------|---------------------------|----------------------|\n| \u2206G (spontaneity) | Thermodynamic | No |\n| K<sub>eq</sub> (equilibrium) | Thermodynamic | No |\n| E<sub>a</sub> (activation energy) | Kinetic | **Yes** (lowered) |\n| Reaction rate | Kinetic | **Yes** (increased) |\n| Equilibrium concentrations | Thermodynamic | No |\n\n---\n\n*See also: [[thermodynamics]], [[enzymes]] (Chapter 4)*",
+        "backlinks": [
+          "article:chapter-3-summary",
+          "article:thermodynamics"
+        ]
+      }
+    },
+    {
+      "id": "article:oxidation-reduction",
+      "type": "article",
+      "name": "Oxidation and Reduction (Redox)",
+      "filePath": "oxidation-reduction.md",
+      "summary": "**Oxidation** = loss of electrons **Reduction** = gain of electrons",
+      "tags": [],
+      "complexity": "simple",
+      "knowledgeMeta": {
+        "wikilinks": [
+          "thermodynamics",
+          "metabolism-overview"
+        ],
+        "content": "# Oxidation and Reduction (Redox)\n\n## Core Concept\n\n**Oxidation** = loss of electrons\n**Reduction** = gain of electrons\n\n**Mnemonic:** OIL RIG \u2014 Oxidation Is Loss, Reduction Is Gain\n\nWhen one atom is oxidized, another **must** be reduced \u2192 **redox pair**\n\n## Three Ways to Identify Redox Reactions\n\n| Oxidation (loss) | Reduction (gain) |\n|------------------|------------------|\n| Gain of O atoms | Loss of O atoms |\n| Loss of H atoms | Gain of H atoms |\n| Loss of electrons | Gain of electrons |\n\n## Quick Examples\n\n| Change | Classification | Reason |\n|--------|----------------|--------|\n| CH\u2083CH\u2083 \u2192 H\u2082C=CH\u2082 | Oxidation | Hydrogens removed |\n| Fe\u00b3\u207a \u2192 Fe\u00b2\u207a | Reduction | Electron added |\n| O\u2082 \u2192 H\u2082O | Reduction | Hydrogens added to O\u2082 |\n| Disulfide bond formation | Oxidation | Hydrogens removed |\n\n## Energy Metabolism Context\n\n**Photosynthesis:** Plants (photoautotrophs) store solar energy in carbohydrates\n**Cellular respiration:** Animals (chemoheterotrophs) oxidize reduced molecules (carbs, fats) \u2192 CO\u2082 + ATP\n\n**Glucose oxidation:**\n```\nC\u2086H\u2081\u2082O\u2086 + 6 O\u2082 \u2192 6 CO\u2082 + 6 H\u2082O\n```\n- Carbons in glucose \u2192 oxidized (to CO\u2082)\n- Oxygen \u2192 reduced (to H\u2082O)\n- Redox pair: C (oxidized) / O (reduced)\n\n## Catabolism vs. Anabolism\n\n| Process | Direction | Redox | Energy |\n|---------|-----------|-------|--------|\n| **Catabolism** | Breaking down | Oxidative | Releases energy |\n| **Anabolism** | Building up | Reductive | Requires energy (ATP) |\n\n- Fatty acid synthesis = successive reductions of carbon chain\n- ATP stores energy from catabolism; drives anabolism\n\n---\n\n*See also: [[thermodynamics]], [[metabolism-overview]]*",
+        "backlinks": [
+          "article:chapter-3-summary",
+          "article:thermodynamics"
+        ]
+      }
+    },
+    {
+      "id": "article:thermodynamics",
+      "type": "article",
+      "name": "Thermodynamics",
+      "filePath": "thermodynamics.md",
+      "summary": "**Energy Forms:** - **Kinetic energy** \u2014 movement of molecules - **Potential energy** \u2014 energy stored in chemical bonds - Most important potential energy storage molecule: **ATP** (energy in ester ...",
+      "tags": [],
+      "complexity": "simple",
+      "knowledgeMeta": {
+        "wikilinks": [
+          "kinetics",
+          "oxidation-reduction",
+          "acids-bases"
+        ],
+        "content": "# Thermodynamics\n\n## Key Concepts\n\n**Energy Forms:**\n- **Kinetic energy** \u2014 movement of molecules\n- **Potential energy** \u2014 energy stored in chemical bonds\n  - Most important potential energy storage molecule: **ATP** (energy in ester bonds between phosphate groups)\n\n## Laws of Thermodynamics\n\n**First Law (Conservation of Energy):**\n- Energy of the universe is constant\n- When system energy decreases, surroundings energy increases, and vice versa\n\n**Second Law (Entropy):**\n- Disorder (entropy, S) of the universe tends to increase\n- Spontaneous reactions increase universal disorder\n- \u2206S = S<sub>final</sub> \u2013 S<sub>initial</sub>\n- If \u2206S is negative \u2192 disorder decreased\n\n## Gibbs Free Energy (\u2206G)\n\n**Equation:** \u2206G = \u2206H \u2013 T\u2206S\n\nWhere:\n- \u2206H = enthalpy change (bond energy + P\u2206V)\n- T = temperature (Kelvin)\n- \u2206S = entropy change\n\n**In cells:** Since \u2206V \u2248 0 (liquid phase), **\u2206H \u2248 \u2206E** (bond energy)\n\n**Spontaneity:**\n- \u2206G < 0 \u2192 spontaneous (exergonic, energy exits system)\n- \u2206G > 0 \u2192 nonspontaneous (endergonic, requires energy input)\n- \u2206G = 0 \u2192 equilibrium\n\n**Enthalpy:**\n- \u2206H < 0 \u2192 exothermic (liberates heat)\n- \u2206H > 0 \u2192 endothermic (requires heat input)\n- Most metabolic reactions are exothermic \u2192 maintains body temperature\n\n**Sign convention:** All from system's perspective (negative \u2206G = system goes to lower free energy)\n\n## Standard Free Energy\n\n**\u2206G\u00b0\u2032** \u2014 biochemical standard: 1 M all solutes except H<sup>+</sup>, pH 7\n\n**Relationship to equilibrium:**\n- \u2206G\u00b0\u2032 = \u2013RT ln K'<sub>eq</sub>\n- K'<sub>eq</sub> = [C]<sup>c</sup>[D]<sup>d</sup> / [A]<sup>a</sup>[B]<sup>b</sup> at equilibrium\n\n**When K'<sub>eq</sub> = 1:** \u2206G\u00b0\u2032 = 0 (ln 1 = 0)\n\n## Reaction Quotient (Q) vs. Actual \u2206G\n\n**Equation:** \u2206G = \u2206G\u00b0\u2032 + RT ln Q\n\nWhere Q uses **actual cellular concentrations**, not equilibrium concentrations.\n\n**Key relationships:**\n- Q < K<sub>eq</sub> \u2192 \u2206G < 0 \u2192 forward reaction spontaneous\n- Q > K<sub>eq</sub> \u2192 \u2206G > 0 \u2192 reverse reaction spontaneous\n- Q = K<sub>eq</sub> \u2192 \u2206G = 0 \u2192 equilibrium\n\n**Two factors determine spontaneity in cell:**\n1. Intrinsic properties (K<sub>eq</sub>)\n2. Concentrations (RT ln Q)\n\n**Le Ch\u00e2telier's principle:** Adding reactants (Q < K) drives forward; adding products (Q > K) drives backward\n\n## Key Questions Answered\n\n| Question | Answer |\n|----------|--------|\n| Can \u2206G be negative if \u2206G\u00b0\u2032 is positive? | Yes, if RT ln Q is sufficiently negative |\n| Does K<sub>eq</sub> indicate reaction rate? | No \u2014 only relative concentrations at equilibrium |\n| Large K<sub>eq</sub> \u2192 lower free energy? | Products |\n| Large Q \u2192 lower free energy? | Can't tell from Q alone |\n| \u2206G = 0 \u2192 favored direction? | Neither (at equilibrium) |\n| Radiolabeled B added at equilibrium \u2192 where found? | Both A and B (dynamic equilibrium) |\n\n---\n\n*See also: [[kinetics]], [[oxidation-reduction]], [[acids-bases]]*",
+        "backlinks": [
+          "article:acids-bases",
+          "article:chapter-3-summary",
+          "article:kinetics",
+          "article:oxidation-reduction"
+        ]
+      }
+    },
+    {
+      "id": "topic:biochemistry",
+      "type": "topic",
+      "name": "Biochemistry",
+      "summary": "Category from index: Biochemistry (0 articles)",
+      "tags": [
+        "category"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "topic:content-review",
+      "type": "topic",
+      "name": "Content Review",
+      "summary": "Category from index: Content Review (0 articles)",
+      "tags": [
+        "category"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:atp",
+      "type": "entity",
+      "name": "ATP",
+      "summary": "Adenosine triphosphate, the primary energy currency of cells; hydrolysis yields ~ -30.5 kJ/mol under standard conditions",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "molecule"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:enzymes",
+      "type": "entity",
+      "name": "Enzymes",
+      "summary": "Biological catalysts (typically proteins) that lower activation energy without altering reaction thermodynamics",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "protein"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:catalysts",
+      "type": "entity",
+      "name": "Catalysts",
+      "summary": "Substances that increase reaction rate by lowering activation energy (Ea) without being consumed or changing \u2206G",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "chemistry"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:glucose-oxidation",
+      "type": "entity",
+      "name": "Glucose Oxidation",
+      "summary": "Complete oxidation of glucose: C6H12O6 + 6O2 \u2192 6CO2 + 6H2O, the central catabolic pathway yielding ~ -2870 kJ/mol",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "metabolism",
+        "reaction"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:le-chatelier-principle",
+      "type": "entity",
+      "name": "Le Ch\u00e2telier's Principle",
+      "summary": "A system at equilibrium responds to a disturbance (concentration, pressure, temperature) by shifting to counteract the change",
+      "tags": [
+        "entity",
+        "chemistry",
+        "equilibrium"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:gibbs-free-energy",
+      "type": "entity",
+      "name": "Gibbs Free Energy",
+      "summary": "Thermodynamic potential (\u2206G = \u2206H \u2013 T\u2206S) predicting spontaneity; \u2206G < 0 indicates a spontaneous process at constant T and P",
+      "tags": [
+        "entity",
+        "thermodynamics",
+        "energy"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:activation-energy",
+      "type": "entity",
+      "name": "Activation Energy (Ea)",
+      "summary": "Minimum energy barrier reactants must overcome to reach the transition state; determines reaction rate but not equilibrium",
+      "tags": [
+        "entity",
+        "kinetics",
+        "energy"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:transition-state",
+      "type": "entity",
+      "name": "Transition State [TS]\u2021",
+      "summary": "High-energy, transient molecular configuration at the peak of the reaction coordinate; stabilized by catalysts",
+      "tags": [
+        "entity",
+        "kinetics",
+        "mechanism"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:thermodynamics:dg-dh-tds",
+      "type": "claim",
+      "name": "Gibbs Free Energy Equation",
+      "summary": "\u2206G = \u2206H \u2013 T\u2206S relates enthalpy, entropy, and temperature to determine reaction spontaneity",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "thermodynamics",
+        "equation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:thermodynamics:spontaneity",
+      "type": "claim",
+      "name": "Spontaneity Criterion",
+      "summary": "A process is spontaneous at constant temperature and pressure if and only if \u2206G < 0",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "thermodynamics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:thermodynamics:dg-standard",
+      "type": "claim",
+      "name": "Standard Free Energy and Equilibrium",
+      "summary": "\u2206G\u00b0\u2032 = \u2013RT ln K'eq links standard free energy change to the equilibrium constant at pH 7",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "thermodynamics",
+        "equation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:thermodynamics:dg-q",
+      "type": "claim",
+      "name": "Reaction Quotient Determines Direction",
+      "summary": "\u2206G = \u2206G\u00b0\u2032 + RT ln Q; reaction proceeds forward when Q < K'eq (\u2206G < 0) and reverse when Q > K'eq",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "thermodynamics",
+        "equation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:thermodynamics:dh-approx-de",
+      "type": "claim",
+      "name": "Enthalpy Approximates Internal Energy in Cells",
+      "summary": "In cellular conditions (constant pressure, negligible volume change), \u2206H \u2248 \u2206E",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "thermodynamics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:kinetics:catalysts-lower-ea",
+      "type": "claim",
+      "name": "Catalysts Lower Activation Energy Only",
+      "summary": "Catalysts (including enzymes) decrease Ea and increase rate but do not change \u2206G, \u2206H, \u2206S, or Keq",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "kinetics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:kinetics:thermo-vs-kinetics",
+      "type": "claim",
+      "name": "Thermodynamics vs Kinetics Distinction",
+      "summary": "Thermodynamics determines whether a reaction can occur (\u2206G); kinetics determines how fast it occurs (Ea, rate constants)",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "kinetics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:oxidation-reduction:oil-rig",
+      "type": "claim",
+      "name": "OIL RIG Mnemonic for Redox",
+      "summary": "Oxidation Is Loss, Reduction Is Gain \u2014 of electrons, oxygen, or hydrogen",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "redox",
+        "mnemonic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:oxidation-reduction:redox-coupled",
+      "type": "claim",
+      "name": "Redox Reactions Are Always Coupled",
+      "summary": "Oxidation and reduction half-reactions occur simultaneously; electrons lost by one species are gained by another",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "redox"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:oxidation-reduction:catabolism-oxidative",
+      "type": "claim",
+      "name": "Catabolism Is Oxidative, Anabolism Is Reductive",
+      "summary": "Catabolic pathways oxidize fuels (loss of electrons/H, gain of O); anabolic pathways reduce building blocks (gain of electrons/H, loss of O)",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "redox",
+        "metabolism"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:oxidation-reduction:fatty-acid-synthesis-reductive",
+      "type": "claim",
+      "name": "Fatty Acid Synthesis Is a Reductive Process",
+      "summary": "Fatty acid synthesis consumes NADPH (reducing equivalents) to build reduced carbon chains from acetyl-CoA",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "redox",
+        "metabolism"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:bronsted-lowry",
+      "type": "entity",
+      "name": "Br\u00f8nsted-Lowry theory",
+      "summary": "Acid-base theory defining acids as proton donors and bases as proton acceptors; noted as most important for MCAT",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "acid-base-theory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:lewis-acid-base",
+      "type": "entity",
+      "name": "Lewis acid-base theory",
+      "summary": "Broader acid-base theory defining acids as electron-pair acceptors and bases as electron-pair donors; forms coordinate covalent bonds",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "acid-base-theory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:lactic-acid",
+      "type": "entity",
+      "name": "Lactic acid",
+      "summary": "Weak acid (pKa = 3.9) produced by muscles during exercise; contributes to H+ increase buffered by bicarbonate system",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "metabolite"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:amino-acids",
+      "type": "entity",
+      "name": "Amino acids",
+      "summary": "All amino acids are amphoteric \u2014 can act as both acid and base due to carboxyl and amino groups",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "macromolecules"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:bicarbonate-buffer-system",
+      "type": "entity",
+      "name": "Bicarbonate buffer system",
+      "summary": "Primary blood buffer: CO2 + H2O \u21cc H2CO3 \u21cc H+ + HCO3-; resists pH changes from metabolic acids and respiratory CO2",
+      "tags": [
+        "entity",
+        "biochemistry",
+        "physiology"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "entity:princeton-review",
+      "type": "entity",
+      "name": "Princeton Review",
+      "summary": "MCAT prep publisher; source of Chapter 3 Biochemistry Review content",
+      "tags": [
+        "entity",
+        "source",
+        "education"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:acids-bases:bl-most-important-mcat",
+      "type": "claim",
+      "name": "Br\u00f8nsted-Lowry is most important for MCAT",
+      "summary": "The Br\u00f8nsted-Lowry definition (acid = H+ donor, base = H+ acceptor) is explicitly noted as the most important acid-base theory for the MCAT exam",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "mcat-guidance"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:acids-bases:polyprotic-conj-base-amphoteric",
+      "type": "claim",
+      "name": "Conjugate base of weak polyprotic acid is always amphoteric",
+      "summary": "The conjugate base of any weak polyprotic acid can act as both acid and base (e.g., HCO3- from H2CO3)",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "acid-base"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:acids-bases:exercise-lactic-acid-buffering",
+      "type": "claim",
+      "name": "Exercise lactic acid buffered by bicarbonate system via Le Chatelier",
+      "summary": "During exercise, muscles produce lactic acid increasing H+; bicarbonate buffer reaction (H2CO3 \u21cc H+ + HCO3-) shifts left per Le Chatelier's principle, consuming free H+ and minimizing pH drop",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "physiology"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:acids-bases:breath-holding-co2-lowens-ph",
+      "type": "claim",
+      "name": "Breath holding increases CO2 and decreases blood pH",
+      "summary": "Holding breath causes CO2 accumulation, driving CO2 + H2O \u21cc H2CO3 right, producing more H2CO3 which dissociates to H+ + HCO3-, lowering blood pH",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "physiology"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:acids-bases:lower-pka-stronger-acid",
+      "type": "claim",
+      "name": "Lower pKa indicates stronger acid",
+      "summary": "pKa = -log Ka; lower pKa value corresponds to larger Ka and thus stronger acid (e.g., lactic acid pKa 3.9 > uric acid pKa 5.6 in acidity)",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "acid-strength"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:chapter-3-summary:thermo-not-kinetics",
+      "type": "claim",
+      "name": "Thermodynamics does not determine kinetics",
+      "summary": "\u0394G indicates spontaneity but says nothing about reaction rate; thermodynamics and kinetics are independent concepts",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "thermodynamics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:chapter-3-summary:enzymes-lower-ea-not-delta-g",
+      "type": "claim",
+      "name": "Enzymes lower activation energy without changing \u0394G or Keq",
+      "summary": "Enzymes (biological catalysts) stabilize the transition state to lower Ea, accelerating both forward and reverse reactions equally, but do not alter the overall \u0394G or equilibrium constant",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "enzymes"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:chapter-3-summary:catabolism-oxidative-anabolism-reductive",
+      "type": "claim",
+      "name": "Catabolism is oxidative; anabolism is reductive",
+      "summary": "Catabolic pathways release energy via oxidation; anabolic pathways require energy (ATP) and proceed via reduction",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "metabolism"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "claim:chapter-3-summary:bicarbonate-main-blood-buffer",
+      "type": "claim",
+      "name": "Bicarbonate buffer is the main blood buffer",
+      "summary": "The bicarbonate buffer system (CO2 + H2O \u21cc H2CO3 \u21cc H+ + HCO3-) is the primary buffer in blood; CO2 accumulation from breath-holding lowers pH",
+      "tags": [
+        "claim",
+        "biochemistry",
+        "physiology"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "article:acids-bases",
+      "target": "article:thermodynamics",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "article:thermodynamics",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "article:kinetics",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "article:oxidation-reduction",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "article:acids-bases",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:kinetics",
+      "target": "article:thermodynamics",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:oxidation-reduction",
+      "target": "article:thermodynamics",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:thermodynamics",
+      "target": "article:kinetics",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:thermodynamics",
+      "target": "article:oxidation-reduction",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:thermodynamics",
+      "target": "article:acids-bases",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "article:kinetics",
+      "target": "article:thermodynamics",
+      "type": "builds_on",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Kinetics article explicitly contrasts kinetics (rate, Ea) with thermodynamics (\u2206G, equilibrium), stating catalysts lower Ea without changing \u2206G"
+    },
+    {
+      "source": "article:oxidation-reduction",
+      "target": "article:thermodynamics",
+      "type": "builds_on",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Redox reactions are framed in terms of free energy release; glucose oxidation's -2870 kJ/mol is a thermodynamic quantity driving ATP synthesis"
+    },
+    {
+      "source": "article:kinetics",
+      "target": "entity:enzymes",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Enzymes are presented as the primary biological exemplars of catalysts that lower Ea"
+    },
+    {
+      "source": "article:kinetics",
+      "target": "entity:catalysts",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.75,
+      "description": "General catalyst behavior (lowering Ea, not changing \u2206G) is illustrated through enzyme mechanisms"
+    },
+    {
+      "source": "article:oxidation-reduction",
+      "target": "entity:glucose-oxidation",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Glucose oxidation is the central worked example of a coupled redox reaction in catabolism"
+    },
+    {
+      "source": "article:thermodynamics",
+      "target": "entity:atp",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "ATP hydrolysis (\u2206G \u2248 -30.5 kJ/mol) is the key biological example of a favorable free energy change driving coupled reactions"
+    },
+    {
+      "source": "article:thermodynamics",
+      "target": "entity:le-chatelier-principle",
+      "type": "cites",
+      "direction": "forward",
+      "weight": 0.7,
+      "description": "Le Ch\u00e2telier's principle is invoked to explain how changing reactant/product concentrations (Q) shifts reaction direction"
+    },
+    {
+      "source": "article:thermodynamics",
+      "target": "entity:gibbs-free-energy",
+      "type": "cites",
+      "direction": "forward",
+      "weight": 0.75,
+      "description": "Gibbs free energy equation \u2206G = \u2206H \u2013 T\u2206S is the foundational thermodynamic relation developed in the article"
+    },
+    {
+      "source": "article:kinetics",
+      "target": "entity:activation-energy",
+      "type": "cites",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Activation energy Ea and transition state theory are the core kinetic concepts introduced"
+    },
+    {
+      "source": "article:kinetics",
+      "target": "entity:transition-state",
+      "type": "cites",
+      "direction": "forward",
+      "weight": 0.75,
+      "description": "Transition state [TS]\u2021 is presented as the high-energy intermediate stabilized by catalysts"
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "article:acids-bases",
+      "type": "builds_on",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Chapter 3 summary explicitly summarizes and integrates acids-bases as one of four major topics with condensed key points"
+    },
+    {
+      "source": "article:acids-bases",
+      "target": "entity:le-chatelier-principle",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.7,
+      "description": "Bicarbonate buffer response to lactic acid during exercise explicitly invokes Le Chatelier's principle (reaction shifts left to consume added H+)"
+    },
+    {
+      "source": "article:acids-bases",
+      "target": "entity:bicarbonate-buffer-system",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.7,
+      "description": "Article provides detailed mechanism of bicarbonate buffer system including both carbonic acid dissociation and CO2 hydration reactions"
+    },
+    {
+      "source": "article:acids-bases",
+      "target": "entity:lactic-acid",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.7,
+      "description": "Lactic acid used as concrete example of metabolic acid production during exercise that challenges blood pH"
+    },
+    {
+      "source": "article:acids-bases",
+      "target": "entity:amino-acids",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.7,
+      "description": "Amino acids cited as universal example of amphoteric substances"
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "entity:princeton-review",
+      "type": "cites",
+      "direction": "forward",
+      "weight": 0.7,
+      "description": "Chapter 3 summary explicitly cites Princeton Review MCAT Biochemistry Review as its source"
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "entity:glucose-oxidation",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.7,
+      "description": "Glucose oxidation equation (C6H12O6 + 6 O2 \u2192 6 CO2 + 6 H2O) given as canonical example of complete oxidation in catabolism"
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "entity:atp",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.6,
+      "description": "ATP cited as primary energy currency with high-energy phosphate bonds in high-yield facts"
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "entity:enzymes",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.6,
+      "description": "Enzymes described as biological catalysts with purely kinetic role in high-yield facts"
+    },
+    {
+      "source": "article:chapter-3-summary",
+      "target": "entity:catalysts",
+      "type": "exemplifies",
+      "direction": "forward",
+      "weight": 0.6,
+      "description": "Catalysts noted to speed both forward and reverse reactions equally without changing \u0394G or Keq"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:biochemistry",
+      "name": "Biochemistry",
+      "description": "Biochemistry (1 nodes)",
+      "nodeIds": [
+        "topic:biochemistry"
+      ]
+    },
+    {
+      "id": "layer:content-review",
+      "name": "Content Review",
+      "description": "Content Review (1 nodes)",
+      "nodeIds": [
+        "topic:content-review"
+      ]
+    },
+    {
+      "id": "layer:other",
+      "name": "Other",
+      "description": "Uncategorized nodes (39)",
+      "nodeIds": [
+        "article:acids-bases",
+        "article:chapter-3-summary",
+        "article:kinetics",
+        "article:oxidation-reduction",
+        "article:thermodynamics",
+        "entity:atp",
+        "entity:enzymes",
+        "entity:catalysts",
+        "entity:glucose-oxidation",
+        "entity:le-chatelier-principle",
+        "entity:gibbs-free-energy",
+        "entity:activation-energy",
+        "entity:transition-state",
+        "claim:thermodynamics:dg-dh-tds",
+        "claim:thermodynamics:spontaneity",
+        "claim:thermodynamics:dg-standard",
+        "claim:thermodynamics:dg-q",
+        "claim:thermodynamics:dh-approx-de",
+        "claim:kinetics:catalysts-lower-ea",
+        "claim:kinetics:thermo-vs-kinetics",
+        "claim:oxidation-reduction:oil-rig",
+        "claim:oxidation-reduction:redox-coupled",
+        "claim:oxidation-reduction:catabolism-oxidative",
+        "claim:oxidation-reduction:fatty-acid-synthesis-reductive",
+        "entity:bronsted-lowry",
+        "entity:lewis-acid-base",
+        "entity:lactic-acid",
+        "entity:amino-acids",
+        "entity:bicarbonate-buffer-system",
+        "entity:princeton-review",
+        "claim:acids-bases:bl-most-important-mcat",
+        "claim:acids-bases:polyprotic-conj-base-amphoteric",
+        "claim:acids-bases:exercise-lactic-acid-buffering",
+        "claim:acids-bases:breath-holding-co2-lowens-ph",
+        "claim:acids-bases:lower-pka-stronger-acid",
+        "claim:chapter-3-summary:thermo-not-kinetics",
+        "claim:chapter-3-summary:enzymes-lower-ea-not-delta-g",
+        "claim:chapter-3-summary:catabolism-oxidative-anabolism-reductive",
+        "claim:chapter-3-summary:bicarbonate-main-blood-buffer"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Biochemistry",
+      "description": "Explore the Biochemistry section (0 articles)",
+      "nodeIds": [
+        "topic:biochemistry"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Content Review",
+      "description": "Explore the Content Review section (0 articles)",
+      "nodeIds": [
+        "topic:content-review"
+      ]
+    }
+  ]
+}

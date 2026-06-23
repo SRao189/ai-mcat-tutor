@@ -1,0 +1,239 @@
+{
+  "id": "module-4",
+  "title": "Acids and Bases",
+  "objectives": [
+    "Apply the Brønsted-Lowry and Lewis definitions of acids and bases",
+    "Identify conjugate acid-base pairs in a reaction",
+    "Relate K_a/K_b and pK_a/pK_b to acid and base strength",
+    "Explain how the bicarbonate buffer system resists pH change in blood"
+  ],
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Definitions: Brønsted-Lowry and Lewis",
+      "content": "Under the Brønsted-Lowry definition (most important for the MCAT), an acid is a proton (H⁺) donor and a base is a proton (H⁺) acceptor; any anion or neutral species with a lone pair can act as a base. For example, in H₂CO₃ + H₂O ⇌ H₃O⁺ + HCO₃⁻, the acids are H₂CO₃ and H₃O⁺, and the bases are HCO₃⁻ and H₂O. The broader Lewis definition defines an acid as an electron-pair acceptor and a base as an electron-pair donor, forming a coordinate covalent bond. In the heme group, O₂ binds to Fe²⁺: O₂ donates an electron pair and is the Lewis base, while Fe²⁺ accepts the electron pair and is the Lewis acid.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:21-40"
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Conjugate Acid-Base Pairs",
+      "content": "A conjugate base is an acid minus H⁺, and a conjugate acid is a base plus H⁺. In NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, considered in the forward direction, NH₃ is the base and H₂O is the acid; NH₄⁺ is the conjugate acid of NH₃, and OH⁻ is the conjugate base of H₂O. Considered in the reverse direction, NH₄⁺ is the acid and OH⁻ is the base; NH₃ is the conjugate base of NH₄⁺, and H₂O is the conjugate acid of OH⁻.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:44-59"
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "Acid/Base Strength",
+      "content": "For the acid dissociation HA + H₂O ⇌ H₃O⁺ + A⁻, the acid dissociation constant is K_a = [H₃O⁺][A⁻] / [HA]; a larger K_a means a stronger acid, and since pK_a = –log K_a, a lower pK_a means a stronger acid. For the base dissociation B + H₂O ⇌ HB⁺ + OH⁻, the base dissociation constant is K_b = [HB⁺][OH⁻] / [B]; a larger K_b means a stronger base, and since pK_b = –log K_b, a lower pK_b means a stronger base.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:63-79"
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "Amphoteric Substances",
+      "content": "Amphoteric substances can act as both an acid and a base. The conjugate base of a weak polyprotic acid is always amphoteric. Bicarbonate (HCO₃⁻) is an example: as a base, HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻; as an acid, HCO₃⁻ + H₂O ⇌ CO₃²⁻ + H₃O⁺. Amino acids are all amphoteric.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:81-87"
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "pH and pOH",
+      "content": "pH = –log[H⁺] (equivalently –log[H₃O⁺]), so [H⁺] = 10^(–pH). Pure water has [H⁺] = 10⁻⁷ M, giving a neutral pH of 7 at 25°C. A pH below 7 is acidic, a pH of 7 is neutral, and a pH above 7 is basic. Similarly, pOH = –log[OH⁻], so [OH⁻] = 10^(–pOH). At 25°C, pH + pOH = 14.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:91-103"
+      ]
+    },
+    {
+      "id": "section-6",
+      "title": "Buffer Solutions and the Bicarbonate Buffer System",
+      "content": "A buffer resists pH change when small amounts of acid or base are added; it contains a weak acid plus its conjugate base (or a weak base plus its conjugate acid) in roughly equal concentrations. The bicarbonate buffer system is the most important buffer in blood, involving Reaction 1: H₂CO₃ ⇌ H⁺ + HCO₃⁻, and Reaction 2: CO₂ + H₂O ⇌ H₂CO₃. During exercise, muscles produce lactic acid, increasing H⁺; by Le Châtelier's principle, Reaction 1 shifts left, reducing free H⁺ and minimizing the pH drop. When holding one's breath, CO₂ accumulates, shifting Reaction 2 right to produce more H₂CO₃, which produces more H⁺, so pH decreases.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:107-121"
+      ]
+    },
+    {
+      "id": "section-7",
+      "title": "Quick Reference: Acid and Base Strength",
+      "content": "A stronger acid has a larger K_a and a lower pK_a; a stronger base has a larger K_b and a lower pK_b. A stronger acid corresponds to a lower pH. For example, lactic acid (pK_a = 3.9) is a stronger acid than uric acid (pK_a = 5.6). The lowest [H₃O⁺] corresponds to the highest pH, as in seawater (pH 8.5). The least acidic substance has the highest pK_a, as with bicarbonate (pK_a = 10.33).",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:125-134"
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "K_a = [H₃O⁺][A⁻] / [HA]",
+      "meaning": "Acid dissociation constant; a larger K_a indicates a stronger acid.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:66"
+      ]
+    },
+    {
+      "expression": "pK_a = –log K_a",
+      "meaning": "Converts the acid dissociation constant to pK_a; a lower pK_a indicates a stronger acid.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:69-70"
+      ]
+    },
+    {
+      "expression": "K_b = [HB⁺][OH⁻] / [B]",
+      "meaning": "Base dissociation constant; a larger K_b indicates a stronger base.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:75"
+      ]
+    },
+    {
+      "expression": "pK_b = –log K_b",
+      "meaning": "Converts the base dissociation constant to pK_b; a lower pK_b indicates a stronger base.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:78-79"
+      ]
+    },
+    {
+      "expression": "pH = –log[H⁺]",
+      "meaning": "Defines pH from hydrogen ion concentration.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:91"
+      ]
+    },
+    {
+      "expression": "pH + pOH = 14",
+      "meaning": "Relationship between pH and pOH at 25°C.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:103"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "In the reaction NH₃ + H₂O ⇌ NH₄⁺ + OH⁻ (forward direction), identify the acid, base, conjugate acid, and conjugate base.",
+      "steps": [
+        "Identify the proton donor and acceptor in the forward direction: H₂O donates a proton, so H₂O is the acid; NH₃ accepts a proton, so NH₃ is the base",
+        "The conjugate acid is the base plus H⁺: NH₃ + H⁺ = NH₄⁺, so NH₄⁺ is the conjugate acid of NH₃",
+        "The conjugate base is the acid minus H⁺: H₂O – H⁺ = OH⁻, so OH⁻ is the conjugate base of H₂O"
+      ],
+      "answer": "H₂O is the acid, NH₃ is the base, NH₄⁺ is the conjugate acid of NH₃, and OH⁻ is the conjugate base of H₂O.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:48-54"
+      ]
+    },
+    {
+      "question": "Lactic acid has a pK_a of 3.9 and uric acid has a pK_a of 5.6. Which is the stronger acid?",
+      "steps": [
+        "Recall that a lower pK_a indicates a stronger acid",
+        "Compare the two pK_a values: 3.9 (lactic acid) is lower than 5.6 (uric acid)",
+        "Therefore lactic acid is the stronger acid"
+      ],
+      "answer": "Lactic acid is the stronger acid because it has the lower pK_a (3.9 vs. 5.6).",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:70",
+        "wiki/course/context/module-4-context.md:132"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "Is the following statement true or false? 'Under the Lewis definition, an acid donates an electron pair.'",
+      "answer": "False",
+      "explanation": "Under the Lewis definition, an acid is an electron-pair acceptor, not a donor; the base is the electron-pair donor.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:34-36"
+      ],
+      "reviewTarget": "definitions: Brønsted-Lowry and Lewis"
+    },
+    {
+      "question": "What makes a substance amphoteric, and what is one example given in the source material?",
+      "answer": "An amphoteric substance can act as both an acid and a base; bicarbonate (HCO₃⁻) is the given example",
+      "explanation": "The source states the conjugate base of a weak polyprotic acid is always amphoteric, and gives HCO₃⁻ as an example that can act as either acid or base.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:81-86"
+      ],
+      "reviewTarget": "amphoteric substances"
+    },
+    {
+      "question": "During exercise, lactic acid increases H⁺ in the blood. According to the source, what happens to Reaction 1 of the bicarbonate buffer (H₂CO₃ ⇌ H⁺ + HCO₃⁻)?",
+      "choices": [
+        "It shifts right, producing more H⁺",
+        "It shifts left, reducing free H⁺",
+        "It stops entirely",
+        "It is unaffected by lactic acid"
+      ],
+      "answer": "It shifts left, reducing free H⁺",
+      "explanation": "By Le Châtelier's principle, increased H⁺ from lactic acid shifts Reaction 1 left, which reduces free H⁺ and minimizes the pH drop.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:117-119"
+      ],
+      "reviewTarget": "buffer solutions and the bicarbonate buffer system"
+    },
+    {
+      "question": "A solution has [H⁺] = 10⁻³ M. Is it acidic, neutral, or basic?",
+      "answer": "Acidic",
+      "explanation": "[H⁺] = 10⁻³ M corresponds to pH = 3, which is below 7, and a pH below 7 is classified as acidic.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:91-98"
+      ],
+      "reviewTarget": "pH and pOH"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Which definition of acids and bases is described as most important for the MCAT in the source material?",
+      "choices": [
+        "Lewis",
+        "Brønsted-Lowry",
+        "Arrhenius",
+        "None are emphasized over the others"
+      ],
+      "answer": "Brønsted-Lowry",
+      "explanation": "The source explicitly labels the Brønsted-Lowry definition as 'Most important for MCAT.'",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:21"
+      ],
+      "reviewTarget": "definitions: Brønsted-Lowry and Lewis"
+    },
+    {
+      "question": "If K_a for acid X is larger than K_a for acid Y, which acid is stronger?",
+      "answer": "Acid X, because a larger K_a indicates a stronger acid",
+      "explanation": "The source states that a larger K_a corresponds to a stronger acid.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:68"
+      ],
+      "reviewTarget": "acid/base strength"
+    },
+    {
+      "question": "What two components must a buffer solution contain in roughly equal concentrations?",
+      "choices": [
+        "A strong acid and a strong base",
+        "A weak acid and its conjugate base (or a weak base and its conjugate acid)",
+        "Only water and a salt",
+        "Two strong acids"
+      ],
+      "answer": "A weak acid and its conjugate base (or a weak base and its conjugate acid)",
+      "explanation": "The source defines a buffer as containing a weak acid plus conjugate base (or weak base plus conjugate acid) in roughly equal concentrations.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:107-109"
+      ],
+      "reviewTarget": "buffer solutions and the bicarbonate buffer system"
+    },
+    {
+      "question": "Seawater has a pH of 8.5. What does this imply about its [H₃O⁺] relative to a solution with a lower pH?",
+      "answer": "Seawater has a lower [H₃O⁺] than the more acidic solution, since the source states the lowest [H₃O⁺] corresponds to the highest pH",
+      "explanation": "pH is inversely related to [H₃O⁺]; the source gives seawater's pH of 8.5 as an example of the lowest [H₃O⁺] corresponding to the highest pH among its examples.",
+      "sourceRefs": [
+        "wiki/course/context/module-4-context.md:133"
+      ],
+      "reviewTarget": "quick reference: acid and base strength"
+    }
+  ],
+  "sourceRefs": [
+    "wiki/course/context/module-4-context.md",
+    "wiki/acids-bases.md",
+    "wiki/.understand-anything/knowledge-graph.json"
+  ],
+  "sourceGaps": []
+}

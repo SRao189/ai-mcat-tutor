@@ -1,0 +1,14 @@
+﻿
+Folder      FileCount TotalBytes TotalMB
+------      --------- ---------- -------
+.claude             4       8035    0.01
+app                 2      79999    0.08
+course-data         5      47684    0.05
+raw                 6    5832442    5.56
+schemas             1       4288       0
+scripts             4      16164    0.02
+tasks               1        573       0
+validation          6       6884    0.01
+wiki               15     229011    0.22
+
+

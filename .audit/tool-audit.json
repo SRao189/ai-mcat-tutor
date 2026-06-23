@@ -1,0 +1,51 @@
+﻿[
+    {
+        "Tool":  "Git",
+        "Command":  "git",
+        "Status":  "Installed",
+        "Path":  "C:\\Program Files\\Git\\cmd\\git.exe",
+        "Version":  "git version 2.54.0.windows.1"
+    },
+    {
+        "Tool":  "GitHub CLI",
+        "Command":  "gh",
+        "Status":  "Not installed",
+        "Path":  null,
+        "Version":  "Not found on PATH"
+    },
+    {
+        "Tool":  "Python",
+        "Command":  "python",
+        "Status":  "Installed",
+        "Path":  "C:\\Python314\\python.exe",
+        "Version":  "Python 3.14.5"
+    },
+    {
+        "Tool":  "Node",
+        "Command":  "node",
+        "Status":  "Installed",
+        "Path":  "C:\\Program Files\\nodejs\\node.exe",
+        "Version":  "v24.16.0"
+    },
+    {
+        "Tool":  "npm",
+        "Command":  "npm",
+        "Status":  "Installed",
+        "Path":  "C:\\Program Files\\nodejs\\npm.ps1",
+        "Version":  "11.13.0"
+    },
+    {
+        "Tool":  "Ollama",
+        "Command":  "ollama",
+        "Status":  "Installed",
+        "Path":  "C:\\Users\\sahar\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+        "Version":  "ollama version is 0.30.10"
+    },
+    {
+        "Tool":  "Claude Code",
+        "Command":  "claude",
+        "Status":  "Installed",
+        "Path":  "C:\\Users\\sahar\\.local\\bin\\claude.exe",
+        "Version":  "2.1.183 (Claude Code)"
+    }
+]

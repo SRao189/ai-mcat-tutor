@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCAT Course</title>
+<style>
+  :root {
+    --accent: #2f6f4f;
+    --accent-light: #e8f3ec;
+    --accent-dark: #1f5038;
+    --bg: #fafaf8;
+    --card: #ffffff;
+    --text: #1f2430;
+    --text-muted: #6b7280;
+    --border: #e6e6e2;
+    --radius: 16px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* ---------- Top progress bar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .topbar .brand {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--accent-dark);
+    white-space: nowrap;
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 10px;
+    background: var(--accent-light);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .progress-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    min-width: 90px;
+    text-align: right;
+  }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    display: flex;
+    min-height: calc(100vh - 57px);
+  }
+
+  .sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    padding: 20px 12px 60px;
+    overflow-y: auto;
+  }
+
+  .unit {
+    margin-bottom: 22px;
+  }
+
+  .unit-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    padding: 6px 12px;
+  }
+
+  .lesson-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.15s ease;
+  }
+
+  .lesson-link:hover {
+    background: var(--accent-light);
+  }
+
+  .lesson-link.active {
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    font-weight: 600;
+  }
+
+  .check-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    background: var(--card);
+  }
+
+  .check-circle.done {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .exam-link {
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+
+  /* ---------- Main content ---------- */
+  .main {
+    flex: 1;
+    padding: 40px 48px 100px;
+    max-width: 880px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px 36px;
+    margin-bottom: 24px;
+  }
+
+  h1.lesson-title {
+    font-size: 32px;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+
+  .unit-breadcrumb {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  h2.section-heading {
+    font-size: 20px;
+    color: var(--accent-dark);
+    margin: 0 0 14px;
+  }
+
+  .objectives ul {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .objectives li {
+    margin-bottom: 6px;
+  }
+
+  .lesson-section {
+    margin-bottom: 18px;
+  }
+
+  .lesson-section h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+
+  .lesson-section p {
+    margin: 0 0 10px;
+  }
+
+  .source-ref {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .equation-box {
+    background: var(--accent-light);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-family: "Cambria Math", Georgia, serif;
+    font-size: 17px;
+  }
+
+  .equation-box .meaning {
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-style: normal;
+  }
+
+  .example-box {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+
+  .example-box ol {
+    padding-left: 22px;
+    margin: 10px 0;
+  }
+
+  .example-answer {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--accent-dark);
+  }
+
+  /* ---------- Quiz ---------- */
+  .quiz-question {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-question .q-text {
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .choice-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--text);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .choice-btn:hover {
+    border-color: var(--accent);
+  }
+
+  .choice-btn.correct {
+    background: #e8f3ec;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .choice-btn.incorrect {
+    background: #fbeaea;
+    border-color: #c0504d;
+  }
+
+  .choice-btn:disabled {
+    cursor: default;
+  }
+
+  .short-answer-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    margin-bottom: 10px;
+  }
+
+  .submit-btn, .primary-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .submit-btn:hover, .primary-btn:hover {
+    background: var(--accent-dark);
+  }
+
+  .submit-btn:disabled {
+    background: var(--border);
+    cursor: default;
+  }
+
+  .reveal-box {
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+
+  .reveal-box.right {
+    background: #e8f3ec;
+    color: var(--accent-dark);
+  }
+
+  .reveal-box.wrong {
+    background: #fbeaea;
+    color: #8a3a37;
+  }
+
+  .reveal-box .why {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .quiz-score {
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--accent-dark);
+  }
+
+  /* ---------- Buttons / nav ---------- */
+  .lesson-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .tutor-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    border: 1px solid var(--accent);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .tutor-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .tutor-tip {
+    display: none;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: -4px;
+    margin-bottom: 14px;
+    background: #fff8e6;
+    border: 1px solid #f0dca0;
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+
+  .tutor-tip.show { display: block; }
+
+  code.kbd {
+    background: #efe6cf;
+    border-radius: 6px;
+    padding: 1px 6px;
+    font-family: "SFMono-Regular", Consolas, monospace;
+  }
+
+  /* ---------- Home / welcome ---------- */
+  .welcome h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+  }
+
+  .welcome p {
+    color: var(--text-muted);
+    font-size: 17px;
+  }
+
+  .unit-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .unit-summary:last-child { border-bottom: none; }
+
+  .unit-summary .name { font-weight: 600; }
+  .unit-summary .count { color: var(--text-muted); font-size: 14px; }
+
+  .start-btn {
+    margin-top: 18px;
+  }
+
+  /* ---------- Final exam ---------- */
+  .exam-results {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .exam-score-big {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--accent-dark);
+  }
+
+  .review-list {
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .review-list ul {
+    padding-left: 22px;
+  }
+
+  @media (max-width: 800px) {
+    .sidebar { display: none; }
+    .main { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">MCAT Course</div>
+  <div class="progress-track"><div class="progress-fill" id="topProgressFill"></div></div>
+  <div class="progress-label" id="topProgressLabel">0% complete</div>
+</div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main" id="main"></main>
+</div>
+
+<script src="course-data.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Course structure (units = wiki/index.md categories) ---------- */
+  var COURSE_UNITS = [
+    { name: "Biochemistry", moduleIds: ["module-1", "module-2", "module-3", "module-4"] },
+    { name: "Content Review", moduleIds: ["module-5"] }
+  ];
+
+  var MODULES = window.MCAT_COURSE_DATA || [];
+  var MODULE_BY_ID = {};
+  MODULES.forEach(function (m) { MODULE_BY_ID[m.id] = m; });
+
+  var STORAGE_KEY = "mcatCourseProgress.v1";
+
+  /* ---------- Progress persistence ---------- */
+  function loadProgress() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return { lessons: {}, exam: null };
+  }
+
+  function saveProgress() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    } catch (e) {}
+  }
+
+  var progress = loadProgress();
+
+  function getLessonProgress(moduleId) {
+    return progress.lessons[moduleId] || { completed: false, score: null, total: null };
+  }
+
+  function setLessonProgress(moduleId, data) {
+    progress.lessons[moduleId] = data;
+    saveProgress();
+  }
+
+  function isLessonComplete(moduleId) {
+    return !!getLessonProgress(moduleId).completed;
+  }
+
+  function computeOverallPercent() {
+    var total = MODULES.length;
+    if (!total) return 0;
+    var done = 0;
+    MODULES.forEach(function (m) { if (isLessonComplete(m.id)) done++; });
+    return Math.round((done / total) * 100);
+  }
+
+  function updateTopProgress() {
+    var pct = computeOverallPercent();
+    document.getElementById("topProgressFill").style.width = pct + "%";
+    document.getElementById("topProgressLabel").textContent = pct + "% complete";
+  }
+
+  /* ---------- Routing ---------- */
+  var currentRoute = { type: "home" };
+
+  function navigate(route) {
+    currentRoute = route;
+    renderSidebar();
+    renderMain();
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Sidebar ---------- */
+  function renderSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    sidebar.innerHTML = "";
+
+    COURSE_UNITS.forEach(function (unit) {
+      var unitEl = document.createElement("div");
+      unitEl.className = "unit";
+
+      var titleEl = document.createElement("div");
+      titleEl.className = "unit-title";
+      titleEl.textContent = unit.name;
+      unitEl.appendChild(titleEl);
+
+      unit.moduleIds.forEach(function (moduleId) {
+        var mod = MODULE_BY_ID[moduleId];
+        if (!mod) return;
+
+        var link = document.createElement("div");
+        link.className = "lesson-link" + (currentRoute.type === "lesson" && currentRoute.moduleId === moduleId ? " active" : "");
+
+        var circle = document.createElement("span");
+        circle.className = "check-circle" + (isLessonComplete(moduleId) ? " done" : "");
+        circle.textContent = isLessonComplete(moduleId) ? "✓" : "";
+        link.appendChild(circle);
+
+        var label = document.createElement("span");
+        label.textContent = mod.title;
+        link.appendChild(label);
+
+        link.addEventListener("click", function () {
+          navigate({ type: "lesson", moduleId: moduleId });
+        });
+
+        unitEl.appendChild(link);
+      });
+
+      sidebar.appendChild(unitEl);
+    });
+
+    var examWrap = document.createElement("div");
+    examWrap.className = "exam-link";
+    var examLink = document.createElement("div");
+    examLink.className = "lesson-link" + (currentRoute.type === "exam" ? " active" : "");
+    var examCircle = document.createElement("span");
+    examCircle.className = "check-circle" + (progress.exam ? " done" : "");
+    examCircle.textContent = progress.exam ? "✓" : "";
+    examLink.appendChild(examCircle);
+    var examLabel = document.createElement("span");
+    examLabel.textContent = "Final Exam";
+    examLink.appendChild(examLabel);
+    examLink.addEventListener("click", function () { navigate({ type: "exam" }); });
+    examWrap.appendChild(examLink);
+    sidebar.appendChild(examWrap);
+
+    var homeWrap = document.createElement("div");
+    var homeLink = document.createElement("div");
+    homeLink.className = "lesson-link" + (currentRoute.type === "home" ? " active" : "");
+    homeLink.innerHTML = "<span class=\"check-circle\"></span><span>Course Home</span>";
+    homeLink.addEventListener("click", function () { navigate({ type: "home" }); });
+    homeWrap.appendChild(homeLink);
+    sidebar.insertBefore(homeWrap, sidebar.firstChild);
+  }
+
+  /* ---------- Helpers ---------- */
+  function el(tag, opts) {
+    var node = document.createElement(tag);
+    opts = opts || {};
+    if (opts.className) node.className = opts.className;
+    if (opts.text !== undefined) node.textContent = opts.text;
+    if (opts.html !== undefined) node.innerHTML = opts.html;
+    return node;
+  }
+
+  function boldKeyTerms(text) {
+    // Source content already uses plain text; we just render as-is.
+    // Bold key terms only where the JSON content itself doesn't already mark them.
+    return escapeHtml(text);
+  }
+
+  function escapeHtml(str) {
+    var d = document.createElement("div");
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function sourceRefLine(refs) {
+    if (!refs || !refs.length) return "";
+    return "Source: " + refs.join("; ");
+  }
+
+  function findModuleForLesson(moduleId) {
+    for (var i = 0; i < COURSE_UNITS.length; i++) {
+      if (COURSE_UNITS[i].moduleIds.indexOf(moduleId) !== -1) {
+        return COURSE_UNITS[i].name;
+      }
+    }
+    return "";
+  }
+
+  /* ---------- Home view ---------- */
+  function renderHome() {
+    var main = document.getElementById("main");
+    main.innerHTML = "";
+
+    var card = el("div", { className: "card welcome" });
+    card.appendChild(el("h1", { text: "Your MCAT Course" }));
+    card.appendChild(el("p", { text: "Work through each unit in order. Your progress is saved automatically on this device." }));
+
+    COURSE_UNITS.forEach(function (unit) {
+      var doneCount = unit.moduleIds.filter(isLessonComplete).length;
+      var row = el("div", { className: "unit-summary" });
+      row.appendChild(el("span", { className: "name", text: unit.name }));
+      row.appendChild(el("span", { className: "count", text: doneCount + " / " + unit.moduleIds.length + " lessons complete" }));
+      card.appendChild(row);
+    });
+
+    var firstIncomplete = null;
+    MODULES.forEach(function (m) {
+      if (!firstIncomplete && !isLessonComplete(m.id)) firstIncomplete = m.id;
+    });
+    if (!firstIncomplete && MODULES.length) firstIncomplete = MODULES[0].id;
+
+    var startBtn = el("button", { className: "primary-btn start-btn", text: isLessonComplete(firstIncomplete) ? "Review course" : "Continue learning" });
+    startBtn.addEventListener("click", function () {
+      navigate({ type: "lesson", moduleId: firstIncomplete });
+    });
+    card.appendChild(startBtn);
+
+    main.appendChild(card);
+  }
+
+  /* ---------- Lesson view ---------- */
+  function renderLesson(moduleId) {
+    var main = document.getElementById("main");
+    main.innerHTML = "";
+    var mod = MODULE_BY_ID[moduleId];
+    if (!mod) {
+      main.appendChild(el("div", { className: "card", text: "Lesson not found." }));
+      return;
+    }
+
+    var unitName = findModuleForLesson(moduleId);
+
+    var headerCard = el("div", { className: "card" });
+    headerCard.appendChild(el("div", { className: "unit-breadcrumb", text: unitName }));
+    headerCard.appendChild(el("h1", { className: "lesson-title", text: mod.title }));
+
+    var tutorBtn = el("button", { className: "tutor-btn", html: "💬 Stuck? Ask your tutor" });
+    var tutorTip = el("div", { className: "tutor-tip" });
+    tutorTip.innerHTML = "Run <code class=\"kbd\">/understand-chat</code> and ask about “" + escapeHtml(mod.title) + "” for a deeper, conversational explanation of this lesson.";
+    tutorBtn.addEventListener("click", function () {
+      tutorTip.classList.toggle("show");
+    });
+    headerCard.appendChild(tutorBtn);
+    headerCard.appendChild(tutorTip);
+
+    if (mod.objectives && mod.objectives.length) {
+      headerCard.appendChild(el("h2", { className: "section-heading", text: "Learning Objectives" }));
+      var objWrap = el("div", { className: "objectives" });
+      var ul = el("ul");
+      mod.objectives.forEach(function (o) { ul.appendChild(el("li", { text: o })); });
+      objWrap.appendChild(ul);
+      headerCard.appendChild(objWrap);
+    }
+
+    main.appendChild(headerCard);
+
+    if (mod.sections && mod.sections.length) {
+      var explainCard = el("div", { className: "card" });
+      explainCard.appendChild(el("h2", { className: "section-heading", text: "Explanation" }));
+      mod.sections.forEach(function (sec) {
+        var secEl = el("div", { className: "lesson-section" });
+        secEl.appendChild(el("h3", { text: sec.title }));
+        secEl.appendChild(el("p", { text: sec.content }));
+        secEl.appendChild(el("div", { className: "source-ref", text: sourceRefLine(sec.sourceRefs) }));
+        explainCard.appendChild(secEl);
+      });
+
+      if (mod.equations && mod.equations.length) {
+        var eqHeading = el("h3", { text: "Key Equations" });
+        explainCard.appendChild(eqHeading);
+        mod.equations.forEach(function (eq) {
+          var box = el("div", { className: "equation-box" });
+          box.appendChild(el("div", { text: eq.expression }));
+          box.appendChild(el("div", { className: "meaning", text: eq.meaning }));
+          explainCard.appendChild(box);
+        });
+      }
+
+      main.appendChild(explainCard);
+    }
+
+    if (mod.workedExamples && mod.workedExamples.length) {
+      var exCard = el("div", { className: "card" });
+      exCard.appendChild(el("h2", { className: "section-heading", text: "Worked Example" }));
+      var ex = mod.workedExamples[0];
+      var exBox = el("div", { className: "example-box" });
+      exBox.appendChild(el("div", { text: ex.question, className: "q-text" }));
+      var stepsOl = el("ol");
+      (ex.steps || []).forEach(function (s) { stepsOl.appendChild(el("li", { text: s })); });
+      exBox.appendChild(stepsOl);
+      exBox.appendChild(el("div", { className: "example-answer", text: "Answer: " + ex.answer }));
+      exBox.appendChild(el("div", { className: "source-ref", text: sourceRefLine(ex.sourceRefs) }));
+      exCard.appendChild(exBox);
+      main.appendChild(exCard);
+    }
+
+    var quizCard = el("div", { className: "card" });
+    quizCard.appendChild(el("h2", { className: "section-heading", text: "Check Your Understanding" }));
+    var quizBody = el("div", { id: "quizBody-" + moduleId });
+    quizCard.appendChild(quizBody);
+    main.appendChild(quizCard);
+
+    renderQuiz(moduleId, quizBody);
+
+    var navCard = el("div", { className: "lesson-nav" });
+    var idx = MODULES.findIndex(function (m) { return m.id === moduleId; });
+    var prevBtn = el("button", { className: "submit-btn", text: "← Previous" });
+    prevBtn.disabled = idx <= 0;
+    if (idx > 0) {
+      prevBtn.addEventListener("click", function () { navigate({ type: "lesson", moduleId: MODULES[idx - 1].id }); });
+    } else {
+      prevBtn.style.visibility = "hidden";
+    }
+    var nextBtn = el("button", { className: "submit-btn", text: idx === MODULES.length - 1 ? "Go to Final Exam →" : "Next →" });
+    nextBtn.addEventListener("click", function () {
+      if (idx === MODULES.length - 1) {
+        navigate({ type: "exam" });
+      } else {
+        navigate({ type: "lesson", moduleId: MODULES[idx + 1].id });
+      }
+    });
+    navCard.appendChild(prevBtn);
+    navCard.appendChild(nextBtn);
+    main.appendChild(navCard);
+  }
+
+  /* ---------- Quiz rendering (lesson "checks") ---------- */
+  function renderQuiz(moduleId, container) {
+    var mod = MODULE_BY_ID[moduleId];
+    var questions = mod.checks || [];
+    container.innerHTML = "";
+
+    var answered = new Array(questions.length).fill(false);
+    var correctFlags = new Array(questions.length).fill(false);
+
+    questions.forEach(function (q, qIndex) {
+      var qBox = el("div", { className: "quiz-question" });
+      qBox.appendChild(el("div", { className: "q-text", text: (qIndex + 1) + ". " + q.question }));
+
+      var revealBox = el("div", { className: "reveal-box" });
+      revealBox.style.display = "none";
+
+      if (q.choices && q.choices.length) {
+        q.choices.forEach(function (choice) {
+          var btn = el("button", { className: "choice-btn", text: choice });
+          btn.addEventListener("click", function () {
+            if (answered[qIndex]) return;
+            answered[qIndex] = true;
+            var isCorrect = choice.trim() === q.answer.trim();
+            correctFlags[qIndex] = isCorrect;
+            btn.classList.add(isCorrect ? "correct" : "incorrect");
+
+            Array.prototype.forEach.call(qBox.querySelectorAll(".choice-btn"), function (b) {
+              b.disabled = true;
+              if (b !== btn && b.textContent.trim() === q.answer.trim()) {
+                b.classList.add("correct");
+              }
+            });
+
+            showReveal(revealBox, isCorrect, q);
+            maybeFinishQuiz();
+          });
+          qBox.appendChild(btn);
+        });
+      } else {
+        var input = el("input", { className: "short-answer-input" });
+        input.type = "text";
+        input.placeholder = "Type your answer…";
+        var submitBtn = el("button", { className: "submit-btn", text: "Submit" });
+        submitBtn.addEventListener("click", function () {
+          if (answered[qIndex]) return;
+          answered[qIndex] = true;
+          input.disabled = true;
+          submitBtn.disabled = true;
+          var userVal = input.value.trim().toLowerCase();
+          var correctVal = q.answer.trim().toLowerCase();
+          var isCorrect = userVal.length > 0 && (userVal === correctVal || correctVal.indexOf(userVal) !== -1 || userVal.indexOf(correctVal) !== -1);
+          correctFlags[qIndex] = isCorrect;
+          showReveal(revealBox, isCorrect, q);
+          maybeFinishQuiz();
+        });
+        qBox.appendChild(input);
+        qBox.appendChild(submitBtn);
+      }
+
+      qBox.appendChild(revealBox);
+      container.appendChild(qBox);
+    });
+
+    var scoreLine = el("div", { className: "quiz-score" });
+    scoreLine.style.display = "none";
+    container.appendChild(scoreLine);
+
+    function showReveal(box, isCorrect, q) {
+      box.style.display = "block";
+      box.className = "reveal-box " + (isCorrect ? "right" : "wrong");
+      box.innerHTML = (isCorrect ? "Correct. " : "Not quite. Correct answer: " + escapeHtml(q.answer) + ". ") +
+        "<span class=\"why\">" + escapeHtml(q.explanation) + "</span>";
+    }
+
+    function maybeFinishQuiz() {
+      if (answered.every(Boolean)) {
+        var correctCount = correctFlags.filter(Boolean).length;
+        scoreLine.style.display = "block";
+        scoreLine.textContent = "Lesson score: " + correctCount + " / " + questions.length;
+        setLessonProgress(moduleId, { completed: true, score: correctCount, total: questions.length });
+        renderSidebar();
+        updateTopProgress();
+      }
+    }
+
+    if (!questions.length) {
+      container.appendChild(el("p", { text: "No check questions available for this lesson." }));
+    }
+  }
+
+  /* ---------- Final exam ---------- */
+  function buildExamPool() {
+    var pool = [];
+    MODULES.forEach(function (m) {
+      (m.practiceQuestions || []).concat(m.checks || []).forEach(function (q) {
+        pool.push({
+          moduleId: m.id,
+          moduleTitle: m.title,
+          question: q.question,
+          choices: q.choices,
+          answer: q.answer,
+          explanation: q.explanation
+        });
+      });
+    });
+    return pool;
+  }
+
+  function pickExamQuestions(pool, count) {
+    // Deterministic, even spread across modules rather than random (offline, no Math.random dependency issues avoided).
+    var byModule = {};
+    pool.forEach(function (q) {
+      byModule[q.moduleId] = byModule[q.moduleId] || [];
+      byModule[q.moduleId].push(q);
+    });
+    var moduleIds = Object.keys(byModule);
+    var selected = [];
+    var cursors = {};
+    moduleIds.forEach(function (id) { cursors[id] = 0; });
+
+    while (selected.length < count) {
+      var addedAny = false;
+      for (var i = 0; i < moduleIds.length; i++) {
+        var id = moduleIds[i];
+        var list = byModule[id];
+        if (cursors[id] < list.length && selected.length < count) {
+          selected.push(list[cursors[id]]);
+          cursors[id]++;
+          addedAny = true;
+        }
+      }
+      if (!addedAny) break;
+    }
+    return selected.slice(0, count);
+  }
+
+  function renderExam() {
+    var main = document.getElementById("main");
+    main.innerHTML = "";
+
+    var card = el("div", { className: "card" });
+    card.appendChild(el("h1", { className: "lesson-title", text: "Final Exam" }));
+    card.appendChild(el("p", { className: "unit-breadcrumb", text: "Questions drawn from every module. Answer all, then submit to see your score." }));
+
+    var pool = buildExamPool();
+    var examQuestions = pickExamQuestions(pool, 15);
+
+    var formWrap = el("div");
+    var answered = new Array(examQuestions.length).fill(null);
+
+    examQuestions.forEach(function (q, qIndex) {
+      var qBox = el("div", { className: "quiz-question" });
+      qBox.appendChild(el("div", { className: "q-text", text: (qIndex + 1) + ". " + q.question }));
+      qBox.appendChild(el("div", { className: "source-ref", text: q.moduleTitle }));
+
+      if (q.choices && q.choices.length) {
+        q.choices.forEach(function (choice) {
+          var btn = el("button", { className: "choice-btn", text: choice });
+          btn.addEventListener("click", function () {
+            Array.prototype.forEach.call(qBox.querySelectorAll(".choice-btn"), function (b) {
+              b.classList.remove("correct", "incorrect");
+            });
+            btn.classList.add("incorrect");
+            btn.classList.add("selected-temp");
+            answered[qIndex] = choice;
+            Array.prototype.forEach.call(qBox.querySelectorAll(".choice-btn"), function (b) {
+              if (b === btn) { b.style.outline = "2px solid var(--accent)"; }
+              else { b.style.outline = "none"; }
+              b.classList.remove("incorrect");
+            });
+          });
+          qBox.appendChild(btn);
+        });
+      } else {
+        var input = el("input", { className: "short-answer-input" });
+        input.type = "text";
+        input.placeholder = "Type your answer…";
+        input.addEventListener("input", function () { answered[qIndex] = input.value; });
+        qBox.appendChild(input);
+      }
+
+      formWrap.appendChild(qBox);
+    });
+
+    card.appendChild(formWrap);
+
+    var submitBtn = el("button", { className: "primary-btn", text: "Submit Final Exam" });
+    var warningBox = el("div", { className: "source-ref" });
+    var resultsBox = el("div");
+
+    submitBtn.addEventListener("click", function () {
+      var unansweredCount = answered.filter(function (a) { return !a || !a.toString().trim(); }).length;
+
+      if (unansweredCount > 0) {
+        warningBox.textContent = unansweredCount + " question" + (unansweredCount === 1 ? "" : "s") + " still unanswered. Answer all questions before submitting.";
+        return;
+      }
+
+      warningBox.textContent = "";
+
+      var correctCount = 0;
+      var missedLessons = {};
+
+      examQuestions.forEach(function (q, qIndex) {
+        var userAns = (answered[qIndex] || "").toString().trim().toLowerCase();
+        var correctAns = q.answer.trim().toLowerCase();
+        var isCorrect = userAns.length > 0 && (userAns === correctAns || correctAns.indexOf(userAns) !== -1 || userAns.indexOf(correctAns) !== -1);
+        if (isCorrect) {
+          correctCount++;
+        } else {
+          missedLessons[q.moduleTitle] = true;
+        }
+      });
+
+      var pct = Math.round((correctCount / examQuestions.length) * 100);
+
+      resultsBox.innerHTML = "";
+      var resultsCard = el("div", { className: "exam-results" });
+      resultsCard.appendChild(el("div", { className: "exam-score-big", text: pct + "%" }));
+      resultsCard.appendChild(el("p", { text: correctCount + " out of " + examQuestions.length + " correct" }));
+
+      var missed = Object.keys(missedLessons);
+      var reviewWrap = el("div", { className: "review-list" });
+      if (missed.length) {
+        reviewWrap.appendChild(el("h3", { text: "Review these lessons:" }));
+        var ul = el("ul");
+        missed.forEach(function (title) { ul.appendChild(el("li", { text: title })); });
+        reviewWrap.appendChild(ul);
+      } else {
+        reviewWrap.appendChild(el("p", { text: "No lessons to review — great work!" }));
+      }
+      resultsCard.appendChild(reviewWrap);
+      resultsBox.appendChild(resultsCard);
+
+      progress.exam = { score: correctCount, total: examQuestions.length, percent: pct };
+      saveProgress();
+      renderSidebar();
+
+      submitBtn.disabled = true;
+    });
+
+    card.appendChild(submitBtn);
+    card.appendChild(warningBox);
+    card.appendChild(resultsBox);
+
+    main.appendChild(card);
+  }
+
+  /* ---------- Main render dispatch ---------- */
+  function renderMain() {
+    if (currentRoute.type === "home") renderHome();
+    else if (currentRoute.type === "lesson") renderLesson(currentRoute.moduleId);
+    else if (currentRoute.type === "exam") renderExam();
+  }
+
+  /* ---------- Init ---------- */
+  updateTopProgress();
+  navigate({ type: "home" });
+})();
+</script>
+
+</body>
+</html>
