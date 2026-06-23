@@ -1,5 +1,0 @@
-﻿NAME                ID              SIZE      MODIFIED    
-qwen2.5-coder:7b    dae161e27b0e    4.7 GB    2 weeks ago    
-deepseek-r1:8b      6995872bfe4c    5.2 GB    2 weeks ago    
-gemma3:4b           a2af6cc3eb7f    3.3 GB    2 weeks ago    
-gemma3:1b           8648f39daa8f    815 MB    2 weeks ago    

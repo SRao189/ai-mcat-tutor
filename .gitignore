@@ -1,0 +1,21 @@
+﻿# Local Claude settings
+.claude/settings.local.json
+.claude/settings.local.json.backup-*
+
+# Temporary browser verification
+.verify-tmp/
+
+# Local audits
+.audit/
+*-audit.zip
+
+# Backups
+*.backup-*
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment and secrets
+.env
+.env.*
