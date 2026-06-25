@@ -1,0 +1,46 @@
+{
+  "equations": [
+    {
+      "expression": "∆G = ∆H – T∆S",
+      "meaning": "Gibbs Free Energy Equation",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    },
+    {
+      "expression": "∆H = ∆E + P∆V",
+      "meaning": "Enthalpy Equation",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    },
+    {
+      "expression": "ΔGR TK°ʹ=− ʹln eq",
+      "meaning": "Gibbs Free Energy Equation at Standard Conditions",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    },
+    {
+      "expression": "∆∆GG RT QQ=+ =°′ ln ",
+      "meaning": "Gibbs Free Energy Equation for Non-Standard Conditions",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Calculate the change in Gibbs free energy (∆G) for a reaction at 298 K given that ∆H = +50 kJ/mol and ∆S = +20 J/(mol·K).",
+      "steps": [
+        "Use Equation 1: ∆G = ∆H – T∆S",
+        "Plug in the values: ∆G = 50,000 J/mol – (298 K)(20 J/(mol·K))",
+        "Calculate: ∆G = 50,000 J/mol – 5960 J/mol = 44,040 J/mol or 44.04 kJ/mol"
+      ],
+      "answer": "∆G = 44.04 kJ/mol",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    }
+  ]
+}

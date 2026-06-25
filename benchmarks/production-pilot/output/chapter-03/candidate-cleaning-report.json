@@ -1,0 +1,19 @@
+{
+  "sanitation": {
+    "removed_sections": [],
+    "dropped_worked": []
+  },
+  "quality": {
+    "ungrounded_worked": [
+      "Calculate the change in Gibbs free energy (\u2206G) for a reaction at 298 K"
+    ],
+    "sign_contradictions": [
+      "The change in the Gibbs free energy of a reaction determines whether t"
+    ],
+    "equilibrium_equal": [],
+    "ungrounded_objectives": [
+      "Relate \u2206G to the spontaneity of a reaction."
+    ],
+    "duplicate_questions": []
+  }
+}

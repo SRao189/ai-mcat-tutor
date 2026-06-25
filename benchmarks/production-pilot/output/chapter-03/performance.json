@@ -1,6 +1,21 @@
 {
   "chapter": "chapter-03",
-  "stages": {},
-  "status": "QUARANTINED",
-  "error": "exceeded overall timeout (1500s)"
+  "stages": {
+    "generate": {
+      "seconds": 603.526,
+      "components": {
+        "lesson": 701,
+        "eqworked": 515,
+        "assessment": 684
+      }
+    },
+    "audit": {
+      "seconds": 364.61,
+      "prompt_eval_count": 4991,
+      "eval_count": 563
+    }
+  },
+  "enrich_note": "no_enrichment_needed",
+  "rejected_additions": [],
+  "status": "ACCEPTED"
 }

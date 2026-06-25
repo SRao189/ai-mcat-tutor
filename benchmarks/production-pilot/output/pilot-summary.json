@@ -1,16 +1,21 @@
 {
-  "at": "2026-06-25T11:18:07.577649+00:00",
+  "at": "2026-06-25T11:43:47.187793+00:00",
   "results": [
     {
-      "chapter": "chapter-04",
+      "chapter": "chapter-03",
       "stages": {
         "generate": {
-          "seconds": 0.007
+          "seconds": 603.526,
+          "components": {
+            "lesson": 701,
+            "eqworked": 515,
+            "assessment": 684
+          }
         },
         "audit": {
-          "seconds": 214.291,
-          "prompt_eval_count": 3650,
-          "eval_count": 469
+          "seconds": 364.61,
+          "prompt_eval_count": 4991,
+          "eval_count": 563
         }
       },
       "enrich_note": "no_enrichment_needed",

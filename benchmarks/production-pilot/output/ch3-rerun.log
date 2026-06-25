@@ -1,0 +1,51 @@
+=== PREFLIGHT (GENERATE) chapter=chapter-03 ===
+  [OK ] raw source / validator / schema present
+  [OK ] normalized source is readable non-empty text
+  [OK ] context packet non-empty
+  [OK ] requested JSON schemas serialize
+  [OK ] deterministic validator works
+  [OK ] model gemma3:4b installed
+  STAGE=GENERATE MODEL=gemma3:4b CHAPTER=chapter-03 timeout~1500s
+=== PREFLIGHT PASSED ===
+
+[04:28:08] chapter-03:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:28:38] chapter-03:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:29:08] chapter-03:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:29:38] chapter-03:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:30:08] chapter-03:gemma:lesson GENERATING - 303 tokens, running
+[04:30:38] chapter-03:gemma:lesson GENERATING - 665 tokens, running
+  Unloaded model: gemma3:4b
+[04:31:12] chapter-03:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:31:42] chapter-03:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:32:12] chapter-03:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:32:42] chapter-03:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:33:12] chapter-03:gemma:eqworked GENERATING - 47 tokens, running
+[04:33:42] chapter-03:gemma:eqworked GENERATING - 379 tokens, running
+  Unloaded model: gemma3:4b
+[04:34:36] chapter-03:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:35:06] chapter-03:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:35:37] chapter-03:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:36:07] chapter-03:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:36:37] chapter-03:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:37:07] chapter-03:gemma:assessment GENERATING - 333 tokens, running
+[04:37:37] chapter-03:gemma:assessment GENERATING - 634 tokens, running
+  Unloaded model: gemma3:4b
+  quality gate dropped: {'ungrounded_worked': 1, 'sign_contradictions': 1, 'ungrounded_objectives': 1}
+[04:38:12] chapter-03:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:38:42] chapter-03:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:39:12] chapter-03:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:39:42] chapter-03:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:40:14] chapter-03:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:40:44] chapter-03:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:41:14] chapter-03:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:41:45] chapter-03:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:42:15] chapter-03:phi GENERATING - 97 tokens, running
+[04:42:45] chapter-03:phi GENERATING - 241 tokens, running
+[04:43:15] chapter-03:phi GENERATING - 395 tokens, running
+[04:43:45] chapter-03:phi GENERATING - 549 tokens, running
+  Unloaded model: phi4-mini
+
+[chapter-03] ACCEPTED -> C:\Users\sahar\mcat-tutor\benchmarks\production-pilot\output\chapter-03\session-preview.html
+
+===== PILOT SUMMARY =====
+  chapter-03: ACCEPTED  (no_enrichment_needed)

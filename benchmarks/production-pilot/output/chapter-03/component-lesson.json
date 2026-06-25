@@ -1,0 +1,44 @@
+{
+  "id": "thermodynamics-intro",
+  "title": "Thermodynamic Principles & Free Energy",
+  "objectives": [
+    "Define the first and second laws of thermodynamics.",
+    "Explain the concept of entropy (∆S) and its relationship to spontaneous reactions.",
+    "Describe Gibbs free energy (∆G) and its equation.",
+    "Relate ∆G to the spontaneity of a reaction."
+  ],
+  "sections": [
+    {
+      "id": "thermodynamics-1",
+      "title": "Laws Governing Chemical Reactions",
+      "content": "Thermodynamics studies energy changes in chemical reactions. The first law, the law of conservation of energy, states that energy is neither created nor destroyed; it’s just transformed. This means a system's total energy remains constant. The second law dictates that the universe tends toward increasing disorder (entropy). Spontaneous reactions increase entropy – they move towards more disordered states.  The symbol for entropy is S, and ‘a change in entropy’ is denoted ∆S = Sfinal – Sinitial.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    },
+    {
+      "id": "thermodynamics-2",
+      "title": "Gibbs Free Energy & Spontaneity",
+      "content": "Josiah Gibbs defined Gibbs free energy (∆G) as a measure of a reaction's spontaneity. The equation is ∆G = ∆H – T∆S, where ∆G is the change in Gibbs free energy, ∆H is the change in enthalpy (heat), T is temperature, and ∆S is the change in entropy. A negative ∆G indicates a spontaneous reaction at a given temperature.  The sign of ∆H and ∆S determine the direction of the reaction.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    },
+    {
+      "id": "thermodynamics-3",
+      "title": "Understanding ∆G and Spontaneity",
+      "content": "A reaction with a negative ∆G is considered favorable or spontaneous, meaning it will proceed without the need for continuous energy input. Conversely, a reaction with a positive ∆G is unfavorable and requires an external energy source to occur. The larger the negative value of ∆G, the more spontaneous the reaction.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    },
+    {
+      "id": "thermodynamics-4",
+      "title": "Key Terms Recap",
+      "content": "Remember: ∆G represents the change in Gibbs free energy, which is a key indicator of spontaneity. A negative ∆G signifies a spontaneous reaction, while a positive ∆G indicates a nonspontaneous reaction.  The second law of thermodynamics dictates that entropy (disorder) always increases during a spontaneous process.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ]
+    }
+  ]
+}

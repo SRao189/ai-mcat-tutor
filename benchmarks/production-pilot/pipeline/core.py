@@ -72,6 +72,137 @@ def session_schema() -> dict[str, Any]:
     return json.loads(SCHEMA_FILE.read_text(encoding="utf-8-sig"))
 
 
+# --------------------------------------------------------------------------- #
+# Bounded-component schemas (one runaway single call -> three capped calls).
+# Each is small + maxItems-bounded so a num_predict cap is never hit mid-JSON.
+# --------------------------------------------------------------------------- #
+_SECTION = {
+    "type": "object",
+    "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "content": {"type": "string", "minLength": 1},
+        "sourceRefs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    },
+    "required": ["id", "title", "content", "sourceRefs"],
+    "additionalProperties": False,
+}
+_EQUATION = {
+    "type": "object",
+    "properties": {
+        "expression": {"type": "string", "minLength": 1},
+        "meaning": {"type": "string", "minLength": 1},
+        "sourceRefs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    },
+    "required": ["expression", "meaning", "sourceRefs"],
+    "additionalProperties": False,
+}
+_WORKED = {
+    "type": "object",
+    "properties": {
+        "question": {"type": "string", "minLength": 1},
+        "steps": {"type": "array", "items": {"type": "string"}},
+        "answer": {"type": "string", "minLength": 1},
+        "sourceRefs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    },
+    "required": ["question", "steps", "answer", "sourceRefs"],
+    "additionalProperties": False,
+}
+
+
+def lesson_schema() -> dict[str, Any]:
+    return {
+        "type": "object",
+        "properties": {
+            "id": {"type": "string", "minLength": 1},
+            "title": {"type": "string", "minLength": 1},
+            "objectives": {"type": "array", "minItems": 2, "maxItems": 4,
+                           "items": {"type": "string", "minLength": 1}},
+            "sections": {"type": "array", "minItems": 2, "maxItems": 4, "items": _SECTION},
+        },
+        "required": ["id", "title", "objectives", "sections"],
+        "additionalProperties": False,
+    }
+
+
+def eqworked_schema() -> dict[str, Any]:
+    return {
+        "type": "object",
+        "properties": {
+            "equations": {"type": "array", "maxItems": 4, "items": _EQUATION},
+            "workedExamples": {"type": "array", "maxItems": 2, "items": _WORKED},
+        },
+        "required": ["equations", "workedExamples"],
+        "additionalProperties": False,
+    }
+
+
+def assessment_schema(section_ids: list[str]) -> dict[str, Any]:
+    q = {
+        "type": "object",
+        "properties": {
+            "question": {"type": "string", "minLength": 1},
+            "answer": {"type": "string", "minLength": 1},
+            "explanation": {"type": "string", "minLength": 1},
+            "sourceRefs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "reviewTarget": {"type": "string", "enum": section_ids or ["section"]},
+        },
+        "required": ["question", "answer", "explanation", "sourceRefs", "reviewTarget"],
+        "additionalProperties": False,
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "checks": {"type": "array", "maxItems": 3, "items": q},
+            "practiceQuestions": {"type": "array", "maxItems": 3, "items": q},
+        },
+        "required": ["checks", "practiceQuestions"],
+        "additionalProperties": False,
+    }
+
+
+# Component keys + the merge that reassembles a full session deterministically.
+COMPONENTS = ("lesson", "eqworked", "assessment")
+
+
+def merge_components(parts: dict[str, Any], default_source_ref: str) -> dict[str, Any]:
+    """Deterministically reassemble the three bounded components into one session.
+    Raises if a component is missing (-> chapter quarantine). Dedupes section ids
+    (keep first); aggregates unique sourceRefs."""
+    missing = [k for k in COMPONENTS if not isinstance(parts.get(k), dict)]
+    if missing:
+        raise ValueError(f"missing generation component(s): {missing}")
+    a, b, c = parts["lesson"], parts["eqworked"], parts["assessment"]
+
+    seen: set[str] = set()
+    sections = []
+    for s in a.get("sections", []):
+        sid = s.get("id")
+        if sid and sid not in seen:
+            seen.add(sid)
+            sections.append(s)
+
+    session = {
+        "id": a.get("id") or "session",
+        "title": a.get("title") or "Tutoring Session",
+        "objectives": a.get("objectives", []),
+        "sections": sections,
+        "equations": b.get("equations", []),
+        "workedExamples": b.get("workedExamples", []),
+        "checks": c.get("checks", []),
+        "practiceQuestions": c.get("practiceQuestions", []),
+        "sourceGaps": [],
+    }
+    refs: list[str] = []
+    for coll in ("sections", "equations", "workedExamples", "checks", "practiceQuestions"):
+        for item in session[coll]:
+            for r in item.get("sourceRefs", []):
+                if r not in refs:
+                    refs.append(r)
+    session["sourceRefs"] = refs or [default_source_ref]
+    return session
+
+
 def patch_schema(section_ids: list[str]) -> dict[str, Any]:
     return {
         "type": "object",

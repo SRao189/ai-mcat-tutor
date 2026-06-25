@@ -81,12 +81,17 @@ def generate_structured(
     schema: dict[str, Any],
     num_ctx: int,
     label: str,
+    num_predict: int | None = None,
 ) -> dict[str, Any]:
     """Stream a schema-constrained generation, emitting a heartbeat >= every 30s.
 
     Returns {"raw": str, "meta": dict, "elapsed": float}. Raises on stall/timeout.
-    Deterministic: temperature 0, seed 42.
+    Deterministic: temperature 0, seed 42. num_predict hard-caps output tokens so
+    a single call cannot run away (bounded-component generation).
     """
+    options: dict[str, Any] = {"temperature": 0, "seed": 42, "num_ctx": num_ctx}
+    if num_predict is not None:
+        options["num_predict"] = num_predict
     payload = {
         "model": model,
         "prompt": prompt,
@@ -94,7 +99,7 @@ def generate_structured(
         "think": False,
         "format": schema,
         "keep_alive": 0,
-        "options": {"temperature": 0, "seed": 42, "num_ctx": num_ctx},
+        "options": options,
     }
     request = urllib.request.Request(
         OLLAMA_URL,

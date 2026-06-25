@@ -4,6 +4,7 @@ Run: cd benchmarks/production-pilot && python -m tests.test_pipeline
 No network, no models. Each fix made because real chapters exposed a failure
 should leave one assert here.
 """
+import json
 import sys
 from pathlib import Path
 
@@ -261,6 +262,58 @@ def test_render_uses_final_session_only():  # failure #7
     doc_a, doc_b = render.render_session_html(a), render.render_session_html(b)
     assert "Alpha" in doc_a and "Beta" not in doc_a
     assert "Beta" in doc_b and "Alpha" not in doc_b
+
+
+def test_component_schemas_bound_output():  # max generated-output limits
+    assert core.lesson_schema()["properties"]["objectives"]["maxItems"] == 4
+    assert core.lesson_schema()["properties"]["sections"]["maxItems"] == 4
+    assert core.eqworked_schema()["properties"]["workedExamples"]["maxItems"] == 2
+    a = core.assessment_schema(["s1"])
+    assert a["properties"]["checks"]["maxItems"] == 3
+    assert a["properties"]["practiceQuestions"]["maxItems"] == 3
+    # reviewTarget is constrained to the supplied section ids
+    assert a["properties"]["checks"]["items"]["properties"]["reviewTarget"]["enum"] == ["s1"]
+
+
+def test_merge_components_assembles_and_dedupes_ids():  # component merge + dup ids
+    a = {"id": "m", "title": "T", "objectives": ["o1", "o2"], "sections": [
+        {"id": "s1", "title": "S1", "content": "c", "sourceRefs": ["r1"]},
+        {"id": "s1", "title": "dup", "content": "c2", "sourceRefs": ["r1"]},  # dup id
+        {"id": "s2", "title": "S2", "content": "c", "sourceRefs": ["r2"]}]}
+    b = {"equations": [{"expression": "e", "meaning": "m", "sourceRefs": ["r3"]}],
+         "workedExamples": []}
+    c = {"checks": [_q("q1", target="s1")], "practiceQuestions": [_q("q2", target="s2")]}
+    s = core.merge_components({"lesson": a, "eqworked": b, "assessment": c}, "raw/x#sec")
+    assert [x["id"] for x in s["sections"]] == ["s1", "s2"]      # duplicate id dropped
+    assert s["objectives"] == ["o1", "o2"]
+    assert len(s["checks"]) == 1 and len(s["practiceQuestions"]) == 1
+    assert "r1" in s["sourceRefs"] and "r3" in s["sourceRefs"]
+
+
+def test_merge_components_missing_component_raises():  # missing component quarantine
+    try:
+        core.merge_components({"lesson": {}, "eqworked": {}}, "x")  # assessment missing
+        assert False, "expected ValueError"
+    except ValueError as exc:
+        assert "assessment" in str(exc)
+
+
+def test_component_cache_reused_without_model_call():  # checkpoint reuse
+    import tempfile
+    from pipeline import run, adapter
+    cache = Path(tempfile.mkdtemp()) / "component-lesson.json"
+    cache.write_text(json.dumps({"id": "m", "sections": []}), encoding="utf-8")
+    orig = adapter.generate_structured
+
+    def boom(*a, **k):
+        raise AssertionError("model must not be called when a valid cache exists")
+
+    adapter.generate_structured = boom
+    try:
+        data, meta = run._gen_component("model", "p", {}, "lbl", 100, cache)
+    finally:
+        adapter.generate_structured = orig
+    assert data["id"] == "m" and meta == {}
 
 
 def test_html_preview_is_offline_and_renders():

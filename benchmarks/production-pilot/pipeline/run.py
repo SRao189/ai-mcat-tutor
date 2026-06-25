@@ -22,40 +22,6 @@ from . import adapter, core, render, source
 # --------------------------------------------------------------------------- #
 # Prompts
 # --------------------------------------------------------------------------- #
-def gen_prompt(context_text: str) -> str:
-    return f"""
-You are generating one complete MCAT tutoring session as a single JSON object.
-
-Your output is validated against the supplied JSON schema. Match it exactly,
-include every required field, return only JSON (no code fences, no commentary).
-
-Grounding rules:
-- Use only information present in the context packet.
-- Do not add outside factual knowledge, even if scientifically plausible.
-- Where required material is missing from the packet, add a short entry to
-  sourceGaps beginning with "SOURCE GAP" instead of inventing content.
-- Every section, equation, worked example, and question needs a sourceRefs entry.
-
-Tutoring-session requirements:
-- 2 to 4 learning objectives.
-- Plain-English explanations with key terms emphasized using **bold**.
-- sections[] is ONLY explanatory lesson prose. Never put questions, multiple-
-  choice options, "Answer:", "Explanation:", or "ReviewTarget:" lines inside a
-  section. Every assessment item belongs in checks[] or practiceQuestions[].
-- Equations only where the packet supports them.
-- Only include a worked example that is actually worked out in the packet. Never
-  invent a reaction, numbers, or data. If the packet has no worked example,
-  leave workedExamples empty.
-- 3 to 5 mixed assessment questions across checks + practiceQuestions, each with
-  an answer, an explanation, and a reviewTarget naming a section id.
-- Teach in an approachable Khan Academy-style voice; connect math to meaning.
-
-CONTEXT PACKET START
-{context_text}
-CONTEXT PACKET END
-""".strip()
-
-
 def audit_prompt(context_text: str, candidate_json: str) -> str:
     return f"""
 Act as an independent quality auditor for an MCAT tutoring session.
@@ -113,6 +79,67 @@ CURRENT SESSION END
 AUDIT START
 {audit_json}
 AUDIT END
+""".strip()
+
+
+_GROUNDING = """Grounding rules:
+- Use only information present in the context packet below.
+- Do not add outside factual knowledge, even if scientifically plausible.
+- Every item needs a sourceRefs entry citing the packet.
+- Return only JSON matching the schema. No code fences, no commentary."""
+
+
+def lesson_prompt(context_text: str) -> str:
+    return f"""
+Produce the LESSON portion of one MCAT tutoring session as JSON.
+
+{_GROUNDING}
+
+Include: a short id, a title, 2-4 learning objectives, and 2-4 explanatory
+lesson sections. sections[] is ONLY plain-English lesson prose with key terms in
+**bold** -- never questions, answer keys, or "Answer:"/"ReviewTarget:" lines.
+Keep it concise; this is one part of a larger session.
+
+CONTEXT PACKET START
+{context_text}
+CONTEXT PACKET END
+""".strip()
+
+
+def eqworked_prompt(context_text: str) -> str:
+    return f"""
+Produce the EQUATIONS and WORKED EXAMPLES portion of an MCAT tutoring session
+as JSON.
+
+{_GROUNDING}
+
+Include only equations that literally appear in the packet. Include a worked
+example ONLY if it is actually worked out in the packet with real numbers from
+the packet -- never invent a reaction, numbers, units, or data. If the packet
+has no worked example, return an empty workedExamples array.
+
+CONTEXT PACKET START
+{context_text}
+CONTEXT PACKET END
+""".strip()
+
+
+def assessment_prompt(context_text: str, section_ids: list[str]) -> str:
+    return f"""
+Produce the ASSESSMENT portion of an MCAT tutoring session as JSON.
+
+{_GROUNDING}
+
+Write 3 to 5 questions total split across checks[] and practiceQuestions[]. Each
+question needs an answer, an explanation, and a reviewTarget that is one of these
+section ids. Do not repeat a question. Keep explanations internally consistent.
+
+Valid section ids:
+{json.dumps(section_ids, indent=2)}
+
+CONTEXT PACKET START
+{context_text}
+CONTEXT PACKET END
 """.strip()
 
 
@@ -222,6 +249,35 @@ def model_call(fn, *args, retries: int = 1) -> dict[str, Any]:
     raise RuntimeError(f"model stage failed after {retries + 1} attempts: {last}")
 
 
+def _gen_component(model: str, prompt: str, schema: dict, label: str,
+                   num_predict: int, cache: Path) -> tuple[dict, dict]:
+    """Generate one bounded component, caching to disk. A valid cache is reused
+    with no model call (checkpoint reuse); otherwise generate with a hard output
+    cap and one retry. Raises if both attempts fail (-> chapter quarantine)."""
+    if cache.exists():
+        try:
+            data = json.loads(cache.read_text(encoding="utf-8"))
+            print(f"  resume: reusing {cache.name} (no model call)")
+            return data, {}
+        except (json.JSONDecodeError, OSError):
+            pass
+    last: Exception | None = None
+    for attempt in range(2):  # initial + one retry, this component only
+        res = adapter.generate_structured(
+            model, prompt, schema, est_ctx(prompt, num_predict), label,
+            num_predict=num_predict)
+        adapter.unload(model)
+        try:
+            data = json.loads(res["raw"])
+        except json.JSONDecodeError as exc:
+            last = exc
+            print(f"  component {cache.name} not JSON (attempt {attempt + 1}): {exc}")
+            continue
+        cache.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        return data, res["meta"]
+    raise RuntimeError(f"component {cache.name} failed after retry: {last}")
+
+
 # --------------------------------------------------------------------------- #
 # Per-chapter pipeline
 # --------------------------------------------------------------------------- #
@@ -263,80 +319,70 @@ def process_chapter(chapter: dict, models: dict, out_root: Path) -> dict[str, An
         # source_text used for grounding = the packet's source material only
         source_text = section_text
 
-        # 3. GENERATING -> GENERATED -> STRUCTURE_VALIDATED (one retry)
+        # 3. GENERATING -> GENERATED -> STRUCTURE_VALIDATED (bounded components)
         cand_file = out / "candidate-session.json"
-        cand_valid = False
-        candidate: dict[str, Any] = {}
         if not preflight(chapter, out, context_text, source_text,
                          models["generator"], "GENERATE", None):
             raise RuntimeError("generation preflight failed")
 
-        # Resume: a parseable cached generation is reused so re-running re-applies
-        # the deterministic cleaning/quality gate WITHOUT a fresh (expensive,
-        # deterministic) Gemma call. ponytail: reuse-raw-if-present.
-        raw_file = out / "candidate-raw.txt"
-        cached_raw: str | None = None
-        if raw_file.exists():
-            try:
-                cached_raw = raw_file.read_text(encoding="utf-8")
-                json.loads(cached_raw)  # only reuse if it parses
-                print(f"  resume: reusing cached {raw_file.name} (no model call)")
-            except (json.JSONDecodeError, OSError):
-                cached_raw = None
+        # Bounded-component generation: three small capped calls instead of one
+        # runaway session call. Each component caches to disk and is reused on
+        # rerun (never regenerated); a failed component retries once on its own.
+        gmodel = models["generator"]
+        t0 = time.perf_counter()
+        comp_meta: dict[str, Any] = {}
 
-        for attempt in range(2):  # initial + one retry
-            core.save_checkpoint(cp_file, "GENERATING", {"generate_attempt": attempt + 1})
-            t0 = time.perf_counter()
-            if cached_raw is not None and attempt == 0:
-                raw, gen_meta = cached_raw, {}
-            else:
-                gp = gen_prompt(context_text)
-                res = adapter.generate_structured(
-                    models["generator"], gp,
-                    # full sessions run long; reserve generous output room or the
-                    # JSON truncates mid-string (observed ~8k+ output tokens).
-                    core.session_schema(), est_ctx(gp, 10000), f"{cid}:gemma")
-                adapter.unload(models["generator"])
-                raw, gen_meta = res["raw"], res["meta"]
-                raw_file.write_text(raw, encoding="utf-8")
-            try:
-                candidate = json.loads(raw)
-            except json.JSONDecodeError as exc:
-                print(f"  candidate not JSON: {exc}")
-                cached_raw = None  # force a real regeneration on retry
-                continue
-            candidate, sani = core.sanitize_candidate(candidate)
-            candidate, qual = core.quality_filter(candidate, source_text)
-            if sani["removed_sections"] or sani["dropped_worked"]:
-                print(f"  sanitized: removed sections={sani['removed_sections']} "
-                      f"dropped_worked={len(sani['dropped_worked'])}")
-            if any(qual.values()):
-                print(f"  quality gate dropped: "
-                      f"{ {k: len(v) for k, v in qual.items() if v} }")
-            (out / "candidate-cleaning-report.json").write_text(
-                json.dumps({"sanitation": sani, "quality": qual}, indent=2),
-                encoding="utf-8")
-            candidate["metadata"] = {
-                "chapter": chapter["title"], "source_ref": chapter["source_ref"],
-                "raw_source": chapter["raw_source"], "generator_model": models["generator"],
-                "generated_at": _now(),
-            }
-            cand_file.write_text(json.dumps(candidate, indent=2, ensure_ascii=False),
-                                 encoding="utf-8")
-            stage_time("generate", t0, gen_meta)
-            core.save_checkpoint(cp_file, "GENERATED")
-            struct_ok, vout = core.run_validator(cand_file, out / "candidate-validation.json")
-            min_ok, min_reasons = core.meets_minimums(candidate)
-            if not min_ok:
-                print(f"  below educational minimums: {min_reasons}")
-            cand_valid = struct_ok and min_ok
-            if cand_valid:
-                break
-            print(f"  candidate failed validation/minimums (attempt {attempt + 1}):\n{vout}")
+        core.save_checkpoint(cp_file, "GENERATING", {"component": "lesson"})
+        lesson, comp_meta["lesson"] = _gen_component(
+            gmodel, lesson_prompt(context_text), core.lesson_schema(),
+            f"{cid}:gemma:lesson", 1800, out / "component-lesson.json")
+        section_ids = [s["id"] for s in lesson.get("sections", []) if s.get("id")]
 
-        if not cand_valid:
+        core.save_checkpoint(cp_file, "GENERATING", {"component": "eqworked"})
+        eqworked, comp_meta["eqworked"] = _gen_component(
+            gmodel, eqworked_prompt(context_text), core.eqworked_schema(),
+            f"{cid}:gemma:eqworked", 1200, out / "component-eqworked.json")
+
+        core.save_checkpoint(cp_file, "GENERATING", {"component": "assessment"})
+        assessment, comp_meta["assessment"] = _gen_component(
+            gmodel, assessment_prompt(context_text, section_ids),
+            core.assessment_schema(section_ids),
+            f"{cid}:gemma:assessment", 1600, out / "component-assessment.json")
+
+        candidate = core.merge_components(
+            {"lesson": lesson, "eqworked": eqworked, "assessment": assessment},
+            chapter["source_ref"])
+        (out / "candidate-raw.txt").write_text(
+            json.dumps(candidate, ensure_ascii=False), encoding="utf-8")
+
+        candidate, sani = core.sanitize_candidate(candidate)
+        candidate, qual = core.quality_filter(candidate, source_text)
+        if sani["removed_sections"] or sani["dropped_worked"]:
+            print(f"  sanitized: removed sections={sani['removed_sections']} "
+                  f"dropped_worked={len(sani['dropped_worked'])}")
+        if any(qual.values()):
+            print(f"  quality gate dropped: { {k: len(v) for k, v in qual.items() if v} }")
+        (out / "candidate-cleaning-report.json").write_text(
+            json.dumps({"sanitation": sani, "quality": qual}, indent=2), encoding="utf-8")
+        candidate["metadata"] = {
+            "chapter": chapter["title"], "source_ref": chapter["source_ref"],
+            "raw_source": chapter["raw_source"], "generator_model": gmodel,
+            "generated_at": _now(), "generation": "bounded-components",
+        }
+        cand_file.write_text(json.dumps(candidate, indent=2, ensure_ascii=False),
+                             encoding="utf-8")
+        stage_time("generate", t0)
+        perf["stages"]["generate"]["components"] = {
+            k: v.get("eval_count") for k, v in comp_meta.items()}
+        core.save_checkpoint(cp_file, "GENERATED")
+
+        struct_ok, vout = core.run_validator(cand_file, out / "candidate-validation.json")
+        min_ok, min_reasons = core.meets_minimums(candidate)
+        if not min_ok:
+            print(f"  below educational minimums: {min_reasons}")
+        if not (struct_ok and min_ok):
             raise RuntimeError(
-                "candidate failed structural validation or educational minimums after retry")
+                f"merged candidate failed validation/minimums: {vout} {min_reasons}")
         core.save_checkpoint(cp_file, "STRUCTURE_VALIDATED")
 
         # 4. AUDITING -> AUDITED (one retry)

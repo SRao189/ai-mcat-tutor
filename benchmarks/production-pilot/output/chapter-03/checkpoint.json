@@ -1,5 +1,5 @@
 {
-  "state": "QUARANTINED",
+  "state": "ACCEPTED",
   "history": [
     "DISCOVERED",
     "NORMALIZED",
@@ -29,11 +29,24 @@
     "NORMALIZED",
     "CONTEXT_READY",
     "GENERATING",
-    "QUARANTINED"
+    "QUARANTINED",
+    "DISCOVERED",
+    "NORMALIZED",
+    "CONTEXT_READY",
+    "GENERATING",
+    "GENERATING",
+    "GENERATING",
+    "GENERATED",
+    "STRUCTURE_VALIDATED",
+    "AUDITING",
+    "AUDITED",
+    "FINAL_AUDIT",
+    "ACCEPTED"
   ],
   "raw_source": "C:\\Users\\sahar\\mcat-tutor\\raw\\Chapter 3.txt",
   "generate_attempt": 1,
   "audit_verdict": "pass",
   "enrich_note": "no_enrichment_needed",
-  "error": "exceeded overall timeout (1500s)"
+  "error": "exceeded overall timeout (1500s)",
+  "component": "assessment"
 }
