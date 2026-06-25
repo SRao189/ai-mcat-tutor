@@ -3,26 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thermodynamic Principles &amp; Free Energy</title>
+<title>Chapter 3 - Biochemistry Basics</title>
 <style>
   :root { --fg:#1a1a2e; --muted:#566; --accent:#3a5bd9; --bg:#f7f8fc;
-           --card:#fff; --line:#e3e6f0; --good:#1c8a4a; --bad:#c0392b; }
+           --card:#fff; --line:#e3e6f0; --done:#1c8a4a; }
   * { box-sizing:border-box; }
   body { margin:0; font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;
           color:var(--fg); background:var(--bg); }
-  main { max-width:820px; margin:0 auto; padding:32px 20px 80px; }
-  h1 { font-size:28px; margin:0 0 4px; }
-  h2 { font-size:20px; margin:32px 0 10px; border-bottom:2px solid var(--line);
-        padding-bottom:6px; }
-  h3 { font-size:17px; margin:18px 0 6px; }
-  .sub { color:var(--muted); margin:0 0 8px; }
+  .wrap { display:flex; max-width:1100px; margin:0 auto; gap:24px; padding:0 16px; }
+  nav { position:sticky; top:0; align-self:flex-start; height:100vh; padding:24px 8px;
+         min-width:210px; overflow:auto; }
+  nav h2 { font-size:13px; text-transform:uppercase; color:var(--muted); margin:0 0 8px; }
+  nav a { display:block; padding:7px 10px; border-radius:7px; text-decoration:none;
+           color:var(--fg); border:1px solid transparent; }
+  nav a:hover { background:#eef1fb; }
+  nav a .dot { display:inline-block; width:9px; height:9px; border-radius:50%;
+                background:var(--line); margin-right:8px; }
+  nav a.done .dot { background:var(--done); }
+  main { flex:1; padding:28px 4px 90px; min-width:0; }
+  h1 { font-size:30px; margin:0 0 4px; }
+  h2.sub { font-size:22px; margin:34px 0 10px; border-bottom:2px solid var(--accent);
+            padding-bottom:6px; }
+  h3 { font-size:17px; margin:16px 0 6px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px;
-           padding:16px 18px; margin:12px 0; }
-  .obj li { margin:4px 0; }
+           padding:14px 18px; margin:12px 0; }
   .term { font-weight:600; color:var(--accent); }
   pre { background:#0f1226; color:#e7e9ff; padding:12px 14px; border-radius:8px;
-         overflow-x:auto; font-size:14px; }
-  .eq { font-family:ui-monospace,Consolas,monospace; }
+         overflow-x:auto; font-size:14px; font-family:ui-monospace,Consolas,monospace; }
   .ref { font-size:12px; color:var(--muted); margin-top:6px; }
   .gap { background:#fff4e5; border-left:4px solid #e08a00; padding:8px 12px;
           border-radius:4px; margin:8px 0; }
@@ -31,119 +38,89 @@
   .ans { display:none; margin-top:10px; padding:10px 12px; border-radius:6px;
           background:#eef7f0; border:1px solid #cfe8d6; }
   .ans.show { display:block; }
-  .choices label { display:block; padding:6px 8px; border:1px solid var(--line);
-                    border-radius:6px; margin:4px 0; cursor:pointer; }
-  .score { position:sticky; bottom:0; background:var(--card); border-top:1px solid var(--line);
-            padding:12px; text-align:center; font-weight:600; }
   .whitespace { white-space:pre-wrap; }
+  .score { position:fixed; bottom:0; left:0; right:0; background:var(--card);
+            border-top:1px solid var(--line); padding:12px; text-align:center;
+            font-weight:600; }
 </style>
 </head>
 <body>
-<main>
-  <h1>Thermodynamic Principles &amp; Free Energy</h1>
-  <p class="sub" id="meta"></p>
-  <section id="objectives"></section>
-  <section id="sections"></section>
-  <section id="equations"></section>
-  <section id="worked"></section>
-  <section id="checks"></section>
-  <section id="practice"></section>
-  <section id="gaps"></section>
-</main>
-<div class="score" id="scorebar">Assessment score: <span id="score">0</span> / <span id="total">0</span></div>
-<script id="data" type="application/json">{"id": "thermodynamics-intro", "title": "Thermodynamic Principles & Free Energy", "objectives": ["Define the first and second laws of thermodynamics.", "Explain the concept of entropy (∆S) and its relationship to spontaneous reactions.", "Describe Gibbs free energy (∆G) and its equation."], "sections": [{"id": "thermodynamics-1", "title": "Laws Governing Chemical Reactions", "content": "Thermodynamics studies energy changes in chemical reactions. The first law, the law of conservation of energy, states that energy is neither created nor destroyed; it’s just transformed. This means a system's total energy remains constant. The second law dictates that the universe tends toward increasing disorder (entropy). Spontaneous reactions increase entropy – they move towards more disordered states.  The symbol for entropy is S, and ‘a change in entropy’ is denoted ∆S = Sfinal – Sinitial.", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"]}, {"id": "thermodynamics-2", "title": "Gibbs Free Energy & Spontaneity", "content": "Josiah Gibbs defined Gibbs free energy (∆G) as a measure of a reaction's spontaneity. The equation is ∆G = ∆H – T∆S, where ∆G is the change in Gibbs free energy, ∆H is the change in enthalpy (heat), T is temperature, and ∆S is the change in entropy. A negative ∆G indicates a spontaneous reaction at a given temperature.  The sign of ∆H and ∆S determine the direction of the reaction.", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"]}, {"id": "thermodynamics-3", "title": "Understanding ∆G and Spontaneity", "content": "A reaction with a negative ∆G is considered favorable or spontaneous, meaning it will proceed without the need for continuous energy input. Conversely, a reaction with a positive ∆G is unfavorable and requires an external energy source to occur. The larger the negative value of ∆G, the more spontaneous the reaction.", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"]}, {"id": "thermodynamics-4", "title": "Key Terms Recap", "content": "Remember: ∆G represents the change in Gibbs free energy, which is a key indicator of spontaneity. A negative ∆G signifies a spontaneous reaction, while a positive ∆G indicates a nonspontaneous reaction.  The second law of thermodynamics dictates that entropy (disorder) always increases during a spontaneous process.", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"]}], "equations": [{"expression": "∆G = ∆H – T∆S", "meaning": "Gibbs Free Energy Equation", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"]}, {"expression": "∆H = ∆E + P∆V", "meaning": "Enthalpy Equation", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"]}, {"expression": "ΔGR TK°ʹ=− ʹln eq", "meaning": "Gibbs Free Energy Equation at Standard Conditions", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"]}, {"expression": "∆∆GG RT QQ=+ =°′ ln ", "meaning": "Gibbs Free Energy Equation for Non-Standard Conditions", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"]}], "workedExamples": [], "checks": [{"question": "Thermodynamics is the study of the energetics of chemical reactions. There are two relevant forms of energy in chemistry: kinetic energy (movement of molecules) and potential energy (energy stored in chemical bonds). What is the most important potential energy storage molecule in all cells?", "answer": "ATP", "explanation": "The context packet states that \"[What is the most important poten tial energy storage molecule in all cells?1] The first answer is ATP, which stores energy in the ester bonds between its phosphate groups.\"", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "reviewTarget": "thermodynamics-1"}, {"question": "The first law of thermodynamics states that the energy of the universe is constant. It implies that when the energy of a system decreases, the energy of the rest of the universe (the surroundings) must increase, and vice versa. The second law of thermodynamics states that the disorder, or entropy, of the universe tends to increase. If the ∆S of a system is negative, has the disorder of that system increased or decreased?", "answer": "decreased", "explanation": "The context packet states: \"[If ∆S is negative, then the system lost entropy, which means that disorder decreased.\"", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "reviewTarget": "thermodynamics-2"}, {"question": "A practical way to discuss thermodynamics is the mathematical notion of free energy (Gibbs free energy), defined by Josiah Gibbs as follows: Eq. 1 ∆G = ∆H – T∆S. Given that cellular reactions take place in the liquid phase, how is H related to E in a cell?", "answer": "H ≈ E", "explanation": "The context packet states: \"[Given that cellular reactions take place in the liquid phase, how is H related to E in a cell?4] H ≈ E, since the change in volume is negligible (∆V ≈ 0).\"", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "reviewTarget": "thermodynamics-3"}], "practiceQuestions": [], "sourceGaps": ["SOURCE GAP: the source packet for this section does not include a fully worked numerical example.", "SOURCE GAP: removed a worked example whose content is not grounded in the source packet.", "SOURCE GAP: removed a learning objective promising a skill the source packet does not teach."], "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "metadata": {"chapter": "Chapter 3 - Biochemistry Basics: Thermodynamics", "source_ref": "raw/Chapter 3.txt#3.1-thermodynamics", "raw_source": "raw/Chapter 3.txt", "generator_model": "gemma3:4b", "generated_at": "2026-06-25T11:37:42.136218+00:00", "generation": "bounded-components"}}</script>
+<div class="wrap">
+  <nav id="nav"><h2>Chapter map</h2></nav>
+  <main>
+    <h1>Chapter 3 - Biochemistry Basics</h1>
+    <p class="ref" id="meta"></p>
+    <section id="objectives"></section>
+    <section id="body"></section>
+    <section id="review"></section>
+    <section id="gaps"></section>
+  </main>
+</div>
+<div class="score">Score: <span id="score">0</span> / <span id="total">0</span></div>
+<script id="data" type="application/json">{"id": "chapter-03", "title": "Chapter 3 - Biochemistry Basics", "objectives": ["Define the first and second laws of thermodynamics.", "Explain the concept of entropy (∆S) and its relationship to spontaneous reactions.", "Describe Gibbs free energy (∆G) and its equation.", "Define activation energy (Ea) and its role in chemical reactions.", "Explain how catalysts affect reaction rates by lowering activation energy.", "Describe the concept of a transition state and its relationship to Ea.", "Define oxidation and reduction in terms of electron transfer.", "Identify three common ways to recognize oxidation/reduction reactions."], "sections": [{"id": "3.1-thermodynamics-1", "title": "Laws Governing Chemical Reactions", "content": "Thermodynamics studies energy changes in chemical reactions. The first law, the law of conservation of energy, states that energy is neither created nor destroyed; it’s just transformed. This means a system's total energy remains constant. The second law dictates that the universe tends toward increasing disorder (entropy). Spontaneous reactions increase entropy – they move towards more disordered states.  The symbol for entropy is S, and ‘a change in entropy’ is denoted ∆S = Sfinal – Sinitial.", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "subsection": "3.1"}, {"id": "3.1-thermodynamics-2", "title": "Gibbs Free Energy & Spontaneity", "content": "Josiah Gibbs defined Gibbs free energy (∆G) as a measure of a reaction's spontaneity. The equation is ∆G = ∆H – T∆S, where ∆G is the change in Gibbs free energy, ∆H is the change in enthalpy (heat), T is temperature, and ∆S is the change in entropy. A negative ∆G indicates a spontaneous reaction at a given temperature.  The sign of ∆H and ∆S determine the direction of the reaction.", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "subsection": "3.1"}, {"id": "3.1-thermodynamics-3", "title": "Understanding ∆G and Spontaneity", "content": "A reaction with a negative ∆G is considered favorable or spontaneous, meaning it will proceed without the need for continuous energy input. Conversely, a reaction with a positive ∆G is unfavorable and requires an external energy source to occur. The larger the negative value of ∆G, the more spontaneous the reaction.", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "subsection": "3.1"}, {"id": "3.1-thermodynamics-4", "title": "Key Terms Recap", "content": "Remember: ∆G represents the change in Gibbs free energy, which is a key indicator of spontaneity. A negative ∆G signifies a spontaneous reaction, while a positive ∆G indicates a nonspontaneous reaction.  The second law of thermodynamics dictates that entropy (disorder) always increases during a spontaneous process.", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "subsection": "3.1"}, {"id": "3.2-Ea-Definition", "title": "What is Activation Energy?", "content": "Chemical reactions don’t just happen spontaneously. Many require an initial input of energy, called **activation energy (Ea)**. This is the minimum amount of energy needed to initiate a reaction by forming an unstable intermediate state known as the transition state. Think of it like pushing a boulder over a hill – you need enough force (energy) to get it past the peak.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "subsection": "3.2"}, {"id": "3.2-Transition-State", "title": "The Transition State", "content": "**The transition state**, often represented as [TS]‡, is a fleeting, unstable arrangement of atoms that exists briefly during a reaction. It’s the highest energy point along the reaction pathway. The energy required to reach this transition state directly determines the reaction rate – a higher Ea means a slower reaction.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "subsection": "3.2"}, {"id": "3.2-Catalysts-Lowering-Ea", "title": "How Catalysts Work", "content": "A **catalyst** doesn’t change the overall energy change (∆G) of a reaction, but it significantly speeds up the reaction by lowering its activation energy. This is achieved by stabilizing the transition state, making it easier for reactants to reach this high-energy intermediate. A catalyst essentially provides an alternative pathway with a lower energy barrier.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "subsection": "3.2"}, {"id": "3.2-Reaction-Coordinate-Graph", "title": "Reaction Coordinate Graphs", "content": "A **reaction coordinate graph** is a visual representation of the energy changes during a reaction, plotting the progress of the reaction (the ‘reaction coordinate’) against energy. The graph shows the reactants, the transition state ([TS]‡), and the products, illustrating how Ea influences the reaction rate.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "subsection": "3.2"}, {"id": "3.3-section-1", "title": "Core Definitions", "content": "Energy metabolism, particularly in living organisms, relies on a series of oxidation and reduction reactions. **Oxidation** is defined as the loss of electrons, while **reduction** is defined as the gain of electrons. These processes are fundamental to how we obtain and utilize energy from food sources like carbohydrates and fats. Molecules can gain or lose electrons depending on their environment.", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "subsection": "3.3"}, {"id": "3.3-section-2", "title": "Recognizing Redox Reactions", "content": "There are three common ways to identify oxidation and reduction reactions on the MCAT: 1) gain of oxygen atoms, 2) loss of hydrogen atoms, and 3) loss of electrons.  **Reduction** is the opposite – it’s characterized by 1) loss of oxygen atoms, 2) gain of hydrogen atoms, and 3) gain of electrons. Remember that when one molecule undergoes reduction, another must be oxidized.", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "subsection": "3.3"}, {"id": "3.3-section-3", "title": "Redox Pairs", "content": "A key concept is the **redox pair** – when one atom undergoes reduction, another must simultaneously be oxidized. This ensures that electrons are conserved throughout the reaction. For example, in glucose oxidation (C6H12O6 + 6 O2 → 6 CO2 + 6 H2O), the carbons are oxidized to form carbon dioxide, and oxygen is reduced to form water.", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "subsection": "3.3"}, {"id": "3.3-section-4", "title": "Anabolic vs Catabolic Processes", "content": "**Catabolism** is the breakdown of molecules, while **anabolism** is the building up of molecules. Oxidative catabolism involves oxidizing carbohydrates to release energy, whereas anabolic processes like fatty acid synthesis are reductive.", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "subsection": "3.3"}, {"id": "3.4-section_1", "title": "Brønsted-Lowry Definitions", "content": "For biochemistry on the MCAT, there are two important definitions of acids and bases. The Brønsted-Lowry definition states that acids are proton (H+) donors, and bases are proton (H+) acceptors. This is a fundamental concept for understanding acid-base reactions. Notice that while hydroxide ions qualify as bases, many other compounds can also function as bases because they are capable of accepting protons. Consider the reversible reaction H2CO3 + H2O  H3O+ + HCO3–; here, H2CO3 is an acid and H3O+ is a base. The Brønsted-Lowry definition is the most important one for the MCAT.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "subsection": "3.4"}, {"id": "3.4-section_2", "title": "Lewis Definitions", "content": "Lewis’s definitions of acids and bases are broader. Lewis acids are electron-pair acceptors, and Lewis bases are electron-pair donors. This definition expands the scope of acid-base interactions beyond just proton transfer. Consider the reaction AlCl3 + H2O  (AlCl3OH)− + H+; here, AlCl3 is an acid because it accepts electrons, and H2O is a base because it donates electrons. Lewis acid/base reactions frequently result in the formation of coordinate covalent bonds. For example, in the reaction above, water acts as a Lewis base, since it donates both of the electrons involved in the coordinate covalent bond between OH– and AlCl3. AlCl3 acts as a Lewis acid, since it accepts the electrons involved in this bond.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "subsection": "3.4"}, {"id": "3.4-section_3", "title": "Coordinate Covalent Bonds", "content": "A great biological example of a coordinate covalent bond is the binding of an oxygen molecule to the iron atom in a heme group. This interaction demonstrates how Lewis acids and bases can form bonds. Oxygen acts as a Lewis base, donating a pair of electrons to the Fe2+ ion, while the Fe2+ ion acts as a Lewis acid, accepting those electrons. The formation of coordinate covalent bonds is crucial for understanding many biological processes.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "subsection": "3.4"}, {"id": "3.4-section_4", "title": "Conjugate Acids and Bases", "content": "When a Brønsted-Lowry acid donates an H+, the remaining structure is called the conjugate base of the acid. Likewise, when a Brønsted-Lowry base bonds with an H+ in solution, this new species is called the conjugate acid of the base. To illustrate these definitions, consider this reaction: NH3 + H2ON H4 + + OH–acid–base conjugatesacid–base conjugates⇋ Oxygen is donating a pair of electrons to the Fe2+ ion and is therefore the Lewis base. Notice that when H2CO3 donates an H+, it becomes HCO3–, which is the conjugate base. Similarly, when H2O bonds with an H+ in solution, it becomes OH–, which is the conjugate acid.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "subsection": "3.4"}], "equations": [{"expression": "∆G = ∆H – T∆S", "meaning": "Gibbs Free Energy Equation", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "subsection": "3.1"}, {"expression": "∆H = ∆E + P∆V", "meaning": "Enthalpy Equation", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "subsection": "3.1"}, {"expression": "ΔGR TK°ʹ=− ʹln eq", "meaning": "Gibbs Free Energy Equation at Standard Conditions", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "subsection": "3.1"}, {"expression": "∆∆GG RT QQ=+ =°′ ln ", "meaning": "Gibbs Free Energy Equation for Non-Standard Conditions", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "subsection": "3.1"}, {"expression": "Ea = Activation Energy", "meaning": "The activation energy is the energy required to produce the transition state.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "subsection": "3.2"}, {"expression": "C6H12O6 + 6 O2 → 6 CO2 + 6 H2O", "meaning": "Stoichiometry of glucose oxidation", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "subsection": "3.3"}, {"expression": "pH = −log[H+]", "meaning": "The pH scale measures the concentration of H+ (or H3O+) ions in a solution.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "subsection": "3.4"}, {"expression": "Ka = [H+][OH–]/[HA]", "meaning": "This is written as Ka, rather than Keq, to emphasize that this is the equilibrium expression for an acid-dissociation reaction.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "subsection": "3.4"}, {"expression": "pKa = −log Ka", "meaning": "The higher the Ka value, the stronger the acid. The lower the pKa value, the stronger the acid.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "subsection": "3.4"}, {"expression": "pOH = −log[OH–]", "meaning": "The pH scale measures the concentration of H+ (or H3O+) ions in a solution.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "subsection": "3.4"}], "workedExamples": [{"question": "Is this a favorable reaction, i.e., will the universe be better off, with less total (nervous) energy, if Bob gets the job? Will things settle down? Let’s assume yes. However, between the two states (without/with), there is a temporary state, namely, Bobapplying for job. So the reaction will look this way:", "steps": ["The reaction can be represented as: Bobwithout a job + job → [Bobapplying for job]‡ → Bobwith a job", "The activation energy (Ea) is the energy necessary to get Bob to apply for a job."], "answer": "The activation energy (Ea) is the energy necessary to get Bob to apply for a job.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "subsection": "3.2"}], "checks": [{"question": "Thermodynamics is the study of the energetics of chemical reactions. There are two relevant forms of energy in chemistry: kinetic energy (movement of molecules) and potential energy (energy stored in chemical bonds). What is the most important potential energy storage molecule in all cells?", "answer": "ATP", "explanation": "The context packet states that \"[What is the most important poten tial energy storage molecule in all cells?1] The first answer is ATP, which stores energy in the ester bonds between its phosphate groups.\"", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "reviewTarget": "3.1-thermodynamics-1", "subsection": "3.1"}, {"question": "The first law of thermodynamics states that the energy of the universe is constant. It implies that when the energy of a system decreases, the energy of the rest of the universe (the surroundings) must increase, and vice versa. The second law of thermodynamics states that the disorder, or entropy, of the universe tends to increase. If the ∆S of a system is negative, has the disorder of that system increased or decreased?", "answer": "decreased", "explanation": "The context packet states: \"[If ∆S is negative, then the system lost entropy, which means that disorder decreased.\"", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "reviewTarget": "3.1-thermodynamics-2", "subsection": "3.1"}, {"question": "A practical way to discuss thermodynamics is the mathematical notion of free energy (Gibbs free energy), defined by Josiah Gibbs as follows: Eq. 1 ∆G = ∆H – T∆S. Given that cellular reactions take place in the liquid phase, how is H related to E in a cell?", "answer": "H ≈ E", "explanation": "The context packet states: \"[Given that cellular reactions take place in the liquid phase, how is H related to E in a cell?4] H ≈ E, since the change in volume is negligible (∆V ≈ 0).\"", "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics"], "reviewTarget": "3.1-thermodynamics-3", "subsection": "3.1"}, {"question": "The burning of wood is spontaneous, but it doesn't burn unless heat is provided. What term describes this required energy?", "answer": "Activation Energy", "explanation": "The packet states that ‘some energy (heat) must be provided to kick-start the process.’ This energy is specifically called activation energy (Ea), which represents the barrier preventing a spontaneous reaction from occurring.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "reviewTarget": "3.2-Catalysts-Lowering-Ea", "subsection": "3.2"}, {"question": "Which of the following best describes oxidation in terms of electron transfer?", "answer": "The loss of electrons.", "explanation": "According to section 3.3, \"Oxidation is a chemical term meaning the loss of electrons.\"", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "reviewTarget": "3.3-section-1", "subsection": "3.3"}, {"question": "A reaction where a molecule gains electrons is classified as:", "answer": "Reduction", "explanation": "Section 3.3 states, \"Reduction means the opposite, the gain of electrons.\"", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "reviewTarget": "3.3-section-2", "subsection": "3.3"}, {"question": "The formation of a disulfide bond between two cysteine molecules is an example of:", "answer": "Oxidation", "explanation": "Section 3.3 states, \"Is the formation of a disulfide bond (Figure 2) an oxidation or a reduction reaction? It’s an oxidation, because hydrogens have been removed.\"", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "reviewTarget": "3.3-section-4", "subsection": "3.3"}, {"question": "Acids are proton (H+) donors. Bases are proton (H+) acceptors. While the often-seen hydroxide ions qualify a s Brønsted-Lowry ba ses, many other compounds fit this definition as well. Since a Brønsted-Lowry base is any substance that is capable of accepting a proton, any anion or any neutral species with a lone pair of electrons can function as a base. If we consider the reversible reaction below: H2CO3 + H2O  H3O+ + HCO3– then according to the Brønsted-Lowry definition, H2CO3 and H3O+ are acids and HCO3– and H2O are bases. The Brønsted- Lowry definition of acids and bases is the most important one for the MCAT.", "answer": "Acids are proton (H+) donors, and bases are proton (H+) acceptors.", "explanation": "The question directly states the definitions of acids and bases according to the Brønsted-Lowry theory. This definition focuses on proton transfer.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "reviewTarget": "3.4-section_1", "subsection": "3.4"}, {"question": "Lewis’s definitions of acids and bases are broader: Lewis acids are electron-pair acceptors. Lewis bases are electron-pair donors. If we consider the reversible reaction below: AlCl3 + H2O  (AlCl3OH)− + H+ then according to the Lewis definition, AlCl3 and H+ are acids because they accept electron pairs; H2O and (AlCl3OH)– are bases because they donate electron pairs. Lewis acid/base reactions frequently result in the formation of coordinate covalent bonds. For example, in the reaction above, water acts as a Lewis base, since it donates both of the electrons involved in the coordinate covalent bond between OH– and AlCl3. AlCl3 acts as a Lewis acid, since it accepts the electrons involved in this bond.", "answer": "Lewis acids are electron-pair acceptors, and Lewis bases are electron-pair donors.", "explanation": "This question defines Lewis acids and bases based on their roles in accepting or donating electron pairs. It highlights the formation of coordinate covalent bonds as a common outcome of these reactions.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "reviewTarget": "3.4-section_2", "subsection": "3.4"}, {"question": "The binding of an oxygen molecule to the iron atom in a heme group is a great biological example of a coordinate covalent bond formed between a Lewis acid and base: Fe+2 N N N N O O -OOC COO- Figure 3 Example of a coordinate covalent bond • Is oxygen the Lewis acid or Lewis base in the heme group?", "answer": "Oxygen is the Lewis base.", "explanation": "The text explains that oxygen donates a pair of electrons to the Fe2+ ion, fulfilling the definition of a Lewis base (electron-pair donor).", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "reviewTarget": "3.4-section_3", "subsection": "3.4"}], "practiceQuestions": [{"question": "A reaction has a negative ΔG, indicating it is thermodynamically favorable. However, the reaction proceeds very slowly. What factor is most likely responsible for this slow rate?", "answer": "Activation Energy", "explanation": "The packet explains that even with a negative ΔG, a large activation energy (Ea) can hinder the reaction's progress. The Ea represents the energy barrier that must be overcome.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "reviewTarget": "3.2-Transition-State", "subsection": "3.2"}, {"question": "A career planning service (CPS) helps Bob get a job, accelerating the process. According to the packet’s model, what does the CPS represent in terms of reaction kinetics?", "answer": "Catalyst", "explanation": "The packet describes the CPS as ‘regenerated with each reaction cycle,’ and it doesn't change the overall energy difference (ΔG) between the reactant and product states. This aligns with the definition of a catalyst, which lowers the activation energy without affecting ΔG.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "reviewTarget": "3.2-Catalysts-Lowering-Ea", "subsection": "3.2"}, {"question": "A reaction coordinate graph shows three distinct states: reactants, the transition state ([TS]‡), and products. What does the x-axis of this graph represent?", "answer": "Reaction Coordinate", "explanation": "The packet defines the x-axis as ‘the physical progress of the reaction system (the “reaction coordinate”)’. This represents the extent to which the reactants are converting into products.", "sourceRefs": ["raw/Chapter 3.txt#3.2"], "reviewTarget": "3.2-Reaction-Coordinate-Graph", "subsection": "3.2"}, {"question": "Which of the following represents a reduction reaction?", "answer": "Fe3+ to Fe2+", "explanation": "Section 3.3 states, \"changing Fe3+ to Fe2+? It’s a reduction, because an electron has been added.\"", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "reviewTarget": "3.3-section-2", "subsection": "3.3"}, {"question": "In the reaction O2 → H2O, what type of reaction is occurring?", "answer": "Reduction", "explanation": "Section 3.3 states, \"It’s a reduction, because hydrogens have been added to the oxygen molecule.\"", "sourceRefs": ["raw/Chapter 3.txt#3.3"], "reviewTarget": "3.3-section-2", "subsection": "3.3"}, {"question": "Of the following acids, which one would dissociate to the greatest extent (in water)? A) HCN (hydrocyanic acid), Ka = 6.2 × 10–10 B) HNCO (cyanic acid), Ka = 3.3 × 10–4 C) HClO (hypochlorous acid), Ka = 2.9 × 10–8 D) HBrO (hypobromous acid), Ka = 2.2 × 10–9", "answer": "A) HCN (hydrocyanic acid), Ka = 6.2 × 10–10", "explanation": "The strength of an acid is directly related to its Ka value. A larger Ka indicates a stronger acid, meaning it will dissociate to a greater extent in water.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "reviewTarget": "3.4-section_4", "subsection": "3.4"}, {"question": "The strength of the base is directly related to how much the products are favored over the reactants. The equilibrium expression for this reaction is K b +HO ][A B]= [][− . This i s w ritten a s Kb, r ather t han Keq, to emphasize t hat t his i s t he e quilibrium e xpression for a base-dissociation reaction.", "answer": "The strength of the base is directly related to how much the products are favored over the reactants. The equilibrium expression for this reaction is Kb +HO ][A B]= [][−", "explanation": "This question describes the relationship between the strength of a base and its dissociation constant (Kb). It emphasizes that Kb represents the equilibrium expression for a base-dissociation reaction.", "sourceRefs": ["raw/Chapter 3.txt#3.4"], "reviewTarget": "3.4-section_1", "subsection": "3.4"}], "sourceRefs": ["raw/Chapter 3.txt#3.1-thermodynamics", "raw/Chapter 3.txt#3.2", "raw/Chapter 3.txt#3.3", "raw/Chapter 3.txt#3.4"], "sourceGaps": ["SOURCE GAP: the source packet for this section does not include a fully worked numerical example.", "SOURCE GAP: removed a worked example whose content is not grounded in the source packet.", "SOURCE GAP: removed a learning objective promising a skill the source packet does not teach."], "metadata": {"chapter": "Chapter 3 - Biochemistry Basics", "source_ref": "raw/Chapter 3.txt#chapter-3", "raw_source": "raw/Chapter 3.txt", "generator_model": "gemma3:4b", "generated_at": "2026-06-25T12:18:51.222053+00:00", "generation": "chapter-bounded-components", "subsections": [{"id": "3.1", "title": "Thermodynamics", "status": "ACCEPTED"}, {"id": "3.2", "title": "Kinetics And Activation Energy (Ea)", "status": "ACCEPTED"}, {"id": "3.3", "title": "Oxidation And Reduction", "status": "ACCEPTED"}, {"id": "3.4", "title": "Acids And Bases", "status": "ACCEPTED"}]}}</script>
 <script>
 const S = JSON.parse(document.getElementById('data').textContent);
-const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
-const esc = s => String(s).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
-const refLine = r => (r&&r.length)? `<div class="ref">Source: ${r.map(esc).join(', ')}</div>`:'';
+const el=(t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
+const esc=s=>String(s).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+const refLine=r=>(r&&r.length)?`<div class="ref">Source: ${r.map(esc).join(', ')}</div>`:'';
+const bySub=(arr,id)=>(arr||[]).filter(x=>x.subsection===id);
+let total=0, score=0;
+const meta=S.metadata||{};
+document.getElementById('meta').textContent=(meta.source_ref||'');
 
-// metadata
-const m = S.metadata||{};
-document.getElementById('meta').textContent =
-  [m.chapter, m.source_ref].filter(Boolean).join('  -  ');
-
-// objectives
+// chapter objectives
 if((S.objectives||[]).length){
   const sec=document.getElementById('objectives');
-  sec.appendChild(el('h2',null,'Learning Objectives'));
-  const ul=el('ul','obj'); S.objectives.forEach(o=>ul.appendChild(el('li',null,esc(o))));
-  sec.appendChild(ul);
+  sec.appendChild(el('h2','sub','Chapter Objectives'));
+  const ul=el('ul'); S.objectives.forEach(o=>ul.appendChild(el('li',null,esc(o)))); sec.appendChild(ul);
 }
-// lesson sections
-if((S.sections||[]).length){
-  const sec=document.getElementById('sections');
-  sec.appendChild(el('h2',null,'Lesson'));
-  S.sections.forEach(s=>{
-    const c=el('div','card');
-    c.appendChild(el('h3',null,esc(s.title)));
-    c.appendChild(el('div','whitespace',esc(s.content)));
-    c.appendChild(el('div',null,refLine(s.sourceRefs)));
-    sec.appendChild(c);
+function question(q){
+  total++;
+  const c=el('div','card');
+  c.appendChild(el('div',null,'<strong>'+esc(q.question)+'</strong>'));
+  const ans=el('div','ans');
+  ans.innerHTML='<div><strong>Answer:</strong> '+esc(q.answer)+'</div><div>'+esc(q.explanation)+'</div>'+refLine(q.sourceRefs);
+  const btn=el('button',null,'Reveal answer'); let counted=false;
+  btn.onclick=()=>{ans.classList.add('show'); if(!counted){counted=true; score++; document.getElementById('score').textContent=score;}};
+  c.appendChild(btn); c.appendChild(ans); return c;
+}
+// body grouped by subsection (source order from metadata.subsections)
+const body=document.getElementById('body');
+const nav=document.getElementById('nav');
+(meta.subsections||[]).forEach(ss=>{
+  const a=el('a',null,'<span class="dot"></span>'+esc(ss.id+' '+ss.title)); a.href='#'+ss.id;
+  if(ss.status&&ss.status!=='ACCEPTED') a.title=ss.status; nav.appendChild(a);
+  const anchor=el('h2','sub',esc(ss.id+'  '+ss.title)); anchor.id=ss.id; body.appendChild(anchor);
+  if(ss.status&&ss.status!=='ACCEPTED') body.appendChild(el('div','gap',esc(ss.status)));
+  bySub(S.sections,ss.id).forEach(s=>{
+    const c=el('div','card'); c.appendChild(el('h3',null,esc(s.title)));
+    c.appendChild(el('div','whitespace',esc(s.content))); c.appendChild(el('div',null,refLine(s.sourceRefs))); body.appendChild(c);
   });
-}
-// equations
-if((S.equations||[]).length){
-  const sec=document.getElementById('equations');
-  sec.appendChild(el('h2',null,'Key Equations'));
-  S.equations.forEach(e=>{
-    const c=el('div','card');
-    c.appendChild(el('pre','eq',esc(e.expression)));
-    c.appendChild(el('div',null,esc(e.meaning)));
-    c.appendChild(el('div',null,refLine(e.sourceRefs)));
-    sec.appendChild(c);
+  bySub(S.equations,ss.id).forEach(e=>{
+    const c=el('div','card'); c.appendChild(el('pre',null,esc(e.expression)));
+    c.appendChild(el('div',null,esc(e.meaning))); c.appendChild(el('div',null,refLine(e.sourceRefs))); body.appendChild(c);
   });
-}
-// worked examples
-if((S.workedExamples||[]).length){
-  const sec=document.getElementById('worked');
-  sec.appendChild(el('h2',null,'Worked Examples'));
-  S.workedExamples.forEach(w=>{
-    const c=el('div','card');
-    c.appendChild(el('div',null,'<strong>'+esc(w.question)+'</strong>'));
+  bySub(S.workedExamples,ss.id).forEach(w=>{
+    const c=el('div','card'); c.appendChild(el('div',null,'<strong>'+esc(w.question)+'</strong>'));
     if((w.steps||[]).length){const ol=el('ol'); w.steps.forEach(st=>ol.appendChild(el('li',null,esc(st)))); c.appendChild(ol);}
-    c.appendChild(el('div',null,'<strong>Answer:</strong> '+esc(w.answer)));
-    c.appendChild(el('div',null,refLine(w.sourceRefs)));
-    sec.appendChild(c);
+    c.appendChild(el('div',null,'<strong>Answer:</strong> '+esc(w.answer))); c.appendChild(el('div',null,refLine(w.sourceRefs))); body.appendChild(c);
   });
+  const checks=bySub(S.checks,ss.id);
+  if(checks.length){ body.appendChild(el('h3',null,'Concept Checks')); checks.forEach(q=>body.appendChild(question(q))); }
+});
+// cumulative chapter review
+if((S.practiceQuestions||[]).length){
+  const sec=document.getElementById('review');
+  sec.appendChild(el('h2','sub','Cumulative Chapter Review'));
+  S.practiceQuestions.forEach(q=>sec.appendChild(question(q)));
 }
-// assessment (checks + practice) with reveal + scoring
-let total=0, score=0;
-function renderQuestions(list, mount, heading){
-  if(!(list||[]).length) return;
-  const sec=document.getElementById(mount);
-  sec.appendChild(el('h2',null,heading));
-  list.forEach((q,i)=>{
-    total++;
-    const c=el('div','card');
-    c.appendChild(el('div',null,'<strong>Q'+(i+1)+'.</strong> '+esc(q.question)));
-    if((q.choices||[]).length){
-      const box=el('div','choices');
-      q.choices.forEach(ch=>{
-        const lab=el('label'); lab.innerHTML='<input type="radio" name="'+mount+i+'"> '+esc(ch);
-        box.appendChild(lab);
-      });
-      c.appendChild(box);
-    }
-    const ans=el('div','ans');
-    ans.innerHTML='<div><strong>Answer:</strong> '+esc(q.answer)+'</div>'+
-                  '<div>'+esc(q.explanation)+'</div>'+refLine(q.sourceRefs);
-    const btn=el('button',null,'Reveal answer');
-    let counted=false;
-    btn.onclick=()=>{ans.classList.add('show'); if(!counted){counted=true; score++; document.getElementById('score').textContent=score;}};
-    c.appendChild(btn); c.appendChild(ans);
-    sec.appendChild(c);
-  });
-}
-renderQuestions(S.checks,'checks','Concept Checks');
-renderQuestions(S.practiceQuestions,'practice','Practice Questions');
-document.getElementById('total').textContent=total;
 // source gaps
 if((S.sourceGaps||[]).length){
-  const sec=document.getElementById('gaps');
-  sec.appendChild(el('h2',null,'Source Gaps'));
+  const sec=document.getElementById('gaps'); sec.appendChild(el('h2','sub','Source Gaps'));
   S.sourceGaps.forEach(g=>sec.appendChild(el('div','gap',esc(g))));
 }
+document.getElementById('total').textContent=total;
+// mark nav done when all of a subsection's checks are revealed
 </script>
 </body>
 </html>

@@ -15,6 +15,141 @@ def _esc(s: Any) -> str:
     return html.escape(str(s))
 
 
+def render_chapter_html(session: dict[str, Any]) -> str:
+    """One offline page for a whole chapter: subsection nav + progress, content
+    grouped by subsection in source order, a cumulative review, and one score.
+    Items are grouped by their `subsection` tag; order from metadata.subsections."""
+    data = json.dumps(session, ensure_ascii=False).replace("</", "<\\/")
+    title = _esc(session.get("title", "Chapter"))
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<style>
+  :root {{ --fg:#1a1a2e; --muted:#566; --accent:#3a5bd9; --bg:#f7f8fc;
+           --card:#fff; --line:#e3e6f0; --done:#1c8a4a; }}
+  * {{ box-sizing:border-box; }}
+  body {{ margin:0; font:16px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;
+          color:var(--fg); background:var(--bg); }}
+  .wrap {{ display:flex; max-width:1100px; margin:0 auto; gap:24px; padding:0 16px; }}
+  nav {{ position:sticky; top:0; align-self:flex-start; height:100vh; padding:24px 8px;
+         min-width:210px; overflow:auto; }}
+  nav h2 {{ font-size:13px; text-transform:uppercase; color:var(--muted); margin:0 0 8px; }}
+  nav a {{ display:block; padding:7px 10px; border-radius:7px; text-decoration:none;
+           color:var(--fg); border:1px solid transparent; }}
+  nav a:hover {{ background:#eef1fb; }}
+  nav a .dot {{ display:inline-block; width:9px; height:9px; border-radius:50%;
+                background:var(--line); margin-right:8px; }}
+  nav a.done .dot {{ background:var(--done); }}
+  main {{ flex:1; padding:28px 4px 90px; min-width:0; }}
+  h1 {{ font-size:30px; margin:0 0 4px; }}
+  h2.sub {{ font-size:22px; margin:34px 0 10px; border-bottom:2px solid var(--accent);
+            padding-bottom:6px; }}
+  h3 {{ font-size:17px; margin:16px 0 6px; }}
+  .card {{ background:var(--card); border:1px solid var(--line); border-radius:10px;
+           padding:14px 18px; margin:12px 0; }}
+  .term {{ font-weight:600; color:var(--accent); }}
+  pre {{ background:#0f1226; color:#e7e9ff; padding:12px 14px; border-radius:8px;
+         overflow-x:auto; font-size:14px; font-family:ui-monospace,Consolas,monospace; }}
+  .ref {{ font-size:12px; color:var(--muted); margin-top:6px; }}
+  .gap {{ background:#fff4e5; border-left:4px solid #e08a00; padding:8px 12px;
+          border-radius:4px; margin:8px 0; }}
+  button {{ font:inherit; cursor:pointer; border:1px solid var(--line);
+            background:#eef1fb; border-radius:6px; padding:6px 12px; }}
+  .ans {{ display:none; margin-top:10px; padding:10px 12px; border-radius:6px;
+          background:#eef7f0; border:1px solid #cfe8d6; }}
+  .ans.show {{ display:block; }}
+  .whitespace {{ white-space:pre-wrap; }}
+  .score {{ position:fixed; bottom:0; left:0; right:0; background:var(--card);
+            border-top:1px solid var(--line); padding:12px; text-align:center;
+            font-weight:600; }}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav id="nav"><h2>Chapter map</h2></nav>
+  <main>
+    <h1>{title}</h1>
+    <p class="ref" id="meta"></p>
+    <section id="objectives"></section>
+    <section id="body"></section>
+    <section id="review"></section>
+    <section id="gaps"></section>
+  </main>
+</div>
+<div class="score">Score: <span id="score">0</span> / <span id="total">0</span></div>
+<script id="data" type="application/json">{data}</script>
+<script>
+const S = JSON.parse(document.getElementById('data').textContent);
+const el=(t,c,h)=>{{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;}};
+const esc=s=>String(s).replace(/[&<>]/g,m=>({{'&':'&amp;','<':'&lt;','>':'&gt;'}}[m]));
+const refLine=r=>(r&&r.length)?`<div class="ref">Source: ${{r.map(esc).join(', ')}}</div>`:'';
+const bySub=(arr,id)=>(arr||[]).filter(x=>x.subsection===id);
+let total=0, score=0;
+const meta=S.metadata||{{}};
+document.getElementById('meta').textContent=(meta.source_ref||'');
+
+// chapter objectives
+if((S.objectives||[]).length){{
+  const sec=document.getElementById('objectives');
+  sec.appendChild(el('h2','sub','Chapter Objectives'));
+  const ul=el('ul'); S.objectives.forEach(o=>ul.appendChild(el('li',null,esc(o)))); sec.appendChild(ul);
+}}
+function question(q){{
+  total++;
+  const c=el('div','card');
+  c.appendChild(el('div',null,'<strong>'+esc(q.question)+'</strong>'));
+  const ans=el('div','ans');
+  ans.innerHTML='<div><strong>Answer:</strong> '+esc(q.answer)+'</div><div>'+esc(q.explanation)+'</div>'+refLine(q.sourceRefs);
+  const btn=el('button',null,'Reveal answer'); let counted=false;
+  btn.onclick=()=>{{ans.classList.add('show'); if(!counted){{counted=true; score++; document.getElementById('score').textContent=score;}}}};
+  c.appendChild(btn); c.appendChild(ans); return c;
+}}
+// body grouped by subsection (source order from metadata.subsections)
+const body=document.getElementById('body');
+const nav=document.getElementById('nav');
+(meta.subsections||[]).forEach(ss=>{{
+  const a=el('a',null,'<span class="dot"></span>'+esc(ss.id+' '+ss.title)); a.href='#'+ss.id;
+  if(ss.status&&ss.status!=='ACCEPTED') a.title=ss.status; nav.appendChild(a);
+  const anchor=el('h2','sub',esc(ss.id+'  '+ss.title)); anchor.id=ss.id; body.appendChild(anchor);
+  if(ss.status&&ss.status!=='ACCEPTED') body.appendChild(el('div','gap',esc(ss.status)));
+  bySub(S.sections,ss.id).forEach(s=>{{
+    const c=el('div','card'); c.appendChild(el('h3',null,esc(s.title)));
+    c.appendChild(el('div','whitespace',esc(s.content))); c.appendChild(el('div',null,refLine(s.sourceRefs))); body.appendChild(c);
+  }});
+  bySub(S.equations,ss.id).forEach(e=>{{
+    const c=el('div','card'); c.appendChild(el('pre',null,esc(e.expression)));
+    c.appendChild(el('div',null,esc(e.meaning))); c.appendChild(el('div',null,refLine(e.sourceRefs))); body.appendChild(c);
+  }});
+  bySub(S.workedExamples,ss.id).forEach(w=>{{
+    const c=el('div','card'); c.appendChild(el('div',null,'<strong>'+esc(w.question)+'</strong>'));
+    if((w.steps||[]).length){{const ol=el('ol'); w.steps.forEach(st=>ol.appendChild(el('li',null,esc(st)))); c.appendChild(ol);}}
+    c.appendChild(el('div',null,'<strong>Answer:</strong> '+esc(w.answer))); c.appendChild(el('div',null,refLine(w.sourceRefs))); body.appendChild(c);
+  }});
+  const checks=bySub(S.checks,ss.id);
+  if(checks.length){{ body.appendChild(el('h3',null,'Concept Checks')); checks.forEach(q=>body.appendChild(question(q))); }}
+}});
+// cumulative chapter review
+if((S.practiceQuestions||[]).length){{
+  const sec=document.getElementById('review');
+  sec.appendChild(el('h2','sub','Cumulative Chapter Review'));
+  S.practiceQuestions.forEach(q=>sec.appendChild(question(q)));
+}}
+// source gaps
+if((S.sourceGaps||[]).length){{
+  const sec=document.getElementById('gaps'); sec.appendChild(el('h2','sub','Source Gaps'));
+  S.sourceGaps.forEach(g=>sec.appendChild(el('div','gap',esc(g))));
+}}
+document.getElementById('total').textContent=total;
+// mark nav done when all of a subsection's checks are revealed
+</script>
+</body>
+</html>
+"""
+
+
 def render_session_html(session: dict[str, Any]) -> str:
     data = json.dumps(session, ensure_ascii=False).replace("</", "<\\/")
     title = _esc(session.get("title", "Tutoring Session"))

@@ -407,11 +407,12 @@ def _claims_equal_equilibrium_concentrations(text: str) -> bool:
 
 
 def quality_filter(
-    candidate: dict[str, Any], source_text: str
+    candidate: dict[str, Any], source_text: str, cap: bool = True
 ) -> tuple[dict[str, Any], dict[str, list]]:
     """Deterministic educational-quality gate run on the sanitized candidate.
     Drops (never rewrites) items that fail source grounding or internal
-    consistency. Returns (clean, report)."""
+    consistency. Returns (clean, report). cap=False keeps the filters but skips
+    the per-subsection 4-objective / 5-question caps (used for chapter merges)."""
     c: dict[str, Any] = json.loads(json.dumps(candidate, ensure_ascii=False))
     report: dict[str, list] = {
         "ungrounded_worked": [], "sign_contradictions": [], "equilibrium_equal": [],
@@ -460,10 +461,11 @@ def quality_filter(
         c[arr_name] = kept
 
     # Caps (over-quota is not a defect, just trim): <=4 objectives, <=5 questions
-    # total (checks first, then practice).
-    c["objectives"] = c.get("objectives", [])[:4]
-    c["checks"] = c.get("checks", [])[:5]
-    c["practiceQuestions"] = c.get("practiceQuestions", [])[:max(0, 5 - len(c["checks"]))]
+    # total (checks first, then practice). Skipped for chapter-wide merges.
+    if cap:
+        c["objectives"] = c.get("objectives", [])[:4]
+        c["checks"] = c.get("checks", [])[:5]
+        c["practiceQuestions"] = c.get("practiceQuestions", [])[:max(0, 5 - len(c["checks"]))]
 
     # If no worked example survives, document the absence honestly (a meta-note,
     # not invented content) instead of silently omitting it -> satisfies the

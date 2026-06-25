@@ -1,0 +1,25 @@
+{
+  "equations": [
+    {
+      "expression": "C6H12O6 + 6 O2 → 6 CO2 + 6 H2O",
+      "meaning": "Stoichiometry of glucose oxidation",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Is the formation of a disulfide bond an oxidation, a reduction, or neither?",
+      "steps": [
+        "The question states: ‘Is the formation of a disulfide bond (Figure 2) an oxidation or a reduction reaction?’",
+        "The packet states: ‘Here is one other important fact about oxidation and reduction: when one atom gets reduced, another one must be oxidized; hence the term redox pair.’",
+        "The packet states: ‘It’s an oxidation, because hydrogens have been removed.’ (referring to the example of CH3CH3 → H2C=CH2)"
+      ],
+      "answer": "oxidation",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ]
+    }
+  ]
+}

@@ -1,21 +1,67 @@
 {
   "chapter": "chapter-03",
-  "stages": {
-    "generate": {
-      "seconds": 603.526,
-      "components": {
-        "lesson": 701,
-        "eqworked": 515,
-        "assessment": 684
-      }
+  "mode": "full-chapter",
+  "subsections": {
+    "3.1": {
+      "seconds": 0.005,
+      "tokens": {
+        "lesson": null,
+        "eqworked": null,
+        "assessment": null
+      },
+      "status": "ACCEPTED",
+      "reused": true
     },
-    "audit": {
-      "seconds": 364.61,
-      "prompt_eval_count": 4991,
-      "eval_count": 563
+    "3.2": {
+      "seconds": 266.676,
+      "tokens": {
+        "lesson": 608,
+        "eqworked": 287,
+        "assessment": 492
+      },
+      "status": "ACCEPTED",
+      "reused": false
+    },
+    "3.3": {
+      "seconds": 255.781,
+      "tokens": {
+        "lesson": 615,
+        "eqworked": 275,
+        "assessment": 545
+      },
+      "status": "ACCEPTED",
+      "reused": false
+    },
+    "3.4": {
+      "seconds": 798.446,
+      "tokens": {
+        "lesson": 899,
+        "eqworked": 606,
+        "assessment": 1185
+      },
+      "status": "ACCEPTED",
+      "reused": false
     }
   },
-  "enrich_note": "no_enrichment_needed",
-  "rejected_additions": [],
-  "status": "ACCEPTED"
+  "stages": {
+    "audit": {
+      "seconds": 446.966,
+      "verdict": "pass"
+    },
+    "enrich": {
+      "note": "no_enrichment_needed"
+    }
+  },
+  "status": "ACCEPTED",
+  "totals": {
+    "accepted_subsections": 4,
+    "subsections": 4,
+    "sections": 16,
+    "equations": 10,
+    "workedExamples": 1,
+    "checks": 10,
+    "review_questions": 7,
+    "sourceGaps": 3,
+    "chapter_tokens": 5512
+  }
 }

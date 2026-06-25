@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "question": "Thermodynamics is the study of the energetics of chemical reactions. There are two relevant forms of energy in chemistry: kinetic energy (movement of molecules) and potential energy (energy stored in chemical bonds). What is the most important potential energy storage molecule in all cells?",
+      "answer": "ATP",
+      "explanation": "The context packet states that \"[What is the most important poten tial energy storage molecule in all cells?1] The first answer is ATP, which stores energy in the ester bonds between its phosphate groups.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ],
+      "reviewTarget": "thermodynamics-1"
+    },
+    {
+      "question": "The first law of thermodynamics states that the energy of the universe is constant. It implies that when the energy of a system decreases, the energy of the rest of the universe (the surroundings) must increase, and vice versa. The second law of thermodynamics states that the disorder, or entropy, of the universe tends to increase. If the ∆S of a system is negative, has the disorder of that system increased or decreased?",
+      "answer": "decreased",
+      "explanation": "The context packet states: \"[If ∆S is negative, then the system lost entropy, which means that disorder decreased.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ],
+      "reviewTarget": "thermodynamics-2"
+    },
+    {
+      "question": "A practical way to discuss thermodynamics is the mathematical notion of free energy (Gibbs free energy), defined by Josiah Gibbs as follows: Eq. 1 ∆G = ∆H – T∆S. Given that cellular reactions take place in the liquid phase, how is H related to E in a cell?",
+      "answer": "H ≈ E",
+      "explanation": "The context packet states: \"[Given that cellular reactions take place in the liquid phase, how is H related to E in a cell?4] H ≈ E, since the change in volume is negligible (∆V ≈ 0).\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ],
+      "reviewTarget": "thermodynamics-3"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "The change in the Gibbs free energy of a reaction determines whether the reaction is favorable (spontaneous, ∆G negative) or unfavorable (nonspontaneous, ∆G positive). In terms of the generic reaction A + B → C + D, the Gibbs free energy change determines whether the reactants (denoted A and B) will stay as they are or be converted to products (C and D). Which reaction will be favorable: one with a decrease in free energy (∆G < 0) or one with an increase in free energy (∆G > 0)?",
+      "answer": "one with a decrease in free energy (∆G < 0)",
+      "explanation": "The context packet states: \"The change in the Gibbs free energy of a reaction determines whether the reaction is favorable (spontaneous, ∆G negative) or unfavorable (nonspontaneous, ∆G positive).\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.1-thermodynamics"
+      ],
+      "reviewTarget": "thermodynamics-4"
+    }
+  ]
+}

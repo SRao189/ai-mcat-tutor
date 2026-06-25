@@ -1,43 +1,160 @@
 {
-  "id": "thermodynamics-intro",
-  "title": "Thermodynamic Principles & Free Energy",
+  "id": "chapter-03",
+  "title": "Chapter 3 - Biochemistry Basics",
   "objectives": [
     "Define the first and second laws of thermodynamics.",
     "Explain the concept of entropy (∆S) and its relationship to spontaneous reactions.",
-    "Describe Gibbs free energy (∆G) and its equation."
+    "Describe Gibbs free energy (∆G) and its equation.",
+    "Define activation energy (Ea) and its role in chemical reactions.",
+    "Explain how catalysts affect reaction rates by lowering activation energy.",
+    "Describe the concept of a transition state and its relationship to Ea.",
+    "Define oxidation and reduction in terms of electron transfer.",
+    "Identify three common ways to recognize oxidation/reduction reactions."
   ],
   "sections": [
     {
-      "id": "thermodynamics-1",
+      "id": "3.1-thermodynamics-1",
       "title": "Laws Governing Chemical Reactions",
       "content": "Thermodynamics studies energy changes in chemical reactions. The first law, the law of conservation of energy, states that energy is neither created nor destroyed; it’s just transformed. This means a system's total energy remains constant. The second law dictates that the universe tends toward increasing disorder (entropy). Spontaneous reactions increase entropy – they move towards more disordered states.  The symbol for entropy is S, and ‘a change in entropy’ is denoted ∆S = Sfinal – Sinitial.",
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
-      ]
+      ],
+      "subsection": "3.1"
     },
     {
-      "id": "thermodynamics-2",
+      "id": "3.1-thermodynamics-2",
       "title": "Gibbs Free Energy & Spontaneity",
       "content": "Josiah Gibbs defined Gibbs free energy (∆G) as a measure of a reaction's spontaneity. The equation is ∆G = ∆H – T∆S, where ∆G is the change in Gibbs free energy, ∆H is the change in enthalpy (heat), T is temperature, and ∆S is the change in entropy. A negative ∆G indicates a spontaneous reaction at a given temperature.  The sign of ∆H and ∆S determine the direction of the reaction.",
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
-      ]
+      ],
+      "subsection": "3.1"
     },
     {
-      "id": "thermodynamics-3",
+      "id": "3.1-thermodynamics-3",
       "title": "Understanding ∆G and Spontaneity",
       "content": "A reaction with a negative ∆G is considered favorable or spontaneous, meaning it will proceed without the need for continuous energy input. Conversely, a reaction with a positive ∆G is unfavorable and requires an external energy source to occur. The larger the negative value of ∆G, the more spontaneous the reaction.",
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
-      ]
+      ],
+      "subsection": "3.1"
     },
     {
-      "id": "thermodynamics-4",
+      "id": "3.1-thermodynamics-4",
       "title": "Key Terms Recap",
       "content": "Remember: ∆G represents the change in Gibbs free energy, which is a key indicator of spontaneity. A negative ∆G signifies a spontaneous reaction, while a positive ∆G indicates a nonspontaneous reaction.  The second law of thermodynamics dictates that entropy (disorder) always increases during a spontaneous process.",
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
-      ]
+      ],
+      "subsection": "3.1"
+    },
+    {
+      "id": "3.2-Ea-Definition",
+      "title": "What is Activation Energy?",
+      "content": "Chemical reactions don’t just happen spontaneously. Many require an initial input of energy, called **activation energy (Ea)**. This is the minimum amount of energy needed to initiate a reaction by forming an unstable intermediate state known as the transition state. Think of it like pushing a boulder over a hill – you need enough force (energy) to get it past the peak.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "subsection": "3.2"
+    },
+    {
+      "id": "3.2-Transition-State",
+      "title": "The Transition State",
+      "content": "**The transition state**, often represented as [TS]‡, is a fleeting, unstable arrangement of atoms that exists briefly during a reaction. It’s the highest energy point along the reaction pathway. The energy required to reach this transition state directly determines the reaction rate – a higher Ea means a slower reaction.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "subsection": "3.2"
+    },
+    {
+      "id": "3.2-Catalysts-Lowering-Ea",
+      "title": "How Catalysts Work",
+      "content": "A **catalyst** doesn’t change the overall energy change (∆G) of a reaction, but it significantly speeds up the reaction by lowering its activation energy. This is achieved by stabilizing the transition state, making it easier for reactants to reach this high-energy intermediate. A catalyst essentially provides an alternative pathway with a lower energy barrier.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "subsection": "3.2"
+    },
+    {
+      "id": "3.2-Reaction-Coordinate-Graph",
+      "title": "Reaction Coordinate Graphs",
+      "content": "A **reaction coordinate graph** is a visual representation of the energy changes during a reaction, plotting the progress of the reaction (the ‘reaction coordinate’) against energy. The graph shows the reactants, the transition state ([TS]‡), and the products, illustrating how Ea influences the reaction rate.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "subsection": "3.2"
+    },
+    {
+      "id": "3.3-section-1",
+      "title": "Core Definitions",
+      "content": "Energy metabolism, particularly in living organisms, relies on a series of oxidation and reduction reactions. **Oxidation** is defined as the loss of electrons, while **reduction** is defined as the gain of electrons. These processes are fundamental to how we obtain and utilize energy from food sources like carbohydrates and fats. Molecules can gain or lose electrons depending on their environment.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "subsection": "3.3"
+    },
+    {
+      "id": "3.3-section-2",
+      "title": "Recognizing Redox Reactions",
+      "content": "There are three common ways to identify oxidation and reduction reactions on the MCAT: 1) gain of oxygen atoms, 2) loss of hydrogen atoms, and 3) loss of electrons.  **Reduction** is the opposite – it’s characterized by 1) loss of oxygen atoms, 2) gain of hydrogen atoms, and 3) gain of electrons. Remember that when one molecule undergoes reduction, another must be oxidized.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "subsection": "3.3"
+    },
+    {
+      "id": "3.3-section-3",
+      "title": "Redox Pairs",
+      "content": "A key concept is the **redox pair** – when one atom undergoes reduction, another must simultaneously be oxidized. This ensures that electrons are conserved throughout the reaction. For example, in glucose oxidation (C6H12O6 + 6 O2 → 6 CO2 + 6 H2O), the carbons are oxidized to form carbon dioxide, and oxygen is reduced to form water.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "subsection": "3.3"
+    },
+    {
+      "id": "3.3-section-4",
+      "title": "Anabolic vs Catabolic Processes",
+      "content": "**Catabolism** is the breakdown of molecules, while **anabolism** is the building up of molecules. Oxidative catabolism involves oxidizing carbohydrates to release energy, whereas anabolic processes like fatty acid synthesis are reductive.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "subsection": "3.3"
+    },
+    {
+      "id": "3.4-section_1",
+      "title": "Brønsted-Lowry Definitions",
+      "content": "For biochemistry on the MCAT, there are two important definitions of acids and bases. The Brønsted-Lowry definition states that acids are proton (H+) donors, and bases are proton (H+) acceptors. This is a fundamental concept for understanding acid-base reactions. Notice that while hydroxide ions qualify as bases, many other compounds can also function as bases because they are capable of accepting protons. Consider the reversible reaction H2CO3 + H2O  H3O+ + HCO3–; here, H2CO3 is an acid and H3O+ is a base. The Brønsted-Lowry definition is the most important one for the MCAT.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "subsection": "3.4"
+    },
+    {
+      "id": "3.4-section_2",
+      "title": "Lewis Definitions",
+      "content": "Lewis’s definitions of acids and bases are broader. Lewis acids are electron-pair acceptors, and Lewis bases are electron-pair donors. This definition expands the scope of acid-base interactions beyond just proton transfer. Consider the reaction AlCl3 + H2O  (AlCl3OH)− + H+; here, AlCl3 is an acid because it accepts electrons, and H2O is a base because it donates electrons. Lewis acid/base reactions frequently result in the formation of coordinate covalent bonds. For example, in the reaction above, water acts as a Lewis base, since it donates both of the electrons involved in the coordinate covalent bond between OH– and AlCl3. AlCl3 acts as a Lewis acid, since it accepts the electrons involved in this bond.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "subsection": "3.4"
+    },
+    {
+      "id": "3.4-section_3",
+      "title": "Coordinate Covalent Bonds",
+      "content": "A great biological example of a coordinate covalent bond is the binding of an oxygen molecule to the iron atom in a heme group. This interaction demonstrates how Lewis acids and bases can form bonds. Oxygen acts as a Lewis base, donating a pair of electrons to the Fe2+ ion, while the Fe2+ ion acts as a Lewis acid, accepting those electrons. The formation of coordinate covalent bonds is crucial for understanding many biological processes.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "subsection": "3.4"
+    },
+    {
+      "id": "3.4-section_4",
+      "title": "Conjugate Acids and Bases",
+      "content": "When a Brønsted-Lowry acid donates an H+, the remaining structure is called the conjugate base of the acid. Likewise, when a Brønsted-Lowry base bonds with an H+ in solution, this new species is called the conjugate acid of the base. To illustrate these definitions, consider this reaction: NH3 + H2ON H4 + + OH–acid–base conjugatesacid–base conjugates⇋ Oxygen is donating a pair of electrons to the Fe2+ ion and is therefore the Lewis base. Notice that when H2CO3 donates an H+, it becomes HCO3–, which is the conjugate base. Similarly, when H2O bonds with an H+ in solution, it becomes OH–, which is the conjugate acid.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "subsection": "3.4"
     }
   ],
   "equations": [
@@ -46,31 +163,96 @@
       "meaning": "Gibbs Free Energy Equation",
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
-      ]
+      ],
+      "subsection": "3.1"
     },
     {
       "expression": "∆H = ∆E + P∆V",
       "meaning": "Enthalpy Equation",
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
-      ]
+      ],
+      "subsection": "3.1"
     },
     {
       "expression": "ΔGR TK°ʹ=− ʹln eq",
       "meaning": "Gibbs Free Energy Equation at Standard Conditions",
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
-      ]
+      ],
+      "subsection": "3.1"
     },
     {
       "expression": "∆∆GG RT QQ=+ =°′ ln ",
       "meaning": "Gibbs Free Energy Equation for Non-Standard Conditions",
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
-      ]
+      ],
+      "subsection": "3.1"
+    },
+    {
+      "expression": "Ea = Activation Energy",
+      "meaning": "The activation energy is the energy required to produce the transition state.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "subsection": "3.2"
+    },
+    {
+      "expression": "C6H12O6 + 6 O2 → 6 CO2 + 6 H2O",
+      "meaning": "Stoichiometry of glucose oxidation",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "subsection": "3.3"
+    },
+    {
+      "expression": "pH = −log[H+]",
+      "meaning": "The pH scale measures the concentration of H+ (or H3O+) ions in a solution.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "subsection": "3.4"
+    },
+    {
+      "expression": "Ka = [H+][OH–]/[HA]",
+      "meaning": "This is written as Ka, rather than Keq, to emphasize that this is the equilibrium expression for an acid-dissociation reaction.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "subsection": "3.4"
+    },
+    {
+      "expression": "pKa = −log Ka",
+      "meaning": "The higher the Ka value, the stronger the acid. The lower the pKa value, the stronger the acid.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "subsection": "3.4"
+    },
+    {
+      "expression": "pOH = −log[OH–]",
+      "meaning": "The pH scale measures the concentration of H+ (or H3O+) ions in a solution.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "subsection": "3.4"
     }
   ],
-  "workedExamples": [],
+  "workedExamples": [
+    {
+      "question": "Is this a favorable reaction, i.e., will the universe be better off, with less total (nervous) energy, if Bob gets the job? Will things settle down? Let’s assume yes. However, between the two states (without/with), there is a temporary state, namely, Bobapplying for job. So the reaction will look this way:",
+      "steps": [
+        "The reaction can be represented as: Bobwithout a job + job → [Bobapplying for job]‡ → Bobwith a job",
+        "The activation energy (Ea) is the energy necessary to get Bob to apply for a job."
+      ],
+      "answer": "The activation energy (Ea) is the energy necessary to get Bob to apply for a job.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "subsection": "3.2"
+    }
+  ],
   "checks": [
     {
       "question": "Thermodynamics is the study of the energetics of chemical reactions. There are two relevant forms of energy in chemistry: kinetic energy (movement of molecules) and potential energy (energy stored in chemical bonds). What is the most important potential energy storage molecule in all cells?",
@@ -79,7 +261,8 @@
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
       ],
-      "reviewTarget": "thermodynamics-1"
+      "reviewTarget": "3.1-thermodynamics-1",
+      "subsection": "3.1"
     },
     {
       "question": "The first law of thermodynamics states that the energy of the universe is constant. It implies that when the energy of a system decreases, the energy of the rest of the universe (the surroundings) must increase, and vice versa. The second law of thermodynamics states that the disorder, or entropy, of the universe tends to increase. If the ∆S of a system is negative, has the disorder of that system increased or decreased?",
@@ -88,7 +271,8 @@
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
       ],
-      "reviewTarget": "thermodynamics-2"
+      "reviewTarget": "3.1-thermodynamics-2",
+      "subsection": "3.1"
     },
     {
       "question": "A practical way to discuss thermodynamics is the mathematical notion of free energy (Gibbs free energy), defined by Josiah Gibbs as follows: Eq. 1 ∆G = ∆H – T∆S. Given that cellular reactions take place in the liquid phase, how is H related to E in a cell?",
@@ -97,24 +281,191 @@
       "sourceRefs": [
         "raw/Chapter 3.txt#3.1-thermodynamics"
       ],
-      "reviewTarget": "thermodynamics-3"
+      "reviewTarget": "3.1-thermodynamics-3",
+      "subsection": "3.1"
+    },
+    {
+      "question": "The burning of wood is spontaneous, but it doesn't burn unless heat is provided. What term describes this required energy?",
+      "answer": "Activation Energy",
+      "explanation": "The packet states that ‘some energy (heat) must be provided to kick-start the process.’ This energy is specifically called activation energy (Ea), which represents the barrier preventing a spontaneous reaction from occurring.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "reviewTarget": "3.2-Catalysts-Lowering-Ea",
+      "subsection": "3.2"
+    },
+    {
+      "question": "Which of the following best describes oxidation in terms of electron transfer?",
+      "answer": "The loss of electrons.",
+      "explanation": "According to section 3.3, \"Oxidation is a chemical term meaning the loss of electrons.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "3.3-section-1",
+      "subsection": "3.3"
+    },
+    {
+      "question": "A reaction where a molecule gains electrons is classified as:",
+      "answer": "Reduction",
+      "explanation": "Section 3.3 states, \"Reduction means the opposite, the gain of electrons.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "3.3-section-2",
+      "subsection": "3.3"
+    },
+    {
+      "question": "The formation of a disulfide bond between two cysteine molecules is an example of:",
+      "answer": "Oxidation",
+      "explanation": "Section 3.3 states, \"Is the formation of a disulfide bond (Figure 2) an oxidation or a reduction reaction? It’s an oxidation, because hydrogens have been removed.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "3.3-section-4",
+      "subsection": "3.3"
+    },
+    {
+      "question": "Acids are proton (H+) donors. Bases are proton (H+) acceptors. While the often-seen hydroxide ions qualify a s Brønsted-Lowry ba ses, many other compounds fit this definition as well. Since a Brønsted-Lowry base is any substance that is capable of accepting a proton, any anion or any neutral species with a lone pair of electrons can function as a base. If we consider the reversible reaction below: H2CO3 + H2O  H3O+ + HCO3– then according to the Brønsted-Lowry definition, H2CO3 and H3O+ are acids and HCO3– and H2O are bases. The Brønsted- Lowry definition of acids and bases is the most important one for the MCAT.",
+      "answer": "Acids are proton (H+) donors, and bases are proton (H+) acceptors.",
+      "explanation": "The question directly states the definitions of acids and bases according to the Brønsted-Lowry theory. This definition focuses on proton transfer.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "3.4-section_1",
+      "subsection": "3.4"
+    },
+    {
+      "question": "Lewis’s definitions of acids and bases are broader: Lewis acids are electron-pair acceptors. Lewis bases are electron-pair donors. If we consider the reversible reaction below: AlCl3 + H2O  (AlCl3OH)− + H+ then according to the Lewis definition, AlCl3 and H+ are acids because they accept electron pairs; H2O and (AlCl3OH)– are bases because they donate electron pairs. Lewis acid/base reactions frequently result in the formation of coordinate covalent bonds. For example, in the reaction above, water acts as a Lewis base, since it donates both of the electrons involved in the coordinate covalent bond between OH– and AlCl3. AlCl3 acts as a Lewis acid, since it accepts the electrons involved in this bond.",
+      "answer": "Lewis acids are electron-pair acceptors, and Lewis bases are electron-pair donors.",
+      "explanation": "This question defines Lewis acids and bases based on their roles in accepting or donating electron pairs. It highlights the formation of coordinate covalent bonds as a common outcome of these reactions.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "3.4-section_2",
+      "subsection": "3.4"
+    },
+    {
+      "question": "The binding of an oxygen molecule to the iron atom in a heme group is a great biological example of a coordinate covalent bond formed between a Lewis acid and base: Fe+2 N N N N O O -OOC COO- Figure 3 Example of a coordinate covalent bond • Is oxygen the Lewis acid or Lewis base in the heme group?",
+      "answer": "Oxygen is the Lewis base.",
+      "explanation": "The text explains that oxygen donates a pair of electrons to the Fe2+ ion, fulfilling the definition of a Lewis base (electron-pair donor).",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "3.4-section_3",
+      "subsection": "3.4"
     }
   ],
-  "practiceQuestions": [],
+  "practiceQuestions": [
+    {
+      "question": "A reaction has a negative ΔG, indicating it is thermodynamically favorable. However, the reaction proceeds very slowly. What factor is most likely responsible for this slow rate?",
+      "answer": "Activation Energy",
+      "explanation": "The packet explains that even with a negative ΔG, a large activation energy (Ea) can hinder the reaction's progress. The Ea represents the energy barrier that must be overcome.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "reviewTarget": "3.2-Transition-State",
+      "subsection": "3.2"
+    },
+    {
+      "question": "A career planning service (CPS) helps Bob get a job, accelerating the process. According to the packet’s model, what does the CPS represent in terms of reaction kinetics?",
+      "answer": "Catalyst",
+      "explanation": "The packet describes the CPS as ‘regenerated with each reaction cycle,’ and it doesn't change the overall energy difference (ΔG) between the reactant and product states. This aligns with the definition of a catalyst, which lowers the activation energy without affecting ΔG.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "reviewTarget": "3.2-Catalysts-Lowering-Ea",
+      "subsection": "3.2"
+    },
+    {
+      "question": "A reaction coordinate graph shows three distinct states: reactants, the transition state ([TS]‡), and products. What does the x-axis of this graph represent?",
+      "answer": "Reaction Coordinate",
+      "explanation": "The packet defines the x-axis as ‘the physical progress of the reaction system (the “reaction coordinate”)’. This represents the extent to which the reactants are converting into products.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "reviewTarget": "3.2-Reaction-Coordinate-Graph",
+      "subsection": "3.2"
+    },
+    {
+      "question": "Which of the following represents a reduction reaction?",
+      "answer": "Fe3+ to Fe2+",
+      "explanation": "Section 3.3 states, \"changing Fe3+ to Fe2+? It’s a reduction, because an electron has been added.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "3.3-section-2",
+      "subsection": "3.3"
+    },
+    {
+      "question": "In the reaction O2 → H2O, what type of reaction is occurring?",
+      "answer": "Reduction",
+      "explanation": "Section 3.3 states, \"It’s a reduction, because hydrogens have been added to the oxygen molecule.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "3.3-section-2",
+      "subsection": "3.3"
+    },
+    {
+      "question": "Of the following acids, which one would dissociate to the greatest extent (in water)? A) HCN (hydrocyanic acid), Ka = 6.2 × 10–10 B) HNCO (cyanic acid), Ka = 3.3 × 10–4 C) HClO (hypochlorous acid), Ka = 2.9 × 10–8 D) HBrO (hypobromous acid), Ka = 2.2 × 10–9",
+      "answer": "A) HCN (hydrocyanic acid), Ka = 6.2 × 10–10",
+      "explanation": "The strength of an acid is directly related to its Ka value. A larger Ka indicates a stronger acid, meaning it will dissociate to a greater extent in water.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "3.4-section_4",
+      "subsection": "3.4"
+    },
+    {
+      "question": "The strength of the base is directly related to how much the products are favored over the reactants. The equilibrium expression for this reaction is K b +HO ][A B]= [][− . This i s w ritten a s Kb, r ather t han Keq, to emphasize t hat t his i s t he e quilibrium e xpression for a base-dissociation reaction.",
+      "answer": "The strength of the base is directly related to how much the products are favored over the reactants. The equilibrium expression for this reaction is Kb +HO ][A B]= [][−",
+      "explanation": "This question describes the relationship between the strength of a base and its dissociation constant (Kb). It emphasizes that Kb represents the equilibrium expression for a base-dissociation reaction.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "3.4-section_1",
+      "subsection": "3.4"
+    }
+  ],
+  "sourceRefs": [
+    "raw/Chapter 3.txt#3.1-thermodynamics",
+    "raw/Chapter 3.txt#3.2",
+    "raw/Chapter 3.txt#3.3",
+    "raw/Chapter 3.txt#3.4"
+  ],
   "sourceGaps": [
     "SOURCE GAP: the source packet for this section does not include a fully worked numerical example.",
     "SOURCE GAP: removed a worked example whose content is not grounded in the source packet.",
     "SOURCE GAP: removed a learning objective promising a skill the source packet does not teach."
   ],
-  "sourceRefs": [
-    "raw/Chapter 3.txt#3.1-thermodynamics"
-  ],
   "metadata": {
-    "chapter": "Chapter 3 - Biochemistry Basics: Thermodynamics",
-    "source_ref": "raw/Chapter 3.txt#3.1-thermodynamics",
+    "chapter": "Chapter 3 - Biochemistry Basics",
+    "source_ref": "raw/Chapter 3.txt#chapter-3",
     "raw_source": "raw/Chapter 3.txt",
     "generator_model": "gemma3:4b",
-    "generated_at": "2026-06-25T11:37:42.136218+00:00",
-    "generation": "bounded-components"
+    "generated_at": "2026-06-25T12:18:51.222053+00:00",
+    "generation": "chapter-bounded-components",
+    "subsections": [
+      {
+        "id": "3.1",
+        "title": "Thermodynamics",
+        "status": "ACCEPTED"
+      },
+      {
+        "id": "3.2",
+        "title": "Kinetics And Activation Energy (Ea)",
+        "status": "ACCEPTED"
+      },
+      {
+        "id": "3.3",
+        "title": "Oxidation And Reduction",
+        "status": "ACCEPTED"
+      },
+      {
+        "id": "3.4",
+        "title": "Acids And Bases",
+        "status": "ACCEPTED"
+      }
+    ]
   }
 }

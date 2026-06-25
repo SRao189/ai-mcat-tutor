@@ -1,0 +1,43 @@
+{
+  "id": "Kinetics-Ea-Lesson",
+  "title": "Understanding Activation Energy",
+  "objectives": [
+    "Define activation energy (Ea) and its role in chemical reactions.",
+    "Explain how catalysts affect reaction rates by lowering activation energy.",
+    "Describe the concept of a transition state and its relationship to Ea."
+  ],
+  "sections": [
+    {
+      "id": "Ea-Definition",
+      "title": "What is Activation Energy?",
+      "content": "Chemical reactions don’t just happen spontaneously. Many require an initial input of energy, called **activation energy (Ea)**. This is the minimum amount of energy needed to initiate a reaction by forming an unstable intermediate state known as the transition state. Think of it like pushing a boulder over a hill – you need enough force (energy) to get it past the peak.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ]
+    },
+    {
+      "id": "Transition-State",
+      "title": "The Transition State",
+      "content": "**The transition state**, often represented as [TS]‡, is a fleeting, unstable arrangement of atoms that exists briefly during a reaction. It’s the highest energy point along the reaction pathway. The energy required to reach this transition state directly determines the reaction rate – a higher Ea means a slower reaction.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ]
+    },
+    {
+      "id": "Catalysts-Lowering-Ea",
+      "title": "How Catalysts Work",
+      "content": "A **catalyst** doesn’t change the overall energy change (∆G) of a reaction, but it significantly speeds up the reaction by lowering its activation energy. This is achieved by stabilizing the transition state, making it easier for reactants to reach this high-energy intermediate. A catalyst essentially provides an alternative pathway with a lower energy barrier.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ]
+    },
+    {
+      "id": "Reaction-Coordinate-Graph",
+      "title": "Reaction Coordinate Graphs",
+      "content": "A **reaction coordinate graph** is a visual representation of the energy changes during a reaction, plotting the progress of the reaction (the ‘reaction coordinate’) against energy. The graph shows the reactants, the transition state ([TS]‡), and the products, illustrating how Ea influences the reaction rate.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ]
+    }
+  ]
+}

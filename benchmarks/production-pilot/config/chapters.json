@@ -9,9 +9,11 @@
     {
       "id": "chapter-03",
       "title": "Chapter 3 - Biochemistry Basics: Thermodynamics",
+      "chapter_title": "Chapter 3 - Biochemistry Basics",
+      "chapter_number": 3,
       "packet_title": "thermodynamics",
       "raw_source": "raw/Chapter 3.txt",
-      "source_ref": "raw/Chapter 3.txt#3.1-thermodynamics",
+      "source_ref": "raw/Chapter 3.txt#chapter-3",
       "section_start": "^3\\.1 THERMODYNAMICS",
       "section_stop": "^3\\.2 KINETICS"
     },

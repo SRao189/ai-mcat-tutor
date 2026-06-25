@@ -1,0 +1,73 @@
+  subsections: ['3.1 Thermodynamics', '3.2 Kinetics And Activation Energy (Ea)', '3.3 Oxidation And Reduction', '3.4 Acids And Bases']
+  reuse: seeded 3.1-lesson.json from accepted single-run cache
+  reuse: seeded 3.1-eqworked.json from accepted single-run cache
+  reuse: seeded 3.1-assessment.json from accepted single-run cache
+  resume: reusing 3.1-lesson.json (no model call)
+  resume: reusing 3.1-eqworked.json (no model call)
+  resume: reusing 3.1-assessment.json (no model call)
+[04:57:22] 3.2:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:57:52] 3.2:gemma:lesson GENERATING - 155 tokens, running
+[04:58:22] 3.2:gemma:lesson GENERATING - 549 tokens, running
+  Unloaded model: gemma3:4b
+[04:58:57] 3.2:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:59:27] 3.2:gemma:eqworked GENERATING - 72 tokens, running
+  Unloaded model: gemma3:4b
+[05:00:13] 3.2:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:00:44] 3.2:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:01:14] 3.2:gemma:assessment GENERATING - 438 tokens, running
+  Unloaded model: gemma3:4b
+[05:01:48] 3.3:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:02:18] 3.3:gemma:lesson GENERATING - 132 tokens, running
+[05:02:48] 3.3:gemma:lesson GENERATING - 503 tokens, running
+  Unloaded model: gemma3:4b
+[05:03:27] 3.3:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:03:57] 3.3:gemma:eqworked GENERATING - 145 tokens, running
+  Unloaded model: gemma3:4b
+[05:04:37] 3.3:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:05:07] 3.3:gemma:assessment GENERATING - 153 tokens, running
+  Unloaded model: gemma3:4b
+[05:06:04] 3.4:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:06:34] 3.4:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:07:04] 3.4:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:07:34] 3.4:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:08:04] 3.4:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:08:34] 3.4:gemma:lesson LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:09:04] 3.4:gemma:lesson GENERATING - 327 tokens, running
+[05:09:34] 3.4:gemma:lesson GENERATING - 690 tokens, running
+  Unloaded model: gemma3:4b
+[05:10:24] 3.4:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:10:54] 3.4:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:11:24] 3.4:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:11:54] 3.4:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:12:24] 3.4:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:12:54] 3.4:gemma:eqworked LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:13:24] 3.4:gemma:eqworked GENERATING - 232 tokens, running
+[05:13:54] 3.4:gemma:eqworked GENERATING - 587 tokens, running
+  Unloaded model: gemma3:4b
+[05:14:26] 3.4:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:14:56] 3.4:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:15:24] 3.4:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:15:54] 3.4:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:16:24] 3.4:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:16:54] 3.4:gemma:assessment LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:17:24] 3.4:gemma:assessment GENERATING - 292 tokens, running
+[05:17:54] 3.4:gemma:assessment GENERATING - 622 tokens, running
+[05:18:24] 3.4:gemma:assessment GENERATING - 942 tokens, running
+  Unloaded model: gemma3:4b
+[05:19:21] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:19:51] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:20:21] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:20:51] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:21:21] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:21:51] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:22:21] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:22:51] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:23:21] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:23:51] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:24:21] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:24:51] chapter:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[05:25:21] chapter:phi GENERATING - 54 tokens, running
+[05:25:51] chapter:phi GENERATING - 171 tokens, running
+  Unloaded model: phi4-mini
+
+[chapter-03] ACCEPTED  (4/4 subsections) -> C:\Users\sahar\mcat-tutor\benchmarks\production-pilot\output\chapter-03\session-preview.html

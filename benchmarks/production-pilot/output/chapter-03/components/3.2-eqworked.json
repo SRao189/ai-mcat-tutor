@@ -1,0 +1,24 @@
+{
+  "equations": [
+    {
+      "expression": "Ea = Activation Energy",
+      "meaning": "The activation energy is the energy required to produce the transition state.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Is this a favorable reaction, i.e., will the universe be better off, with less total (nervous) energy, if Bob gets the job? Will things settle down? Let’s assume yes. However, between the two states (without/with), there is a temporary state, namely, Bobapplying for job. So the reaction will look this way:",
+      "steps": [
+        "The reaction can be represented as: Bobwithout a job + job → [Bobapplying for job]‡ → Bobwith a job",
+        "The activation energy (Ea) is the energy necessary to get Bob to apply for a job."
+      ],
+      "answer": "The activation energy (Ea) is the energy necessary to get Bob to apply for a job.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ]
+    }
+  ]
+}

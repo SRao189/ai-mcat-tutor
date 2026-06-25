@@ -1,0 +1,60 @@
+{
+  "equations": [
+    {
+      "expression": "pH = −log[H+]",
+      "meaning": "The pH scale measures the concentration of H+ (or H3O+) ions in a solution.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    },
+    {
+      "expression": "Ka = [H+][OH–]/[HA]",
+      "meaning": "This is written as Ka, rather than Keq, to emphasize that this is the equilibrium expression for an acid-dissociation reaction.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    },
+    {
+      "expression": "pKa = −log Ka",
+      "meaning": "The higher the Ka value, the stronger the acid. The lower the pKa value, the stronger the acid.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    },
+    {
+      "expression": "pOH = −log[OH–]",
+      "meaning": "The pH scale measures the concentration of H+ (or H3O+) ions in a solution.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Calculate the pH of a 0.01 M solution of HCl.",
+      "steps": [
+        "HCl is a strong acid, so it completely dissociates in water:",
+        "H+ + Cl-",
+        "The concentration of H+ ions is equal to the initial concentration of HCl:",
+        "[H+] = 0.01 M",
+        "Use the pH equation: pH = −log[H+]",
+        "pH = −log(0.01) = 2"
+      ],
+      "answer": "The pH is 2.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    },
+    {
+      "question": "Calculate the pKa of a solution with a Ka value of 1.0 x 10^-5",
+      "steps": [
+        "pKa = -log(Ka)",
+        "pKa = -log(1.0 x 10^-5) = 5"
+      ],
+      "answer": "The pKa is 5.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    }
+  ]
+}

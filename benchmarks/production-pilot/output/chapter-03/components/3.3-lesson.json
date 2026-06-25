@@ -1,0 +1,43 @@
+{
+  "id": "lesson-oxidation-reduction-intro",
+  "title": "Introduction to Oxidation and Reduction",
+  "objectives": [
+    "Define oxidation and reduction in terms of electron transfer.",
+    "Identify three common ways to recognize oxidation/reduction reactions.",
+    "Understand the concept of a redox pair."
+  ],
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Core Definitions",
+      "content": "Energy metabolism, particularly in living organisms, relies on a series of oxidation and reduction reactions. **Oxidation** is defined as the loss of electrons, while **reduction** is defined as the gain of electrons. These processes are fundamental to how we obtain and utilize energy from food sources like carbohydrates and fats. Molecules can gain or lose electrons depending on their environment.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Recognizing Redox Reactions",
+      "content": "There are three common ways to identify oxidation and reduction reactions on the MCAT: 1) gain of oxygen atoms, 2) loss of hydrogen atoms, and 3) loss of electrons.  **Reduction** is the opposite – it’s characterized by 1) loss of oxygen atoms, 2) gain of hydrogen atoms, and 3) gain of electrons. Remember that when one molecule undergoes reduction, another must be oxidized.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "Redox Pairs",
+      "content": "A key concept is the **redox pair** – when one atom undergoes reduction, another must simultaneously be oxidized. This ensures that electrons are conserved throughout the reaction. For example, in glucose oxidation (C6H12O6 + 6 O2 → 6 CO2 + 6 H2O), the carbons are oxidized to form carbon dioxide, and oxygen is reduced to form water.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "Anabolic vs Catabolic Processes",
+      "content": "**Catabolism** is the breakdown of molecules, while **anabolism** is the building up of molecules. Oxidative catabolism involves oxidizing carbohydrates to release energy, whereas anabolic processes like fatty acid synthesis are reductive.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "question": "Acids are proton (H+) donors. Bases are proton (H+) acceptors. While the often-seen hydroxide ions qualify a s Brønsted-Lowry ba ses, many other compounds fit this definition as well. Since a Brønsted-Lowry base is any substance that is capable of accepting a proton, any anion or any neutral species with a lone pair of electrons can function as a base. If we consider the reversible reaction below: H2CO3 + H2O  H3O+ + HCO3– then according to the Brønsted-Lowry definition, H2CO3 and H3O+ are acids and HCO3– and H2O are bases. The Brønsted- Lowry definition of acids and bases is the most important one for the MCAT.",
+      "answer": "Acids are proton (H+) donors, and bases are proton (H+) acceptors.",
+      "explanation": "The question directly states the definitions of acids and bases according to the Brønsted-Lowry theory. This definition focuses on proton transfer.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "section_1"
+    },
+    {
+      "question": "Lewis’s definitions of acids and bases are broader: Lewis acids are electron-pair acceptors. Lewis bases are electron-pair donors. If we consider the reversible reaction below: AlCl3 + H2O  (AlCl3OH)− + H+ then according to the Lewis definition, AlCl3 and H+ are acids because they accept electron pairs; H2O and (AlCl3OH)– are bases because they donate electron pairs. Lewis acid/base reactions frequently result in the formation of coordinate covalent bonds. For example, in the reaction above, water acts as a Lewis base, since it donates both of the electrons involved in the coordinate covalent bond between OH– and AlCl3. AlCl3 acts as a Lewis acid, since it accepts the electrons involved in this bond.",
+      "answer": "Lewis acids are electron-pair acceptors, and Lewis bases are electron-pair donors.",
+      "explanation": "This question defines Lewis acids and bases based on their roles in accepting or donating electron pairs. It highlights the formation of coordinate covalent bonds as a common outcome of these reactions.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "section_2"
+    },
+    {
+      "question": "The binding of an oxygen molecule to the iron atom in a heme group is a great biological example of a coordinate covalent bond formed between a Lewis acid and base: Fe+2 N N N N O O -OOC COO- Figure 3 Example of a coordinate covalent bond • Is oxygen the Lewis acid or Lewis base in the heme group?",
+      "answer": "Oxygen is the Lewis base.",
+      "explanation": "The text explains that oxygen donates a pair of electrons to the Fe2+ ion, fulfilling the definition of a Lewis base (electron-pair donor).",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "section_3"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Of the following acids, which one would dissociate to the greatest extent (in water)? A) HCN (hydrocyanic acid), Ka = 6.2 × 10–10 B) HNCO (cyanic acid), Ka = 3.3 × 10–4 C) HClO (hypochlorous acid), Ka = 2.9 × 10–8 D) HBrO (hypobromous acid), Ka = 2.2 × 10–9",
+      "answer": "A) HCN (hydrocyanic acid), Ka = 6.2 × 10–10",
+      "explanation": "The strength of an acid is directly related to its Ka value. A larger Ka indicates a stronger acid, meaning it will dissociate to a greater extent in water.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "section_4"
+    },
+    {
+      "question": "The strength of the base is directly related to how much the products are favored over the reactants. The equilibrium expression for this reaction is K b +HO ][A B]= [][− . This i s w ritten a s Kb, r ather t han Keq, to emphasize t hat t his i s t he e quilibrium e xpression for a base-dissociation reaction.",
+      "answer": "The strength of the base is directly related to how much the products are favored over the reactants. The equilibrium expression for this reaction is Kb +HO ][A B]= [][−",
+      "explanation": "This question describes the relationship between the strength of a base and its dissociation constant (Kb). It emphasizes that Kb represents the equilibrium expression for a base-dissociation reaction.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ],
+      "reviewTarget": "section_1"
+    }
+  ]
+}

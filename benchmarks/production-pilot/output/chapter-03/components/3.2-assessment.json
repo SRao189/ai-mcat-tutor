@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "question": "The burning of wood is spontaneous, but it doesn't burn unless heat is provided. What term describes this required energy?",
+      "answer": "Activation Energy",
+      "explanation": "The packet states that ‘some energy (heat) must be provided to kick-start the process.’ This energy is specifically called activation energy (Ea), which represents the barrier preventing a spontaneous reaction from occurring.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "reviewTarget": "Catalysts-Lowering-Ea"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "A reaction has a negative ΔG, indicating it is thermodynamically favorable. However, the reaction proceeds very slowly. What factor is most likely responsible for this slow rate?",
+      "answer": "Activation Energy",
+      "explanation": "The packet explains that even with a negative ΔG, a large activation energy (Ea) can hinder the reaction's progress. The Ea represents the energy barrier that must be overcome.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "reviewTarget": "Transition-State"
+    },
+    {
+      "question": "A career planning service (CPS) helps Bob get a job, accelerating the process. According to the packet’s model, what does the CPS represent in terms of reaction kinetics?",
+      "answer": "Catalyst",
+      "explanation": "The packet describes the CPS as ‘regenerated with each reaction cycle,’ and it doesn't change the overall energy difference (ΔG) between the reactant and product states. This aligns with the definition of a catalyst, which lowers the activation energy without affecting ΔG.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "reviewTarget": "Catalysts-Lowering-Ea"
+    },
+    {
+      "question": "A reaction coordinate graph shows three distinct states: reactants, the transition state ([TS]‡), and products. What does the x-axis of this graph represent?",
+      "answer": "Reaction Coordinate",
+      "explanation": "The packet defines the x-axis as ‘the physical progress of the reaction system (the “reaction coordinate”)’. This represents the extent to which the reactants are converting into products.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.2"
+      ],
+      "reviewTarget": "Reaction-Coordinate-Graph"
+    }
+  ]
+}

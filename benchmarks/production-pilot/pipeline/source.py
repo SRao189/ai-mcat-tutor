@@ -53,6 +53,36 @@ def extract_section(normalized: str, start_pat: str, stop_pat: str | None) -> st
     return "\n".join(lines[start:stop]).strip() + "\n"
 
 
+def split_subsections(normalized: str, chapter_num: int) -> list[tuple[str, str, str]]:
+    """Split a normalized chapter into its numbered content subsections.
+
+    A content heading is "<chapter>.<n> ALLCAPS TITLE" (>=2 leading capitals),
+    which distinguishes real subsections (THERMODYNAMICS) from end-of-chapter
+    "<chapter>.<n> Drill" blocks. Content stops at the first Drill heading.
+    Returns [(subid, title, body_including_heading), ...] in source order.
+    """
+    lines = normalized.splitlines()
+    head = re.compile(rf"^{chapter_num}\.(\d+) ([A-Z][A-Z].*)$")
+    drill = re.compile(rf"^{chapter_num}\.\d+ \w+\b")  # any other numbered block
+    heads = [(i, m) for i, ln in enumerate(lines) for m in [head.match(ln)] if m]
+    if not heads:
+        raise ValueError(f"no content subsections found for chapter {chapter_num}")
+    content_end = next(
+        (i for i, ln in enumerate(lines)
+         if drill.match(ln) and not head.match(ln)), len(lines))
+    subs: list[tuple[str, str, str]] = []
+    for idx, (start, m) in enumerate(heads):
+        nxt = heads[idx + 1][0] if idx + 1 < len(heads) else content_end
+        nxt = min(nxt, content_end)
+        if start >= content_end:
+            continue
+        subid = f"{chapter_num}.{m.group(1)}"
+        title = m.group(2).strip().title()
+        body = "\n".join(lines[start:nxt]).strip() + "\n"
+        subs.append((subid, title, body))
+    return subs
+
+
 def build_context_packet(
     section_text: str,
     packet_title: str,

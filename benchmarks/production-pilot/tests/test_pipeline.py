@@ -325,6 +325,87 @@ def test_html_preview_is_offline_and_renders():
     assert "What is entropy?" in doc
 
 
+def test_split_subsections_excludes_drills():  # chapter subsection detection
+    norm = ("3.1 THERMODYNAMICS\nbody one\n3.2 KINETICS AND ENERGY\nbody two\n"
+            "3.1 Drill\nq1\n3.2 Drill\nq2\n")
+    subs = source.split_subsections(norm, 3)
+    assert [s[0] for s in subs] == ["3.1", "3.2"]          # drills excluded
+    assert subs[0][1] == "Thermodynamics" and "body one" in subs[0][2]
+    assert "Drill" not in subs[1][2]                       # 3.2 stops before drills
+
+
+def test_prefix_and_tag_prevents_id_collisions():  # cross-subsection id safety
+    from pipeline import chapter
+    mk = lambda: {"sections": [{"id": "intro", "title": "I", "content": "c", "sourceRefs": ["r"]}],
+                  "equations": [], "workedExamples": [],
+                  "checks": [_q("q", target="intro")], "practiceQuestions": []}
+    a = chapter._prefix_and_tag(mk(), "3.1")
+    b = chapter._prefix_and_tag(mk(), "3.2")
+    assert a["sections"][0]["id"] == "3.1-intro" and b["sections"][0]["id"] == "3.2-intro"
+    assert a["checks"][0]["reviewTarget"] == "3.1-intro"   # remapped to prefixed id
+    assert a["sections"][0]["subsection"] == "3.1"
+
+
+def test_quality_filter_no_cap_keeps_many_questions():  # chapter merge keeps >5
+    cand = _base(["core"])
+    cand["objectives"] = ["o grounded delta G spontaneous"]
+    checks = ["Define gibbs free energy", "Explain spontaneous reactions",
+              "Describe enthalpy changes", "Discuss entropy disorder",
+              "Compare forward reverse rates", "Identify negative positive values"]
+    practice = ["Summarize thermodynamics conservation laws", "Analyze temperature kelvin effects",
+                "Predict reaction favorability outcomes", "Relate molecular kinetic potential"]
+    cand["checks"] = [_q(t) for t in checks]
+    cand["practiceQuestions"] = [_q(t) for t in practice]
+    clean, _ = core.quality_filter(cand, QSRC, cap=False)
+    assert len(clean["checks"]) + len(clean["practiceQuestions"]) == 10  # nothing trimmed
+    capped, _ = core.quality_filter(cand, QSRC, cap=True)
+    assert len(capped["checks"]) + len(capped["practiceQuestions"]) == 5   # cap trims
+
+
+def test_assemble_chapter_orders_and_dedupes():  # chapter assembly
+    from pipeline import chapter
+    sub1 = chapter._prefix_and_tag({
+        "objectives": ["shared obj"], "sections": [
+            {"id": "s", "title": "T1", "content": "c1", "sourceRefs": ["r1"]}],
+        "equations": [{"expression": "E=1", "meaning": "m", "sourceRefs": ["r1"]}],
+        "workedExamples": [], "checks": [_q("c1", target="s")],
+        "practiceQuestions": [], "sourceRefs": ["r1"], "sourceGaps": []}, "3.1")
+    sub2 = chapter._prefix_and_tag({
+        "objectives": ["shared obj"], "sections": [
+            {"id": "s", "title": "T2", "content": "c2", "sourceRefs": ["r2"]}],
+        "equations": [{"expression": "E = 1", "meaning": "m", "sourceRefs": ["r2"]}],
+        "workedExamples": [], "checks": [_q("c2", target="s")],
+        "practiceQuestions": [], "sourceRefs": ["r2"], "sourceGaps": []}, "3.2")
+    cfg = {"id": "chapter-03", "chapter_title": "Chapter 3", "title": "x",
+           "source_ref": "raw#c3"}
+    s = chapter.assemble_chapter(cfg, [("3.1", "A", sub1, "ACCEPTED"),
+                                       ("3.2", "B", sub2, "ACCEPTED")])
+    assert [x["id"] for x in s["sections"]] == ["3.1-s", "3.2-s"]   # order preserved
+    assert s["objectives"] == ["shared obj"]                       # deduped
+    s["equations"] = chapter._dedup_equations(s["equations"])
+    assert len(s["equations"]) == 1                                # whitespace-insensitive dedup
+
+
+def test_chapter_render_offline_with_nav():  # one offline page, subsection nav
+    session = {
+        "id": "chapter-03", "title": "Chapter 3 - Biochemistry Basics",
+        "objectives": ["Understand thermodynamics"],
+        "sections": [{"id": "3.1-intro", "title": "Intro", "content": "Energy.",
+                      "sourceRefs": ["r"], "subsection": "3.1"}],
+        "equations": [], "workedExamples": [],
+        "checks": [dict(_q("Check one?"), subsection="3.1")],
+        "practiceQuestions": [dict(_q("Review one?"), subsection="3.1")],
+        "sourceRefs": ["r"], "sourceGaps": ["SOURCE GAP: example"],
+        "metadata": {"subsections": [{"id": "3.1", "title": "Thermodynamics",
+                                      "status": "ACCEPTED"}]},
+    }
+    doc = render.render_chapter_html(session)
+    assert "http://" not in doc and "https://" not in doc
+    assert "Chapter 3 - Biochemistry Basics" in doc
+    assert "Thermodynamics" in doc and "Cumulative Chapter Review" in doc
+    assert "Check one?" in doc and "Review one?" in doc
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

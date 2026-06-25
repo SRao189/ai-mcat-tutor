@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "question": "Which of the following best describes oxidation in terms of electron transfer?",
+      "answer": "The loss of electrons.",
+      "explanation": "According to section 3.3, \"Oxidation is a chemical term meaning the loss of electrons.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "section-1"
+    },
+    {
+      "question": "A reaction where a molecule gains electrons is classified as:",
+      "answer": "Reduction",
+      "explanation": "Section 3.3 states, \"Reduction means the opposite, the gain of electrons.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "section-2"
+    },
+    {
+      "question": "The formation of a disulfide bond between two cysteine molecules is an example of:",
+      "answer": "Oxidation",
+      "explanation": "Section 3.3 states, \"Is the formation of a disulfide bond (Figure 2) an oxidation or a reduction reaction? It’s an oxidation, because hydrogens have been removed.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "section-4"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Which of the following represents a reduction reaction?",
+      "answer": "Fe3+ to Fe2+",
+      "explanation": "Section 3.3 states, \"changing Fe3+ to Fe2+? It’s a reduction, because an electron has been added.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "section-2"
+    },
+    {
+      "question": "In the reaction O2 → H2O, what type of reaction is occurring?",
+      "answer": "Reduction",
+      "explanation": "Section 3.3 states, \"It’s a reduction, because hydrogens have been added to the oxygen molecule.\"",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.3"
+      ],
+      "reviewTarget": "section-2"
+    }
+  ]
+}

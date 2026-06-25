@@ -82,6 +82,7 @@ def generate_structured(
     num_ctx: int,
     label: str,
     num_predict: int | None = None,
+    read_timeout: int | None = None,
 ) -> dict[str, Any]:
     """Stream a schema-constrained generation, emitting a heartbeat >= every 30s.
 
@@ -131,7 +132,7 @@ def generate_structured(
     thread = threading.Thread(target=heartbeat, daemon=True)
     thread.start()
     try:
-        with urllib.request.urlopen(request, timeout=STALL_TIMEOUT) as response:
+        with urllib.request.urlopen(request, timeout=read_timeout or STALL_TIMEOUT) as response:
             with lock:
                 state["stage"] = "GENERATING"
             for line in response:

@@ -1,0 +1,43 @@
+{
+  "id": "acids_bases_lesson",
+  "title": "Brønsted-Lowry and Lewis Definitions of Acids and Bases",
+  "objectives": [
+    "Define acids and bases according to the Brønsted-Lowry definition.",
+    "Explain the difference between acid and base definitions as defined by Lewis.",
+    "Describe coordinate covalent bonds and their role in acid-base reactions."
+  ],
+  "sections": [
+    {
+      "id": "section_1",
+      "title": "Brønsted-Lowry Definitions",
+      "content": "For biochemistry on the MCAT, there are two important definitions of acids and bases. The Brønsted-Lowry definition states that acids are proton (H+) donors, and bases are proton (H+) acceptors. This is a fundamental concept for understanding acid-base reactions. Notice that while hydroxide ions qualify as bases, many other compounds can also function as bases because they are capable of accepting protons. Consider the reversible reaction H2CO3 + H2O  H3O+ + HCO3–; here, H2CO3 is an acid and H3O+ is a base. The Brønsted-Lowry definition is the most important one for the MCAT.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    },
+    {
+      "id": "section_2",
+      "title": "Lewis Definitions",
+      "content": "Lewis’s definitions of acids and bases are broader. Lewis acids are electron-pair acceptors, and Lewis bases are electron-pair donors. This definition expands the scope of acid-base interactions beyond just proton transfer. Consider the reaction AlCl3 + H2O  (AlCl3OH)− + H+; here, AlCl3 is an acid because it accepts electrons, and H2O is a base because it donates electrons. Lewis acid/base reactions frequently result in the formation of coordinate covalent bonds. For example, in the reaction above, water acts as a Lewis base, since it donates both of the electrons involved in the coordinate covalent bond between OH– and AlCl3. AlCl3 acts as a Lewis acid, since it accepts the electrons involved in this bond.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    },
+    {
+      "id": "section_3",
+      "title": "Coordinate Covalent Bonds",
+      "content": "A great biological example of a coordinate covalent bond is the binding of an oxygen molecule to the iron atom in a heme group. This interaction demonstrates how Lewis acids and bases can form bonds. Oxygen acts as a Lewis base, donating a pair of electrons to the Fe2+ ion, while the Fe2+ ion acts as a Lewis acid, accepting those electrons. The formation of coordinate covalent bonds is crucial for understanding many biological processes.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    },
+    {
+      "id": "section_4",
+      "title": "Conjugate Acids and Bases",
+      "content": "When a Brønsted-Lowry acid donates an H+, the remaining structure is called the conjugate base of the acid. Likewise, when a Brønsted-Lowry base bonds with an H+ in solution, this new species is called the conjugate acid of the base. To illustrate these definitions, consider this reaction: NH3 + H2ON H4 + + OH–acid–base conjugatesacid–base conjugates⇋ Oxygen is donating a pair of electrons to the Fe2+ ion and is therefore the Lewis base. Notice that when H2CO3 donates an H+, it becomes HCO3–, which is the conjugate base. Similarly, when H2O bonds with an H+ in solution, it becomes OH–, which is the conjugate acid.",
+      "sourceRefs": [
+        "raw/Chapter 3.txt#3.4"
+      ]
+    }
+  ]
+}

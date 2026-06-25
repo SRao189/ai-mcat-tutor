@@ -41,6 +41,20 @@
     "AUDITING",
     "AUDITED",
     "FINAL_AUDIT",
+    "ACCEPTED",
+    "NORMALIZED",
+    "SPLIT",
+    "SUBSECTION",
+    "SUBSECTION_DONE",
+    "SUBSECTION",
+    "SUBSECTION_DONE",
+    "SUBSECTION",
+    "SUBSECTION_DONE",
+    "SUBSECTION",
+    "SUBSECTION_DONE",
+    "MERGED",
+    "AUDITED",
+    "ENRICHED",
     "ACCEPTED"
   ],
   "raw_source": "C:\\Users\\sahar\\mcat-tutor\\raw\\Chapter 3.txt",
@@ -48,5 +62,15 @@
   "audit_verdict": "pass",
   "enrich_note": "no_enrichment_needed",
   "error": "exceeded overall timeout (1500s)",
-  "component": "assessment"
+  "component": "assessment",
+  "subsections": [
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.4"
+  ],
+  "current": "3.4",
+  "done": "3.4",
+  "status": "ACCEPTED",
+  "verdict": "pass"
 }
