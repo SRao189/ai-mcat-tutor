@@ -1,0 +1,862 @@
+3. Biochemistry Basics | 39
+3.1
+3.1 THERMODYNAMICS
+Thermodynamics is t he study of t he energetics of c hemical reactions. There a re t wo relevant forms of
+energy i n c hemistry: k inetic e nergy ( movement o f m olecules) a nd p otential e nergy (energy s tored i n
+chemical bonds). [What is the most important poten tial energy storage molecule in all cells?1] The first
+law of thermodynamics, also known as the law of conservation of energy, states that the energy of the
+universe is constant. It implies that when the energy of a s ystem decreases, the energy of the rest of the
+universe (the surroundings) must increase, and vice versa. The second law of thermodynamics states
+that the disorder, or entropy, of the uni verse tends to increase. Another way to state the second law is as
+follows: spontaneous reactions tend to increase the disorder of the universe. The symbol for entropy is S,
+and “a change in entropy” is denoted ∆S, where ∆S = Sfinal – Sinitial. [If the ∆S of a system is negative, has
+the disorder of that system increased or decreased?2]
+A practical way to discuss thermodynamics is the mathematical no tion of free energy (Gibbs free energy),
+defined by Josiah Gibbs as follows:3
+Eq. 1 ∆G = ∆H – T∆S
+T denotes temperature, and H denotes enthalpy, which is defined by another equation:
+Eq. 2 ∆H = ∆E + P∆V
+Here E represents the bond energy of products or reactants in a s ystem, P is pressure, and V is volume.
+[Given that cellular reactions take place in the liquid phase, how is H related to E in a cell?4] ∆G increases
+with increasing ∆H (bond energy) and decreases with increasing entropy.
+• Given the second law of thermody namics and the mathematical definition of ∆G, which reac-
+tion will be favorable: one with a decrease in free energy (∆G < 0) or one with an increase in
+free energy (∆G > 0)?5
+The change in the Gibbs free energy of a reaction determines whether the reaction is favorable (spontane-
+ous, ∆G negative) or unfavorable (nonspontaneous, ∆G positive). In terms of the generic reaction
+A + B → C + D
+the Gibbs free energy change determines whether the reactants (denoted A and B) will stay as they are or
+be converted to products (C and D).
+1 ATP, which stores energy in the ester bonds between its phosphate groups.
+2 If ∆S is negative, then the system lost entropy, which means that disorder decreased.
+3 As in ∆S, the Greek letter ∆ (delta) indicates “the change in.” For example, ∆Grxn = Gproducts – Greactants.
+4 H ≈ E, since the change in volume is negligible (∆V ≈ 0).
+5 Favorable reactions have ∆G < 0 . We can deduce this from the second law and Equation 1 b ecause the second law states that increasing
+entropy is favorable, and the equation has ∆G directly related to –T∆S.
+
+3.1
+Spontaneous reactions, ones that occur without a net addition of energy, have ∆G < 0. They occur with
+energy to spare. Reactions with a n egative ∆G are exergonic (energy exits the system); reactions with a
+positive ∆G a re endergonic. Endergonic reac tions occur only if energy is added. In t he lab, energy is
+added in the form of heat; in the body, endergonic reactions are driven by reaction coupling to exergonic
+reactions (more on this later). Reactions with a negative ∆H are called exothermic and liberate heat. Most
+metabolic reactions are exothermic (which is how homeothermic organisms such as mammals maintain
+a constant body temperature). Reactions with a positive ∆H require an input of heat and are referred to
+as endothermic. (Thermodynamics will be discussed in more detail in MCAT General Chemistry Review
+and MCAT Physics and Math Review.)
+The signs of t hermodynamic quantities a re a ssigned f rom t he p oint of v iew of the sy stem, not t he sur-
+roundings or the universe. Thus, a negative ∆G means that the system goes to a lower free energy state,
+and a system will always move in the direction of the lowest free energy. As an analogy, visualize a spin-
+ning top as the system. What happens to the top? Does it spin faster and faster? No. It moves toward the
+lowest energy state. Let’s expand the analogy, using an equation:
+motionless top → spinning top
+Here the “reactant” is the motionless top, and the “product” is the spinning top. Which is lower: the free
+energy of product or reactant? The reactant. Is the reaction “spontaneous” as written? No; in fact, the
+reverse reaction is spontaneous. Therefore,
+Gspinning > Gmotionless
+and thus,
+∆Greaction as written (motionless to spinning; left to right) > 0
+So t he reaction is nonspontaneous. In other words, it requires energy input, namely, en ergy f rom your
+muscles as you spin the top. [If the products in a reaction have more entropy than the reactants and the
+enthalpy (H) of the reactants and the products are the same, can the reac tion occur spontaneously?6]
+The value of ∆G depends on the concentrations of reactants and products, which can be variable in the
+body. Therefore, to compare reactions, chemists calculate a s tandard free energy change, denoted ∆G°,
+with all reactants and products present at 1 M concentration. Under physiological conditions, however,
+the hydrogen ion concentration is far from 1 M, so biochemists use an even more standardized ∆G, with
+1 M concentration for all solutes except H+ and a pH of 7; this is denoted ∆G°′.
+∆G°′ is related to the equilibrium constant for a reaction by the following equation:
+Eq. 3 Δ GR TK°ʹ=− ʹln eq
+6 Yes. If ∆S > 0 and ∆H = 0, then according to the second law of thermodynamics, the reaction is spontaneous; see Equation 1.
+
+3. Biochemistry Basics | 41
+3.1
+where R is the gas constant (which would be given on the MCAT, along with the entire equation), and
+K ′eq is the ratio of products to reactants at equilibrium:
+ʹ =K eq
+eq eq
+eq eq
+C] D]
+A] B]
+[[
+[[
+K ′eq is the ratio of products to reactants when enough time has passed for equilibrium to be reached.
+[When K ′eq = 1, what is ∆G°′?7]
+But what if we wanted to calculate ∆G for a reaction in the body? In this case, we need one more equation:
+Eq. 4 ∆∆GG RT QQ=+ =°′ ln , [where C][D]
+[A][B]
+Here, Q is calculated using the actual concentrations of A, B, C, and D (for example, the concentrations
+in the cell). Equation 4 is simply a conversion from ∆G°′ (the laboratory standard ∆G with initial concen-
+trations at 1 M) to the real-life here-and-now ∆G. Note that if we put 1 M concentrations of A, B, C, and
+D into a b eaker (at pH 7), we have recreated the laboratory standard initial set-up: Q = 1, so ln Q = 0,
+which means ∆G = ∆G°′.
+Remember that Q and Keq are not the same. Q is the ratio of products to reactants in any given set-up;
+Keq is the ratio at equilibrium. Equilibrium is defined as the point at which the rate of reaction in the
+forward direction equals the rate of reaction in the reverse direction. At equilibrium, there is constant
+product and reactant turnover as reactants form products and vice versa, but overall concentra tions stay
+the same. Theoretically (given enough time), all reactant/product systems in a closed system will eventu-
+ally reach this point.
+While all reactions will eventually reach an equilibrium defined by the constant above, we can disturb
+this balance with the addition or removal of a r eactant or product. This causes a c hange in Q but not
+Keq, and the reaction will proceed in the direction necessary to reestablish equilibrium. (The shift to re-
+store equilibrium is a demonstration of Le Châtelier’s principle which will be discussed in further detail
+in MCAT General Chemistry Review.) Using this principle, a r eaction which favors reactants at equilib-
+rium can be driven to generate additional products (such strategies are employed frequently in cellular
+respiration).
+• You are studying a particular reaction. You find the reaction in a book and read ∆G°′ from
+a table. Can you calculate ∆G for this reaction in a living human being without any more
+information?8
+7 Equation 3 says that ∆G°′ = 0 when K′eq = 1 since ln 1 = 0. Note: for more information about MCAT Math, see MCAT Physics and Math
+Review.
+8 No. You need to know the concentrations of A , B, C, and D i n the human cell. For example, ΔG°′ might be +14.8 kcal/mol, indicating
+that the reaction is very unfavorable under standard conditions and has a K < 1, which means that at equilibrium there are more reactants
+than products. If, however, the ratio of reactants to products is made to be higher than that established at equilibrium, the Q for the reac-
+tion becomes less than K, and the forward reaction is spontaneous under these conditions, since ΔG will be less than zero (even though
+ΔG°′ will not change). The significance of Q as an independent variable in Equation 4 is that it accounts for Le Châtelier’s principle. If a
+system at equilibrium has reactants added to it, Q < K and ΔG < 0, so the high concentration of reactants will drive the reaction forward to
+reestablish equilibrium. If a system at equilibrium has products added to it, Q > K and ΔG > 0, so the high concentration of products will
+drive the reaction backward to reestablish equilibrium. All reactions at equilibrium will respond to these stresses in the same way, regard-
+less of the sign of their ΔG°′.
+
+3.1
+• How can ∆G be negative if ∆G°′ is positive (which indicates that the reaction is unfavorable at
+standard conditions)?9
+• Does Keq indicate the rate at which a reaction will proceed?10
+• When Keq is large, which has lower free energy: products or reactants?11
+• When Q is large, which has lower free energy: products or reactants?12
+• Which direction, forward or backward, will be favored in a reaction if ∆G = 0? (Hint: What
+does Equation 4 look like when ∆G = 0?)13
+• Radiolabeled chemicals are often used to trace constituents in biochemical reactions. The
+following reaction with ∆G = 0 is in aqueous solution:
+AB C BC
+A += , [] []
+[]K eq
+A small amount of radiolabeled B is added to the solution. After a period of time, where will
+the radiolabel most likely be found: in A, in B, or in both?14
+In summary, then, there are two factors that determine whether a reaction will occur spontaneously (∆G
+negative) in the cell:
+1) The intrinsic properties of the reactants and products (Keq)
+2) The concentrations of reactants and products (RT ln Q)
+(In the lab, there is third factor: temperature. If ln Q is negative and the temperature is high enough, ∆G
+will be negative, regardless of the value of ∆G°′.)
+9 The reaction may be favorable (∆G < 0) if the ratio of the concentrations of reactants to products is sufficiently large to drive the reaction
+forward (that is, if RT ln Q is more negative than ∆G°′ is positive, which would make their sum (which, by Equation 4, is ∆G) negative).
+10 Keq indicates only the relative concentrations of reagents once equilibrium is reached, not the reaction rate (how fast equilibrium is reached).
+11 A large Keq means that more products are present at equilibrium. Remember that equilibrium tends toward the lowest energy state. Hence,
+when Keq is large, products have lower free energy than reactants.
+12 The size of Q says nothing about the properties of the reactants and products. Q is calculated from whatever the initial concentrations hap-
+pen to be. It is Keq that says something about the nature of reactants and products, since it describes their concentrations after equilibrium
+has been reached.
+13 If ∆G is 0, then neither the forward nor the reverse reaction is favored. Look at Equations 3 a nd 4. Note that when ∆G = 0, Equation 4
+reduces to Equation 3, and thus Q = Keq (which means Q at this moment is the same as Keq, measured after the reaction system is allowed
+to reach equilibrium). When Q = Keq, we are by definition at equilibrium. Understand and memorize the following: when ∆G = 0, you are
+at equilibrium; forward reaction rate equals back reaction rate, and the net concentrations of reactants and products do not change.
+14 The reaction is in dynamic equilibrium where reactions are occurring in both directions, but at an equal rate. Because ∆G = 0, we know
+that the forward reaction and the reverse reaction proceed at equal rates, even though we don’t know the actual value. Therefore, after a
+period of time, the radiolabel will be present in both A and B.
+
+3. Biochemistry Basics | 43
+3.2
+Thermodynamics vs. Reaction Rates
+The term spontaneous is used to describe a r eaction system with ∆G < 0 . This can be misleading, since
+the common usage of the word spontaneous has a connotation of rapid rate; this is not what spontaneous
+means in the context of chemical reactions. For example, many reactions have a negative ∆G, indicating
+that they are “spontaneous” from a thermodynamic point of view, but they do not necessarily occur at a
+significant rate. Spontaneous means that a reaction is energetically favorable, but it says nothing about the
+rate of reaction.
+Thermodynamics will tell you where a system starts and finishes but nothing about the path traveled to
+get there. The difference in free energy in a reaction is only a function of the nature of the reac tants and
+products. Thus, ∆G does not depend on the pathway a reaction takes or the rate of reaction; it is only a
+measurement of the difference in free energy between reactants and products.
+3.2 KINETICS AND ACTIVATION ENERGY (EA)
+The reason some spontaneous (i.e., thermodynamically favorable) reactions proceed very slowly or not at
+all is that a large amount of energy is required to get them going. For example, the burning of wood is
+spontaneous, but you can stare at a log all day and it won’t burn. Some energy (heat) must be provided to
+kick-start the process.
+The study of reaction rates is called chemical kinetics. All reactions proceed through a transition state
+(TS) that is unstable and takes a great deal of energy to produce. The transition state exists for a very, very
+short time, either moving forward to form products or breaking back down into reactants. The energy
+required to produce the transition state is called the activation energy (Ea). This is the barrier that pre-
+vents many reactions from proceeding even though the ∆G for the reaction may be negative. The match
+you use to light your fireplace provides the activation energy for the reaction known as burning. It is the
+activation energy barrier that determines the kinetics of a reaction. [How would the rate of a spontaneous
+re action be affected if the activation energy were lowered?15]
+The concept of Ea is key to understanding the role of enzymes, so let’s spend some time on it. To illustrate,
+take this reaction:
+Bobwithout a job + job → Bobwith a job
+Is this a favorable reaction, i.e., will the universe be better off, with less total (nervous) en ergy, if Bob gets
+the job? Will things settle down? Let’s assume yes. However, between the two states (without/with), there
+is a temporary state, namely, Bobapplying for job. So the reaction will look this way:
+Bobwithout a job + job → [Bobapplying for job]‡ → Bobwith a job
+15 The rate would be increased, since lowering Ea is tantamount to reducing the energy required to achieve the transition state. The more tran-
+sition state products that are formed, the greater the amount of product produced, i.e., the more rapid the rate of reaction.
+
+3.2
+The middle term is the transition state, traditionally written in square brackets with a double-cross sym-
+bol: [TS]‡. The energy required for Bob to be job hunting is much higher than the energy of Bob with a
+job or Bob without a job. As a result, he may not go job hunting, even though he’d be happier in the long
+run if he did. In this model, we can describe the Ea as the energy necessary to get Bob to apply for a job.
+A catalyst lowers the Ea of a reaction without changing the ∆G. The catalyst lowers the Ea by stabilizing
+the transition state, making its existence less thermodynamically unfavorable. The second important char-
+acteristic of a catalyst is that it is not consumed in the reaction; it is regenerated with each reaction cycle.
+In our model, an example of a catalyst would be a career planning service (CPS). Adding a CPS won’t
+make Bobwithout a job any happier or sadder, nor will it make Bobwith a job happier or sadder. But it will make
+it much easier for Bob to move between the two states: without a job versus with a job. The traditional
+way to represent a reaction system like this is using a reaction coordinate graph, as shown in Figure 1. This
+is just a way to look at the energy of the reaction system as compared to the three possible states of the
+system: 1) re actants, 2) [TS]‡, and 3) products. The x-axis plots the physical progress of the reaction sys -
+tem (the “reaction coordinate”), and the y-axis plots energy.
+R eaction coordinate
+[TS]‡
+Ea without catalyst
+Ea with catalyst
+∆ Greactants
+products
+•
+•
+Free Energy
+Figure 1 The reaction coordinate graph
+Enzymes are biological catalysts. They increase the rate of a reaction by lowering the reaction’s activation
+energy, but they do not affect ∆G between reactants and products. As catalysts, enzymes have a k inetic
+role, not a t hermodynamic one. [ Will an enzyme alter the concentra tion of reagents at equilibrium?16]
+Enzymes may alter the rate of a reaction enormously: a reaction that would take a hundred years to reach
+equilibrium w ithout a n enzyme may occur in just seconds w ith a n enzyme. More information on en-
+zymes can be found in Chapter 4.
+16 No. It will affect only the rate at which the reactants and products reach equilibrium.
+
+3. Biochemistry Basics | 45
+3.3
+3.3 OXIDATION AND REDUCTION
+Energy Metabolism and the Definitions of Oxidation and Reduction
+Where does the energy in foods come from? How do we make use of this energy? Why do we breathe?
+The answers begin with photosynthesis, the process by which plants store energy from the sun in the
+bond energy of carbohydrates. Plants are photoau totrophs because they use energy from light (“photo”)
+to make their own (“auto”) food. We are chemoheterotrophs, because we use the energy of chemicals
+(“chemo”) produced by other (“hetero”) living things, namely plants and other animals. Plants and ani-
+mals store chemical energy in reduced molecules such as carbohydrates and fats. These reduced molecules
+are oxidized to produce CO2 and ATP. The energy of ATP is used in turn to drive the energetically unfa-
+vorable reactions of the cell. That’s the basic energetics of life; all the rest is detail.
+In essence, the production and utilization of energy boil down to a series of oxidation/reduction reactions.
+Oxidation is a chemical term meaning the loss of electrons. Reduction means the opposite, the gain of
+electrons. Molecules can gain or lose electrons depending on the other atoms that they are bound to. There
+are three common ways to identify oxidation/reduction reactions on the MCAT, and it is important for
+you to know them:
+Recognizing Oxidation Reactions:
+1) gain of oxygen atoms
+2) loss of hydrogen atoms
+3) loss of electrons
+Recognizing Reduction Reactions (just the opposite):
+1) loss of oxygen atoms
+2) gain of hydrogen atoms
+3) gain of electrons
+Though you should memorize this, it is not a subject worthy of philosophizing. If you can answer ques-
+tions l ike t he f ollowing, you’re s et: i s c hanging C H3CH3 to H 2C=CH2 a n oxidation, a r eduction, or
+neither?17 What about changing Fe3+ to Fe2+?18 What about this: O2 → H2O?19
+17 It’s an oxidation, because hydrogens have been removed.
+18 It’s a reduction, because an electron has been added.
+19 It’s a reduction, because hydrogens have been added to the oxygen molecule.
+
+3.3
+You can also identify oxidation/reduction reactions visually by looking at the structure of the molecules.
+Is the formation of a disulfide bond (Figure 2) an oxidation or a reduction reaction?20
+O
+OH
+HS
+H
+H
+N
+N
+H
+H
+HS
+OH
+O
+O
+OH
+S
+H
+H
+N
+N
+H
+H
+S
+OH
+O
+disul/f_ide bond
+Figure 2 Formation of a disulfide bond
+Here is one other important fact about oxi dation and reduction: when one atom gets reduced, another
+one must be oxidized; hence the term redox pair. As you study the process of glucose oxidation, you will
+see that each time an oxidation reaction occurs, a reduction reaction occurs too.
+Catabolism is the process of breaking down molecules. The opposite is an abolism, which is “building-
+up” metabolism.21 For example, the way we extract energy from glucose is by oxidative catabolism. We
+break down the glucose by oxidizing it. The stoichiometry of glucose oxidation looks like this:
+C6H12O6 + 6 O2 → 6 CO2 + 6 H2O
+• What are the two members of the redox pair in this reaction?22
+As we oxidize foods, we release the stored energy plants received from the sun. But we don’t make use of
+that energy right away. Instead, we store it in the form of ATP. Alternatively, we can use the energy in
+ATP to generate storage molecules such as glycogen and fatty acids. Fatty acids are generated by succes-
+sive reductions of a carbon chain, thus anabolic processes are generally reductive.
+20 It’s an oxidation, because hydrogens have been removed.
+21 The mnemonics are cata = breakdown, as in catastrophe, and ana = buildup, sounds like “add-a.” (Think of anabolic steroids, which weight-
+lifters use to bulk up.)
+22 The carbons in the sugar are oxidized (to CO2), and oxygen is reduced (to H2O).
+
+3. Biochemistry Basics | 47
+3.4
+3.4 ACIDS AND BASES
+There are two important definitions of acids and bases you should be familiar with for biochemistry on
+the MCAT.
+Brønsted-Lowry Acids and Bases
+Brønsted and Lowry offered the following definitions:
+Acids are proton (H+) donors.
+Bases are proton (H+) acceptors.
+While the often-seen hydroxide ions qualify a s Brønsted-Lowry ba ses, many other compounds fit this
+definition as well. Since a Brønsted-Lowry base is any substance that is capable of accepting a proton, any
+anion or any neutral species with a lone pair of electrons can function as a base.
+If we consider the reversible reaction below:
+H2CO3 + H2O  H3O+ + HCO3
+–
+then according to the Brønsted-Lowry definition, H2CO3 and H3O+ are acids and HCO3
+– and H2O are
+bases. The Brønsted-Lowry definition of acids and bases is the most important one for the MCAT.
+Lewis Acids and Bases
+Lewis’s definitions of acids and bases are broader:
+Lewis acids are electron-pair acceptors.
+Lewis bases are electron-pair donors.
+If we consider the reversible reaction below:
+AlCl3 + H2O  (AlCl3OH)− + H+
+then according to the Lewis definition, AlCl3 and H+ are acids because they accept electron pairs; H2O and
+(AlCl3OH)– are bases because they donate electron pairs. Lewis acid/base reactions frequently result in the
+formation of coordinate covalent bonds. For example, in the reaction above, water acts as a Lewis base, since
+it donates both of the electrons involved in the coordinate covalent bond between OH– and AlCl3. AlCl3
+acts as a Lewis acid, since it accepts the electrons involved in this bond.
+Cl Al + + Η+
+–
+→O
+H H
+Cl
+Cl
+Cl Al Cl
+Cl
+OH
+
+3.4
+The binding of an oxygen molecule to the iron atom in a heme group is a g reat biological example of a
+coordinate covalent bond formed between a Lewis acid and base:
+Fe+2
+N
+N N
+N
+O
+O
+-OOC COO-
+Figure 3 Example of a coordinate covalent bond
+• Is oxygen the Lewis acid or Lewis base in the heme group?23
+Conjugate Acids and Bases
+When a Brønsted-Lowry acid donates an H+, the remaining structure is called the conjugate base of the
+acid. Likewise, when a Brønsted-Lowry base bonds with an H+ in solution, this new species is called the
+conjugate acid of the base. To illustrate these definitions, consider this reaction:
+NH3 + H2ON H4
++
++ OH–
+acid–base conjugates
+acid–base conjugates
+⇋
+23 Oxygen is donating a pair of electrons to the Fe2+ ion and is therefore the Lewis base.
+
+3. Biochemistry Basics | 49
+3.4
+Considering only t he forward d irection, N H3 i s t he ba se a nd H 2O i s t he acid. Th e products a re t he
+conjugate acid and conjugate base of the reactants: NH4
++ is the conjugate acid of NH3, and OH– is the
+conjugate base of H2O:
+NH3 + H2ON H4
++
++ OH–
+conjugate
+base
+conjugate
+acid
+acid
+base
+⇋
+Now consider the reverse reaction in which NH4
++ is the acid and OH– is the base. The conjugates are the
+same as for the forward reaction: NH3 is the conjugate base of NH4
++, and H2O is the conjugate acid of
+OH–:
+NH3 + H2ON H4
++
++ OH–
+conjugate
+base
+conjugate
+acid
+acid
+base
+⇋
+The difference between a B rønsted-Lowry acid and its conjugate base is that the base is missing an H+.
+The difference between a Brønsted-Lowry base and its conjugate acid is that the acid has an extra H+.
+forming conjugates:
+acid
+– H+
++ H+
+base⇋
+The Strengths of Acids and Bases
+If we use HA to denote a generic acid, its dissociation in water has the form
+HA(aq) + H2O(l)  H3O+(aq) + A–(aq)
+The strength of the acid is directly related to how much the products are favored over the reactants. The
+equilibrium expression for this reaction is
+K a
+3
++HO ][A
+HA]= []
+[
+−
+
+3.4
+This is written as Ka, rather than Keq, to emphasize that this is the equilibrium expression for an acid-
+dissociation reaction. In fact, Ka is known as the acid-ionization (or acid-dissociation) constant of the
+acid (HA). We can rank the relative strengths of acids by comparing their Ka values: the larger the Ka
+value, the stronger the acid; the smaller the Ka value, the weaker the acid.
+• Of the following acids, which one would dissociate to the greatest extent (in water)?24
+A) HCN (hydrocyanic acid), Ka = 6.2 × 10–10
+B) HNCO (cyanic acid), Ka = 3.3 × 10–4
+C) HClO (hypochlorous acid), Ka = 2.9 × 10–8
+D) HBrO (hypobromous acid), Ka = 2.2 × 10–9
+We can apply the same ideas as above to identify the strength of bases. If we use B to denote a generic base,
+its dissolution in water has the form
+B(aq) + H2O(l)  HB+(aq) + OH–(aq)
+Similar to acids, the strength of the base is directly related to how much the products are favored over the
+reactants. If we write the equilibrium constant for this reaction, we get:
+K b
++HB ][OH
+B]= []
+[
+−
+This i s w ritten a s Kb, r ather t han Keq, to emphasize t hat t his i s t he e quilibrium e xpression for a base-
+dissociation reaction. In fact, Kb is known as the base-ionization (or base-dissociation) constant. We
+can rank the relative strengths of bases by comparing their Kb values: the larger the Kb value, the stronger
+the base; the smaller the Kb value, the weaker the base.
+Amphoteric Substances
+Take a look at the dissociation of carbonic acid (H2CO3), a weak acid:
+H2CO3(aq) + H2O(l)  H3O+(aq) + HCO3
+–(aq) (Ka = 4.5 × 10–7)
+The conjugate base of carbonic acid is HCO3
+–, which also has an ionizable proton. Carbonic acid is said
+to be polyprotic, because it has more than one proton to donate.
+24 B. The acid that would dissociate to the greatest extent would have the greatest Ka value. Of the choices given, HNCO (choice B) has the
+greatest Ka value.
+
+3. Biochemistry Basics | 51
+3.4
+Let’s look at how the conjugate base of carbonic acid dissociates:
+HCO3
+–(aq) + H2O(l)  H3O+(aq) + CO3
+2−(aq) (Ka = 4.8 × 10–11)
+In the first reaction, HCO3
+– acts as a ba se, but in the second reaction, it acts as an acid. W henever a
+substance can act as either an acid or a base, we say that it is amphoteric. The conjugate base of a weak
+polyprotic acid is always amphoteric, because it can either donate or accept another proton. Also notice
+that HCO3
+– is a weaker acid than H2CO3; in general, every time a polyprotic acid donates a proton, the
+resulting species will be a weaker acid than its predecessor. Amino acids, which will be discussed in more
+detail in the next chapter, are all also amphoteric compounds and very important for the MCAT.
+pH
+The pH scale measures the concentration of H+ (or H3O+) ions in a solution. Because the molarity of H+
+tends to be quite small and can vary over many orders of magnitude, the pH scale is logarithmic:
+pH = −log[H+]
+This formula implies that [H+] = 10–pH. Since [H+] = 10–7 M in pure water, the pH of water is 7. At 25°C,
+this defines a pH neutral solution. If [H+] is greater than 10–7 M, then the pH will be less than 7, and the
+solution is said to be acidic. If [H+] is less than 10–7 M, the pH will be greater than 7, and the solution is
+basic (or alkaline). Notice that a low pH means a high [H+] and the solution is acidic; a high pH means a
+low [H+] and the solution is basic.
+pH > 7 basic solution
+pH = 7 neutral solution
+pH < 7 acidic solution
+The range of the pH scale for most solutions falls between 0 and 14, but some strong acids and bases ex-
+tend the scale past this range. For example, a 10 M solution of HCl will fully dissociate into H+ and Cl–.
+Therefore, the [H+] = 10 M, and the pH = −1.
+An alternate measurement expresses the acidity or basicity in terms of the hydroxide ion concentration,
+[OH−], by using pOH. The same formula applies for hydroxide ions as for hydrogen ions.
+pOH = −log[OH–]
+This formula implies that [OH–] = 10–pOH.
+Acids and bases are inversely related: the greater the concentration of H+ ions, the lower the concentration
+of OH– ions, and vice versa. Since [H+][OH–] = 10–14 at 25°C, the values of pH and pOH satisfy a special
+relationship at 25°C:
+pH + pOH = 14
+So, if you know the pOH of a solution, you can find the pH, and vice versa. For example, if the pH of a
+solution is 5, then the pOH must be 9. If the pOH of a solution is 2, then the pH must be 12.
+
+3.4
+Relationships Between Conjugates
+pKa and pKb
+The definitions of pH and pOH both involve a negative logarithm. In general, “p” of something is equal
+to the –log of that something. Therefore, the following definitions won’t be surprising:
+pKa = −log Ka
+pKb = −log Kb
+Because H+ concentrations are generally very small and can vary over such a wide range, the pH scale gives
+us more convenient numbers to work with. The same is true for pKa and pKb. Remember that the larger
+the Ka value, the stronger the acid. Since “p” means “take the negative log of…,” the lower the pKa value,
+the stronger the acid. For example, lactic acid has a Ka of 1.3 × 10–4, and uric acid has a Ka of 2.5 × 10–6.
+Since the Ka of lactic acid is larger than that of uric acid, more molecules of lactic acid than uric acid will
+dissociate into ions in aqueous solution. In other words, lactic acid is stronger than uric acid. The pKa of
+lactic acid is 3.9, and the pKa of uric acid is 5.6. The acid with the lower pKa value is the stronger acid.
+The same logic applies to pKb: the lower the pKb value, the stronger the base. Memorize this!
+• Of the following liquids, which one contains the lowest concentration of H3O+ ions?25
+A) Lemon juice (pH = 2.3)
+B) Blood (pH = 7.4)
+C) Seawater (pH = 8.5)
+D) Coffee (pH = 5.1)
+• Which of the following compounds is the least acidic?26
+A) CH3COOH, acetic acid (pKa = 4.76)
+B) H2CO3, carbonic acid (pKa = 6.35)
+C) H3PO4, phosphoric acid (pKa = 2.15)
+D) HCO3
+–, bicarbonate (pKa = 10.33)
+25 C. Since pH = – log [H3O+], we know that [H3O+] = 1/10 pH. This fraction is smallest when the pH is greatest. Of the choices given, sea-
+water has the highest pH.
+26 D. The compound with the highest pKa is the least acidic. Bicarbonate has the highest pKa of all the answer choices.
+
+3. Biochemistry Basics | 53
+3.4
+Buffer Solutions
+A buffer i s a s olution t hat r esists c hanging p H w hen a s mall a mount o f a cid o r ba se i s a dded. Th e
+buffering capacity comes from the presence of a weak acid and its conjugate base (or a weak base and its
+conjugate acid) in roughly equal concentrations.
+Buffers a re e xtremely i mportant b ecause n early e very b iological p rocess i n t he h uman b ody i s p H-
+dependent. The H+ ion commonly functions as a reactant, product, or catalyst in chemical reactions in
+metabolic pathways. In addition, there are many sources of acids and bases in the body that can cause
+significant changes in the pH if it weren’t for our buffer systems.
+The most important buffer system in our blood plasma (and for the MCAT) is the bicarbonate buffer sys-
+tem. This buffer consists of carbonic acid (H2CO3) and its conjugate base, bicarbonate (HCO3
+–):
+Reaction 1 H2CO3 → H+ + HCO3
+–
+This buffer system is particularly complex because of how carbonic acid is formed in the body. During
+cellular respiration, an activity that is constantly occurring in our body, our cells produce carbon dioxide
+(CO2) as a byproduct. The carbon dioxide can then react in a reversible fashion with water to form car-
+bonic acid:
+Reaction 2 CO2 + H2O → H2CO3
+To understand how this buffer system works, we can consider the following scenario. Let’s say you go on
+a run, causing your muscle tissue to produce lactic acid. The lactic acid would seek to increase the con-
+centration of H+ ions in your body and thus decrease the pH. As discussed earlier, a drop in pH is prob-
+lematic; it can severely impact our metabolic processes. However, when the lactic acid produces H+ ions,
+Reaction 1 shifts to the left by Le Châtelier’s principle, reducing the amount of free H+ ions. While this
+shift does not completely prevent the pH from falling, it significantly reduces the degree to which the pH
+falls.
+
+MCAT BIOCHEMISTRY REVIEW54 | For More Free Content, visit PrincetonReview.com
+Chapter 3 Summary
+• ∆G, t he Gi bbs free e nergy, i s the a mount o f e nergy in a reaction available t o do
+chemical work.
+• For a reaction under any set of conditions, ∆G = ∆H −T∆S.
+• If ∆G < 0 , t he r eaction i s s pontaneous i n t he f orward d irection. I f ∆G > 0 , t he
+reaction is nonspontaneous in the forward direction. If ∆G = 0, the reaction is at
+equilibrium.
+• Kinetics is the study of how quickly a r eaction occurs, but it does not determine
+whether or not a reaction will occur.
+• Activation ener gy ( Ea) i s t he m inimum e nergy r equired t o s tart a r eaction a nd
+decreases in the presence of a catalyst, thereby increasing the reaction rate.
+• Acids are proton donors and electron acceptors; bases are proton acceptors and
+electron donors.
+• The higher the Ka (lower the pKa), the stronger the acid. The higher the Kb (lower
+the pKb), the stronger the base.
+• Amphoteric substances may act as either acids or bases.
+• pH = −log[H+]. For a concentration of H+ given in a 10−x M notation, simply take the
+negative exponent to find the pH. T he same is true for the relationship between
+[OH−] and pOH, Ka and pKa, and Kb and pKb.
+• Buffers resist pH change upon the addition of a small amount of acid or base. The
+key buffer system in the body is the bicarbonate buffer system.
+
+3. Biochemistry Basics | 55
+Drill
+CHAPTER 3 FREESTANDING PRACTICE QUESTIONS
+1. Which of the following best describes the function of
+enzymes?
+A. By decreasing the Ea, enzymes increase both
+the reaction rate and the total amount of product
+formed.
+B. By making the ∆G of the reaction more negative,
+enzymes increase the amount of product formed per
+unit time.
+C. By decreasing the energy of the transition state,
+enzymes increase the amount of product formed per
+unit time.
+D. By making the ∆G of the reaction more positive,
+enzymes increase the total amount of product
+formed.
+2. Malate dehydrogenase is a key enzyme in TCA cycle,
+which catalyzes the following reaction, which is
+unfavorable under standard conditions:
+C4H6O5 + NAD+ → C4H4O5 + NADH + H+
+Which of the following corresponds to the compound
+that is most likely to be oxidized under standard
+conditions?
+A. C4H6O5
+B. NAD+
+C. C4H4O5
+D. NADH
+3. All of the following are examples of oxidation-reduction
+reactions EXCEPT:
+I. C3H7O6P + NAD+ + Pi → C3H8O10P2 + NADH + H+
+II. C6H12O6 + 6 O2 → 6 CO2 + 6 H2O
+III. C6H14O12P2 → 2 C3H7O6P
+A. II only
+B. III only
+C. I and II only
+D. I and III only
+4. An acidic Glu residue in a protein (neutral in its
+protonated form) has a pKa value of 2.3 in the wild-type
+protein and is found near a neutral Ile residue. What will
+be the effect on the pKa of the Glu residue if a mutation
+substitutes a positively charged Lys residue for the Ile
+residue?
+A. The pKa will decrease due to favorable ionic
+interactions between the deprotonated Glu and Lys
+residues.
+B. The pKa will decrease due to unfavorable ionic
+interactions between the deprotonated Glu and Lys
+residues.
+C. The pKa will increase due to favorable ionic
+interactions between the deprotonated Glu and Lys
+residues.
+D. The pKa will increase due to unfavorable ionic
+interactions between the deprotonated Glu and Lys
+residues.
+5. Which of the following best orders the relative basicity
+of the side chains of Glu (pKa = 4.1), Cys (pKa = 8.3),
+and Lys (pKa = 10.8)?
+A. Cys > Glu > Lys
+B. Lys > Glu > Cys
+C. Lys > Cys > Glu
+D. Glu > Cys > Lys
+6. The cells in your body are constantly undergoing cellular
+respiration, producing CO2 as a byproduct. What would
+happen to the pH of your blood if you were to hold your
+breath?
+A. It would increase.
+B. It would be the same.
+C. It would decrease.
+D. It cannot be determined with the information
+provided.
+
+3.1 Drill
+CHAPTER 3 PRACTICE PASSAGE
+The complexity of hemoglobin’s function is exemplified by its
+chemical structure. Multiple factors are believed to affect the
+kinetics of oxygen binding to the molecule’s active sites.
+It has been proposed that the binding of oxygen (Figure 1)
+reduces strain on the heme protein superstructure by
+counterbalancing the pull of the proximal imidazole. Similarly,
+increasing basicity of the proximal imidazole (e.g., through
+loss of a hydrogen atom) is believed to exert additional strain
+on the heme protein in the deoxygenated state by inducing
+a dome-shaped molecular structure. Because the binding of
+oxygen relieves this strain, increasing basicity of the proximal
+imidazole increases the affinity of the heme for oxygen. The
+hydrophobic pocket created by hydrocarbon-like residues from
+adjacent heme proteins is also believed to facilitate oxygenation,
+though it has been proposed steric hindrance may provide an
+antagonistic effect. The distal imidazole shown below may
+inhibit dissociation by stabilizing the oxygen molecule in place.
+B:
+H
+H
+H
+R
+R
+R
+R
+N
+N CH3
+proximal
+imidazole
+hydrophobic
+pocket
+distal
+imidazole
+CH3
+CH3
+CC
+C
+C C
+C C
+C
+C C
+CC
+C
+CC C
+HC
+CH
+CH
+CH
+O
+Oδ
+Fe
+CH3
+N
+N
+N
+N
+N
+N
+–
+Figure 1 Summary schematic of selected stereoelectronic
+factors in oxygen affinity of heme
+The net effect of these and other factors affecting oxygen
+dissociation from hemoglobin can be expressed kinetically:
+Equation 1 Heme + O2  Heme-O2
+k9
+k
+A single heme molecule will associate with O2 to form a
+heme-O2 complex with rate constant k9; in a reverse reaction,
+oxygen will dissociate from the heme-O2 complex with rate
+constant k. One study examined the kinetics of association
+of oxygen at different oxygen-bound states as well as the
+implied equilibrium constants (KO2) for each stage of oxygen
+association (Table 1).
+Table 1 Kinetic Data Pertaining To Oxygen
+Association With Hemoglobin
+Heme k9
+(M–1 sec–1 × 10–7) k (sec–1) K9O2
+(M–1 × 10–6)
+Hb 0.20 1079 0.0019
+Hb(O2) 0.39 245 0.016
+Hb(O2)2 0.35 30 0.12
+Hb(O2)3 4.00 47 0.85
+Adapted from Chang, C. K., and Traylor, T. G. Kinetics of oxygen and
+carbon monoxide binding to synthetic analogs of the myoglobin and
+hemoglobin active sites; Ip, S. H. C.
+1. Based on information presented in the passage, which
+of the following most likely describes the outcome of
+replacing the distal imidazole with a nonpolar amino
+acid residue?
+A. The bond between iron and oxygen would be
+stabilized, decreasing the rate at which oxygen
+dissociates from hemoglobin.
+B. The bond between iron and oxygen would be
+stabilized, increasing the rate at which oxygen
+dissociates from hemoglobin.
+C. The bond between iron and oxygen would be
+destabilized, decreasing the rate at which oxygen
+dissociates from hemoglobin.
+D. The bond between iron and oxygen would be
+destabilized, increasing the rate at which oxygen
+dissociates from hemoglobin.
+2. Which of the following amino acids would likely NOT
+be found in the hydrophobic pocket of hemoglobin?
+A. F
+B. Y
+C. L
+D. V
+
+3. Biochemistry Basics | 57
+Drill
+3. What is the most likely effect of the addition of acid to
+the solution in which hemoglobin is suspended?
+A. The structure of deoxyhemoglobin would become
+relatively less strained, reducing affinity for oxygen.
+B. The structure of deoxyhemoglobin would become
+relatively less strained, increasing affinity for
+oxygen.
+C. The structure of deoxyhemoglobin would become
+relatively more strained, reducing affinity for
+oxygen.
+D. The structure of deoxyhemoglobin would become
+relatively more strained, increasing affinity for
+oxygen.
+4. Which of the following would be most likely to bind
+oxygen the fastest in the pulmonary vasculature?
+A. Hb
+B. Hb(O2)
+C. Hb(O2)2
+D. Hb(O2)3
+
+SOLUTIONS TO CHAPTER 3 FREESTANDING PRACTICE
+QUESTIONS
+1. C Enzymes ar e biological catalysts that affect the kinetics of biological r eactions. B y lo wer-
+ing the energy of the transition state, enzymes decr ease the Ea of biological r eactions and
+increase the amount of product formed per unit time (choice C is corr ect). ΔG is a thermo-
+dynamic quantity and will be unaffected by the addition of an enzyme (choices B and D are
+wrong). The total amount of product formed once the r eaction has reached equilibrium is
+determined by thermodynamic factors, wher eas the amount of pr oduct formed in a giv en
+time period is determined by kinetic factors (choice A is wrong).
+2. D Given that the question stem indicates that the reaction is unfavorable under standard con-
+ditions, it is likely to proceed in the reverse direction under standard conditions. NADH
+loses a h ydrogen atom in forming NAD+ in t he reverse reaction a nd is t hereby oxidized
+(choice D is correct). Both C4H6O5 and NAD+ are more likely to be the product, rather
+than the reactant, of this redox reaction under standard conditions (choices A a nd B a re
+wrong). Because C4H4O5 gains hydrogen atoms in generating C4H6O5, it is reduced, not
+oxidized (choice C is wrong).
+3. B Since all of the items appear in exactly two answer choices, start by evaluating the shortest
+item, Item III. Item III is NOT an oxidation reduction reaction and is a c orrect response.
+This reaction simply splits C 6H14O12P2 into t wo, t hree-carbon phosphorylated molecules,
+while maintaining the O to H ratio (choices A and C can be eliminated). Since Item II does
+not appear in any of the remaining choices, it must be an oxidation-reduction reaction (i.e.,
+it is a f alse statement) and you can evaluate Item I. Item I i s an oxidation-reduction reac-
+tion and is a false statement: NAD+ gains a hydrogen atom and is reduced to NADH, and
+C3H7O6P must therefore be oxidized (choice D can be eliminated and choice B is correct).
+Note that Item II is in fact an oxidation-reduction reaction (a false statement): O2 is in its
+standard state, giving it a zero oxidation state. It is reduced to have a –2 oxidation state in
+the products. The O to H ratio is substantially increased in generating CO2 from C6H12O6,
+which indicates C6H12O6 has been oxidized.
+4. A The substitution of a positively charged lysine for a neutral isoleucine would help stabilize
+Glu in its deprotonated, negatively-charged state (choices B a nd D c an be eliminated). Be-
+cause it would be more stable, it is more likely to give up its proton (i.e., it becomes more
+acidic), and the pKa would decrease (choice C is wrong, and choice A is correct).
+5. C pKa is a measure of acid strength. The lower the pKa, the more acidic the functional group.
+The question, however, is a sking about ba sicity. L ogically, t he more acidic t he f unctional
+group, the less basic it is. Therefore, the most basic group is the one with the highest pKa,
+and the least basic is the one with lowest pKa. Of the three amino acids, the side chain of
+Lys has the highest pKa (choices A and D can be eliminated), and the side chain of Glu has
+the lowest pKa (choice B can be eliminated, and choice C is correct).
+6. C When you hold your breath, the CO2 concentration in your blood increases. The increase
+in CO2 will increase the formation of carbonic acid, H2CO3, in your blood, which will de-
+crease the pH (choice C is correct; choices A, B, and D are wrong).
+
+3. Biochemistry Basics | 59
+SOLUTIONS TO CHAPTER 3 PRACTICE PASSAGE
+1. D In its protonated form, the distal imidazole forms a h ydrogen bond with the oxygen mol-
+ecule, stabilizing its position with respect to the iron. Introducing a n onpolar amino acid
+residue i n p lace o f t his i midazole w ould r emove t he h ydrogen b ond, d estabilizing t he
+interaction between iron and oxygen (choices A and B are wrong). If the interaction
+between iron and oxygen is destabilized, this would likely result in an increase in the rate at
+which oxygen dissociates from heme (choice D is correct, and choice C is wrong).
+2. B Highlight the word NOT and write “A B C D ” on the noteboard. Evaluate each answer
+choice, writing “Y” if it is a hydrophobic amino acid that would be found in the pocket, or
+“N” if it is not; then choose the answer that stands out. F is phenylalanine, a hydrophobic
+amino acid (write “Y” next to “A” on the noteboard). Y is tyrosine, a polar amino acid (write
+“N” next to “B” on the noteboard). L i s leucine and V i s valine, both hydrophobic amino
+acids (write “Y” next to “C” and “D” on the noteboard). Since choice B stands out with an
+“N” instead of a “Y,” it is the correct answer choice.
+3. A Increasing the acidity of the buffer in which hemoglobin is suspended would effectively de-
+crease the basicity of the proximal imidazole by maximizing the chance that H+ will remain
+bound to the five-member ring. As a result, the proximal imidazole would exert less strain
+on the deoxygenated state of hemoglobin (choices C and D can be eliminated). According
+to the passage, increased basicity of the proximal imidazole would increase the affinity of
+the heme for oxygen; therefore, decreased basicity would decrease the affinity for oxygen
+(choice B c an be eliminated, a nd c hoice A i s c orrect). Indeed, while t here a re numerous
+effects of increasing acidity (decreasing pH) on the heme molecule, the commonly depicted
+oxygen dissociation curve below demonstrates a r elative decrease in heme affinity for oxy-
+gen with increasing acidity; higher pO2 is required for the same oxyhemoglobin saturation.
+% Hb saturation by O2
+O2 partial pressure (mm Hg)
+Increased H+
+Increased CO2
+Increased temperature
+100
+50
+10
+20 6040 80 100 120 140
+20
+30
+40
+60
+70
+80
+90
+Decreased H+
+Decreased CO2
+Decreased temperature
+Normal conditions

@@ -1,5 +1,6 @@
 ﻿{
   "permissions": {
+    "allow": ["Bash(ollama list)", "Bash(ollama ps)", "Bash(ollama show *)"],
     "deny": ["WebFetch", "WebSearch"]
   }
 }

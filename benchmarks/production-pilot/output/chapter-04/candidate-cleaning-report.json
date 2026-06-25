@@ -1,0 +1,13 @@
+{
+  "sanitation": {
+    "removed_sections": [],
+    "dropped_worked": []
+  },
+  "quality": {
+    "ungrounded_worked": [],
+    "sign_contradictions": [],
+    "equilibrium_equal": [],
+    "ungrounded_objectives": [],
+    "duplicate_questions": []
+  }
+}

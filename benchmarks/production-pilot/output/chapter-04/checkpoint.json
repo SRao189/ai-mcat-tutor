@@ -1,0 +1,32 @@
+{
+  "state": "ACCEPTED",
+  "history": [
+    "DISCOVERED",
+    "NORMALIZED",
+    "CONTEXT_READY",
+    "GENERATING",
+    "DISCOVERED",
+    "NORMALIZED",
+    "CONTEXT_READY",
+    "GENERATING",
+    "GENERATED",
+    "GENERATING",
+    "GENERATED",
+    "QUARANTINED",
+    "DISCOVERED",
+    "NORMALIZED",
+    "CONTEXT_READY",
+    "GENERATING",
+    "GENERATED",
+    "STRUCTURE_VALIDATED",
+    "AUDITING",
+    "AUDITED",
+    "FINAL_AUDIT",
+    "ACCEPTED"
+  ],
+  "raw_source": "C:\\Users\\sahar\\mcat-tutor\\raw\\Chapter 4.txt",
+  "generate_attempt": 1,
+  "error": "candidate failed structural validation or educational minimums after retry",
+  "audit_verdict": "pass",
+  "enrich_note": "no_enrichment_needed"
+}

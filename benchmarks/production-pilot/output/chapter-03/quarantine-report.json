@@ -1,0 +1,11 @@
+{
+  "chapter": "chapter-03",
+  "error": "exceeded overall timeout (1500s)",
+  "at": "2026-06-25T11:03:32.399712+00:00",
+  "perf": {
+    "chapter": "chapter-03",
+    "stages": {},
+    "status": "QUARANTINED",
+    "error": "exceeded overall timeout (1500s)"
+  }
+}

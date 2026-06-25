@@ -1,0 +1,118 @@
+=== PREFLIGHT (GENERATE) chapter=chapter-03 ===
+  [OK ] raw source / validator / schema present
+  [OK ] normalized source is readable non-empty text
+  [OK ] context packet non-empty
+  [OK ] requested JSON schemas serialize
+  [OK ] deterministic validator works
+  [OK ] model gemma3:4b installed
+  STAGE=GENERATE MODEL=gemma3:4b CHAPTER=chapter-03 timeout~1500s
+=== PREFLIGHT PASSED ===
+
+[03:39:01] chapter-03:gemma LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[03:39:31] chapter-03:gemma LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[03:40:01] chapter-03:gemma LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[03:40:32] chapter-03:gemma LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[03:41:02] chapter-03:gemma GENERATING - 252 tokens, running
+[03:41:32] chapter-03:gemma GENERATING - 689 tokens, running
+[03:42:02] chapter-03:gemma GENERATING - 1109 tokens, running
+[03:42:32] chapter-03:gemma GENERATING - 1534 tokens, running
+[03:43:02] chapter-03:gemma GENERATING - 1947 tokens, running
+[03:43:32] chapter-03:gemma GENERATING - 2369 tokens, running
+[03:44:02] chapter-03:gemma GENERATING - 2779 tokens, running
+[03:44:32] chapter-03:gemma GENERATING - 3178 tokens, running
+[03:45:02] chapter-03:gemma GENERATING - 3571 tokens, running
+[03:45:32] chapter-03:gemma GENERATING - 3947 tokens, running
+[03:46:02] chapter-03:gemma GENERATING - 4315 tokens, running
+[03:46:32] chapter-03:gemma GENERATING - 4694 tokens, running
+[03:47:02] chapter-03:gemma GENERATING - 5067 tokens, running
+[03:47:32] chapter-03:gemma GENERATING - 5424 tokens, running
+[03:48:02] chapter-03:gemma GENERATING - 5739 tokens, running
+[03:48:32] chapter-03:gemma GENERATING - 6084 tokens, running
+[03:49:02] chapter-03:gemma GENERATING - 6437 tokens, running
+[03:49:32] chapter-03:gemma GENERATING - 6792 tokens, running
+[03:50:02] chapter-03:gemma GENERATING - 7143 tokens, running
+[03:50:32] chapter-03:gemma GENERATING - 7495 tokens, running
+[03:51:02] chapter-03:gemma GENERATING - 7838 tokens, running
+[03:51:32] chapter-03:gemma GENERATING - 8179 tokens, running
+[03:52:02] chapter-03:gemma GENERATING - 8511 tokens, running
+[03:52:32] chapter-03:gemma GENERATING - 8852 tokens, running
+[03:53:02] chapter-03:gemma GENERATING - 9181 tokens, running
+[03:53:32] chapter-03:gemma GENERATING - 9513 tokens, running
+[03:54:02] chapter-03:gemma GENERATING - 9838 tokens, running
+[03:54:32] chapter-03:gemma GENERATING - 10162 tokens, running
+[03:55:02] chapter-03:gemma GENERATING - 10478 tokens, running
+[03:55:32] chapter-03:gemma GENERATING - 10804 tokens, running
+[03:56:02] chapter-03:gemma GENERATING - 11128 tokens, running
+[03:56:32] chapter-03:gemma GENERATING - 11449 tokens, running
+[03:57:02] chapter-03:gemma GENERATING - 11756 tokens, running
+[03:57:32] chapter-03:gemma GENERATING - 12070 tokens, running
+[03:58:02] chapter-03:gemma GENERATING - 12381 tokens, running
+[03:58:32] chapter-03:gemma GENERATING - 12687 tokens, running
+[03:59:02] chapter-03:gemma GENERATING - 12988 tokens, running
+[03:59:32] chapter-03:gemma GENERATING - 13263 tokens, running
+[04:00:02] chapter-03:gemma GENERATING - 13562 tokens, running
+[04:00:32] chapter-03:gemma GENERATING - 13845 tokens, running
+[04:01:02] chapter-03:gemma GENERATING - 14135 tokens, running
+[04:01:32] chapter-03:gemma GENERATING - 14429 tokens, running
+[04:02:02] chapter-03:gemma GENERATING - 14718 tokens, running
+[04:02:32] chapter-03:gemma GENERATING - 15011 tokens, running
+[04:03:02] chapter-03:gemma GENERATING - 15299 tokens, running
+  Unloaded model: gemma3:4b
+  Unloaded model: phi4-mini
+  Unloaded model: qwen3:4b
+
+[chapter-03] QUARANTINED: exceeded overall timeout (1500s)
+=== PREFLIGHT (GENERATE) chapter=chapter-04 ===
+  [OK ] raw source / validator / schema present
+  [OK ] normalized source is readable non-empty text
+  [OK ] context packet non-empty
+  [OK ] requested JSON schemas serialize
+  [OK ] deterministic validator works
+  [OK ] model gemma3:4b installed
+  STAGE=GENERATE MODEL=gemma3:4b CHAPTER=chapter-04 timeout~1500s
+=== PREFLIGHT PASSED ===
+
+[04:04:04] chapter-04:gemma LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:04:34] chapter-04:gemma LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:05:04] chapter-04:gemma GENERATING - 73 tokens, running
+[04:05:34] chapter-04:gemma GENERATING - 554 tokens, running
+[04:06:04] chapter-04:gemma GENERATING - 1018 tokens, running
+[04:06:34] chapter-04:gemma GENERATING - 1477 tokens, running
+  Unloaded model: gemma3:4b
+  below educational minimums: ['no grounded worked example and no SOURCE GAP']
+  candidate failed validation/minimums (attempt 1):
+{
+  "module": "C:\\Users\\sahar\\mcat-tutor\\benchmarks\\production-pilot\\output\\chapter-04\\candidate-session.json",
+  "valid": true,
+  "errorCount": 0,
+  "warningCount": 0,
+  "errors": [],
+  "warnings": []
+}
+[04:07:25] chapter-04:gemma LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:07:55] chapter-04:gemma LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:08:25] chapter-04:gemma GENERATING - 43 tokens, running
+[04:08:55] chapter-04:gemma GENERATING - 502 tokens, running
+[04:09:25] chapter-04:gemma GENERATING - 927 tokens, running
+[04:09:55] chapter-04:gemma GENERATING - 1330 tokens, running
+[04:10:25] chapter-04:gemma GENERATING - 1760 tokens, running
+  Unloaded model: gemma3:4b
+  below educational minimums: ['no grounded worked example and no SOURCE GAP']
+  candidate failed validation/minimums (attempt 2):
+{
+  "module": "C:\\Users\\sahar\\mcat-tutor\\benchmarks\\production-pilot\\output\\chapter-04\\candidate-session.json",
+  "valid": true,
+  "errorCount": 0,
+  "warningCount": 0,
+  "errors": [],
+  "warnings": []
+}
+  Unloaded model: gemma3:4b
+  Unloaded model: phi4-mini
+  Unloaded model: qwen3:4b
+
+[chapter-04] QUARANTINED: candidate failed structural validation or educational minimums after retry
+
+===== PILOT SUMMARY =====
+  chapter-03: QUARANTINED  (exceeded overall timeout (1500s))
+  chapter-04: QUARANTINED  (candidate failed structural validation or educational minimums after retry)

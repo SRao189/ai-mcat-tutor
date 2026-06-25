@@ -1,0 +1,24 @@
+=== PREFLIGHT (GENERATE) chapter=chapter-04 ===
+  [OK ] raw source / validator / schema present
+  [OK ] normalized source is readable non-empty text
+  [OK ] context packet non-empty
+  [OK ] requested JSON schemas serialize
+  [OK ] deterministic validator works
+  [OK ] model gemma3:4b installed
+  STAGE=GENERATE MODEL=gemma3:4b CHAPTER=chapter-04 timeout~1500s
+=== PREFLIGHT PASSED ===
+
+  resume: reusing cached candidate-raw.txt (no model call)
+[04:15:03] chapter-04:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:15:33] chapter-04:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:16:03] chapter-04:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:16:33] chapter-04:phi LOADING_MODEL - 0 tokens, loading/prefill, no tokens yet (normal)
+[04:17:03] chapter-04:phi GENERATING - 22 tokens, running
+[04:17:33] chapter-04:phi GENERATING - 229 tokens, running
+[04:18:03] chapter-04:phi GENERATING - 441 tokens, running
+  Unloaded model: phi4-mini
+
+[chapter-04] ACCEPTED -> C:\Users\sahar\mcat-tutor\benchmarks\production-pilot\output\chapter-04\session-preview.html
+
+===== PILOT SUMMARY =====
+  chapter-04: ACCEPTED  (no_enrichment_needed)

@@ -1,0 +1,119 @@
+{"id": "tutoring-session-1", "title": "Amino Acid Fundamentals", "objectives": [
+    "Identify and classify amino acids based on their chemical properties.",
+    "Understand the structure of an amino acid and its key components.",
+    "Recognize the importance of amino acid sequence in protein function."
+], "sections": [
+    {
+        "id": "section-1",
+        "title": "Introduction to Amino Acids",
+        "content": "Proteins are essential macromolecules, playing diverse roles within cells. They're built from 20 different **amino acids**, linked together in chains – these chains determine a protein’s unique structure and function. Think of amino acids as the individual LEGO bricks that make up a complex building (a protein). The order of these bricks—the sequence of amino acids—is absolutely critical for what the final structure will be like, and therefore, what it can do."
+    ,
+    "sourceRefs": [
+        "raw/Chapter 4.txt#4.1-amino-acids"
+    ]
+    }
+,
+    {
+        "id": "section-2",
+        "title": "Amino Acid Structure: The Basics",
+        "content": "Every amino acid has a common core structure: an **α-amino group** (H2N-), an **α-carboxyl group** (COOH), and a central **tetrahedral α-carbon**.  The unique part of each amino acid is its side chain, often called the R-group. This R-group varies in size, shape, and chemical properties, giving each amino acid its distinctive characteristics. The R-group determines how the amino acid interacts with its environment – whether it’s attracted to water or repelled, for example.  The generic formula for all 20 is H R -COOH."
+    ,
+        "sourceRefs": [
+            "raw/Chapter 4.txt#4.1-amino-acids"
+        ]
+    }
+,
+    {
+        "id": "section-3",
+        "title": "Classifying Amino Acids: Acidic, Basic, Nonpolar, and Polar",
+        "content": "Amino acids can be grouped into four main categories based on their R-groups. **Acidic amino acids** (Aspartic acid and Glutamic acid) have acidic side chains due to the presence of carboxyl groups (pKa ≈ 4).  **Basic amino acids** (Lysine, Arginine, and Histidine) possess basic side chains with pKa values around 10, 12, and 6.5 respectively. **Nonpolar amino acids** (Glycine, Alanine, Valine, Leucine, Isoleucine, Phenylalanine, Tryptophan, and Methionine) have hydrophobic R-groups that tend to cluster together away from water. Finally, **polar amino acids** (Serine, Threonine, Tyrosine, Asparagine, Glutamine) have polar R-groups capable of forming hydrogen bonds with water."
+    ,
+        "sourceRefs": [
+            "raw/Chapter 4.txt#4.1-amino-acids"
+        ]
+    }
+] ,
+ "equations": [],
+ "workedExamples": [],
+ "checks":[
+    {
+        "question": "Which of the following amino acids would you expect to find predominantly in the interior of a globular protein?",
+        "answer": "Isoleucine",
+        "explanation": "Isoleucine is a hydrophobic (nonpolar) amino acid. Hydrophobic residues tend to cluster together in the interior of proteins, away from water, to minimize their interaction with the surrounding aqueous environment.",
+        "sourceRefs": [
+            "raw/Chapter 4.txt#4.1-amino-acids"
+        ],
+        "reviewTarget": "section-3"
+    },
+    {
+        "question": "Glutamic acid and aspartic acid are examples of which type of amino acids?",
+        "answer": "Acidic Amino Acids",
+        "explanation": "Glutamic acid and aspartic acid both contain carboxylic acid groups (pKa ≈ 4) in their side chains, making them acidic amino acids.",
+        "sourceRefs": [
+            "raw/Chapter 4.txt#4.1-amino-acids"
+        ],
+        "reviewTarget": "section-1"
+    },
+    {
+        "question": "Histidine's pKa value of 6.5 is close to physiological pH (7.4). What does this suggest about histidine’s behavior in a protein?",
+        "answer": "It suggests that histidine can act as both an acid and a base.",
+        "explanation": "At physiological pH, histidine can exist in either its protonated (positive charge) or deprotonated (negative charge) form. This dual nature makes it valuable in protein active sites where proton transfer is crucial for catalysis.",
+        "sourceRefs": [
+            "raw/Chapter 4.txt#4.1-amino-acids"
+        ],
+        "reviewTarget": "section-2"
+    },
+    {
+        "question": "A researcher is studying a newly discovered protein and observes that several of its amino acids are clustered together, repelling water. What can you conclude about these amino acids?",
+        "answer": "They are likely nonpolar (hydrophobic) amino acids.",
+        "explanation": "Nonpolar or hydrophobic amino acids minimize their contact with water, often found in the protein's interior to avoid disrupting the surrounding aqueous environment.",
+        "sourceRefs": [
+            "raw/Chapter 4.txt#4.1-amino-acids"
+        ],
+        "reviewTarget": "section-3"
+    },
+    {
+        "question": "Which amino acid is unique in having a side chain with a pKa value close to physiological pH?",
+        "answer": "Histidine",
+        "explanation": "Histidine's pKa of 6.5 allows it to exist in both protonated and deprotonated forms at physiological pH, making it versatile in protein active sites.",
+        "sourceRefs": [
+            "raw/Chapter 4.txt#4.1-amino-acids"
+        ],
+        "reviewTarget": "section-2"
+    }
+ ],
+ "practiceQuestions":[
+     {
+         "question": "Which of the following amino acids would you expect to find predominantly on the exterior of a protein exposed to water?",
+         "answer": "Serine",
+         "explanation": "Serine has a hydroxyl group (-OH) that can form hydrogen bonds with water, making it hydrophilic and suitable for an extracellular environment.",
+         "sourceRefs": [
+             "raw/Chapter 4.txt#4.1-amino-acids"
+         ],
+         "reviewTarget": "section-3"
+     },
+     {
+         "question": "A protein is found to have a high concentration of positively charged amino acids on its surface. What might this indicate about the protein's function?",
+         "answer": "The protein may be involved in binding negatively charged molecules or interacting with DNA.",
+         "explanation": "Positively charged (basic) amino acids are attracted to negatively charged molecules and can form ionic bonds, facilitating interactions with other biomolecules like DNA.",
+         "sourceRefs": [
+             "raw/Chapter 4.txt#4.1-amino-acids"
+         ],
+         "reviewTarget": "section-2"
+     },
+     {
+        "question": "Which amino acid is known for its ability to act as both an acid and a base due to its side chain?",
+        "answer": "Histidine",
+        "explanation": "Histidine's pKa value near physiological pH allows it to readily donate or accept protons, making it a versatile component in protein active sites.",
+        "sourceRefs": [
+            "raw/Chapter 4.txt#4.1-amino-acids"
+        ],
+        "reviewTarget": "section-2"
+     }
+ ],
+ "sourceRefs": [
+    "raw/Chapter 4.txt#4.1-amino-acids"
+ ]
+  ,
+ "sourceGaps": []
+}
