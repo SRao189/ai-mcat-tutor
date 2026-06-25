@@ -1,0 +1,171 @@
+{
+  "id": "module-3",
+  "title": "Oxidation and Reduction (Redox)",
+  "objectives": [
+    "Define oxidation and reduction in terms of electrons, oxygen, and hydrogen",
+    "Identify oxidation and reduction in example reactions",
+    "Relate redox chemistry to catabolism and anabolism in metabolism"
+  ],
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Core Concept",
+      "content": "Oxidation is the loss of electrons, and reduction is the gain of electrons. The mnemonic OIL RIG captures this: Oxidation Is Loss, Reduction Is Gain. Because electrons that are lost by one atom must be gained by another, oxidation and reduction always occur together — when one atom is oxidized, another must be reduced, forming a redox pair.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:21-26"
+      ]
+    },
+    {
+      "id": "section-2",
+      "title": "Three Ways to Identify Redox Reactions",
+      "content": "Redox reactions can be identified three ways. Oxidation corresponds to a gain of oxygen atoms, a loss of hydrogen atoms, or a loss of electrons. Reduction corresponds to the opposite: a loss of oxygen atoms, a gain of hydrogen atoms, or a gain of electrons.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:28-34"
+      ]
+    },
+    {
+      "id": "section-3",
+      "title": "Quick Examples",
+      "content": "CH₃CH₃ → H₂C=CH₂ is an oxidation because hydrogens are removed. Fe³⁺ → Fe²⁺ is a reduction because an electron is added. O₂ → H₂O is a reduction because hydrogens are added to O₂. Disulfide bond formation is an oxidation because hydrogens are removed.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:38-43"
+      ]
+    },
+    {
+      "id": "section-4",
+      "title": "Energy Metabolism Context",
+      "content": "Photosynthetic organisms (photoautotrophs, such as plants) store solar energy in carbohydrates. Cellular respiration in animals (chemoheterotrophs) oxidizes reduced molecules such as carbohydrates and fats, producing CO₂ and ATP. In glucose oxidation (C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O), the carbons in glucose are oxidized to CO₂ while oxygen is reduced to H₂O, making carbon and oxygen the redox pair in this reaction.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:46-56"
+      ]
+    },
+    {
+      "id": "section-5",
+      "title": "Catabolism vs. Anabolism",
+      "content": "Catabolism is the breaking down of molecules; it is oxidative and releases energy. Anabolism is the building up of molecules; it is reductive and requires energy (ATP). Fatty acid synthesis is an example of anabolism, consisting of successive reductions of the carbon chain. ATP stores energy released from catabolism and uses it to drive anabolism.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:58-66"
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O",
+      "meaning": "Glucose oxidation: carbon in glucose is oxidized to CO₂ while oxygen is reduced to H₂O.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:50-56"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "In the reaction Fe³⁺ → Fe²⁺, is iron oxidized or reduced?",
+      "steps": [
+        "Compare the charge of iron before and after the reaction: it goes from 3+ to 2+",
+        "A decrease in positive charge means iron gained an electron",
+        "By OIL RIG, gain of electrons = reduction"
+      ],
+      "answer": "Iron is reduced, because it gains an electron as its charge decreases from 3+ to 2+.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:21-24",
+        "wiki/course/context/module-3-context.md:41"
+      ]
+    },
+    {
+      "question": "In glucose oxidation (C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O), which element is oxidized and which is reduced?",
+      "steps": [
+        "Identify what happens to carbon: glucose's carbons end up in CO₂, having gained oxygen atoms",
+        "By the three ways to identify redox reactions, gain of oxygen atoms = oxidation, so carbon is oxidized",
+        "Identify what happens to oxygen: O₂ ends up in H₂O, having gained hydrogen atoms",
+        "Gain of hydrogen atoms = reduction, so oxygen is reduced",
+        "Carbon (oxidized) and oxygen (reduced) form the redox pair in this reaction"
+      ],
+      "answer": "Carbon is oxidized (to CO₂) and oxygen is reduced (to H₂O).",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:50-56"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "Is the following statement true or false? 'Oxidation can occur without a corresponding reduction elsewhere in the reaction.'",
+      "answer": "False",
+      "explanation": "Electrons lost by one atom (oxidation) must be gained by another atom (reduction); oxidation and reduction always occur together as a redox pair.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:26"
+      ],
+      "reviewTarget": "core concept"
+    },
+    {
+      "question": "Disulfide bond formation involves the loss of hydrogen atoms. Is this an oxidation or a reduction?",
+      "answer": "Oxidation",
+      "explanation": "Loss of hydrogen atoms is one of the three ways to identify oxidation.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:43"
+      ],
+      "reviewTarget": "three ways to identify redox reactions"
+    },
+    {
+      "question": "Which of the following best describes anabolism?",
+      "choices": [
+        "Breaking down molecules, oxidative, releases energy",
+        "Building up molecules, reductive, requires energy",
+        "Breaking down molecules, reductive, requires energy",
+        "Building up molecules, oxidative, releases energy"
+      ],
+      "answer": "Building up molecules, reductive, requires energy",
+      "explanation": "Anabolism is the building up of molecules; it is reductive in nature and requires energy input (ATP), as in fatty acid synthesis.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:58-66"
+      ],
+      "reviewTarget": "catabolism vs. anabolism"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Which mnemonic describes the relationship between oxidation and reduction in terms of electrons?",
+      "choices": [
+        "OIL RIG: Oxidation Is Loss, Reduction Is Gain",
+        "OIL RIG: Oxidation Is Gain, Reduction Is Loss",
+        "RIG OIL: Reduction Is Gain of oxygen, Oxidation Is Loss of oxygen",
+        "There is no mnemonic in the source material"
+      ],
+      "answer": "OIL RIG: Oxidation Is Loss, Reduction Is Gain",
+      "explanation": "OIL RIG stands for Oxidation Is Loss (of electrons), Reduction Is Gain (of electrons).",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:24"
+      ],
+      "reviewTarget": "core concept"
+    },
+    {
+      "question": "CH₃CH₃ is converted to H₂C=CH₂ by removing hydrogens. Is this an oxidation or reduction, and why?",
+      "answer": "Oxidation, because loss of hydrogen atoms is one of the three ways to identify an oxidation reaction",
+      "explanation": "The three ways to identify redox reactions list loss of hydrogen atoms as oxidation.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:38-40"
+      ],
+      "reviewTarget": "quick examples"
+    },
+    {
+      "question": "Which process releases energy: catabolism or anabolism?",
+      "choices": [
+        "Catabolism, because it is oxidative and breaks molecules down",
+        "Anabolism, because it builds molecules up",
+        "Both release equal amounts of energy",
+        "Neither process involves energy changes"
+      ],
+      "answer": "Catabolism, because it is oxidative and breaks molecules down",
+      "explanation": "Catabolism breaks down molecules, is oxidative, and releases energy; that released energy (via ATP) drives anabolism.",
+      "sourceRefs": [
+        "wiki/course/context/module-3-context.md:60-66"
+      ],
+      "reviewTarget": "catabolism vs. anabolism"
+    }
+  ],
+  "sourceRefs": [
+    "wiki/course/context/module-3-context.md",
+    "wiki/oxidation-reduction.md",
+    "wiki/.understand-anything/knowledge-graph.json"
+  ],
+  "sourceGaps": []
+}

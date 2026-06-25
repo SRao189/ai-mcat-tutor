@@ -1,0 +1,14 @@
+{
+  "model": "phi4-mini",
+  "elapsed_seconds": 448.491,
+  "done_reason": "stop",
+  "total_duration_ns": 446318991700,
+  "load_duration_ns": 10731443300,
+  "prompt_eval_count": 7272,
+  "prompt_eval_duration_ns": 331563105000,
+  "eval_count": 387,
+  "eval_duration_ns": 103422728000,
+  "verdict": "pass",
+  "unsupported_claim_count": 0,
+  "recommended_repair_count": 2
+}
