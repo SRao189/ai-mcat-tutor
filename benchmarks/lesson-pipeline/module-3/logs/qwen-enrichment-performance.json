@@ -1,0 +1,19 @@
+{
+  "model": "qwen3:4b",
+  "stage": "complete",
+  "status": "ok",
+  "elapsed_seconds": 259.976,
+  "schema_valid": true,
+  "improvement_detected": true,
+  "accepted": true,
+  "section_updates_applied": 1,
+  "practice_questions_added": 2,
+  "rejected_updates": [],
+  "rejected_questions": [],
+  "original_practice_questions": 2,
+  "enriched_practice_questions": 4,
+  "prompt_eval_count": 2239,
+  "eval_count": 534,
+  "validator_stdout": "{\n  \"module\": \"C:\\\\Users\\\\sahar\\\\mcat-tutor\\\\benchmarks\\\\lesson-pipeline\\\\module-3\\\\output\\\\qwen-enriched-module.json\",\n  \"valid\": true,\n  \"errorCount\": 0,\n  \"warningCount\": 0,\n  \"errors\": [],\n  \"warnings\": []\n}",
+  "validator_stderr": ""
+}

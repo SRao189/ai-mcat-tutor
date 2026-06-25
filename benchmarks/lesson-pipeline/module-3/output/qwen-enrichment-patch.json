@@ -1,0 +1,29 @@
+{
+  "section_updates": [
+    {
+      "section_id": "core-concept",
+      "append_text": "This coupling occurs because electrons cannot exist freely in solution; they must be transferred between species to maintain charge balance."
+    }
+  ],
+  "practice_question_additions": [
+    {
+      "question": "In cellular respiration, why does the oxidation of glucose (C₆H₁₂O₆) to CO₂ involve a redox pair with oxygen?",
+      "answer": "Oxygen acts as the terminal electron acceptor in the electron transport chain, accepting electrons from glucose to form water. This creates a redox pair where carbon atoms in glucose are oxidized (losing electrons) and oxygen is reduced (gaining electrons).",
+      "explanation": "The glucose oxidation reaction (C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O) shows that carbon atoms in glucose lose electrons (oxidized) while oxygen gains electrons (reduced) to form water. This electron transfer between carbon and oxygen constitutes the redox pair.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ],
+      "reviewTarget": "energy-metabolism-context"
+    },
+    {
+      "question": "How does the reduction of oxygen (O₂) to water (H₂O) in cellular respiration demonstrate a redox pair with glucose?",
+      "answer": "The reduction of oxygen (O₂) to water involves gaining electrons from glucose, making oxygen the oxidizing agent and glucose the reducing agent. This electron transfer creates a redox pair where glucose is oxidized and oxygen is reduced.",
+      "explanation": "In the reaction C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O, the carbon atoms in glucose are oxidized (losing electrons) and oxygen is reduced (gaining electrons). The redox pair consists of carbon (oxidized) and oxygen (reduced).",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ],
+      "reviewTarget": "energy-metabolism-context"
+    }
+  ],
+  "reason": "The audit identified that the core concept section needs clarification on why oxidation and reduction form a coupled pair. The source article states: 'When one atom is oxidized, another **must** be reduced → **redox pair'.' The addition explains the electron transfer mechanism without introducing outside facts. The practice questions use examples from the source article's glucose oxidation example to deepen application understanding."
+}

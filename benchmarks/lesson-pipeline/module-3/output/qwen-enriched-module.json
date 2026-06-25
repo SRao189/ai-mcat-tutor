@@ -1,0 +1,143 @@
+{
+  "id": "oxidation-reduction",
+  "title": "Oxidation and Reduction (Redox)",
+  "objectives": [
+    "Define oxidation and reduction based on electron transfer.",
+    "Identify redox reactions using three key methods.",
+    "Understand the concept of a redox pair.",
+    "Explain how redox reactions relate to energy metabolism, specifically photosynthesis and cellular respiration."
+  ],
+  "sections": [
+    {
+      "id": "core-concept",
+      "title": "Core Concept",
+      "content": "**Oxidation** = loss of electrons\n**Reduction** = gain of electrons\n\n**Mnemonic:** OIL RIG — Oxidation Is Loss, Reduction Is Gain\n\nWhen one atom is oxidized, another **must** be reduced → **redox pair**\n\nThis coupling occurs because electrons cannot exist freely in solution; they must be transferred between species to maintain charge balance.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    },
+    {
+      "id": "three-ways-to-identify",
+      "title": "Three Ways to Identify Redox Reactions",
+      "content": "| Oxidation (loss) | Reduction (gain) |\n|------------------|------------------|\n| Gain of O atoms | Loss of O atoms |\n| Loss of H atoms | Gain of H atoms |\n| Loss of electrons | Gain of electrons |",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    },
+    {
+      "id": "quick-examples",
+      "title": "Quick Examples",
+      "content": "| Change | Classification | Reason |\n|--------|----------------|--------|\n| CH₃CH₃ → H₂C=CH₂ | Oxidation | Hydrogens removed |\n| Fe³⁺ → Fe²⁺ | Reduction | Electron added |\n| O₂ → H₂O | Reduction | Hydrogens added to O₂ |\n| Disulfide bond formation | Oxidation | Hydrogens removed |",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    },
+    {
+      "id": "energy-metabolism-context",
+      "title": "Energy Metabolism Context",
+      "content": "**Photosynthesis:** Plants (photoautotrophs) store solar energy in carbohydrates\n**Cellular respiration:** Animals (chemoheterotrophs) oxidize reduced molecules (carbs, fats) → CO₂ + ATP\n\n**Glucose oxidation:**\n```\nC₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O\n```\n- Carbons in glucose → oxidized (to CO₂)\n- Oxygen → reduced (to H₂O)\n- Redox pair: C (oxidized) / O (reduced)",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    },
+    {
+      "id": "catabolism-vs-anabolism",
+      "title": "Catabolism vs. Anabolism",
+      "content": "| Process | Direction | Redox | Energy |\n|---------|-----------|-------|--------|\n| **Catabolism** | Breaking down | Oxidative | Releases energy |\n| **Anabolism** | Building up | Reductive | Requires energy (ATP) |\n\n- Fatty acid synthesis = successive reductions of carbon chain\n- ATP stores energy from catabolism; drives anabolism",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "Oxidation = loss of electrons",
+      "meaning": "This equation defines oxidation as the process where a substance loses electrons.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    },
+    {
+      "expression": "Fatty acid synthesis = successive reductions of carbon chain",
+      "meaning": "This describes how fatty acids are built up through reduction reactions, adding hydrogen atoms to the carbon chain.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "CH₃CH₃ → H₂C=CH₂",
+      "steps": [
+        "Identify the change: The original molecule has a single bond between carbons, while the product has a double bond."
+      ],
+      "answer": "Oxidation. The hydrogens are removed from the carbon chain.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    },
+    {
+      "question": "Fe³⁺ → Fe²⁺",
+      "steps": [
+        "Identify the change: Iron is in a higher oxidation state (3+) in the reactant and a lower oxidation state (2+) in the product."
+      ],
+      "answer": "Reduction. An electron has been added to the iron atom.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "What is the key difference between oxidation and reduction?",
+      "answer": "Oxidation involves a loss of electrons, while reduction involves a gain of electrons.",
+      "explanation": "This is the fundamental definition of redox reactions.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ],
+      "reviewTarget": "core-concept"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Which process describes the conversion of glucose to carbon dioxide and water?",
+      "answer": "Glucose oxidation",
+      "explanation": "This is a classic example of a redox reaction in cellular respiration.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ],
+      "reviewTarget": "energy-metabolism-context"
+    },
+    {
+      "question": "What does the term 'redox pair' refer to?",
+      "answer": "A pair of reactants where one is oxidized and one is reduced simultaneously.",
+      "explanation": "Redox reactions always occur in pairs, with electrons transferred between them.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ],
+      "reviewTarget": "core-concept"
+    },
+    {
+      "question": "In cellular respiration, why does the oxidation of glucose (C₆H₁₂O₆) to CO₂ involve a redox pair with oxygen?",
+      "answer": "Oxygen acts as the terminal electron acceptor in the electron transport chain, accepting electrons from glucose to form water. This creates a redox pair where carbon atoms in glucose are oxidized (losing electrons) and oxygen is reduced (gaining electrons).",
+      "explanation": "The glucose oxidation reaction (C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O) shows that carbon atoms in glucose lose electrons (oxidized) while oxygen gains electrons (reduced) to form water. This electron transfer between carbon and oxygen constitutes the redox pair.",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ],
+      "reviewTarget": "energy-metabolism-context"
+    },
+    {
+      "question": "How does the reduction of oxygen (O₂) to water (H₂O) in cellular respiration demonstrate a redox pair with glucose?",
+      "answer": "The reduction of oxygen (O₂) to water involves gaining electrons from glucose, making oxygen the oxidizing agent and glucose the reducing agent. This electron transfer creates a redox pair where glucose is oxidized and oxygen is reduced.",
+      "explanation": "In the reaction C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O, the carbon atoms in glucose are oxidized (losing electrons) and oxygen is reduced (gaining electrons). The redox pair consists of carbon (oxidized) and oxygen (reduced).",
+      "sourceRefs": [
+        "wiki/oxidation-reduction"
+      ],
+      "reviewTarget": "energy-metabolism-context"
+    }
+  ],
+  "sourceRefs": [
+    "wiki/oxidation-reduction"
+  ],
+  "sourceGaps": []
+}
