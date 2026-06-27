@@ -218,23 +218,33 @@ def test_changed_source_fails_revalidation():
         assert _report(tmp)["citationsVerified"] is False
 
 
-def test_require_citations_skips_unverified():
+def test_default_build_skips_unverified():
     with tempfile.TemporaryDirectory() as d:
         tmp = _workspace(Path(d))
         module = _write_module(tmp, _module_with_claim("wiki/thermo.md"))
         assert _validate(tmp, module).returncode == 0
-        out = _build(tmp, "--require-citations")
+        out = _build(tmp)  # strict is the default now
         assert "unverified citations" in out
         assert _shipped_ids(tmp) == []
 
 
-def test_require_citations_ships_verified():
+def test_default_build_ships_verified():
     with tempfile.TemporaryDirectory() as d:
         tmp = _workspace(Path(d))
         _write_wiki(tmp)
         module = _write_module(tmp, _module_with_claim(_claim_citation(tmp)))
         assert _validate(tmp, module).returncode == 0
-        out = _build(tmp, "--require-citations")
+        out = _build(tmp)
+        assert "Skipping" not in out
+        assert "module-1" in _shipped_ids(tmp)
+
+
+def test_allow_unverified_escape_hatch_ships():
+    with tempfile.TemporaryDirectory() as d:
+        tmp = _workspace(Path(d))
+        module = _write_module(tmp, _module_with_claim("wiki/thermo.md"))
+        assert _validate(tmp, module).returncode == 0
+        out = _build(tmp, "--allow-unverified-citations")
         assert "Skipping" not in out
         assert "module-1" in _shipped_ids(tmp)
 

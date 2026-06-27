@@ -11,9 +11,10 @@ def main() -> None:
         description="Assemble validated MCAT modules into the app."
     )
     parser.add_argument(
-        "--require-citations",
+        "--allow-unverified-citations",
         action="store_true",
-        help="Gate 2: also skip modules whose citations are not verified.",
+        help="Escape hatch: ship modules whose Gate 2 citations are not "
+        "verified. By default unverified-citation modules are skipped.",
     )
     args = parser.parse_args()
 
@@ -53,7 +54,9 @@ def main() -> None:
             print(f"Skipping stale module (hash mismatch): {path}")
             continue
 
-        if args.require_citations and not report.get("citationsVerified"):
+        if not args.allow_unverified_citations and not report.get(
+            "citationsVerified"
+        ):
             print(f"Skipping module with unverified citations: {path}")
             continue
 
