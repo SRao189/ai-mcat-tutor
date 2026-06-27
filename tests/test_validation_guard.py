@@ -22,7 +22,8 @@ WIKI = """# Thermodynamics
 
 ## Gibbs Free Energy
 
-A reaction is spontaneous when delta G is negative.
+A reaction is spontaneous when delta G is negative. The standard free energy
+change is 30 kj/mol.
 """
 WIKI_REL = "wiki/thermodynamics.md"
 WIKI_ANCHOR = "gibbs-free-energy"
@@ -263,7 +264,8 @@ def test_report_has_gate3_fields():
         assert _validate(tmp, module).returncode == 0
         rep = _report(tmp)
         for k in ("claimsVerified", "claimPassCount", "claimFailCount",
-                  "claimAmbiguousCount", "claimSkippedCount", "claimResults"):
+                  "claimAmbiguousCount", "claimSkippedCount", "claimResults",
+                  "sourceDependencyHash"):
             assert k in rep, k
 
 
@@ -295,12 +297,28 @@ def test_require_claim_support_ships_when_all_pass():
     with tempfile.TemporaryDirectory() as d:
         tmp = _workspace(Path(d))
         _write_wiki(tmp)
-        content = "When delta G is negative the reaction is spontaneous"
+        content = "The standard free energy change is 30 kj/mol"  # supported qty
         module = _write_module(tmp, _module_with_content(content, _claim_citation(tmp)))
         assert _validate(tmp, module).returncode == 0
         assert _report(tmp)["claimsVerified"] is True
         out = _build(tmp, "--require-claim-support")
         assert "Skipping" not in out and "module-1" in _shipped_ids(tmp)
+
+
+def test_stale_source_skipped_under_claim_support():
+    # validate -> edit cited source -> build --require-claim-support -> skipped
+    with tempfile.TemporaryDirectory() as d:
+        tmp = _workspace(Path(d))
+        _write_wiki(tmp)
+        content = "The standard free energy change is 30 kj/mol"
+        module = _write_module(tmp, _module_with_content(content, _claim_citation(tmp)))
+        assert _validate(tmp, module).returncode == 0
+        # default build (no Gate 3) would still ship it — that's the gap Gate 3 closes
+        (tmp / WIKI_REL).write_text(
+            WIKI.replace("30 kj/mol", "30 kj/mol. Extra appended sentence."),
+            encoding="utf-8")
+        out = _build(tmp, "--require-claim-support")
+        assert "changed source" in out and _shipped_ids(tmp) == []
 
 
 def test_require_claim_support_skips_on_claim_fail():

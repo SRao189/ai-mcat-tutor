@@ -325,6 +325,7 @@ def main() -> None:
         "claimFailCount": gate3["claimFailCount"],
         "claimAmbiguousCount": gate3["claimAmbiguousCount"],
         "claimSkippedCount": gate3["claimSkippedCount"],
+        "sourceDependencyHash": gate3["sourceDependencyHash"],
         "claimResults": gate3["claimResults"],
         "errorCount": len(errors),
         "warningCount": len(warnings),

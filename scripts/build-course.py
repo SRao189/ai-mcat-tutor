@@ -5,6 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 
+import claim_support
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(
@@ -66,14 +68,20 @@ def main() -> None:
             print(f"Skipping module with unverified citations: {path}")
             continue
 
-        if args.require_claim_support and (
-            report.get("claimFailCount", 0) > 0
-            or not report.get("claimsVerified")
-        ):
-            print(f"Skipping module with unverified claim support: {path}")
-            continue
-
         module = json.loads(module_bytes.decode("utf-8-sig"))
+
+        if args.require_claim_support:
+            if report.get("claimFailCount", 0) > 0 or not report.get(
+                "claimsVerified"
+            ):
+                print(f"Skipping module with unverified claim support: {path}")
+                continue
+            # source freshness: recompute the dependency hash from current
+            # sources; a cited source edited after validation invalidates it.
+            current = claim_support.source_dependency_hash(module, Path.cwd())
+            if current != report.get("sourceDependencyHash"):
+                print(f"Skipping module with changed source (Gate 3): {path}")
+                continue
 
         modules.append(module)
 

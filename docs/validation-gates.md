@@ -135,33 +135,71 @@ entailment — whatever it can neither confirm nor refute becomes `ambiguous` wi
 }
 ```
 
-**Status:** `pass` = no contradiction AND a concrete signal matched
-(number/sign/direction/unit/equation-symbol present in source); `fail` = a
-deterministic contradiction; `ambiguous` = no contradiction but nothing concrete
-to confirm (→ auditor); `skipped` = no resolvable structured citation.
+**Governing rule (contradiction-safe):** a claim may **pass only when every
+extracted concrete assertion is supported and no contradiction is detected**. One
+matching number / unit / symbol must never mask another unsupported or
+contradictory assertion. `pass` = ≥1 concrete assertion, ALL concrete assertions
+supported, no contradiction, no soft flag; `fail` = any contradiction;
+`ambiguous` = no contradiction but something unconfirmable (prose, an unsupported
+number, an unparseable equation, a negation/conditional difference) → auditor;
+`skipped` = no resolvable structured citation. Token overlap alone never yields
+`pass`.
 
-**Deterministic checks.** Hard-fail: number mismatch, unit mismatch,
-increase/decrease direction reversal, positive/negative sign reversal,
-conditional-source-vs-absolute-claim, worked-example arithmetic,
-answer/explanation consistency (equation-symbol presence is a pass *signal*).
-Soft (→ ambiguous, never a hard fail): **negation polarity** (scope-blind: a
-correct "not a donor" or a T/F answer of "False" is indistinguishable from a real
-flip) and **excessive citation reuse** across claims. The four linguistic
-contradiction checks (sign/direction/negation/conditional) fire only when the
-claim *restates* the source (≥0.6 keyword containment), suppressing false
-contradictions from incidental words in long prose.
+**Concrete assertions** (the only things that can earn a pass): physical
+quantities, bare numbers, parsed equations, worked-example final answers.
+
+**Hard-fail contradiction checks:**
+- **Dimensional quantities** — values parsed *with* units, normalized to a base
+  unit, compared after conversion. Supported unit families: concentration
+  (M, mM, μM/uM, nM), time (s, ms, min, h), energy (J, kJ), molar energy
+  (J/mol, kJ/mol), mass (g, mg, kg), volume (L, mL, μL/uL), pressure
+  (Pa, kPa, atm, mmHg), temperature (K, °C/C, affine). Molar prefixes are
+  case-sensitive (M≠m). Same-family quantities that differ after conversion fail
+  (30 M vs 30 mM, 30 kJ/mol vs 30 J/mol); equivalent ones pass (60 s = 1 min,
+  1000 J = 1 kJ).
+- **Numeric completeness** — every claim-side number must be matched in the
+  source; a matching number cannot hide an extra unsupported/contradictory one.
+- **Equation relationships** — equations are parsed into normalized forms.
+  Additive equations compare as sign-normalized term sets (algebraically
+  equivalent forms pass: `ΔG = ΔH − TΔS` ≡ `ΔH = ΔG + TΔS`; reversed/sign-flipped
+  fail: `ΔG = TΔS − ΔH`). Single-division equations cross-multiply (`x = a/b` vs
+  `x = b/a` fail). Anything outside the parser is **ambiguous, never auto-pass**.
+- **Worked-example final answer** — supported arithmetic steps are recomputed and
+  compared (with units/tolerance) to the stated final answer; `10−4=6` with final
+  answer `5` fails. Unparseable calculations are ambiguous.
+- **sign reversal**, **direction reversal**, **answer/explanation inconsistency**.
+  The linguistic checks (sign/direction/negation) fire only when the claim
+  *restates* the source (≥0.6 keyword containment), suppressing false positives
+  in long prose.
+
+**Soft signals (→ ambiguous, never a hard fail):** **negation polarity**
+(scope-blind: a correct "not a donor" or a T/F answer of "False" is
+indistinguishable from a real flip) and **conditional→universal** strengthening
+(a universalization may be a correct restatement of a universally-true
+conditional). Both block `pass` and route to the auditor, but never assert a
+false contradiction.
+
+**Citation reuse** is recorded as metadata only — it never downgrades an
+otherwise-valid claim, so summary-heavy modules stay shippable.
 
 **Report fields:** `claimsVerified` (all claims pass), `claimPassCount`,
-`claimFailCount`, `claimAmbiguousCount`, `claimSkippedCount`, `claimResults`.
+`claimFailCount`, `claimAmbiguousCount`, `claimSkippedCount`,
+`sourceDependencyHash`, `claimResults`.
 
-**Build gate (opt-in):** `scripts/build-course.py --require-claim-support` skips
-a module when any deterministic claim failure exists or `claimsVerified` is not
-true. Off by default; Gate 1/Gate 2 behavior is unchanged.
+**Source freshness.** Each report stores `sourceDependencyHash`, an aggregate of
+every resolved claim citation's *current* source-passage hash. `build-course.py
+--require-claim-support` recomputes it and skips the module if any cited source
+changed after validation — closing the gap where the module bytes are unchanged
+but a cited source was edited.
 
-**Known blind spots:** prose entailment (most descriptive sentences land in
-`ambiguous`); paraphrased numbers / derived values; negation scope; synonyms the
-keyword overlap misses; multi-sentence reasoning. These are exactly what the
-auditor-model phase is for.
+**Build gate (opt-in):** `scripts/build-course.py --require-claim-support` skips a
+module when any claim failure exists, `claimsVerified` is not true, or the source
+dependency hash no longer matches. Off by default; Gate 1/Gate 2 unchanged.
+
+**Known blind spots:** prose entailment (most descriptive sentences are
+`ambiguous`); paraphrased / derived numbers; negation and conditional scope;
+synonyms the keyword overlap misses; equations beyond linear/single-division;
+multi-sentence reasoning. These are the auditor-model phase's job.
 
 **Does NOT guarantee:** pedagogical quality or MCAT exam relevance — only that
 claims do not deterministically contradict, and are token-consistent with, their
@@ -173,12 +211,15 @@ cited sources.
 
 - `tests/test_citations.py` (Gate 2 resolver): **8 passing**.
 - `tests/test_migrate_citations.py` (migration converter): **4 passing**.
-- `tests/test_claim_support.py` (Gate 3 deterministic): **20 passing**.
+- `tests/test_claim_support.py` (Gate 3 deterministic): **22 passing**.
+- `tests/test_claim_support_adversarial.py` (Gate 3 bypass probes): **20 passing**.
 - `tests/test_validation_guard.py` (Gate 1 + Gate 2 + Gate 3 integration):
-  **18 passing**.
+  **19 passing**.
 - `benchmarks/production-pilot/tests/test_pipeline.py` (existing): **28 passing**,
   unaffected.
-- **Total: 78 passing.**
+- **Total: 101 passing.**
 
-**Gate 3 production dry-run (5 modules, 81 claims):** 51 pass · 0 fail ·
-30 ambiguous · 0 skipped.
+**Gate 3 production dry-run (5 modules, 81 claims):** 18 pass · 0 fail ·
+63 ambiguous · 0 skipped. (Contradiction-safe: no false contradictions; prose and
+unconfirmable assertions route to the auditor, so no production module is
+`claimsVerified` until the auditor phase lands.)
