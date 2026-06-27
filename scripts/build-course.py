@@ -1,5 +1,6 @@
 ﻿#!/usr/bin/env python3
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -17,17 +18,31 @@ def main() -> None:
             print(f"Skipping unvalidated module: {path}")
             continue
 
-        report = json.loads(
-            report_path.read_text(encoding="utf-8-sig")
-        )
+        try:
+            report = json.loads(
+                report_path.read_text(encoding="utf-8-sig")
+            )
+        except json.JSONDecodeError:
+            print(f"Skipping module with malformed report: {path}")
+            continue
 
-        if not report.get("valid"):
+        if not isinstance(report, dict) or not report.get("valid"):
             print(f"Skipping invalid module: {path}")
             continue
 
-        module = json.loads(
-            path.read_text(encoding="utf-8-sig")
-        )
+        module_bytes = path.read_bytes()
+        actual_hash = "sha256:" + hashlib.sha256(module_bytes).hexdigest()
+        recorded_hash = report.get("moduleHash")
+
+        if not recorded_hash:
+            print(f"Skipping module with no validated hash: {path}")
+            continue
+
+        if recorded_hash != actual_hash:
+            print(f"Skipping stale module (hash mismatch): {path}")
+            continue
+
+        module = json.loads(module_bytes.decode("utf-8-sig"))
 
         modules.append(module)
 

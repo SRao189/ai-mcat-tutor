@@ -1,7 +1,9 @@
 ﻿#!/usr/bin/env python3
 
 import argparse
+import hashlib
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -104,9 +106,12 @@ def main() -> None:
     errors: list[str] = []
     warnings: list[str] = []
 
+    module_bytes = module_path.read_bytes()
+    module_hash = "sha256:" + hashlib.sha256(module_bytes).hexdigest()
+
     try:
         data = json.loads(
-            module_path.read_text(encoding="utf-8-sig")
+            module_bytes.decode("utf-8-sig")
         )
     except json.JSONDecodeError as exc:
         errors.append(f"Invalid JSON: {exc}")
@@ -233,6 +238,8 @@ def main() -> None:
 
     report = {
         "module": str(module_path),
+        "moduleHash": module_hash,
+        "validatedAt": datetime.now(timezone.utc).isoformat(),
         "valid": not errors,
         "errorCount": len(errors),
         "warningCount": len(warnings),
