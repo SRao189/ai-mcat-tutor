@@ -1,8 +1,16 @@
 {
-  "module": "C:\\Users\\sahar\\mcat-tutor\\course-data\\module-3.json",
+  "module": "course-data\\module-3.json",
+  "moduleHash": "sha256:d1c11cdda08f4a1d560695125c8b060c47fcaddc7a8aae75d8fc4dd0704e4cd1",
+  "validatedAt": "2026-06-27T10:10:06.846519+00:00",
   "valid": true,
+  "legacyCitationCount": 3,
+  "citationsVerified": true,
   "errorCount": 0,
-  "warningCount": 0,
+  "warningCount": 3,
   "errors": [],
-  "warnings": []
+  "warnings": [
+    "sourceRefs[0]: legacy string citation (unverified): wiki/course/context/module-3-context.md",
+    "sourceRefs[1]: legacy string citation (unverified): wiki/oxidation-reduction.md",
+    "sourceRefs[2]: legacy string citation (unverified): wiki/.understand-anything/knowledge-graph.json"
+  ]
 }

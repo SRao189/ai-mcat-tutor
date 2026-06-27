@@ -1,8 +1,16 @@
 {
-  "module": "C:\\Users\\sahar\\mcat-tutor\\course-data\\module-1.json",
+  "module": "course-data\\module-1.json",
+  "moduleHash": "sha256:54ebf6c309b34de50757b9c2d25c460d2ef68bcd0f5a14b108cf74f79b90fe7e",
+  "validatedAt": "2026-06-27T10:10:06.572583+00:00",
   "valid": true,
+  "legacyCitationCount": 3,
+  "citationsVerified": true,
   "errorCount": 0,
-  "warningCount": 0,
+  "warningCount": 3,
   "errors": [],
-  "warnings": []
+  "warnings": [
+    "sourceRefs[0]: legacy string citation (unverified): wiki/course/context/module-1-context.md",
+    "sourceRefs[1]: legacy string citation (unverified): wiki/thermodynamics.md",
+    "sourceRefs[2]: legacy string citation (unverified): wiki/.understand-anything/knowledge-graph.json"
+  ]
 }

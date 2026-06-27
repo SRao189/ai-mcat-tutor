@@ -13,7 +13,11 @@
       "title": "Key Concepts",
       "content": "Energy exists in two primary forms: kinetic energy (movement of molecules) and potential energy (stored in chemical bonds). The most important potential energy storage molecule in biological systems is ATP, with energy stored in the ester bonds between its phosphate groups.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:22-24"
+        {
+          "sourceId": "wiki/thermodynamics.md#key-concepts",
+          "quote": "- **Kinetic energy** — movement of molecules\n- **Potential energy** — energy stored in chemical bonds\n  - Most important potential energy storage molecule: **ATP** (energy in ester bonds between phosphate groups)",
+          "passageHash": "sha256:123fbc02315b6a3a71d0b28437f6102b716446c898d333c9ee250daf5ba6b6c3"
+        }
       ]
     },
     {
@@ -21,7 +25,11 @@
       "title": "Laws of Thermodynamics",
       "content": "The First Law states that the energy of the universe is constant; when system energy decreases, surroundings energy increases, and vice versa. The Second Law states that disorder (entropy, S) of the universe tends to increase, and spontaneous reactions increase universal disorder. Entropy change is calculated as ∆S = S_final – S_initial. If ∆S is negative, disorder has decreased.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:28-37"
+        {
+          "sourceId": "wiki/thermodynamics.md#laws-of-thermodynamics",
+          "quote": "**First Law (Conservation of Energy):**\n- Energy of the universe is constant\n- When system energy decreases, surroundings energy increases, and vice versa\n\n**Second Law (Entropy):**\n- Disorder (entropy, S) of the universe tends to increase\n- Spontaneous reactions increase universal disorder\n- ∆S = S<sub>final</sub> – S<sub>initial</sub>\n- If ∆S is negative → disorder decreased",
+          "passageHash": "sha256:8011edea890f36f6c550abacc5fc405bbdd221f2afab194466a19d013256327e"
+        }
       ]
     },
     {
@@ -29,7 +37,11 @@
       "title": "Gibbs Free Energy",
       "content": "Gibbs free energy (∆G) determines reaction spontaneity. The equation is ∆G = ∆H – T∆S, where ∆H is enthalpy change (bond energy + P∆V), T is temperature in Kelvin, and ∆S is entropy change. In cells, since volume change is approximately zero (∆V ≈ 0), ∆H ≈ ∆E (bond energy). A negative ∆G indicates a spontaneous (exergonic) reaction where energy exits the system. A positive ∆G indicates a nonspontaneous (endergonic) reaction requiring energy input. When ∆G = 0, the system is at equilibrium. Enthalpy change (∆H) indicates heat flow: negative ∆H is exothermic (releases heat), positive ∆H is endothermic (requires heat input). Most metabolic reactions are exothermic, helping maintain body temperature. All sign conventions are from the system's perspective: negative ∆G means the system goes to lower free energy.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:40-60"
+        {
+          "sourceId": "wiki/thermodynamics.md#gibbs-free-energy-g",
+          "quote": "**Equation:** ∆G = ∆H – T∆S\n\nWhere:\n- ∆H = enthalpy change (bond energy + P∆V)\n- T = temperature (Kelvin)\n- ∆S = entropy change\n\n**In cells:** Since ∆V ≈ 0 (liquid phase), **∆H ≈ ∆E** (bond energy)\n\n**Spontaneity:**\n- ∆G < 0 → spontaneous (exergonic, energy exits system)\n- ∆G > 0 → nonspontaneous (endergonic, requires energy input)\n- ∆G = 0 → equilibrium\n\n**Enthalpy:**\n- ∆H < 0 → exothermic (liberates heat)\n- ∆H > 0 → endothermic (requires heat input)\n- Most metabolic reactions are exothermic → maintains body temperature\n\n**Sign convention:** All from system's perspective (negative ∆G = system goes to lower free energy)",
+          "passageHash": "sha256:cf5c8fc451ce886b8318d1c67c1048400b109e6f2a8da18cb07cb0de8d2a6be6"
+        }
       ]
     },
     {
@@ -37,7 +49,11 @@
       "title": "Standard Free Energy",
       "content": "Standard free energy (∆G°′) is defined under biochemical standard conditions: 1 M concentration for all solutes except H⁺, with pH 7. The relationship between standard free energy and equilibrium is given by ∆G°′ = –RT ln K'_eq, where K'_eq is the equilibrium constant calculated as [C]^c[D]^d / [A]^a[B]^b at equilibrium. When K'_eq = 1, ∆G°′ = 0 (since ln 1 = 0).",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:63-70"
+        {
+          "sourceId": "wiki/thermodynamics.md#standard-free-energy",
+          "quote": "**∆G°′** — biochemical standard: 1 M all solutes except H<sup>+</sup>, pH 7\n\n**Relationship to equilibrium:**\n- ∆G°′ = –RT ln K'<sub>eq</sub>\n- K'<sub>eq</sub> = [C]<sup>c</sup>[D]<sup>d</sup> / [A]<sup>a</sup>[B]<sup>b</sup> at equilibrium\n\n**When K'<sub>eq</sub> = 1:** ∆G°′ = 0 (ln 1 = 0)",
+          "passageHash": "sha256:3611ee73cb628438b885f8f7c178fa74186fd2701a71f011b3be901959314362"
+        }
       ]
     },
     {
@@ -45,7 +61,11 @@
       "title": "Reaction Quotient and Actual Free Energy",
       "content": "The actual free energy change in a cell is determined by ∆G = ∆G°′ + RT ln Q, where Q is the reaction quotient using actual cellular concentrations, not equilibrium concentrations. When Q < K_eq, ∆G < 0 and the forward reaction is spontaneous. When Q > K_eq, ∆G > 0 and the reverse reaction is spontaneous. When Q = K_eq, ∆G = 0 and the system is at equilibrium. Two factors determine spontaneity in cells: intrinsic properties (K_eq) and concentrations (RT ln Q). Le Châtelier's principle states that adding reactants (Q < K) drives the reaction forward, while adding products (Q > K) drives it backward.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:73-87"
+        {
+          "sourceId": "wiki/thermodynamics.md#reaction-quotient-q-vs-actual-g",
+          "quote": "**Equation:** ∆G = ∆G°′ + RT ln Q\n\nWhere Q uses **actual cellular concentrations**, not equilibrium concentrations.\n\n**Key relationships:**\n- Q < K<sub>eq</sub> → ∆G < 0 → forward reaction spontaneous\n- Q > K<sub>eq</sub> → ∆G > 0 → reverse reaction spontaneous\n- Q = K<sub>eq</sub> → ∆G = 0 → equilibrium\n\n**Two factors determine spontaneity in cell:**\n1. Intrinsic properties (K<sub>eq</sub>)\n2. Concentrations (RT ln Q)\n\n**Le Châtelier's principle:** Adding reactants (Q < K) drives forward; adding products (Q > K) drives backward",
+          "passageHash": "sha256:ba3278fb265de54a6a66722846346cd392efb88bddc6334145f60c02500aae6f"
+        }
       ]
     }
   ],
@@ -54,28 +74,44 @@
       "expression": "∆S = S_final – S_initial",
       "meaning": "Change in entropy equals final entropy minus initial entropy.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:35"
+        {
+          "sourceId": "wiki/thermodynamics.md#laws-of-thermodynamics",
+          "quote": "- ∆S = S<sub>final</sub> – S<sub>initial</sub>",
+          "passageHash": "sha256:8011edea890f36f6c550abacc5fc405bbdd221f2afab194466a19d013256327e"
+        }
       ]
     },
     {
       "expression": "∆G = ∆H – T∆S",
       "meaning": "Gibbs free energy change equals enthalpy change minus temperature times entropy change.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:40"
+        {
+          "sourceId": "wiki/thermodynamics.md#gibbs-free-energy-g",
+          "quote": "**Equation:** ∆G = ∆H – T∆S",
+          "passageHash": "sha256:cf5c8fc451ce886b8318d1c67c1048400b109e6f2a8da18cb07cb0de8d2a6be6"
+        }
       ]
     },
     {
       "expression": "∆G°′ = –RT ln K'_eq",
       "meaning": "Standard free energy change equals negative R times T times the natural logarithm of the equilibrium constant.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:66"
+        {
+          "sourceId": "wiki/thermodynamics.md#standard-free-energy",
+          "quote": "- ∆G°′ = –RT ln K'<sub>eq</sub>",
+          "passageHash": "sha256:3611ee73cb628438b885f8f7c178fa74186fd2701a71f011b3be901959314362"
+        }
       ]
     },
     {
       "expression": "∆G = ∆G°′ + RT ln Q",
       "meaning": "Actual free energy change equals standard free energy change plus R times T times the natural logarithm of the reaction quotient.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:73"
+        {
+          "sourceId": "wiki/thermodynamics.md#reaction-quotient-q-vs-actual-g",
+          "quote": "**Equation:** ∆G = ∆G°′ + RT ln Q",
+          "passageHash": "sha256:ba3278fb265de54a6a66722846346cd392efb88bddc6334145f60c02500aae6f"
+        }
       ]
     }
   ],
@@ -90,7 +126,11 @@
       ],
       "answer": "Yes, if RT ln Q is sufficiently negative.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:92"
+        {
+          "sourceId": "wiki/thermodynamics.md#key-questions-answered",
+          "quote": "| Can ∆G be negative if ∆G°′ is positive? | Yes, if RT ln Q is sufficiently negative |",
+          "passageHash": "sha256:216bede23e3b7b6aa5d643ee9efc0f0ea72e905e192cfa470b665d74e2afa724"
+        }
       ]
     },
     {
@@ -104,7 +144,11 @@
       ],
       "answer": "The reaction shifts forward to consume the added reactant.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:86-87"
+        {
+          "sourceId": "wiki/thermodynamics.md#reaction-quotient-q-vs-actual-g",
+          "quote": "**Le Châtelier's principle:** Adding reactants (Q < K) drives forward; adding products (Q > K) drives backward",
+          "passageHash": "sha256:ba3278fb265de54a6a66722846346cd392efb88bddc6334145f60c02500aae6f"
+        }
       ]
     }
   ],
@@ -114,7 +158,11 @@
       "answer": "False",
       "explanation": "∆G < 0 indicates a spontaneous (thermodynamically favorable) reaction, but says nothing about the reaction rate. Kinetics (activation energy) determines speed, not thermodynamics.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:93"
+        {
+          "sourceId": "wiki/thermodynamics.md#key-questions-answered",
+          "quote": "| Does K<sub>eq</sub> indicate reaction rate? | No — only relative concentrations at equilibrium |",
+          "passageHash": "sha256:216bede23e3b7b6aa5d643ee9efc0f0ea72e905e192cfa470b665d74e2afa724"
+        }
       ],
       "reviewTarget": "thermodynamics vs kinetics"
     },
@@ -123,7 +171,11 @@
       "answer": "Products have lower free energy than reactants",
       "explanation": "A large K_eq means the equilibrium favors products. Since ∆G°′ = –RT ln K_eq, a large K_eq results in a negative ∆G°′, indicating products are at lower free energy than reactants.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:94"
+        {
+          "sourceId": "wiki/thermodynamics.md#key-questions-answered",
+          "quote": "| Large K<sub>eq</sub> → lower free energy? | Products |",
+          "passageHash": "sha256:216bede23e3b7b6aa5d643ee9efc0f0ea72e905e192cfa470b665d74e2afa724"
+        }
       ],
       "reviewTarget": "standard free energy and equilibrium"
     }
@@ -140,7 +192,11 @@
       "answer": "∆G = ∆G°′ + RT ln Q",
       "explanation": "The equation ∆G = ∆G°′ + RT ln Q relates the actual free energy change to the standard free energy change and the reaction quotient using actual concentrations.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:73"
+        {
+          "sourceId": "wiki/thermodynamics.md#reaction-quotient-q-vs-actual-g",
+          "quote": "**Equation:** ∆G = ∆G°′ + RT ln Q",
+          "passageHash": "sha256:ba3278fb265de54a6a66722846346cd392efb88bddc6334145f60c02500aae6f"
+        }
       ],
       "reviewTarget": "reaction quotient and actual free energy"
     },
@@ -155,7 +211,11 @@
       "answer": "In both A and B",
       "explanation": "At dynamic equilibrium, reactions continue in both directions. Adding radiolabeled B will lead to the formation of labeled A as the forward reaction proceeds, and labeled B will remain as the reverse reaction occurs.",
       "sourceRefs": [
-        "wiki/course/context/module-1-context.md:97"
+        {
+          "sourceId": "wiki/thermodynamics.md#key-questions-answered",
+          "quote": "| Radiolabeled B added at equilibrium → where found? | Both A and B (dynamic equilibrium) |",
+          "passageHash": "sha256:216bede23e3b7b6aa5d643ee9efc0f0ea72e905e192cfa470b665d74e2afa724"
+        }
       ],
       "reviewTarget": "equilibrium dynamics"
     }

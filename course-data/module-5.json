@@ -12,8 +12,16 @@
       "title": "Overview",
       "content": "This chapter covers foundational biochemistry concepts tested on the MCAT: thermodynamics, kinetics, redox reactions, and acid/base chemistry. The source material for this chapter is the Princeton Review MCAT Biochemistry Review, Chapter 3.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:20",
-        "wiki/course/context/module-5-context.md:99"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#overview",
+          "quote": "This chapter covers foundational biochemistry concepts tested on the MCAT: thermodynamics, kinetics, redox reactions, and acid/base chemistry.",
+          "passageHash": "sha256:338a8527c0f1af5dec46dd735d02d2851a4e416c3f2cd604692a8f8b85d87e68"
+        },
+        {
+          "sourceId": "wiki/chapter-3-summary.md#practice-questions-cross-reference",
+          "quote": "*Source: Princeton Review MCAT Biochemistry Review, Chapter 3*",
+          "passageHash": "sha256:e61c2b9ac8eaa5e4e09fd9828d3e1f669281d07cc1878ef6864ee05203059178"
+        }
       ]
     },
     {
@@ -21,7 +29,11 @@
       "title": "Major Topics Recap",
       "content": "Thermodynamics: Gibbs free energy is ∆G = ∆H – T∆S; ∆G < 0 is spontaneous (exergonic) and ∆G > 0 is nonspontaneous (endergonic); standard free energy is ∆G°′ = –RT ln K'_eq (at pH 7, 1 M solutes); actual cellular ∆G = ∆G°′ + RT ln Q; Le Châtelier's principle governs how Q versus K_eq drives reaction direction; two factors determine spontaneity in cells — intrinsic properties (K_eq) and concentrations (RT ln Q). Kinetics: thermodynamics is not the same as kinetics, since ∆G says nothing about rate; activation energy (E_a) is the barrier to reaching the transition state [TS]‡; catalysts and enzymes lower E_a by stabilizing the transition state but do not change ∆G or K_eq; enzymes are biological catalysts with a kinetic role only. Oxidation-reduction: oxidation is loss of electrons/hydrogen or gain of oxygen, reduction is gain of electrons/hydrogen or loss of oxygen; redox pairs always have one species oxidized and one reduced; in metabolism, catabolism is oxidative and releases energy while anabolism is reductive and requires ATP; glucose oxidation is C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O. Acids and bases: under Brønsted-Lowry, an acid is an H⁺ donor and a base is an H⁺ acceptor; under Lewis, an acid is an electron-pair acceptor and a base is an electron-pair donor; conjugate pairs differ by one H⁺; a lower pK_a means a stronger acid and a lower pK_b means a stronger base; amphoteric substances (such as HCO₃⁻ and amino acids) can act as either acid or base; pH = –log[H⁺] and pH + pOH = 14 at 25°C; buffers contain a weak acid plus its conjugate base to resist pH change; the bicarbonate buffer (CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻) is key in blood.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:26-55"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#major-topics",
+          "quote": "### 1. [[thermodynamics]]\n- **Gibbs free energy:** ∆G = ∆H – T∆S\n- **Spontaneity:** ∆G < 0 (exergonic) vs ∆G > 0 (endergonic)\n- **Standard free energy:** ∆G°′ = –RT ln K'<sub>eq</sub> (pH 7, 1 M solutes)\n- **Actual cellular ∆G:** ∆G = ∆G°′ + RT ln Q\n- **Le Châtelier's principle:** Q vs K<sub>eq</sub> drives reaction direction\n- **Key:** Two factors determine spontaneity in cells — intrinsic properties (K<sub>eq</sub>) + concentrations (RT ln Q)\n\n### 2. [[kinetics]]\n- **Thermodynamics** ≠ **Kinetics** (∆G says nothing about rate)\n- **Activation energy (E<sub>a</sub>):** Barrier to reaching transition state [TS]‡\n- **Catalysts/Enzymes:** Lower E<sub>a</sub> by stabilizing TS, **do not change ∆G or K<sub>eq</sub>**\n- **Enzymes:** Biological catalysts, kinetic role only\n\n### 3. [[oxidation-reduction]]\n- **Oxidation** = loss of e⁻/H / gain of O\n- **Reduction** = gain of e⁻/H / loss of O\n- **Redox pairs:** One oxidized, one reduced (always coupled)\n- **Metabolism:** Catabolism = oxidative (releases energy); Anabolism = reductive (requires ATP)\n- **Glucose oxidation:** C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O\n\n### 4. [[acids-bases]]\n- **Brønsted-Lowry:** Acid = H⁺ donor, Base = H⁺ acceptor\n- **Lewis:** Acid = e⁻ pair acceptor, Base = e⁻ pair donor\n- **Conjugate pairs:** Differ by one H⁺\n- **Strength:** Lower pK<sub>a</sub> = stronger acid; Lower pK<sub>b</sub> = stronger base\n- **Amphoteric:** Can act as acid or base (e.g., HCO₃⁻, amino acids)\n- **pH = –log[H⁺]; pH + pOH = 14 (at 25°C)**\n- **Buffers:** Weak acid + conjugate base resist pH change\n- **Bicarbonate buffer:** CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻ (key in blood)",
+          "passageHash": "sha256:c1ceedb1c06151b6ffe7570455393c111f0421e1931d362904c3a8f2e9bdfc7b"
+        }
       ]
     },
     {
@@ -29,7 +41,11 @@
       "title": "High-Yield Facts for MCAT",
       "content": "ATP is the primary energy currency, storing energy in high-energy phosphate bonds. ∆G < 0 means spontaneous, and ∆G = 0 means equilibrium. Enzymes lower activation energy (E_a) but do not change ∆G or K_eq. Catalysts speed up both forward and reverse reactions equally. Redox reactions follow the mnemonic OIL RIG (Oxidation Is Loss, Reduction Is Gain). A lower pK_a means a stronger acid, and a higher pK_a means a weaker acid (more basic). The bicarbonate buffer is the main blood buffer, and CO₂ accumulation causes pH to drop. Amphoteric substances such as HCO₃⁻ and amino acids can either donate or accept H⁺.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:75-82"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
+          "quote": "1. **ATP** = primary energy currency (high-energy phosphate bonds)\n2. **∆G < 0** = spontaneous; **∆G = 0** = equilibrium\n3. **Enzymes** lower E<sub>a</sub>, **do not** change ∆G or K<sub>eq</sub>\n4. **Catalysts** speed up both forward and reverse reactions equally\n5. **Redox:** OIL RIG (Oxidation Is Loss, Reduction Is Gain)\n6. **pK<sub>a</sub>:** Lower = stronger acid; Higher = weaker acid/more basic\n7. **Bicarbonate buffer** = main blood buffer; CO₂ accumulation → pH drops\n8. **Amphoteric** substances (HCO₃⁻, amino acids) can donate or accept H⁺",
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
+        }
       ]
     }
   ],
@@ -38,49 +54,77 @@
       "expression": "∆G = ∆H – T∆S",
       "meaning": "Thermodynamic spontaneity equation, relating free energy, enthalpy, and entropy.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:63"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
+          "quote": "| ∆G = ∆H – T∆S | Thermodynamic spontaneity |",
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
+        }
       ]
     },
     {
       "expression": "∆G°′ = –RT ln K'_eq",
       "meaning": "Relates standard free energy change to the equilibrium constant.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:64"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
+          "quote": "| ∆G°′ = –RT ln K'<sub>eq</sub> | Standard free energy ↔ equilibrium |",
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
+        }
       ]
     },
     {
       "expression": "∆G = ∆G°′ + RT ln Q",
       "meaning": "Gives the actual cellular ∆G from standard free energy and the reaction quotient.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:65"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
+          "quote": "| ∆G = ∆G°′ + RT ln Q | Actual cellular ∆G from concentrations |",
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
+        }
       ]
     },
     {
       "expression": "pH = –log[H⁺]",
       "meaning": "Defines acidity in terms of hydrogen ion concentration.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:66"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
+          "quote": "| pH = –log[H⁺] | Acidity |",
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
+        }
       ]
     },
     {
       "expression": "pH + pOH = 14",
       "meaning": "Acid-base relationship at 25°C.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:67"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
+          "quote": "| pH + pOH = 14 | Acid-base relationship (25°C) |",
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
+        }
       ]
     },
     {
       "expression": "pK_a = –log K_a",
       "meaning": "Converts the acid dissociation constant into pK_a, a measure of acid strength.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:68"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
+          "quote": "| pK<sub>a</sub> = –log K<sub>a</sub> | Acid strength |",
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
+        }
       ]
     },
     {
       "expression": "pK_b = –log K_b",
       "meaning": "Converts the base dissociation constant into pK_b, a measure of base strength.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:69"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
+          "quote": "| pK<sub>b</sub> = –log K<sub>b</sub> | Base strength |",
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
+        }
       ]
     }
   ],
@@ -94,7 +138,11 @@
       ],
       "answer": "Neither ∆G nor K_eq changes; the enzyme only lowers the activation energy and increases the rate.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:77"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
+          "quote": "3. **Enzymes** lower E<sub>a</sub>, **do not** change ∆G or K<sub>eq</sub>",
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
+        }
       ]
     }
   ],
@@ -104,7 +152,11 @@
       "answer": "False",
       "explanation": "The chapter summary states catalysts speed up both forward and reverse reactions equally.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:78"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
+          "quote": "4. **Catalysts** speed up both forward and reverse reactions equally",
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
+        }
       ],
       "reviewTarget": "high-yield facts for MCAT"
     },
@@ -113,7 +165,11 @@
       "answer": "pH drops",
       "explanation": "The chapter summary states the bicarbonate buffer is the main blood buffer and CO₂ accumulation causes pH to drop.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:81"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
+          "quote": "7. **Bicarbonate buffer** = main blood buffer; CO₂ accumulation → pH drops",
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
+        }
       ],
       "reviewTarget": "high-yield facts for MCAT"
     },
@@ -128,7 +184,11 @@
       "answer": "HCO₃⁻ and amino acids",
       "explanation": "The summary lists HCO₃⁻ and amino acids as examples of amphoteric substances that can donate or accept H⁺.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:82"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
+          "quote": "8. **Amphoteric** substances (HCO₃⁻, amino acids) can donate or accept H⁺",
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
+        }
       ],
       "reviewTarget": "high-yield facts for MCAT"
     }
@@ -145,7 +205,11 @@
       "answer": "∆G = ∆G°′ + RT ln Q",
       "explanation": "The Major Topics section lists 'Actual cellular ∆G: ∆G = ∆G°′ + RT ln Q' under thermodynamics.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:30"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#1-thermodynamics",
+          "quote": "- **Actual cellular ∆G:** ∆G = ∆G°′ + RT ln Q",
+          "passageHash": "sha256:523b2f6e72895435974b9b1103a64f27ede6e4e57a6c25f30244b911872c80a3"
+        }
       ],
       "reviewTarget": "major topics recap"
     },
@@ -154,7 +218,11 @@
       "answer": "Intrinsic properties (K_eq) and concentrations (RT ln Q)",
       "explanation": "The Major Topics section under thermodynamics states this is the key takeaway: two factors determine spontaneity in cells.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:32"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#1-thermodynamics",
+          "quote": "- **Key:** Two factors determine spontaneity in cells — intrinsic properties (K<sub>eq</sub>) + concentrations (RT ln Q)",
+          "passageHash": "sha256:523b2f6e72895435974b9b1103a64f27ede6e4e57a6c25f30244b911872c80a3"
+        }
       ],
       "reviewTarget": "major topics recap"
     },
@@ -163,7 +231,11 @@
       "answer": "Princeton Review MCAT Biochemistry Review, Chapter 3",
       "explanation": "The article explicitly cites this as its source at the end of the chapter summary.",
       "sourceRefs": [
-        "wiki/course/context/module-5-context.md:99"
+        {
+          "sourceId": "wiki/chapter-3-summary.md#practice-questions-cross-reference",
+          "quote": "*Source: Princeton Review MCAT Biochemistry Review, Chapter 3*",
+          "passageHash": "sha256:e61c2b9ac8eaa5e4e09fd9828d3e1f669281d07cc1878ef6864ee05203059178"
+        }
       ],
       "reviewTarget": "overview"
     }

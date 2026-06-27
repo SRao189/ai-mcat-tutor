@@ -12,7 +12,11 @@
       "title": "Thermodynamics vs. Kinetics",
       "content": "Thermodynamics (measured by ∆G) tells you whether a reaction will occur and where it ends up: a negative ∆G means the reaction is spontaneous (energetically favorable), but this says nothing about reaction rate or pathway. Kinetics (measured by activation energy, E_a) tells you how fast a reaction occurs; the study of reaction rates is called chemical kinetics. \"Spontaneous\" in the thermodynamic sense does not mean \"fast\" in everyday usage — wood burning is spontaneous (∆G < 0) but still needs a match (activation energy) to start.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:19-29"
+        {
+          "sourceId": "wiki/kinetics.md#thermodynamics-vs-kinetics",
+          "quote": "## Thermodynamics vs. Kinetics\n\n**Thermodynamics** (∆G): Tells you *if* a reaction will occur and *where* it ends\n- ∆G < 0 = spontaneous (energetically favorable)\n- Says **nothing** about reaction rate or pathway\n\n**Kinetics** (E<sub>a</sub>): Tells you *how fast* a reaction occurs\n- Study of reaction rates = chemical kinetics\n\n**Key distinction:** \"Spontaneous\" in thermodynamics ≠ \"fast\" in common usage\n- Example: Wood burning is spontaneous (∆G < 0) but needs a match (activation energy) to start",
+          "passageHash": "sha256:7e596fc54883bc6b80234de4af4de762e68a2c0b6efa14ed50a8694221288286"
+        }
       ]
     },
     {
@@ -20,7 +24,11 @@
       "title": "Activation Energy and the Transition State",
       "content": "Activation energy (E_a) is the minimum energy required to reach the transition state, written [TS]‡. The transition state is an unstable, high-energy intermediate that exists only momentarily before either forming products or reverting back to reactants. E_a acts as the barrier preventing spontaneous reactions from proceeding at a significant rate.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:31-41"
+        {
+          "sourceId": "wiki/kinetics.md#activation-energy-esubasub",
+          "quote": "## Activation Energy (E<sub>a</sub>)\n\n**Definition:** Minimum energy required to reach the transition state [TS]‡\n\n**Transition state:**\n- Unstable, high-energy intermediate\n- intermediate\n- Exists momentarily → either forms products or reverts to reactants\n- Written as [TS]‡ in square brackets with double-cross symbol\n\n**E<sub>a</sub> is the barrier** preventing spontaneous reactions from proceeding at significant rates",
+          "passageHash": "sha256:9170136490fec7547c433b77f3aba26290801ed5f8de185d7c7ec899ddfe59bf"
+        }
       ]
     },
     {
@@ -28,7 +36,11 @@
       "title": "Catalysts and Enzymes",
       "content": "Catalysts lower E_a by stabilizing the transition state, do not change ∆G (the thermodynamics of the reaction is unchanged), and are not consumed — they are regenerated each reaction cycle. Enzymes are biological catalysts with a purely kinetic role: they affect rate, not equilibrium. Enzymes can increase reaction rate enormously (from years to seconds) but do not alter the equilibrium concentrations of reactants or products.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:43-53"
+        {
+          "sourceId": "wiki/kinetics.md#catalysts",
+          "quote": "## Catalysts\n\n**Properties:**\n1. Lower E<sub>a</sub> by stabilizing the transition state\n2. **Do not change ∆G** (thermodynamics unchanged)\n3. Not consumed — regenerated each reaction cycle\n\n**Enzymes** = biological catalysts\n- Kinetic role only (affect rate, not equilibrium)\n- Can increase rate enormously (years → seconds)\n- **Do not alter** equilibrium concentrations of reactants/products",
+          "passageHash": "sha256:261efaa3fa40285a841bf444688271827deddd566d46b39487bd4051be3bb5f2"
+        }
       ]
     },
     {
@@ -36,7 +48,11 @@
       "title": "Reaction Coordinate and Key Concept Summary",
       "content": "On a reaction coordinate graph, the x-axis is reaction progress and the y-axis is free energy; ∆G equals the free energy of products minus the free energy of reactants and is unchanged by a catalyst, while a catalyst lowers the height of the transition-state peak (E_a). Summarizing which quantities are thermodynamic versus kinetic, and whether a catalyst affects them: ∆G (thermodynamic, not affected by catalyst), K_eq (thermodynamic, not affected by catalyst), E_a (kinetic, lowered by catalyst), reaction rate (kinetic, increased by catalyst), and equilibrium concentrations (thermodynamic, not affected by catalyst).",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:55-88"
+        {
+          "sourceId": "wiki/kinetics.md#kinetics-and-activation-energy",
+          "quote": "## Reaction Coordinate Graph\n\n```\nFree Energy\n  ↑\n  │    [TS]‡ (no catalyst)\n  │   / \\\n  │  /   \\       Ea without catalyst\n  │ /     \\\n  │/       \\______________ Products\n  │\n  │    [TS]‡ (with catalyst)\n  │   / \\\n  │  /   \\       Ea with catalyst (lower)\n  │ /     \\\n  │/       \\______________ Products\n  │\n  └──────────────────────→ Reaction Coordinate\n  Reactants\n```\n\n- x-axis: reaction progress (reaction coordinate)\n- y-axis: free energy\n- ∆G = G<sub>products</sub> – G<sub>reactants</sub> (unchanged by catalyst)\n\n## Key Concept Summary\n\n| Concept | Thermodynamic or Kinetic? | Affected by Catalyst? |\n|---------|---------------------------|----------------------|\n| ∆G (spontaneity) | Thermodynamic | No |\n| K<sub>eq</sub> (equilibrium) | Thermodynamic | No |\n| E<sub>a</sub> (activation energy) | Kinetic | **Yes** (lowered) |\n| Reaction rate | Kinetic | **Yes** (increased) |\n| Equilibrium concentrations | Thermodynamic | No |",
+          "passageHash": "sha256:5ba496ad21b22dc365756c9af0a0cf21dad3bc4e6e8c9b2101538dca307f8bd4"
+        }
       ]
     }
   ],
@@ -45,7 +61,11 @@
       "expression": "∆G = G_products – G_reactants",
       "meaning": "Gibbs free energy change equals the free energy of products minus the free energy of reactants; this value is unchanged by a catalyst.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:78"
+        {
+          "sourceId": "wiki/kinetics.md#reaction-coordinate-graph",
+          "quote": "- ∆G = G<sub>products</sub> – G<sub>reactants</sub> (unchanged by catalyst)",
+          "passageHash": "sha256:3d514514aaf58673237d419b73fa545000cb8e77f537d427868f57eb1835469b"
+        }
       ]
     }
   ],
@@ -60,7 +80,11 @@
       ],
       "answer": "Because a spontaneous reaction (∆G < 0) is not necessarily a fast one — wood burning still has an activation energy barrier (E_a) that must be overcome, and the match provides that initial energy.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:21-29"
+        {
+          "sourceId": "wiki/kinetics.md#thermodynamics-vs-kinetics",
+          "quote": "**Thermodynamics** (∆G): Tells you *if* a reaction will occur and *where* it ends\n- ∆G < 0 = spontaneous (energetically favorable)\n- Says **nothing** about reaction rate or pathway\n\n**Kinetics** (E<sub>a</sub>): Tells you *how fast* a reaction occurs\n- Study of reaction rates = chemical kinetics\n\n**Key distinction:** \"Spontaneous\" in thermodynamics ≠ \"fast\" in common usage\n- Example: Wood burning is spontaneous (∆G < 0) but needs a match (activation energy) to start",
+          "passageHash": "sha256:7e596fc54883bc6b80234de4af4de762e68a2c0b6efa14ed50a8694221288286"
+        }
       ]
     }
   ],
@@ -70,7 +94,11 @@
       "answer": "False",
       "explanation": "Enzymes are catalysts with a purely kinetic role — they lower E_a and increase rate but do not alter equilibrium concentrations of reactants or products, so K_eq is unchanged.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:50-53"
+        {
+          "sourceId": "wiki/kinetics.md#catalysts",
+          "quote": "**Enzymes** = biological catalysts\n- Kinetic role only (affect rate, not equilibrium)\n- Can increase rate enormously (years → seconds)\n- **Do not alter** equilibrium concentrations of reactants/products",
+          "passageHash": "sha256:261efaa3fa40285a841bf444688271827deddd566d46b39487bd4051be3bb5f2"
+        }
       ],
       "reviewTarget": "catalysts and enzymes"
     },
@@ -79,7 +107,11 @@
       "answer": "An unstable, high-energy intermediate that exists momentarily during a reaction before forming products or reverting to reactants",
       "explanation": "The transition state sits at the peak of the reaction coordinate graph and represents the highest-energy point the system must pass through; activation energy is the energy needed to reach it.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:33-39"
+        {
+          "sourceId": "wiki/kinetics.md#activation-energy-esubasub",
+          "quote": "**Definition:** Minimum energy required to reach the transition state [TS]‡\n\n**Transition state:**\n- Unstable, high-energy intermediate\n- intermediate\n- Exists momentarily → either forms products or reverts to reactants\n- Written as [TS]‡ in square brackets with double-cross symbol",
+          "passageHash": "sha256:9170136490fec7547c433b77f3aba26290801ed5f8de185d7c7ec899ddfe59bf"
+        }
       ],
       "reviewTarget": "activation energy and the transition state"
     },
@@ -94,7 +126,11 @@
       "answer": "Activation energy (E_a)",
       "explanation": "Catalysts lower E_a by stabilizing the transition state; ∆G, K_eq, and equilibrium concentrations are thermodynamic quantities that catalysts do not change.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:82-88"
+        {
+          "sourceId": "wiki/kinetics.md#key-concept-summary",
+          "quote": "| Concept | Thermodynamic or Kinetic? | Affected by Catalyst? |\n|---------|---------------------------|----------------------|\n| ∆G (spontaneity) | Thermodynamic | No |\n| K<sub>eq</sub> (equilibrium) | Thermodynamic | No |\n| E<sub>a</sub> (activation energy) | Kinetic | **Yes** (lowered) |\n| Reaction rate | Kinetic | **Yes** (increased) |\n| Equilibrium concentrations | Thermodynamic | No |",
+          "passageHash": "sha256:eb58fe352005efce794a0c8abe1100ead7cd7327510cafc1b69f96827e5044e0"
+        }
       ],
       "reviewTarget": "reaction coordinate and key concept summary"
     }
@@ -111,7 +147,11 @@
       "answer": "Thermodynamics tells you if a reaction will occur and where it ends; kinetics tells you how fast it occurs",
       "explanation": "∆G (thermodynamics) indicates spontaneity and the final equilibrium position, while E_a and rate (kinetics) indicate how quickly the reaction proceeds.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:19-26"
+        {
+          "sourceId": "wiki/kinetics.md#thermodynamics-vs-kinetics",
+          "quote": "## Thermodynamics vs. Kinetics\n\n**Thermodynamics** (∆G): Tells you *if* a reaction will occur and *where* it ends\n- ∆G < 0 = spontaneous (energetically favorable)\n- Says **nothing** about reaction rate or pathway\n\n**Kinetics** (E<sub>a</sub>): Tells you *how fast* a reaction occurs\n- Study of reaction rates = chemical kinetics",
+          "passageHash": "sha256:7e596fc54883bc6b80234de4af4de762e68a2c0b6efa14ed50a8694221288286"
+        }
       ],
       "reviewTarget": "thermodynamics vs. kinetics"
     },
@@ -126,7 +166,11 @@
       "answer": "They remain the same as without the enzyme",
       "explanation": "Enzymes have a purely kinetic role — they speed up forward and reverse reactions equally and do not alter the equilibrium concentrations of reactants or products.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:50-53"
+        {
+          "sourceId": "wiki/kinetics.md#catalysts",
+          "quote": "**Enzymes** = biological catalysts\n- Kinetic role only (affect rate, not equilibrium)\n- Can increase rate enormously (years → seconds)\n- **Do not alter** equilibrium concentrations of reactants/products",
+          "passageHash": "sha256:261efaa3fa40285a841bf444688271827deddd566d46b39487bd4051be3bb5f2"
+        }
       ],
       "reviewTarget": "catalysts and enzymes"
     },
@@ -135,7 +179,11 @@
       "answer": "The activation energy (E_a) — the minimum energy barrier that must be overcome to reach the transition state",
       "explanation": "The transition state sits at the top of the reaction coordinate curve; the energy difference between the reactants and this peak is E_a.",
       "sourceRefs": [
-        "wiki/course/context/module-2-context.md:55-78"
+        {
+          "sourceId": "wiki/kinetics.md#reaction-coordinate-graph",
+          "quote": "## Reaction Coordinate Graph\n\n```\nFree Energy\n  ↑\n  │    [TS]‡ (no catalyst)\n  │   / \\\n  │  /   \\       Ea without catalyst\n  │ /     \\\n  │/       \\______________ Products\n  │\n  │    [TS]‡ (with catalyst)\n  │   / \\\n  │  /   \\       Ea with catalyst (lower)\n  │ /     \\\n  │/       \\______________ Products\n  │\n  └──────────────────────→ Reaction Coordinate\n  Reactants\n```\n\n- x-axis: reaction progress (reaction coordinate)\n- y-axis: free energy\n- ∆G = G<sub>products</sub> – G<sub>reactants</sub> (unchanged by catalyst)",
+          "passageHash": "sha256:3d514514aaf58673237d419b73fa545000cb8e77f537d427868f57eb1835469b"
+        }
       ],
       "reviewTarget": "reaction coordinate and key concept summary"
     }
