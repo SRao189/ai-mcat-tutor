@@ -88,8 +88,10 @@ never silently passed as Gate-2-clean.
 - `scripts/validate-module.py` — verifies claim citations (failures are errors),
   flags legacy strings as warnings (errors under `--strict`), and writes
   `legacyCitationCount` + `citationsVerified` to the report.
-- `scripts/build-course.py --require-citations` — additionally skips any module
-  whose `citationsVerified` is not true (default build behavior unchanged).
+- `scripts/build-course.py` — **by default** skips any module whose
+  `citationsVerified` is not true (citation integrity is enforced by default).
+  Use `--allow-unverified-citations` as an explicit escape hatch to ship
+  unverified-but-valid modules.
 - `scripts/migrate-citations.py` — converts legacy `file:line-range` refs into
   hashed structured citations and stamps `passageHash` onto model-emitted
   `{sourceId, quote}` pairs; unresolved refs go to a review list, never verified.
@@ -98,7 +100,8 @@ never silently passed as Gate-2-clean.
 and zero claim-citation verification failures.
 
 **Failure behavior:** a claim-citation failure is a validation error (module
-invalid). Under `--require-citations`, an unverified-but-valid module is skipped.
+invalid). An unverified-but-valid module is skipped by the default build and
+shipped only with `--allow-unverified-citations`.
 
 **Does NOT guarantee:** that the passage actually *supports* the claim — only
 that the citation resolves to real, unchanged source text.
@@ -125,6 +128,7 @@ claims are supported by their cited sources.
 
 - `tests/test_citations.py` (Gate 2 resolver): **8 passing**.
 - `tests/test_migrate_citations.py` (migration converter): **4 passing**.
-- `tests/test_validation_guard.py` (Gate 1 + Gate 2 integration): **12 passing**.
+- `tests/test_validation_guard.py` (Gate 1 + Gate 2 integration): **13 passing**.
 - `benchmarks/production-pilot/tests/test_pipeline.py` (existing): **28 passing**,
   unaffected.
+- **Total: 53 passing.**
