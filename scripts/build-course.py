@@ -16,6 +16,12 @@ def main() -> None:
         help="Escape hatch: ship modules whose Gate 2 citations are not "
         "verified. By default unverified-citation modules are skipped.",
     )
+    parser.add_argument(
+        "--require-claim-support",
+        action="store_true",
+        help="Gate 3 (opt-in): also skip modules with any deterministic claim "
+        "failure or whose claimsVerified is not true.",
+    )
     args = parser.parse_args()
 
     source_dir = Path("course-data")
@@ -58,6 +64,13 @@ def main() -> None:
             "citationsVerified"
         ):
             print(f"Skipping module with unverified citations: {path}")
+            continue
+
+        if args.require_claim_support and (
+            report.get("claimFailCount", 0) > 0
+            or not report.get("claimsVerified")
+        ):
+            print(f"Skipping module with unverified claim support: {path}")
             continue
 
         module = json.loads(module_bytes.decode("utf-8-sig"))

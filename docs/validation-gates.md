@@ -108,19 +108,64 @@ that the citation resolves to real, unchanged source text.
 
 ---
 
-## Gate 3 — Claim support / entailment (FUTURE)
+## Gate 3 — Claim support (DETERMINISTIC LAYER IMPLEMENTED; auditor model FUTURE)
 
 **Question:** *Does the cited passage substantively support what the tutor says?*
 
-Deterministic-first, model-last:
-- deterministic: important-term overlap, equations present/derivable in source,
-  numeric values match, negation/direction checks, and detection of citations
-  reused indiscriminately across unrelated claims.
-- only the genuinely ambiguous remainder goes to a small auditor model for
-  entailment review.
+Deterministic-first, model-last. `scripts/claim_support.py` (no LLM) resolves
+each claim's cited passage and runs checks that can only **catch contradictions**
+or **confirm concrete token matches**. It deliberately cannot prove prose
+entailment — whatever it can neither confirm nor refute becomes `ambiguous` with
+`auditorRequired=true`, the hand-off point for a future small auditor model.
+
+**Claim-bearing fields evaluated:** `sections.content`, `equations`
+(expression + meaning), `workedExamples` (question/steps/answer),
+`checks` and `practiceQuestions` (answer + explanation).
+
+**Per-claim result schema (`claimResults[]`):**
+```json
+{
+  "location": "sections[0]",
+  "claimText": "…(truncated)…",
+  "sourceId": "wiki/thermodynamics.md#gibbs-free-energy",
+  "status": "pass | fail | ambiguous | skipped",
+  "checks": ["sign", "direction", "negation", "number", "unit", "…"],
+  "failureReasons": ["…"],
+  "auditorRequired": false
+}
+```
+
+**Status:** `pass` = no contradiction AND a concrete signal matched
+(number/sign/direction/unit/equation-symbol present in source); `fail` = a
+deterministic contradiction; `ambiguous` = no contradiction but nothing concrete
+to confirm (→ auditor); `skipped` = no resolvable structured citation.
+
+**Deterministic checks.** Hard-fail: number mismatch, unit mismatch,
+increase/decrease direction reversal, positive/negative sign reversal,
+conditional-source-vs-absolute-claim, worked-example arithmetic,
+answer/explanation consistency (equation-symbol presence is a pass *signal*).
+Soft (→ ambiguous, never a hard fail): **negation polarity** (scope-blind: a
+correct "not a donor" or a T/F answer of "False" is indistinguishable from a real
+flip) and **excessive citation reuse** across claims. The four linguistic
+contradiction checks (sign/direction/negation/conditional) fire only when the
+claim *restates* the source (≥0.6 keyword containment), suppressing false
+contradictions from incidental words in long prose.
+
+**Report fields:** `claimsVerified` (all claims pass), `claimPassCount`,
+`claimFailCount`, `claimAmbiguousCount`, `claimSkippedCount`, `claimResults`.
+
+**Build gate (opt-in):** `scripts/build-course.py --require-claim-support` skips
+a module when any deterministic claim failure exists or `claimsVerified` is not
+true. Off by default; Gate 1/Gate 2 behavior is unchanged.
+
+**Known blind spots:** prose entailment (most descriptive sentences land in
+`ambiguous`); paraphrased numbers / derived values; negation scope; synonyms the
+keyword overlap misses; multi-sentence reasoning. These are exactly what the
+auditor-model phase is for.
 
 **Does NOT guarantee:** pedagogical quality or MCAT exam relevance — only that
-claims are supported by their cited sources.
+claims do not deterministically contradict, and are token-consistent with, their
+cited sources.
 
 ---
 
@@ -128,7 +173,12 @@ claims are supported by their cited sources.
 
 - `tests/test_citations.py` (Gate 2 resolver): **8 passing**.
 - `tests/test_migrate_citations.py` (migration converter): **4 passing**.
-- `tests/test_validation_guard.py` (Gate 1 + Gate 2 integration): **13 passing**.
+- `tests/test_claim_support.py` (Gate 3 deterministic): **20 passing**.
+- `tests/test_validation_guard.py` (Gate 1 + Gate 2 + Gate 3 integration):
+  **18 passing**.
 - `benchmarks/production-pilot/tests/test_pipeline.py` (existing): **28 passing**,
   unaffected.
-- **Total: 53 passing.**
+- **Total: 78 passing.**
+
+**Gate 3 production dry-run (5 modules, 81 claims):** 51 pass · 0 fail ·
+30 ambiguous · 0 skipped.

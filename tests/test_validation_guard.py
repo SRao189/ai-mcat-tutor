@@ -249,6 +249,74 @@ def test_allow_unverified_escape_hatch_ships():
         assert "module-1" in _shipped_ids(tmp)
 
 
+def _module_with_content(content: str, ref) -> dict:
+    section = {"id": "s1", "title": "Section", "content": content,
+               "sourceRefs": [ref]}
+    return dict(VALID_MODULE, sections=[section])
+
+
+# ---- Gate 3 integration (claim support) ------------------------------------
+def test_report_has_gate3_fields():
+    with tempfile.TemporaryDirectory() as d:
+        tmp = _workspace(Path(d))
+        module = _write_module(tmp, VALID_MODULE)
+        assert _validate(tmp, module).returncode == 0
+        rep = _report(tmp)
+        for k in ("claimsVerified", "claimPassCount", "claimFailCount",
+                  "claimAmbiguousCount", "claimSkippedCount", "claimResults"):
+            assert k in rep, k
+
+
+def test_gate3_is_opt_in_default_build_unaffected():
+    # citation-verified but claim-ambiguous module still ships by default
+    with tempfile.TemporaryDirectory() as d:
+        tmp = _workspace(Path(d))
+        _write_wiki(tmp)
+        module = _write_module(tmp, _module_with_content("body", _claim_citation(tmp)))
+        assert _validate(tmp, module).returncode == 0
+        assert _report(tmp)["citationsVerified"] is True
+        assert _report(tmp)["claimsVerified"] is False  # ambiguous prose
+        out = _build(tmp)  # default build ignores Gate 3
+        assert "module-1" in _shipped_ids(tmp) and "Skipping" not in out
+
+
+def test_require_claim_support_skips_ambiguous():
+    with tempfile.TemporaryDirectory() as d:
+        tmp = _workspace(Path(d))
+        _write_wiki(tmp)
+        module = _write_module(tmp, _module_with_content("body", _claim_citation(tmp)))
+        assert _validate(tmp, module).returncode == 0
+        out = _build(tmp, "--require-claim-support")
+        assert "unverified claim support" in out
+        assert _shipped_ids(tmp) == []
+
+
+def test_require_claim_support_ships_when_all_pass():
+    with tempfile.TemporaryDirectory() as d:
+        tmp = _workspace(Path(d))
+        _write_wiki(tmp)
+        content = "When delta G is negative the reaction is spontaneous"
+        module = _write_module(tmp, _module_with_content(content, _claim_citation(tmp)))
+        assert _validate(tmp, module).returncode == 0
+        assert _report(tmp)["claimsVerified"] is True
+        out = _build(tmp, "--require-claim-support")
+        assert "Skipping" not in out and "module-1" in _shipped_ids(tmp)
+
+
+def test_require_claim_support_skips_on_claim_fail():
+    # Gate 2 passes (citation resolves) but Gate 3 catches the contradiction
+    with tempfile.TemporaryDirectory() as d:
+        tmp = _workspace(Path(d))
+        _write_wiki(tmp)
+        content = "delta G is positive for a spontaneous reaction"
+        module = _write_module(tmp, _module_with_content(content, _claim_citation(tmp)))
+        assert _validate(tmp, module).returncode == 0
+        rep = _report(tmp)
+        assert rep["citationsVerified"] is True and rep["claimFailCount"] == 1
+        out = _build(tmp, "--require-claim-support")
+        assert "unverified claim support" in out and _shipped_ids(tmp) == []
+
+
 def _run_all():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for t in tests:

@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import citations
+import claim_support
 
 
 REQUIRED_TOP_LEVEL = [
@@ -291,6 +292,11 @@ def main() -> None:
         claim_legacy_count == 0 and claim_failures == 0
     )
 
+    # Gate 3: deterministic claim support. Informational in the report; the
+    # opt-in build flag (--require-claim-support) enforces it. Does not change
+    # Gate 1/Gate 2 validity or exit behavior.
+    gate3 = claim_support.evaluate_module(data, repo_root)
+
     serialized = json.dumps(data, ensure_ascii=False).lower()
 
     suspicious_phrases = [
@@ -314,6 +320,12 @@ def main() -> None:
         "valid": not errors,
         "legacyCitationCount": legacy_citation_count,
         "citationsVerified": citations_verified,
+        "claimsVerified": gate3["claimsVerified"],
+        "claimPassCount": gate3["claimPassCount"],
+        "claimFailCount": gate3["claimFailCount"],
+        "claimAmbiguousCount": gate3["claimAmbiguousCount"],
+        "claimSkippedCount": gate3["claimSkippedCount"],
+        "claimResults": gate3["claimResults"],
         "errorCount": len(errors),
         "warningCount": len(warnings),
         "errors": errors,
