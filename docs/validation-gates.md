@@ -128,6 +128,7 @@ claims are supported by their cited sources.
 
 - `tests/test_citations.py` (Gate 2 resolver): **8 passing**.
 - `tests/test_migrate_citations.py` (migration converter): **4 passing**.
-- `tests/test_validation_guard.py` (Gate 1 + Gate 2 integration): **12 passing**.
+- `tests/test_validation_guard.py` (Gate 1 + Gate 2 integration): **13 passing**.
 - `benchmarks/production-pilot/tests/test_pipeline.py` (existing): **28 passing**,
   unaffected.
+- **Total: 53 passing.**
