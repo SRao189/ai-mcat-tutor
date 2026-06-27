@@ -50,7 +50,7 @@ revalidated module ships.
 
 ---
 
-## Gate 2 — Citation integrity (NEXT)
+## Gate 2 — Citation integrity (IMPLEMENTED)
 
 **Question:** *Does the cited passage exist, resolve, and remain unchanged?*
 
@@ -72,14 +72,36 @@ through the next heading of equal-or-higher depth) → `quote` is a normalized
 substring of that passage. Any failure → validation error.
 
 A changed source changes the passage hash → dependent validation fails. Legacy
-string citations are accepted during migration but recorded as **unverified**
-(`citationsVerified=false`), never silently passed as Gate-2-clean.
+string citations are accepted during migration but recorded as **unverified**,
+never silently passed as Gate-2-clean.
+
+**Citation scope.** Citations come in two scopes:
+- **claim** — attached to a specific section / equation / worked example /
+  question. These gate `citationsVerified`: every claim citation must be a
+  verified structured object, or the module is not citation-verified.
+- **provenance** — the module-level `sourceRefs` listing *which source files*
+  were used. These are recorded (`legacyCitationCount`) but **excluded** from
+  `citationsVerified`, because file-level provenance is not a passage-level claim.
+
+**Mechanism:**
+- `scripts/citations.py` — the deterministic resolver (no LLM).
+- `scripts/validate-module.py` — verifies claim citations (failures are errors),
+  flags legacy strings as warnings (errors under `--strict`), and writes
+  `legacyCitationCount` + `citationsVerified` to the report.
+- `scripts/build-course.py --require-citations` — additionally skips any module
+  whose `citationsVerified` is not true (default build behavior unchanged).
+- `scripts/migrate-citations.py` — converts legacy `file:line-range` refs into
+  hashed structured citations and stamps `passageHash` onto model-emitted
+  `{sourceId, quote}` pairs; unresolved refs go to a review list, never verified.
+
+**Acceptance criteria (`citationsVerified=true`):** zero legacy claim citations
+and zero claim-citation verification failures.
+
+**Failure behavior:** a claim-citation failure is a validation error (module
+invalid). Under `--require-citations`, an unverified-but-valid module is skipped.
 
 **Does NOT guarantee:** that the passage actually *supports* the claim — only
 that the citation resolves to real, unchanged source text.
-
-Full design, migration converter, and test matrix: see the approved plan and
-`scripts/citations.py` once implemented.
 
 ---
 
@@ -101,6 +123,8 @@ claims are supported by their cited sources.
 
 ## Current test results (2026-06-27)
 
-- Gate 1 guard suite (`tests/test_validation_guard.py`): **5 passing**.
-- Existing pipeline suite (`benchmarks/production-pilot/tests/test_pipeline.py`):
-  **28 passing**, unaffected by the Gate 1 change.
+- `tests/test_citations.py` (Gate 2 resolver): **8 passing**.
+- `tests/test_migrate_citations.py` (migration converter): **4 passing**.
+- `tests/test_validation_guard.py` (Gate 1 + Gate 2 integration): **12 passing**.
+- `benchmarks/production-pilot/tests/test_pipeline.py` (existing): **28 passing**,
+  unaffected.

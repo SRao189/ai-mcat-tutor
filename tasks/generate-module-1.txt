@@ -13,7 +13,16 @@ Requirements:
 - Do not use outside knowledge.
 - Mark unsupported requests in `sourceGaps`.
 - Every factual section, equation, example, and question must include
-  one or more source references.
+  one or more structured source references. Each reference is an object:
+    {
+      "sourceId": "wiki/<file>.md#<heading-slug>",
+      "quote": "<exact sentence(s) copied from that section>"
+    }
+  - `<heading-slug>` is the lowercased heading with punctuation removed and
+    spaces replaced by hyphens (e.g. "Gibbs Free Energy" -> "gibbs-free-energy").
+  - `quote` must be copied verbatim from the cited section.
+  - Do NOT invent a `passageHash`; deterministic tooling stamps it
+    (scripts/migrate-citations.py).
 - Follow the JSON schema exactly.
 - Keep the module under 2,500 words.
 - Do not read unrelated files.

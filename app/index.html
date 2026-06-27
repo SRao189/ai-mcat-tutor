@@ -633,7 +633,11 @@
 
   function sourceRefLine(refs) {
     if (!refs || !refs.length) return "";
-    return "Source: " + refs.join("; ");
+    var parts = refs.map(function (r) {
+      // legacy string citation, or structured { sourceId, quote, passageHash }
+      return (typeof r === "string") ? r : r.sourceId;
+    });
+    return "Source: " + parts.join("; ");
   }
 
   function findModuleForLesson(moduleId) {

@@ -1,11 +1,22 @@
 ﻿#!/usr/bin/env python3
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Assemble validated MCAT modules into the app."
+    )
+    parser.add_argument(
+        "--require-citations",
+        action="store_true",
+        help="Gate 2: also skip modules whose citations are not verified.",
+    )
+    args = parser.parse_args()
+
     source_dir = Path("course-data")
     output_path = Path("app/course-data.js")
 
@@ -40,6 +51,10 @@ def main() -> None:
 
         if recorded_hash != actual_hash:
             print(f"Skipping stale module (hash mismatch): {path}")
+            continue
+
+        if args.require_citations and not report.get("citationsVerified"):
+            print(f"Skipping module with unverified citations: {path}")
             continue
 
         module = json.loads(module_bytes.decode("utf-8-sig"))

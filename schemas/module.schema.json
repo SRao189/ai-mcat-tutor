@@ -57,8 +57,7 @@
             "type": "array",
             "minItems": 1,
             "items": {
-              "type": "string",
-              "minLength": 1
+              "$ref": "#/$defs/sourceRef"
             }
           }
         },
@@ -87,8 +86,7 @@
             "type": "array",
             "minItems": 1,
             "items": {
-              "type": "string",
-              "minLength": 1
+              "$ref": "#/$defs/sourceRef"
             }
           }
         },
@@ -125,8 +123,7 @@
             "type": "array",
             "minItems": 1,
             "items": {
-              "type": "string",
-              "minLength": 1
+              "$ref": "#/$defs/sourceRef"
             }
           }
         },
@@ -149,8 +146,7 @@
       "type": "array",
       "minItems": 1,
       "items": {
-        "type": "string",
-        "minLength": 1
+        "$ref": "#/$defs/sourceRef"
       }
     },
     "sourceGaps": {
@@ -162,6 +158,40 @@
     }
   },
   "$defs": {
+    "sourceRef": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "$ref": "#/$defs/citation"
+        }
+      ]
+    },
+    "citation": {
+      "type": "object",
+      "required": [
+        "sourceId",
+        "quote",
+        "passageHash"
+      ],
+      "properties": {
+        "sourceId": {
+          "type": "string",
+          "pattern": "#"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "passageHash": {
+          "type": "string",
+          "pattern": "^sha256:"
+        }
+      },
+      "additionalProperties": true
+    },
     "question": {
       "type": "object",
       "required": [

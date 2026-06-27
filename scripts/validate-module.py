@@ -7,6 +7,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import citations
+
 
 REQUIRED_TOP_LEVEL = [
     "id",
@@ -40,10 +42,41 @@ def validate_source_refs(
         return
 
     for index, ref in enumerate(refs):
-        if not is_nonempty_string(ref):
+        # A ref may be a legacy string or a structured citation object.
+        # Object citations are verified deterministically in the Gate 2 pass.
+        if not is_nonempty_string(ref) and not citations.is_structured(ref):
             errors.append(
-                f"{location}.sourceRefs[{index}] must be a non-empty string."
+                f"{location}.sourceRefs[{index}] must be a string or "
+                f"citation object."
             )
+
+
+def collect_citations(data: dict[str, Any]) -> list[tuple[str, Any, str]]:
+    """Every (location, ref, scope) triple across all sourceRefs arrays.
+
+    scope is "provenance" for the module-level sourceRefs (which files were used)
+    or "claim" for a citation attached to a specific section/equation/example/
+    question. Only claim-scope citations gate citationsVerified."""
+    triples: list[tuple[str, Any, str]] = []
+
+    for index, ref in enumerate(data.get("sourceRefs", []) or []):
+        triples.append((f"sourceRefs[{index}]", ref, "provenance"))
+
+    for collection in [
+        "sections",
+        "equations",
+        "workedExamples",
+        "checks",
+        "practiceQuestions",
+    ]:
+        for i, item in enumerate(data.get(collection, []) or []):
+            if isinstance(item, dict):
+                for j, ref in enumerate(item.get("sourceRefs", []) or []):
+                    triples.append(
+                        (f"{collection}[{i}].sourceRefs[{j}]", ref, "claim")
+                    )
+
+    return triples
 
 
 def validate_question(
@@ -94,6 +127,12 @@ def main() -> None:
     parser.add_argument(
         "--report",
         help="Optional output report JSON path.",
+    )
+
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Treat legacy string citations as errors, not warnings.",
     )
 
     args = parser.parse_args()
@@ -215,10 +254,42 @@ def main() -> None:
             )
 
         for index, ref in enumerate(top_source_refs):
-            if not is_nonempty_string(ref):
+            if not is_nonempty_string(ref) and not citations.is_structured(ref):
                 errors.append(
-                    f"sourceRefs[{index}] must be a non-empty string."
+                    f"sourceRefs[{index}] must be a string or citation object."
                 )
+
+    # Gate 2: citation integrity. Object citations are resolved + hash-checked.
+    # Legacy strings are NOT treated as verified. citationsVerified reflects only
+    # claim-scope citations; module-level file provenance is excluded.
+    repo_root = Path.cwd()
+    legacy_citation_count = 0
+    claim_legacy_count = 0
+    claim_failures = 0
+
+    for location, ref, scope in collect_citations(data):
+        if citations.is_structured(ref):
+            ok, reason = citations.verify_citation(ref, repo_root)
+            if not ok:
+                source_id = ref.get("sourceId", "?") if isinstance(ref, dict) else "?"
+                errors.append(
+                    f"{location}: citation {reason} ({source_id})."
+                )
+                if scope == "claim":
+                    claim_failures += 1
+        elif isinstance(ref, str):
+            legacy_citation_count += 1
+            message = f"{location}: legacy string citation (unverified): {ref}"
+            if args.strict:
+                errors.append(message)
+            else:
+                warnings.append(message)
+            if scope == "claim":
+                claim_legacy_count += 1
+
+    citations_verified = (
+        claim_legacy_count == 0 and claim_failures == 0
+    )
 
     serialized = json.dumps(data, ensure_ascii=False).lower()
 
@@ -241,6 +312,8 @@ def main() -> None:
         "moduleHash": module_hash,
         "validatedAt": datetime.now(timezone.utc).isoformat(),
         "valid": not errors,
+        "legacyCitationCount": legacy_citation_count,
+        "citationsVerified": citations_verified,
         "errorCount": len(errors),
         "warningCount": len(warnings),
         "errors": errors,
