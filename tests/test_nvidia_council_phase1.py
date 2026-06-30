@@ -273,6 +273,127 @@ def test_malformed_recoverable_claim_never_verified_without_citation():
     assert any(o.reason == "claim has no citation" for o in response.gate_outcomes)
 
 
+class FixedDraftReasoner(TutorReasoner):
+    def __init__(self, draft: TutorDraft) -> None:
+        self.draft = draft
+
+    def answer(
+        self,
+        *,
+        question: str,
+        candidates: tuple[RetrievalCandidate, ...],
+        learner_state: dict | None,
+        request_id: str,
+    ):
+        return self.draft, 0, "test"
+
+
+def _answer_with_draft(draft: TutorDraft):
+    return answer_question(
+        "What are the pKa values of phosphoric acid?",
+        config=MOCK_CONFIG,
+        reasoner=FixedDraftReasoner(draft),
+    )
+
+
+def test_valid_cited_claim_verifies():
+    response = _answer_with_draft(
+        TutorDraft(
+            answer="The pKas for phosphoric acid dissociation are 2.1, 7.2, and 12.4.",
+            claims=(
+                Claim(
+                    text="The pKas for the three acid dissociation equilibria are 2.1, 7.2, and 12.4.",
+                    source_ids=("chapter-7-1-passage-01",),
+                ),
+            ),
+            citation_source_ids=("chapter-7-1-passage-01",),
+        )
+    )
+    assert response.status == ResponseStatus.VERIFIED, response.to_dict()
+
+
+def test_uncited_claim_remains_ambiguous():
+    response = _answer_with_draft(
+        TutorDraft(
+            answer="Phosphoric acid has three pKa values.",
+            claims=(Claim(text="Phosphoric acid has three pKa values.", source_ids=()),),
+            citation_source_ids=(),
+        )
+    )
+    assert response.status == ResponseStatus.AMBIGUOUS, response.to_dict()
+    assert any(o.reason == "claim has no citation" for o in response.gate_outcomes)
+
+
+def test_invented_source_id_fails():
+    response = _answer_with_draft(
+        TutorDraft(
+            answer="Phosphoric acid has three pKa values.",
+            claims=(
+                Claim(
+                    text="Phosphoric acid has three pKa values.",
+                    source_ids=("chapter-7-1-passage-99",),
+                ),
+            ),
+            citation_source_ids=("chapter-7-1-passage-99",),
+        )
+    )
+    assert response.status == ResponseStatus.AMBIGUOUS, response.to_dict()
+    assert any(o.reason == "invalid citation" for o in response.gate_outcomes)
+
+
+def test_mixed_cited_and_uncited_claims_fail_safely():
+    response = _answer_with_draft(
+        TutorDraft(
+            answer="Phosphoric acid pKas are listed. It is always the strongest biological buffer.",
+            claims=(
+                Claim(
+                    text="The pKas for the three acid dissociation equilibria are 2.1, 7.2, and 12.4.",
+                    source_ids=("chapter-7-1-passage-01",),
+                ),
+                Claim(
+                    text="It is always the strongest biological buffer.",
+                    source_ids=(),
+                ),
+            ),
+            citation_source_ids=("chapter-7-1-passage-01",),
+        )
+    )
+    assert response.status == ResponseStatus.AMBIGUOUS, response.to_dict()
+    assert any(o.reason == "claim has no citation" for o in response.gate_outcomes)
+
+
+def test_insufficient_evidence_path_with_model_draft():
+    response = _answer_with_draft(
+        TutorDraft(
+            answer="The approved Chapter 7.1 passages do not provide enough evidence to answer that.",
+            claims=(),
+            citation_source_ids=(),
+            uncertainty=("No provided source supports the requested claim.",),
+            insufficient_evidence=True,
+            recommended_next_action="ask_about_chapter_7_1",
+        )
+    )
+    assert response.status == ResponseStatus.INSUFFICIENT_EVIDENCE, response.to_dict()
+    assert response.gate_outcomes == ()
+
+
+def test_numeric_claim_without_citation_fails():
+    response = _answer_with_draft(
+        TutorDraft(
+            answer="The pKa values are 2.1, 7.2, and 12.4.",
+            claims=(
+                Claim(
+                    text="The pKa values are 2.1, 7.2, and 12.4.",
+                    source_ids=(),
+                ),
+            ),
+            citation_source_ids=(),
+        )
+    )
+    assert response.status == ResponseStatus.AMBIGUOUS, response.to_dict()
+    assert any(o.reason == "claim has no citation" for o in response.gate_outcomes)
+
+
 def _run_all():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for test in tests:

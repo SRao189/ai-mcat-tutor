@@ -147,35 +147,72 @@ class NvidiaTutorReasoner(TutorReasoner):
                 self.config.tutor_model,
             )
 
-        passages = [
-            {
-                "sourceId": candidate.passage.source_id,
-                "label": candidate.passage.label,
-                "sourceHash": candidate.passage.source_hash,
-                "text": candidate.passage.text,
-            }
+        source_block = "\n\n".join(
+            "\n".join(
+                [
+                    f"SOURCE_ID: {candidate.passage.source_id}",
+                    f"SOURCE_LABEL: {candidate.passage.label}",
+                    f"SOURCE_HASH: {candidate.passage.source_hash}",
+                    f"SOURCE_TEXT: {candidate.passage.text}",
+                ]
+            )
             for candidate in candidates
-        ]
+        )
         messages = [
             {
                 "role": "system",
                 "content": (
-                    "You are the Phase 1 MCAT tutor reasoner. Use only the provided passages. "
-                    "Do not use outside knowledge. Do not invent citations. Preserve numbers, units, equations, "
-                    "conditions, and qualifiers exactly. If the passages do not support the answer, set "
-                    "insufficientEvidence to true. Return only JSON with keys: answer, claims, citationSourceIds, "
-                    "uncertainty, insufficientEvidence, recommendedNextAction."
+                    "You are the Phase 1 MCAT tutor reasoner. Return strict JSON only, with no markdown.\n"
+                    "\n"
+                    "Grounding rules:\n"
+                    "- Use only the provided SOURCE_TEXT blocks.\n"
+                    "- Every factual claim must include at least one citationSourceIds entry.\n"
+                    "- citationSourceIds must be copied exactly from the provided SOURCE_ID values.\n"
+                    "- Do not invent citation IDs.\n"
+                    "- Do not make uncited numeric, chemical, equation, definition, or cause/effect claims.\n"
+                    "- Preserve numbers, units, equations, conditions, and qualifiers exactly.\n"
+                    "- If no source supports the answer, set insufficientEvidence to true, use an empty claims array, and do not answer from memory.\n"
+                    "\n"
+                    "Required output schema:\n"
+                    "{\n"
+                    '  "answer": "...",\n'
+                    '  "claims": [\n'
+                    '    {"text": "...", "citationSourceIds": ["chapter-7-1-passage-01"]}\n'
+                    "  ],\n"
+                    '  "uncertainty": [],\n'
+                    '  "insufficientEvidence": false,\n'
+                    '  "recommendedNextAction": "..."\n'
+                    "}\n"
+                    "\n"
+                    "Valid example:\n"
+                    "{\n"
+                    '  "answer": "Phosphoric acid has three acid dissociation pKas: 2.1, 7.2, and 12.4.",\n'
+                    '  "claims": [\n'
+                    '    {"text": "The pKas for the three acid dissociation equilibria are 2.1, 7.2, and 12.4.", "citationSourceIds": ["chapter-7-1-passage-01"]}\n'
+                    "  ],\n"
+                    '  "uncertainty": [],\n'
+                    '  "insufficientEvidence": false,\n'
+                    '  "recommendedNextAction": "review_phosphoric_acid_dissociation"\n'
+                    "}\n"
+                    "\n"
+                    "Insufficient-evidence example:\n"
+                    "{\n"
+                    '  "answer": "The approved Chapter 7.1 passages do not provide enough evidence to answer that.",\n'
+                    '  "claims": [],\n'
+                    '  "uncertainty": ["No provided SOURCE_TEXT supports the requested claim."],\n'
+                    '  "insufficientEvidence": true,\n'
+                    '  "recommendedNextAction": "ask_about_chapter_7_1_phosphorus_containing_compounds"\n'
+                    "}"
                 ),
             },
             {
                 "role": "user",
-                "content": json.dumps(
-                    {
-                        "studentQuestion": question,
-                        "learnerState": learner_state or {},
-                        "passages": passages,
-                    },
-                    ensure_ascii=False,
+                "content": (
+                    f"STUDENT_QUESTION: {question}\n\n"
+                    f"LEARNER_STATE_JSON: {json.dumps(learner_state or {}, ensure_ascii=False)}\n\n"
+                    "APPROVED SOURCES:\n"
+                    f"{source_block}\n\n"
+                    "Return the required JSON object now."
                 ),
             },
         ]
