@@ -193,26 +193,23 @@ class NvidiaTutorReasoner(TutorReasoner):
             payload = json.loads(content)
         except json.JSONDecodeError as exc:
             raise NvidiaClientError("NVIDIA tutor returned malformed JSON") from exc
+        if not isinstance(payload, dict):
+            raise NvidiaClientError("NVIDIA tutor returned non-object JSON")
 
-        claims = tuple(
-            Claim(
-                text=str(item.get("text", "")),
-                source_ids=tuple(str(s) for s in item.get("sourceIds", [])),
-                confidence=item.get("confidence"),
-            )
-            for item in payload.get("claims", [])
-            if isinstance(item, dict)
-        )
+        claims = _normalize_claims(payload.get("claims"))
         return TutorDraft(
-            answer=str(payload.get("answer", "")),
+            answer=_normalize_string(payload.get("answer")),
             claims=claims,
-            citation_source_ids=tuple(
-                str(s) for s in payload.get("citationSourceIds", [])
+            citation_source_ids=_normalize_string_tuple(
+                payload.get("citationSourceIds")
             ),
-            uncertainty=tuple(str(u) for u in payload.get("uncertainty", [])),
-            insufficient_evidence=bool(payload.get("insufficientEvidence", False)),
-            recommended_next_action=str(
-                payload.get("recommendedNextAction", "review_cited_passages")
+            uncertainty=_normalize_uncertainty(payload.get("uncertainty")),
+            insufficient_evidence=_normalize_bool(
+                payload.get("insufficientEvidence")
+            ),
+            recommended_next_action=_normalize_string(
+                payload.get("recommendedNextAction"),
+                default="review_cited_passages",
             ),
         )
 
@@ -225,3 +222,90 @@ def reasoner_for_config(config: CouncilConfig) -> TutorReasoner:
 
 def new_request_id() -> str:
     return uuid.uuid4().hex
+
+
+def _normalize_string(value: Any, default: str = "") -> str:
+    if value is None:
+        return default
+    if isinstance(value, str):
+        return value
+    if isinstance(value, bool):
+        return "true" if value else default
+    if isinstance(value, (int, float)):
+        return str(value)
+    return default
+
+
+def _normalize_string_tuple(value: Any) -> tuple[str, ...]:
+    if value is None or value is False:
+        return ()
+    if isinstance(value, str):
+        return (value,) if value.strip() else ()
+    if isinstance(value, bool):
+        return ("true",)
+    if isinstance(value, (list, tuple)):
+        return tuple(
+            str(item)
+            for item in value
+            if item is not None and item is not False and str(item).strip()
+        )
+    return (str(value),)
+
+
+def _normalize_uncertainty(value: Any) -> tuple[str, ...]:
+    if value is True:
+        return ("model_reported_unspecified_uncertainty",)
+    return _normalize_string_tuple(value)
+
+
+def _normalize_bool(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return False
+    if isinstance(value, str):
+        return value.strip().lower() in {"true", "1", "yes", "y", "on"}
+    if isinstance(value, (int, float)):
+        return bool(value)
+    return False
+
+
+def _normalize_claims(value: Any) -> tuple[Claim, ...]:
+    if value is None or value is False:
+        return ()
+    if isinstance(value, dict):
+        items = (value,)
+    elif isinstance(value, (list, tuple)):
+        items = tuple(value)
+    elif isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return ()
+        return (Claim(text=text, source_ids=(), confidence=None),)
+    else:
+        return (Claim(text=str(value), source_ids=(), confidence=None),)
+
+    claims: list[Claim] = []
+    for item in items:
+        if isinstance(item, dict):
+            text = _normalize_string(item.get("text"))
+            source_ids = _normalize_string_tuple(
+                item.get("sourceIds", item.get("citationSourceIds"))
+            )
+            confidence = item.get("confidence")
+            if isinstance(confidence, bool) or not isinstance(
+                confidence, (int, float)
+            ):
+                confidence = None
+            claims.append(
+                Claim(
+                    text=text,
+                    source_ids=source_ids,
+                    confidence=confidence,
+                )
+            )
+        elif isinstance(item, str) and item.strip():
+            claims.append(
+                Claim(text=item.strip(), source_ids=(), confidence=None)
+            )
+    return tuple(claims)

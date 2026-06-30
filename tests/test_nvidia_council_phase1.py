@@ -7,6 +7,7 @@ No network calls are made; tests use NVIDIA_MOCK_MODE behavior.
 from __future__ import annotations
 
 import io
+import json
 import logging
 import sys
 import tempfile
@@ -18,7 +19,7 @@ sys.path.insert(0, str(REPO))
 from council.config import CouncilConfig  # noqa: E402
 from council.nvidia_client import NvidiaClientError  # noqa: E402
 from council.phase1 import answer_question  # noqa: E402
-from council.roles import TutorReasoner  # noqa: E402
+from council.roles import NvidiaTutorReasoner, TutorReasoner  # noqa: E402
 from council.schema import Claim, RetrievalCandidate, ResponseStatus, TutorDraft  # noqa: E402
 from council.source_store import Chapter71PassageStore  # noqa: E402
 from council.verification import CouncilVerifier  # noqa: E402
@@ -149,6 +150,127 @@ def test_raw_source_paths_are_hidden():
     payload = str(response.to_dict()).lower()
     assert "raw/" not in payload
     assert "mcat biochemistry review chapter 7.txt" not in payload
+
+
+def _parse_payload(payload):
+    return NvidiaTutorReasoner(MOCK_CONFIG)._parse(json.dumps(payload))
+
+
+def test_parse_uncertainty_false():
+    draft = _parse_payload({"answer": "x", "claims": [], "uncertainty": False})
+    assert draft.uncertainty == ()
+
+
+def test_parse_uncertainty_true():
+    draft = _parse_payload({"answer": "x", "claims": [], "uncertainty": True})
+    assert draft.uncertainty == ("model_reported_unspecified_uncertainty",)
+
+
+def test_parse_uncertainty_string():
+    draft = _parse_payload(
+        {"answer": "x", "claims": [], "uncertainty": "low confidence"}
+    )
+    assert draft.uncertainty == ("low confidence",)
+
+
+def test_parse_uncertainty_empty_list():
+    draft = _parse_payload({"answer": "x", "claims": [], "uncertainty": []})
+    assert draft.uncertainty == ()
+
+
+def test_parse_uncertainty_null():
+    draft = _parse_payload({"answer": "x", "claims": [], "uncertainty": None})
+    assert draft.uncertainty == ()
+
+
+def test_parse_claims_string_instead_of_list_is_not_verified_shape():
+    draft = _parse_payload(
+        {
+            "answer": "ATP stores energy.",
+            "claims": "ATP stores energy.",
+            "citationSourceIds": "chapter-7-1-passage-05",
+        }
+    )
+    assert len(draft.claims) == 1
+    assert draft.claims[0].text == "ATP stores energy."
+    assert draft.claims[0].source_ids == ()
+
+
+def test_parse_missing_fields_recover_to_empty_safe_defaults():
+    draft = _parse_payload({})
+    assert draft.answer == ""
+    assert draft.claims == ()
+    assert draft.citation_source_ids == ()
+    assert draft.uncertainty == ()
+    assert draft.insufficient_evidence is False
+    assert draft.recommended_next_action == "review_cited_passages"
+
+
+def test_parse_malformed_but_recoverable_payload():
+    draft = _parse_payload(
+        {
+            "answer": 12,
+            "claims": {
+                "text": True,
+                "sourceIds": "chapter-7-1-passage-01",
+                "confidence": "high",
+            },
+            "citationSourceIds": False,
+            "uncertainty": 7,
+            "insufficientEvidence": "true",
+            "recommendedNextAction": None,
+        }
+    )
+    assert draft.answer == "12"
+    assert draft.claims[0].text == "true"
+    assert draft.claims[0].source_ids == ("chapter-7-1-passage-01",)
+    assert draft.claims[0].confidence is None
+    assert draft.citation_source_ids == ()
+    assert draft.uncertainty == ("7",)
+    assert draft.insufficient_evidence is True
+    assert draft.recommended_next_action == "review_cited_passages"
+
+
+def test_unrecoverable_payload_raises_model_error():
+    try:
+        NvidiaTutorReasoner(MOCK_CONFIG)._parse("[]")
+    except NvidiaClientError as exc:
+        assert "non-object" in str(exc)
+    else:
+        raise AssertionError("non-object payload should fail")
+
+
+class StringClaimReasoner(TutorReasoner):
+    def answer(
+        self,
+        *,
+        question: str,
+        candidates: tuple[RetrievalCandidate, ...],
+        learner_state: dict | None,
+        request_id: str,
+    ):
+        return (
+            TutorDraft(
+                answer="ATP stores energy.",
+                claims=(Claim(text="ATP stores energy.", source_ids=()),),
+                citation_source_ids=("chapter-7-1-passage-05",),
+                uncertainty=(),
+                insufficient_evidence=False,
+                recommended_next_action="review",
+            ),
+            0,
+            "test",
+        )
+
+
+def test_malformed_recoverable_claim_never_verified_without_citation():
+    response = answer_question(
+        "What is ATP?",
+        config=MOCK_CONFIG,
+        reasoner=StringClaimReasoner(),
+    )
+    assert response.status == ResponseStatus.AMBIGUOUS, response.to_dict()
+    assert any(o.reason == "claim has no citation" for o in response.gate_outcomes)
 
 
 def _run_all():
