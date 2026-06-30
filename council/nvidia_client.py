@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import ssl
 import time
 import urllib.error
 import urllib.request
@@ -69,7 +70,9 @@ class NvidiaClient:
                     },
                 )
                 with urllib.request.urlopen(
-                    req, timeout=self.config.timeout_seconds
+                    req,
+                    timeout=self.config.timeout_seconds,
+                    context=self._ssl_context(),
                 ) as response:
                     raw = response.read().decode("utf-8")
                     latency_ms = int((time.perf_counter() - started) * 1000)
@@ -94,8 +97,10 @@ class NvidiaClient:
                     )
             except TimeoutError:
                 last_error = "timeout"
+            except urllib.error.HTTPError as exc:
+                last_error = self._safe_http_error(exc)
             except urllib.error.URLError as exc:
-                last_error = exc.reason.__class__.__name__
+                last_error = self._safe_url_error(exc)
             except (KeyError, json.JSONDecodeError, UnicodeDecodeError):
                 last_error = "malformed-response"
 
@@ -123,3 +128,46 @@ class NvidiaClient:
             if "key" not in key.lower() and "secret" not in key.lower()
         }
         self.logger.info(event, extra=safe)
+
+    def _safe_http_error(self, exc: urllib.error.HTTPError) -> str:
+        reason = f"http-{exc.code}"
+        try:
+            raw = exc.read().decode("utf-8", errors="replace")
+            data = json.loads(raw)
+        except (OSError, json.JSONDecodeError, UnicodeDecodeError):
+            return reason
+
+        error = data.get("error") if isinstance(data, dict) else None
+        if isinstance(error, dict):
+            provider_type = str(error.get("type") or "").strip()
+            provider_code = str(error.get("code") or "").strip()
+            details = [
+                item
+                for item in (provider_type, provider_code)
+                if item and "key" not in item.lower() and "token" not in item.lower()
+            ]
+            if details:
+                return reason + ":" + ":".join(details)
+        return reason
+
+    def _safe_url_error(self, exc: urllib.error.URLError) -> str:
+        reason = getattr(exc, "reason", None)
+        if isinstance(reason, BaseException):
+            verify_message = getattr(reason, "verify_message", None)
+            if verify_message:
+                return f"{reason.__class__.__name__}:{verify_message}"
+            return reason.__class__.__name__
+        if isinstance(reason, str) and reason.strip():
+            text = reason.strip()
+            red_flags = ("key", "token", "secret", "bearer")
+            if any(flag in text.lower() for flag in red_flags):
+                return "url-error"
+            return text[:80]
+        return exc.__class__.__name__
+
+    def _ssl_context(self) -> ssl.SSLContext | None:
+        try:
+            import truststore  # type: ignore
+        except ImportError:
+            return None
+        return truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
