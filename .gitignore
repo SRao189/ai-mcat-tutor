@@ -19,6 +19,14 @@ __pycache__/
 # Environment and secrets
 .env
 .env.*
+*.env
+*.env.*
+*.env.backup*
+secrets/
+*.key
+*.pem
+*.token
 
 # Local source material
 raw/
+!.env.example
