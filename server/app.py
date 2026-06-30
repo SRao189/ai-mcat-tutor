@@ -28,6 +28,7 @@ if str(REPO) not in sys.path:
 
 from council.config import CouncilConfig  # noqa: E402
 from council.phase1 import answer_question  # noqa: E402
+from council.router import route_message  # noqa: E402
 
 ANSWER_QUESTION = answer_question
 
@@ -211,13 +212,18 @@ class Section71Handler(BaseHTTPRequestHandler):
 
         try:
             config = CouncilConfig.from_env(REPO)
-            response = ANSWER_QUESTION(
+            # Route first: greetings/chit-chat/navigation return a conversational
+            # reply with no model call. Factual messages delegate to the gated
+            # pipeline (ANSWER_QUESTION) unchanged — read at call time so tests
+            # that monkeypatch it still take effect.
+            response_dict = route_message(
                 question,
+                answer_fn=ANSWER_QUESTION,
                 learner_state=payload.get("learnerState") if isinstance(payload.get("learnerState"), dict) else None,
                 config=config,
                 logger=LOGGER,
             )
-            _json_response(self, HTTPStatus.OK, response.to_dict())
+            _json_response(self, HTTPStatus.OK, response_dict)
         finally:
             _global_model_slots.release()
             with _inflight_lock:

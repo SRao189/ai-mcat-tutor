@@ -12,6 +12,9 @@ class ResponseStatus(str, Enum):
     AMBIGUOUS = "ambiguous"
     INSUFFICIENT_EVIDENCE = "insufficient_evidence"
     MODEL_ERROR = "model_error"
+    # Non-factual chat (greetings, navigation, simplify prompts). No retrieval,
+    # no NVIDIA call, no Gate 2/3 — carries no textbook claims to verify.
+    CONVERSATIONAL = "conversational"
 
 
 @dataclass(frozen=True)
