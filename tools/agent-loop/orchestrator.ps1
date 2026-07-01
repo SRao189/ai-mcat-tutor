@@ -27,13 +27,20 @@ The script intentionally does not merge, force-push, or deploy.
 
 [CmdletBinding()]
 param(
-    [string]$TaskPath = (Join-Path $PSScriptRoot "task.json"),
+    [string]$TaskPath = "",
     [int]$MaxRounds = 2,
+    [int]$TimeoutSeconds = 900,
+    [switch]$SelfTest,
     [switch]$AllowDirtyAtStart
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+$ScriptRoot = if ([string]::IsNullOrEmpty($PSScriptRoot)) {
+    Split-Path -Parent $MyInvocation.MyCommand.Path
+} else {
+    $PSScriptRoot
+}
 
 function Resolve-RepoPath {
     param([Parameter(Mandatory)] [string]$PathValue)
@@ -74,6 +81,119 @@ function Get-GitStatusLines {
     return @(& git -C $Worktree status --porcelain)
 }
 
+function Join-CommandArguments {
+    param([Parameter(Mandatory)] [string[]]$Arguments)
+    return ($Arguments | ForEach-Object {
+        if ($_ -notmatch '[\s"]') {
+            return $_
+        }
+        $escaped = $_ -replace '(\\*)"', '$1$1\"'
+        $escaped = $escaped -replace '(\\+)$', '$1$1'
+        return '"' + $escaped + '"'
+    }) -join " "
+}
+
+function Stop-ChildProcessTree {
+    param([Parameter(Mandatory)] [System.Diagnostics.Process]$Process)
+    if ($Process.HasExited) {
+        return
+    }
+
+    try {
+        $Process.Kill($true)
+    } catch {
+        $taskkill = Join-Path $env:SystemRoot "System32\taskkill.exe"
+        if (Test-Path -LiteralPath $taskkill) {
+            $oldErrorActionPreference = $ErrorActionPreference
+            try {
+                $ErrorActionPreference = "SilentlyContinue"
+                & $taskkill /PID $Process.Id /T /F *> $null
+            } catch {
+            } finally {
+                $ErrorActionPreference = $oldErrorActionPreference
+            }
+            [void]$Process.WaitForExit(1000)
+        }
+        if (-not $Process.HasExited) {
+            $Process.Kill()
+        }
+    }
+}
+
+function Invoke-ChildProcess {
+    param(
+        [Parameter(Mandatory)] [string]$FilePath,
+        [string[]]$Arguments = @(),
+        [Parameter(Mandatory)] [string]$WorkingDirectory,
+        [Parameter(Mandatory)] [int]$TimeoutSeconds
+    )
+
+    if ($TimeoutSeconds -le 0) {
+        throw "TimeoutSeconds must be greater than zero."
+    }
+
+    $proc = New-Object System.Diagnostics.Process
+    $timedOut = $false
+
+    try {
+        $proc.StartInfo.FileName = $FilePath
+        $proc.StartInfo.WorkingDirectory = $WorkingDirectory
+        $proc.StartInfo.UseShellExecute = $false
+        $proc.StartInfo.RedirectStandardOutput = $true
+        $proc.StartInfo.RedirectStandardError = $true
+        $proc.StartInfo.CreateNoWindow = $true
+
+        if ($proc.StartInfo.PSObject.Properties.Name -contains "ArgumentList") {
+            foreach ($argument in $Arguments) {
+                [void]$proc.StartInfo.ArgumentList.Add($argument)
+            }
+        } else {
+            $proc.StartInfo.Arguments = Join-CommandArguments -Arguments $Arguments
+        }
+
+        [void]$proc.Start()
+        $stdoutTask = $proc.StandardOutput.ReadToEndAsync()
+        $stderrTask = $proc.StandardError.ReadToEndAsync()
+
+        $timeoutMs = [Math]::Min([int64][int]::MaxValue, [int64]$TimeoutSeconds * 1000L)
+        if (-not $proc.WaitForExit([int]$timeoutMs)) {
+            $timedOut = $true
+            Stop-ChildProcessTree -Process $proc
+            [void]$proc.WaitForExit(10000)
+        }
+
+        if (-not $timedOut) {
+            $proc.WaitForExit()
+        }
+        [void][System.Threading.Tasks.Task]::WaitAll(@($stdoutTask, $stderrTask), 10000)
+
+        $output = New-Object System.Text.StringBuilder
+        if ($stdoutTask.IsCompleted) {
+            [void]$output.Append($stdoutTask.Result)
+        }
+        if ($stderrTask.IsCompleted) {
+            [void]$output.Append($stderrTask.Result)
+        }
+        $exitCode = if ($timedOut) { -1 } else { $proc.ExitCode }
+
+        return [ordered]@{
+            exitCode = $exitCode
+            timedOut = $timedOut
+            output = $output.ToString()
+        }
+    } finally {
+        if ($null -ne $proc) {
+            try {
+                if (-not $proc.HasExited) {
+                    Stop-ChildProcessTree -Process $proc
+                }
+            } catch {
+            }
+            $proc.Dispose()
+        }
+    }
+}
+
 function Assert-CleanWorktree {
     param(
         [Parameter(Mandatory)] [string]$Worktree,
@@ -91,7 +211,8 @@ function Invoke-LoggedCommand {
         [Parameter(Mandatory)] [string[]]$CommandSpec,
         [Parameter(Mandatory)] [string]$Worktree,
         [Parameter(Mandatory)] [string]$LogPath,
-        [Parameter(Mandatory)] [hashtable]$Vars
+        [Parameter(Mandatory)] [hashtable]$Vars,
+        [Parameter(Mandatory)] [int]$TimeoutSeconds
     )
     $expanded = @($CommandSpec | ForEach-Object { Format-CommandArg -Value $_ -Vars $Vars })
     if ($expanded.Count -eq 0) {
@@ -107,17 +228,12 @@ function Invoke-LoggedCommand {
     $parent = Split-Path -Parent $LogPath
     New-Item -ItemType Directory -Force -Path $parent | Out-Null
 
-    $oldErrorActionPreference = $ErrorActionPreference
-    Push-Location -LiteralPath $Worktree
-    try {
-        $ErrorActionPreference = "Continue"
-        $output = & $exe @arguments 2>&1
-        $exitCode = $LASTEXITCODE
-    } finally {
-        $ErrorActionPreference = $oldErrorActionPreference
-        Pop-Location
+    $result = Invoke-ChildProcess -FilePath $exe -Arguments $arguments -WorkingDirectory $Worktree -TimeoutSeconds $TimeoutSeconds
+    $result.output | Set-Content -LiteralPath $LogPath -Encoding UTF8
+    if ($result.timedOut) {
+        throw "Command timed out after $TimeoutSeconds seconds. See $LogPath"
     }
-    $output | Set-Content -LiteralPath $LogPath -Encoding UTF8
+    $exitCode = [int]$result.exitCode
     if ($exitCode -ne 0) {
         throw "Command failed with exit code $exitCode. See $LogPath"
     }
@@ -127,7 +243,8 @@ function Invoke-TestCommands {
     param(
         [Parameter(Mandatory)] [string]$Worktree,
         [Parameter(Mandatory)] [array]$Tests,
-        [Parameter(Mandatory)] [string]$LogPath
+        [Parameter(Mandatory)] [string]$LogPath,
+        [Parameter(Mandatory)] [int]$TimeoutSeconds
     )
     $parent = Split-Path -Parent $LogPath
     New-Item -ItemType Directory -Force -Path $parent | Out-Null
@@ -137,19 +254,14 @@ function Invoke-TestCommands {
     foreach ($test in $Tests) {
         $command = [string]$test
         $lines.Add(">>> $command")
-        $oldErrorActionPreference = $ErrorActionPreference
-        Push-Location -LiteralPath $Worktree
-        try {
-            $ErrorActionPreference = "Continue"
-            $output = & powershell -NoProfile -ExecutionPolicy Bypass -Command $command 2>&1
-            $exitCode = $LASTEXITCODE
-        } finally {
-            $ErrorActionPreference = $oldErrorActionPreference
-            Pop-Location
+        $result = Invoke-ChildProcess -FilePath "powershell" -Arguments @("-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", $command) -WorkingDirectory $Worktree -TimeoutSeconds $TimeoutSeconds
+        $result.output -split "\r?\n" | Where-Object { $_ -ne "" } | ForEach-Object { $lines.Add([string]$_) }
+        if ($result.timedOut) {
+            $lines.Add("timed_out=true")
         }
-        $output | ForEach-Object { $lines.Add([string]$_) }
+        $exitCode = [int]$result.exitCode
         $lines.Add("exit_code=$exitCode")
-        if ($exitCode -ne 0) {
+        if ($result.timedOut -or $exitCode -ne 0) {
             $failed.Add($command)
         }
     }
@@ -163,6 +275,48 @@ function Invoke-TestCommands {
     return [ordered]@{
         success = ($failed.Count -eq 0)
         failedCommands = @($failed)
+    }
+}
+
+function Assert-SelfTest {
+    param(
+        [Parameter(Mandatory)] [bool]$Condition,
+        [Parameter(Mandatory)] [string]$Message
+    )
+    if (-not $Condition) {
+        throw "Self-test failed: $Message"
+    }
+}
+
+function Invoke-SelfTest {
+    $tempRoot = Join-Path ([System.IO.Path]::GetTempPath()) ("orchestrator-selftest-" + [guid]::NewGuid().ToString("N"))
+    New-Item -ItemType Directory -Force -Path $tempRoot | Out-Null
+    try {
+        $logPath = Join-Path $tempRoot "child.log"
+        $scratchPath = Join-Path $tempRoot "scratch.txt"
+
+        $capture = Invoke-ChildProcess -FilePath "powershell" -Arguments @("-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", "Write-Output 'selftest-output'") -WorkingDirectory $tempRoot -TimeoutSeconds 10
+        $capture.output | Set-Content -LiteralPath $logPath -Encoding UTF8
+        Assert-SelfTest -Condition (-not $capture.timedOut) -Message "capture command timed out"
+        Assert-SelfTest -Condition ([int]$capture.exitCode -eq 0) -Message "capture command exit code was $($capture.exitCode)"
+        Assert-SelfTest -Condition ($capture.output -match "selftest-output") -Message "capture command output was not captured"
+
+        "rewrite-ok" | Set-Content -LiteralPath $logPath -Encoding UTF8
+        "scratch-ok" | Set-Content -LiteralPath $scratchPath -Encoding UTF8
+        Remove-Item -LiteralPath $logPath -Force
+        Remove-Item -LiteralPath $scratchPath -Force
+        Assert-SelfTest -Condition (-not (Test-Path -LiteralPath $logPath)) -Message "log file remained locked"
+        Assert-SelfTest -Condition (-not (Test-Path -LiteralPath $scratchPath)) -Message "scratch file remained locked"
+
+        $timeout = Invoke-ChildProcess -FilePath "powershell" -Arguments @("-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", "Start-Sleep -Seconds 30") -WorkingDirectory $tempRoot -TimeoutSeconds 1
+        Assert-SelfTest -Condition ([bool]$timeout.timedOut) -Message "sleeping child was not marked timed out"
+        Assert-SelfTest -Condition ([int]$timeout.exitCode -eq -1) -Message "timed-out child exit code was $($timeout.exitCode)"
+
+        Write-Host "SELFTEST capture=passed"
+        Write-Host "SELFTEST lock_regression=passed"
+        Write-Host "SELFTEST timeout=passed"
+    } finally {
+        Remove-Item -LiteralPath $tempRoot -Recurse -Force -ErrorAction SilentlyContinue
     }
 }
 
@@ -291,6 +445,15 @@ Required JSON shape:
 "@
 }
 
+if ($SelfTest) {
+    Invoke-SelfTest
+    return
+}
+
+if ([string]::IsNullOrWhiteSpace($TaskPath)) {
+    $TaskPath = Join-Path $ScriptRoot "task.json"
+}
+
 if (-not (Test-Path -LiteralPath $TaskPath)) {
     throw "Task file not found: $TaskPath"
 }
@@ -326,7 +489,7 @@ $reviewFileName = if ($task.PSObject.Properties.Name -contains "reviewOutput") {
     "claude-review.json"
 }
 
-$runRoot = Join-Path $PSScriptRoot ("runs\" + (Get-Date -Format "yyyyMMdd-HHmmss"))
+$runRoot = Join-Path $ScriptRoot ("runs\" + (Get-Date -Format "yyyyMMdd-HHmmss"))
 New-Item -ItemType Directory -Force -Path $runRoot | Out-Null
 
 if (-not $AllowDirtyAtStart) {
@@ -363,7 +526,7 @@ for ($round = 1; $round -le $MaxRounds; $round++) {
         promptFile = $codexPromptFile
         prompt = $codexPrompt
         round = $round
-    }
+    } -TimeoutSeconds $TimeoutSeconds
     $after = Get-GitHead -Worktree $codexWorktree
     $finalCodexCommit = $after
 
@@ -374,7 +537,7 @@ for ($round = 1; $round -le $MaxRounds; $round++) {
 
     $testLog = Join-Path $roundDir "tests.log"
     if ($tests.Count -gt 0) {
-        $testResult = Invoke-TestCommands -Worktree $codexWorktree -Tests $tests -LogPath $testLog
+        $testResult = Invoke-TestCommands -Worktree $codexWorktree -Tests $tests -LogPath $testLog -TimeoutSeconds $TimeoutSeconds
     } else {
         "No tests configured in task.json." | Set-Content -LiteralPath $testLog -Encoding UTF8
         $testResult = [ordered]@{
@@ -394,7 +557,7 @@ for ($round = 1; $round -le $MaxRounds; $round++) {
         promptFile = $claudePromptFile
         prompt = $claudePrompt
         round = $round
-    }
+    } -TimeoutSeconds $TimeoutSeconds
     Assert-CleanWorktree -Worktree $claudeWorktree -Label "Claude"
 
     $review = Read-ClaudeReview -ReviewPath $reviewPath
@@ -432,7 +595,7 @@ Invoke-LoggedCommand -CommandSpec $claudeCommand -Worktree $claudeWorktree -LogP
     promptFile = $finalPromptFile
     prompt = $finalPrompt
     round = "final"
-}
+} -TimeoutSeconds $TimeoutSeconds
 
 $finalReview = Read-ClaudeReview -ReviewPath $finalReviewPath
 $summary.finalReviewPath = $finalReviewPath
