@@ -202,7 +202,7 @@ function Assert-CleanWorktree {
         [Parameter(Mandatory)] [string]$Worktree,
         [Parameter(Mandatory)] [string]$Label
     )
-    $status = Get-GitStatusLines -Worktree $Worktree
+    $status = @(Get-GitStatusLines -Worktree $Worktree)
     if ($status.Count -gt 0) {
         $preview = ($status | Select-Object -First 20) -join [Environment]::NewLine
         throw "$Label worktree is not clean: $Worktree`n$preview"
