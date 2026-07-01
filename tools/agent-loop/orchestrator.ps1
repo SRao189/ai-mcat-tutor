@@ -107,11 +107,14 @@ function Invoke-LoggedCommand {
     $parent = Split-Path -Parent $LogPath
     New-Item -ItemType Directory -Force -Path $parent | Out-Null
 
+    $oldErrorActionPreference = $ErrorActionPreference
     Push-Location -LiteralPath $Worktree
     try {
+        $ErrorActionPreference = "Continue"
         $output = & $exe @arguments 2>&1
         $exitCode = $LASTEXITCODE
     } finally {
+        $ErrorActionPreference = $oldErrorActionPreference
         Pop-Location
     }
     $output | Set-Content -LiteralPath $LogPath -Encoding UTF8
@@ -129,26 +132,38 @@ function Invoke-TestCommands {
     $parent = Split-Path -Parent $LogPath
     New-Item -ItemType Directory -Force -Path $parent | Out-Null
     $lines = New-Object System.Collections.Generic.List[string]
+    $failed = New-Object System.Collections.Generic.List[string]
 
     foreach ($test in $Tests) {
         $command = [string]$test
         $lines.Add(">>> $command")
+        $oldErrorActionPreference = $ErrorActionPreference
         Push-Location -LiteralPath $Worktree
         try {
+            $ErrorActionPreference = "Continue"
             $output = & powershell -NoProfile -ExecutionPolicy Bypass -Command $command 2>&1
             $exitCode = $LASTEXITCODE
         } finally {
+            $ErrorActionPreference = $oldErrorActionPreference
             Pop-Location
         }
         $output | ForEach-Object { $lines.Add([string]$_) }
         $lines.Add("exit_code=$exitCode")
         if ($exitCode -ne 0) {
-            $lines | Set-Content -LiteralPath $LogPath -Encoding UTF8
-            throw "Test command failed: $command. See $LogPath"
+            $failed.Add($command)
         }
     }
 
+    $lines.Add("overall_success=$($failed.Count -eq 0)")
+    if ($failed.Count -gt 0) {
+        $lines.Add("failed_commands:")
+        $failed | ForEach-Object { $lines.Add("- $_") }
+    }
     $lines | Set-Content -LiteralPath $LogPath -Encoding UTF8
+    return [ordered]@{
+        success = ($failed.Count -eq 0)
+        failedCommands = @($failed)
+    }
 }
 
 function Read-ClaudeReview {
@@ -204,8 +219,10 @@ function New-ClaudeReviewPrompt {
         [Parameter(Mandatory)] [int]$Round,
         [Parameter(Mandatory)] [string]$CodexCommit,
         [Parameter(Mandatory)] [string]$TestLog,
+        [Parameter(Mandatory)] $TestResult,
         [Parameter(Mandatory)] [string]$ReviewOutput
     )
+    $testResultJson = $TestResult | ConvertTo-Json -Depth 8
     return @"
 You are Claude Code running non-interactively as an independent reviewer.
 
@@ -217,6 +234,9 @@ $CodexCommit
 
 Test log path:
 $TestLog
+
+Test result summary:
+$testResultJson
 
 Do not modify code.
 
@@ -277,7 +297,12 @@ if (-not (Test-Path -LiteralPath $TaskPath)) {
 
 $task = Get-Content -LiteralPath $TaskPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $codexWorktree = Resolve-RepoPath $task.codexWorktree
-$claudeWorktree = Resolve-RepoPath $task.claudeWorktree
+$claudeWorktreeValue = if ($task.PSObject.Properties.Name -contains "claudeWorktree") {
+    [string]$task.claudeWorktree
+} else {
+    [string]$task.codexWorktree
+}
+$claudeWorktree = Resolve-RepoPath $claudeWorktreeValue
 $tests = @()
 if ($task.PSObject.Properties.Name -contains "tests") {
     $tests = @($task.tests)
@@ -349,13 +374,17 @@ for ($round = 1; $round -le $MaxRounds; $round++) {
 
     $testLog = Join-Path $roundDir "tests.log"
     if ($tests.Count -gt 0) {
-        Invoke-TestCommands -Worktree $codexWorktree -Tests $tests -LogPath $testLog
+        $testResult = Invoke-TestCommands -Worktree $codexWorktree -Tests $tests -LogPath $testLog
     } else {
         "No tests configured in task.json." | Set-Content -LiteralPath $testLog -Encoding UTF8
+        $testResult = [ordered]@{
+            success = $true
+            failedCommands = @()
+        }
     }
 
     $reviewPath = Join-Path $roundDir $reviewFileName
-    $claudePrompt = New-ClaudeReviewPrompt -Task $task -Round $round -CodexCommit $after -TestLog $testLog -ReviewOutput $reviewPath
+    $claudePrompt = New-ClaudeReviewPrompt -Task $task -Round $round -CodexCommit $after -TestLog $testLog -TestResult $testResult -ReviewOutput $reviewPath
     $claudePromptFile = Join-Path $roundDir "claude-review-prompt.md"
     $claudePrompt | Set-Content -LiteralPath $claudePromptFile -Encoding UTF8
     $claudeLog = Join-Path $roundDir "claude-review.log"
@@ -373,6 +402,7 @@ for ($round = 1; $round -le $MaxRounds; $round++) {
         round = $round
         codexCommit = $after
         testLog = $testLog
+        testsPassed = [bool]$testResult.success
         reviewPath = $reviewPath
         changesRequired = [bool]$review.changes_required
     }
@@ -415,3 +445,7 @@ $summary | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $summaryPath -Enc
 Write-Host "Agent loop complete."
 Write-Host "Summary: $summaryPath"
 Write-Host "Final recommendation: $($summary.finalRecommendation)"
+
+if ([string]$summary.finalRecommendation -eq "reject") {
+    throw "Final Claude verification rejected the implementation. See $finalReviewPath"
+}
