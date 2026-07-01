@@ -141,6 +141,7 @@ function Invoke-ChildProcess {
         $proc.StartInfo.UseShellExecute = $false
         $proc.StartInfo.RedirectStandardOutput = $true
         $proc.StartInfo.RedirectStandardError = $true
+        $proc.StartInfo.RedirectStandardInput = $true
         $proc.StartInfo.CreateNoWindow = $true
 
         if ($proc.StartInfo.PSObject.Properties.Name -contains "ArgumentList") {
@@ -152,6 +153,8 @@ function Invoke-ChildProcess {
         }
 
         [void]$proc.Start()
+        # Send EOF immediately so CLIs do not wait on inherited non-TTY stdin.
+        try { $proc.StandardInput.Close() } catch {}
         $stdoutTask = $proc.StandardOutput.ReadToEndAsync()
         $stderrTask = $proc.StandardError.ReadToEndAsync()
 
