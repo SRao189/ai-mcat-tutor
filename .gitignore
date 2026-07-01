@@ -30,3 +30,6 @@ secrets/
 # Local source material
 raw/
 !.env.example
+
+# Agent-loop run artifacts
+tools/agent-loop/runs/
