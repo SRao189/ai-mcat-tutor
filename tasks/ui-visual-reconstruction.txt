@@ -1,0 +1,121 @@
+Read only:
+
+- app/index.html
+- app/course-data.js
+- server/app.py (routing/index-serving code only — do not read/touch council/
+  or interactive_chapter.py grading/retrieval logic as part of this task)
+- server/static/chapter.html, server/static/chapter.js, server/static/chapter.css
+- course-data/*.json (all 11 modules — real titles/structure/content)
+- docs/impeccable-integration.md (Impeccable is vendored at .impeccable,
+  Apache 2.0, pinned skill-v3.9.1; link it into .codex if not already active,
+  then use `/impeccable critique` and `/impeccable audit` on each screen
+  before calling it done)
+
+Write only:
+
+- app/index.html (Home screen)
+- a new Course page (data-driven from course-data/*.json — one implementation,
+  not one file per subject)
+- server/static/chapter.html, chapter.js, chapter.css (Lesson page)
+- one shared CSS/design-token file if the three screens need shared styles
+  (single file, not scattered per-page styling)
+- server/app.py — routing only, only if needed to make the rebuilt Home the
+  root route
+
+Do not touch: council/, server/interactive_chapter.py, course-data/*.json
+content, schemas/, wiki/. No new features. No backend logic changes beyond
+routing needed to serve these three screens. No new dependencies beyond
+Impeccable (already vendored).
+
+Known repo reality (read this before building — don't re-derive it):
+
+- No JS framework, no bundler. Plain HTML/CSS/vanilla JS + a Python stdlib
+  server. Keep it that way — don't introduce a framework or build step for
+  three screens.
+- There are currently TWO "homepage" surfaces: `server/app.py::_serve_index()`
+  (a bare `<ul>` of raw section IDs — this is the literal "developer index"
+  being replaced) and `app/index.html` (already a more built-out shell with
+  sidebar nav and localStorage progress, but only covers 5 of 11 modules).
+  Recommended: extend `app/index.html` to cover all 11 modules and make it
+  the canonical root; retire the bare list. If you find a reason to keep both
+  surfaces, say so explicitly instead of leaving two inconsistent chapter
+  lists live.
+- The chapter/module list is hardcoded in two places with no shared registry
+  (`council/course_modules.py::MODULE_BY_SECTION` and `app/index.html`'s
+  `COURSE_UNITS`). For these three screens, read directly from
+  `course-data/*.json` — building a full registry/metadata system is a
+  separate, later task, not this one.
+- "Open Notebook" is not integrated anywhere in this repo (only an unpulled
+  git remote). Don't reference it as a working system in UI copy, comments,
+  or commit messages.
+- NVIDIA Council (`council/`) is real and working — the citation-gated tutor
+  backend. Don't modify its logic. The Lesson page rebuild only changes how
+  its answers are displayed, not how they're produced.
+
+Hard constraints — none of the following may appear in the shipped UI:
+
+- No gradients
+- No giant hero heading
+- No raw section IDs anywhere visible (thermo, chapter-3-summary,
+  complex-ii-sdhd, etc.) — clean learner-facing names only
+- No random icon library — pick one small consistent approach, or ship with
+  no icons at all
+- No dashboard full of meaningless cards
+- No fake streaks or metrics without real backing data — every number shown
+  must come from actual course-data/progress state, never invented
+- No chatbot permanently occupying half the page — tutor panel is closed by
+  default on the Lesson page and opens on request
+- No decorative AI imagery
+- No excessive rounded rectangles
+
+Three screens, exact scope — nothing else:
+
+1. Home
+   Continue: <real chapter title> · <real %>
+   Study plan
+   <real subjects that actually have chapters — do not invent subjects that
+   don't exist in course-data/ yet>
+   Recent mistakes (only if real mistake/misconception data exists; omit the
+   section entirely if it doesn't, rather than showing a fake empty state)
+
+2. Course page
+   <Subject>
+   Unit 1: <real unit name>
+     <chapter> — real completion %, locked/unlocked from real prerequisite
+     state
+     <chapter>
+   Unit 2: ...
+   Derive units/prerequisites from course-data/*.json; do not invent
+   structure that isn't there.
+
+3. Lesson page
+   left: section navigation
+   center: readable lesson column
+   right: tutor panel, opened only when requested
+   bottom: previous / next
+
+Reference borrows — specific principles only, never the assets:
+
+- Khan Academy: the course-tree navigation pattern only (unit → lesson list,
+  checkmarks/progress dots). Not their palette, not their mascot or
+  illustration style.
+- Linear (linear.app): typographic restraint, generous whitespace, muted
+  neutral palette, sharp minimal chrome, zero gradients.
+- Brilliant (brilliant.org): interactive lesson flow — content and
+  interaction live inline in the reading column, not in a separate modal or
+  quiz popup.
+
+Do not copy any product's assets, illustrations, trademarks, or literal page
+layout. Borrow only the named principle.
+
+Process:
+
+- Build one screen at a time, in this order: Home, Course page, Lesson page.
+- After each screen, capture a screenshot at desktop width and at mobile
+  width. Do not start the next screen until the current one has been
+  reviewed.
+- Stop after the Lesson page. Do not start personalization, the chatbot
+  context rebuild, a formal design-token system, or any other item from the
+  original full-redesign spec — those are separate, later tasks.
+- Claude audits this work after it's done; this task file is the full scope
+  for that audit — flag anything built beyond it as out-of-scope.
