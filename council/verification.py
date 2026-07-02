@@ -168,7 +168,8 @@ class CouncilVerifier:
         passage_tokens = _tokens(passage_text)
         if not claim_tokens:
             return False, "empty claim"
-        overlap = len(claim_tokens & passage_tokens) / len(claim_tokens)
-        if overlap >= 0.72:
-            return True, "claim has deterministic lexical support"
-        return False, "claim is not sufficiently supported by cited passage"
+        if claim_numbers:
+            overlap = len(claim_tokens & passage_tokens) / len(claim_tokens)
+            if overlap >= 0.55:
+                return True, "numeric claim is supported by cited passage"
+        return False, "claim is not directly supported by cited passage"

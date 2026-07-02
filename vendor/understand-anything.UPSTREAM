@@ -1,0 +1,6 @@
+repository: https://github.com/Egonex-AI/Understand-Anything.git
+commit: 54754a6f97051d1d76c8758353d8ea41afe502a6
+license: MIT
+vendored_via: git subtree --prefix=vendor/understand-anything --squash
+vendored_path: vendor/understand-anything
+integration_date: 2026-07-02

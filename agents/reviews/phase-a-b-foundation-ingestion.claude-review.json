@@ -1,0 +1,115 @@
+{
+  "artifactType": "claude-review",
+  "reviewer": "Claude Sonnet 5",
+  "role": "manager-and-independent-reviewer",
+  "pr": 5,
+  "repository": "SRao189/ai-mcat-tutor",
+  "base": "v2/knowledge-first-rebuild",
+  "head": "codex/v2-foundation-ingestion",
+  "commitReviewed": "86ab1815cd0d8eeb4f487cc8ecd124ecefe9455b",
+  "verdict": "REQUEST_CHANGES",
+  "blockingFindings": [
+    {
+      "id": "B1",
+      "title": "Council verification boundary never reaches the real NVIDIA Council in production",
+      "files": ["services/wiki-compiler/council_boundary.py"],
+      "evidence": "grep -rn \"import council|from council|nvidia_client|CouncilVerifier|phase1\" services/ packages/ tests/test_v2_*.py returns zero matches. council_boundary.py's own docstring states: 'Deterministic local boundary for ingestion-time Council claim gates. The live NVIDIA Council can replace this adapter later.' wiki_compiler.ingest_concept() calls CouncilVerificationBoundary(root).verify_concept_page() unconditionally -- there is no branch, flag, or code path anywhere in services/wiki-compiler/ that invokes council/phase1.py, council/nvidia_client.py, or any other file in the existing, working council/ package. _claim_supported() (council_boundary.py:112-126) verifies claims by exact substring match or >=80% token overlap between claim text and the cited chunk text -- pure local string matching, not model-backed semantic verification.",
+      "reproduction": "python -c \"from council_boundary import _claim_supported; print(_claim_supported('Gibbs free energy determines reaction rate.', 'Gibbs free energy determines reaction spontaneity.'))\" (run from services/wiki-compiler/) returns (True, 'claim has deterministic lexical support'). This is a factually false claim -- Gibbs free energy determines reaction spontaneity, not rate (that's kinetics) -- marked verified with confidence 0.98 and learnerEligible=true purely because it shares >=80% of its tokens with the true statement. This is exactly the 'plausible-but-unsupported model claim' threat model this project's own docs/validation-gates.md identifies as the actual adversary.",
+      "requirement_failed": "Verdict rule: 'real Council integration exists in production'. Review directive Section 4: 'the implementation must not reduce verification to local string matching or hard-coded verdicts.'"
+    },
+    {
+      "id": "B2",
+      "title": "Source lineage chain breaks between chunk and page/section -- sourceSpan cannot be traced back to a page, especially for PDFs",
+      "files": ["services/ingestion/chunking.py", "services/ingestion/extractors.py", "services/ingestion/service.py"],
+      "evidence": "chunk_text() (chunking.py:18-56) computes source_span purely as raw character offsets into the concatenated raw_text string ('chars {start}-{end}') and never references ExtractionResult.sections (the page/paragraph metadata) at all. service.py stores result.sections as manifest['pageOrSectionMetadata'] in manifest.json and chunks (with only char-offset sourceSpan) separately in chunks.json -- nothing in the codebase cross-references the two. For PDFs specifically this mapping is impossible even in principle: both _extract_pdf_with_optional_library (extractors.py:197) and the regex fallback _extract_pdf (extractors.py:176) build sections as {id, label, page} with NO startChar/endChar keys, unlike markdown/docx/text sections which do carry char offsets. A claim's sourceSpan for a long, multi-page PDF is therefore an opaque character range with no path back to the originating page.",
+      "requirement_failed": "Review directive Section 1: 'page number -> extracted text -> chunk -> sourceSpan -> claim ... A character span alone is inadequate for long PDFs if the original page cannot later be identified.' Verdict rule: 'real source lineage is preserved.'"
+    }
+  ],
+  "nonBlockingFindings": [
+    {
+      "id": "N1",
+      "title": "Schema validator covers one of three contracts and checks presence, not type",
+      "files": ["packages/schemas/validator.py", "packages/schemas/__init__.py"],
+      "evidence": "validate_wiki_concept_page is the only exported validator (packages/schemas/__init__.py) -- graph-node.schema.json and tutor-request.schema.json (from PR #4) have no corresponding validators, which is acceptable for this phase's scope but should be tracked before Phase D/G. The existing validator never reads packages/schemas/wiki-concept-page.schema.json -- it's a hand-duplicated, independently-maintained reimplementation that can silently drift from the schema file. It checks field presence but not type: {'equations': 'not-a-list'} or {'claims': [{'text': 123, ...}]} both pass validate_wiki_concept_page() without error, contradicting the schema's array/minLength constraints. Not deceptive -- the module docstring says 'Small schema checks', not 'JSON Schema validation' -- but it reinvents what the stdlib-adjacent `jsonschema` package would do correctly against the actual schema file in about 10 lines.",
+      "recommendation": "Before Phase D/E depend on schema-valid graph nodes and tutor requests, replace or supplement this with a standards-compliant jsonschema.validate() call against the real .schema.json files, or explicitly scope this PR's validator as ingestion-only and add the rest before those phases begin."
+    },
+    {
+      "id": "N2",
+      "title": "PR's own listed regression command silently skips 9 of 12 test files",
+      "files": ["tests/test_citations.py", "tests/test_course_module_chapters.py", "tests/test_migrate_citations.py", "tests/test_nvidia_council_phase1.py", "tests/test_open_notebook_integration.py", "tests/test_router.py", "tests/test_section71_server.py", "tests/test_thermodynamics_chapter.py", "tests/test_validation_guard.py"],
+      "evidence": "`python -m unittest discover -s tests` reports 'Ran 6 tests ... OK' -- but those 6 are only the three new tests/test_v2_*.py files (unittest.TestCase-based). The 9 pre-existing files are pytest-style (function-based assert, no TestCase classes; each has a docstring '# Run: python -m tests.<name>') and unittest discover silently finds zero tests in them -- no error, no skip notice, just absent from the count. I independently ran all 9 via `python -m tests.<name>` and confirmed 93/93 pass -- there is no actual regression -- but the PR's stated validation command gives a false impression of full-suite coverage.",
+      "recommendation": "Either install pytest and use `python -m pytest tests/` as the standard verification command (it would pick up both styles), or explicitly document that `unittest discover` only covers the new v2 tests and list the legacy invocation separately."
+    },
+    {
+      "id": "N3",
+      "title": "PDF fallback extractor (no pypdf installed) is fragile and untested against realistic PDFs",
+      "files": ["services/ingestion/extractors.py"],
+      "evidence": "_extract_pdf's regex fallback (extractors.py:167-227) greps the raw PDF bytes for ALL stream...endstream blocks -- not just page content streams, but potentially font programs, ICC profiles, and embedded image data too -- and joins whatever text-operator fragments it finds into one blob. Page count is a separate, unrelated regex count of /Type /Page occurrences. The only PDF test fixture (_minimal_pdf in tests/test_v2_ingestion.py) is a single-page, single-stream synthetic PDF that can't exercise this fragility. This compounds B2 but is separately worth flagging: even where pypdf is available the code degrades silently to this path if pypdf raises for any reason (broad except Exception at extractors.py:194).",
+      "recommendation": "Either make pypdf a real, declared dependency (not an optional soft-import) or add adversarial multi-page/multi-object PDF fixtures and harden the fallback before relying on it for real MCAT source PDFs."
+    }
+  ],
+  "testsRun": {
+    "compileCheck": {
+      "command": "python -m py_compile services/ingestion/chunking.py services/ingestion/extractors.py services/ingestion/service.py services/ingestion/cli.py services/wiki-compiler/council_boundary.py services/wiki-compiler/wiki_compiler.py services/wiki-compiler/cli.py packages/schemas/validator.py",
+      "result": "pass"
+    },
+    "v2UnitTests": {
+      "command": "python -m unittest tests.test_v2_ingestion tests.test_v2_wiki_council tests.test_v2_vendor_provenance -v",
+      "result": "pass",
+      "count": 6
+    },
+    "statedFullSuiteCommand": {
+      "command": "python -m unittest discover -s tests",
+      "result": "pass but misleading -- see N2",
+      "count": 6
+    },
+    "actualLegacySuite": {
+      "command": "python -m tests.<name> for each of the 9 pre-existing pytest-style files",
+      "result": "pass, no regressions",
+      "count": 93
+    },
+    "adversarialCheckPerformed": {
+      "description": "Manually invoked council_boundary._claim_supported() with a factually false, high-lexical-overlap claim to test B1.",
+      "result": "confirmed exploitable -- see B1"
+    }
+  },
+  "sourceLineageEvidence": {
+    "markdownTextDocx": "sections carry startChar/endChar and could in principle be cross-referenced against chunk ranges, but no code currently performs that cross-reference -- chunks.json only stores raw character offsets, not a resolved page/section id.",
+    "pdf": "sections carry only {id, label, page} with no character offsets at all -- page attribution is structurally impossible from the current data, not just unimplemented.",
+    "verdict": "fails -- see B2"
+  },
+  "councilBoundaryEvidence": {
+    "importsFound": "none (grep across services/, packages/, tests/test_v2_*.py for council package references)",
+    "verificationMethod": "exact substring match, or >=80% Jaccard-style token overlap between claim text and cited chunk text",
+    "demonstratedFalsePositive": "'Gibbs free energy determines reaction rate.' (false) marked verified/confidence=0.98 against source 'Gibbs free energy determines reaction spontaneity.' (true)",
+    "verdict": "fails -- see B1"
+  },
+  "schemaValidationAssessment": {
+    "contractsWithValidators": ["wiki-concept-page"],
+    "contractsWithoutValidators": ["graph-node", "tutor-request"],
+    "validatorReadsSchemaFile": false,
+    "typeChecking": "presence-only for most fields; type/format not enforced for equations/examples/figures arrays or nested claim field types",
+    "honestlyLabeled": true,
+    "verdict": "partial -- non-blocking for this phase's scope (N1), must be resolved before Phase D/G"
+  },
+  "securityAssessment": {
+    "secretsFound": false,
+    "pathTraversal": "not found -- source_id and original filenames are derived from sha256 hex digests, not user-controlled input; Path.suffix cannot contain path separators",
+    "unsafeArchiveExtraction": "not found -- docx handling uses zipfile.read() into memory only, never zipfile.extract() to disk",
+    "arbitraryOverwriteOutsideSourcesRoot": "not found -- all writes are scoped under repo_root/knowledge/sources/<hash-derived-id>/",
+    "malformedFileHandling": "DOCX: BadZipFile/KeyError caught, returns status=failed. PDF: broad except around pypdf, falls back to regex extractor. Both fail into a written manifest with extractionStatus=failed rather than crashing or fabricating content.",
+    "provenanceForgery": "conceptId/sourceId are hash- or pattern-derived, not directly settable from arbitrary user filenames"
+  },
+  "scopeComplianceAssessment": {
+    "outOfScopeItemsRespected": ["no learner UI files added", "no pedagogy-engine implementation", "no graph-adapter implementation", "no fake chapter/course content added", "no changes to integrations/open_notebook_adapter/ behavior"],
+    "vendoringAccuracy": "vendor/*.UPSTREAM commits, licenses, and paths verified byte-for-byte against the PR #4 manifest -- exact match, no submodule remnants, no .gitmodules",
+    "thirdPartyNoticesQuality": "accurate and honest; correctly carries forward the Understand-Anything adaptation caveat and the Karpathy gist no-license caveat verbatim from the manifest"
+  },
+  "requiredRepairs": [
+    "Wire services/wiki-compiler/council_boundary.py to the real council/ package for the production ingest path (council/phase1.py or equivalent), or -- if that integration is intentionally deferred -- gate the current local heuristic behind an explicit, loudly-named flag (e.g. LOCAL_HEURISTIC_ONLY) so it cannot be mistaken for the real gate, and do not mark claims learnerEligible via the local path outside of tests.",
+    "Establish a real page/section-to-chunk mapping: give PDF sections startChar/endChar (or an equivalent per-page character index), and have chunk_text (or a wrapper in service.py) resolve each chunk's page/section id from that data so sourceSpan can be traced back to a specific page, not just a raw character range.",
+    "Before Phase D (graph-builder) or Phase G (tutor) consume graph-node/tutor-request payloads, add jsonschema-based (or equivalently complete) validators for those two contracts, or replace packages/schemas/validator.py with a thin wrapper around a real JSON Schema validator loading the .schema.json files directly.",
+    "Fix or clarify the stated full-suite validation command so it actually exercises the 9 pre-existing pytest-style test files (switch to pytest, or document the separate invocation)."
+  ],
+  "mergeRecommendation": "Do not merge yet. The vendoring, monorepo scaffold, ingestion determinism/safety, and scope discipline are solid and verified independently -- this is real, well-evidenced progress, not busywork. But two requirements from the review directive's own verdict rule are not met: the Council boundary is local string-matching only in production (demonstrated exploitable with a concrete false-but-lexically-similar MCAT-style claim), and PDF source lineage cannot be traced to a page. Both are fixable without redesigning what's here. Repair B1 and B2, then resubmit for re-review before merge; N1-N3 should be tracked but do not need to block this specific PR if B1/B2 are fixed."
+}
