@@ -29,6 +29,20 @@ EXPECTED_TITLES = {
     "chapter-3-summary": "Chapter 3: Biochemistry Basics — Summary",
 }
 
+EXPECTED_TITLES.update(
+    {
+        "amino-acids-proteins": "Amino Acids and Proteins",
+        "lipids": "Lipids",
+        "nucleic-acids": "Nucleic Acids",
+    }
+)
+
+GROUNDING_QUESTIONS = {
+    "amino-acids-proteins": "What type of inhibitor competes with substrate at the active site?",
+    "lipids": "Where does fatty acid synthesis occur?",
+    "nucleic-acids": "Which RNA type carries amino acids to the ribosome?",
+}
+
 
 def _start_server():
     httpd = server_app.make_server("127.0.0.1", 0)
@@ -119,6 +133,9 @@ def test_course_modules_are_served_and_listed():
             payload = json.loads(body)
             assert payload["sectionId"] == section_id
             assert payload["sections"][0]["checkpoints"]
+            status, body = _get(base, f"/learn?chapter={section_id}")
+            assert status == 200
+            assert "MCAT Chapter Tutor" in body
 
     _with_server(run)
 
@@ -159,6 +176,36 @@ def test_course_module_checkpoint_and_quiz_grade():
             assert status == 200
             assert quiz["score"]["correct"] == quiz["score"]["total"]
             assert quiz["learnerState"]["chapter"] == section_id
+
+    _with_server(run)
+
+def test_new_course_modules_ground_tutor_to_own_passages():
+    def run(base):
+        for section_id, question in GROUNDING_QUESTIONS.items():
+            status, payload = _post(
+                base,
+                "/api/tutor",
+                {"sectionId": section_id, "question": question},
+                session=f"{section_id}-grounding",
+            )
+            assert status == 200
+            assert payload["status"] == "verified"
+            assert payload["citedSources"]
+            assert payload["claims"]
+            cited_source_ids = {
+                source["sourceId"]
+                for source in payload["citedSources"]
+            }
+            own_source_ids = {
+                ref["sourceId"]
+                for ref in module_refs(load_module(section_id))
+            }
+            assert cited_source_ids <= own_source_ids
+            assert all(
+                claim_source in own_source_ids
+                for claim in payload["claims"]
+                for claim_source in claim["sourceIds"]
+            )
 
     _with_server(run)
 

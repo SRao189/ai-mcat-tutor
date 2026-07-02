@@ -19,6 +19,9 @@ MODULE_BY_SECTION: dict[str, str] = {
     "redox": "module-3",
     "acids-bases": "module-4",
     "chapter-3-summary": "module-5",
+    "amino-acids-proteins": "module-6",
+    "lipids": "module-7",
+    "nucleic-acids": "module-8",
 }
 
 
