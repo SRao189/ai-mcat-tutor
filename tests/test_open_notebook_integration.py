@@ -156,6 +156,16 @@ class OpenNotebookBoundary(BaseHTTPRequestHandler):
             )
             return
 
+        if parsed.path == "/api/transformations/execute":
+            self._json(
+                {
+                    "output": f"Transformed: {payload['input_text']}",
+                    "transformation_id": payload["transformation_id"],
+                    "model_id": payload["model_id"],
+                }
+            )
+            return
+
         self._json({"detail": "Not found"}, status=404)
 
     def _read_json(self):
@@ -206,6 +216,8 @@ def test_open_notebook_to_council_traceable_chain():
             notebook_id=notebook.id,
             limit=3,
         )
+        stored_passages = adapter.passage_store(passages).load()
+        citation_candidates = adapter.citation_candidates(passages)
         concept_map = adapter.map_to_concept_nodes(passages)
 
         response = answer_question(
@@ -221,6 +233,7 @@ def test_open_notebook_to_council_traceable_chain():
     assert len(passages) == 1
     assert passages[0].source_id == source.source_id
     assert passages[0].passage_id == "source_embedding:on-chunk-thermo-1"
+    assert citation_candidates == stored_passages
     assert "article:thermodynamics" in concept_map[passages[0].citation_id]
     assert response.status == ResponseStatus.VERIFIED, response.to_dict()
     assert response.cited_sources
@@ -239,6 +252,25 @@ def test_open_notebook_to_council_traceable_chain():
             "council_status": response.status.value,
             "final_citation_ids": [item["sourceId"] for item in response.cited_sources],
         },
+    )
+
+
+def test_open_notebook_transformation_execute_round_trips_response():
+    with BoundaryServer() as boundary:
+        adapter = OpenNotebookAdapter(base_url=boundary.base_url)
+
+        result = adapter.request_transformation(
+            transformation_id="transformation:condense",
+            input_text="Gibbs free energy determines spontaneity.",
+            model_id="model:nvidia-test",
+        )
+
+    assert result["transformation_id"] == "transformation:condense"
+    assert result["model_id"] == "model:nvidia-test"
+    assert "Gibbs free energy determines spontaneity." in result["output"]
+    assert any(
+        call[:2] == ("POST", "/api/transformations/execute")
+        for call in OpenNotebookBoundary.calls
     )
 
 
