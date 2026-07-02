@@ -21,6 +21,25 @@ The portfolio page is static and reuses existing repository assets:
 - `validation/module-*-report.json` for validation status
 - `benchmarks/production-pilot/output/*` for pilot metrics
 
+## Local Full Stack with Open Notebook
+
+From the repository root:
+
+```bash
+docker compose up
+```
+
+Local service URLs:
+
+- MCAT tutor learner UI: `http://localhost:8765`
+- Open Notebook admin/source UI: `http://localhost:8502`
+- Open Notebook REST API: `http://localhost:5055`
+- SurrealDB: `http://localhost:8000`
+
+Open Notebook is used for admin/source management and retrieval. The MCAT tutor
+app remains the learner-facing UI; learner-visible answers still flow through
+the tutor Council verification gates before citation-backed content is shown.
+
 ## GitHub Pages Deployment
 
 The public GitHub Pages bundle lives under `docs/`.
