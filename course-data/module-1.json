@@ -16,7 +16,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#key-concepts",
           "quote": "- **Kinetic energy** — movement of molecules\n- **Potential energy** — energy stored in chemical bonds\n  - Most important potential energy storage molecule: **ATP** (energy in ester bonds between phosphate groups)",
-          "passageHash": "sha256:123fbc02315b6a3a71d0b28437f6102b716446c898d333c9ee250daf5ba6b6c3"
+          "passageHash": "sha256:5710c7ab6b32f6e50016fb8eeef9212b2defe282a07db9089e5e10f6c704d767"
         }
       ]
     },
@@ -28,7 +28,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#laws-of-thermodynamics",
           "quote": "**First Law (Conservation of Energy):**\n- Energy of the universe is constant\n- When system energy decreases, surroundings energy increases, and vice versa\n\n**Second Law (Entropy):**\n- Disorder (entropy, S) of the universe tends to increase\n- Spontaneous reactions increase universal disorder\n- ∆S = S<sub>final</sub> – S<sub>initial</sub>\n- If ∆S is negative → disorder decreased",
-          "passageHash": "sha256:8011edea890f36f6c550abacc5fc405bbdd221f2afab194466a19d013256327e"
+          "passageHash": "sha256:10d1efe62c9c226cfadbb102869e61e8d5a3e73de3a7d71796ce99e7c6cccdc0"
         }
       ]
     },
@@ -40,7 +40,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#gibbs-free-energy-g",
           "quote": "**Equation:** ∆G = ∆H – T∆S\n\nWhere:\n- ∆H = enthalpy change (bond energy + P∆V)\n- T = temperature (Kelvin)\n- ∆S = entropy change\n\n**In cells:** Since ∆V ≈ 0 (liquid phase), **∆H ≈ ∆E** (bond energy)\n\n**Spontaneity:**\n- ∆G < 0 → spontaneous (exergonic, energy exits system)\n- ∆G > 0 → nonspontaneous (endergonic, requires energy input)\n- ∆G = 0 → equilibrium\n\n**Enthalpy:**\n- ∆H < 0 → exothermic (liberates heat)\n- ∆H > 0 → endothermic (requires heat input)\n- Most metabolic reactions are exothermic → maintains body temperature\n\n**Sign convention:** All from system's perspective (negative ∆G = system goes to lower free energy)",
-          "passageHash": "sha256:cf5c8fc451ce886b8318d1c67c1048400b109e6f2a8da18cb07cb0de8d2a6be6"
+          "passageHash": "sha256:a997ead4fb08535718274fb713d75a99c1e8faf9c089c80afde39f309e835a4b"
         }
       ]
     },
@@ -52,7 +52,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#standard-free-energy",
           "quote": "**∆G°′** — biochemical standard: 1 M all solutes except H<sup>+</sup>, pH 7\n\n**Relationship to equilibrium:**\n- ∆G°′ = –RT ln K'<sub>eq</sub>\n- K'<sub>eq</sub> = [C]<sup>c</sup>[D]<sup>d</sup> / [A]<sup>a</sup>[B]<sup>b</sup> at equilibrium\n\n**When K'<sub>eq</sub> = 1:** ∆G°′ = 0 (ln 1 = 0)",
-          "passageHash": "sha256:3611ee73cb628438b885f8f7c178fa74186fd2701a71f011b3be901959314362"
+          "passageHash": "sha256:789317d183cc0c09b2674b93b9d9763faa86aca882be8bb627db908fe5ea8d63"
         }
       ]
     },
@@ -64,7 +64,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#reaction-quotient-q-vs-actual-g",
           "quote": "**Equation:** ∆G = ∆G°′ + RT ln Q\n\nWhere Q uses **actual cellular concentrations**, not equilibrium concentrations.\n\n**Key relationships:**\n- Q < K<sub>eq</sub> → ∆G < 0 → forward reaction spontaneous\n- Q > K<sub>eq</sub> → ∆G > 0 → reverse reaction spontaneous\n- Q = K<sub>eq</sub> → ∆G = 0 → equilibrium\n\n**Two factors determine spontaneity in cell:**\n1. Intrinsic properties (K<sub>eq</sub>)\n2. Concentrations (RT ln Q)\n\n**Le Châtelier's principle:** Adding reactants (Q < K) drives forward; adding products (Q > K) drives backward",
-          "passageHash": "sha256:ba3278fb265de54a6a66722846346cd392efb88bddc6334145f60c02500aae6f"
+          "passageHash": "sha256:0bd90b2a3096c2eb409cf350b363f6e21c51d3c56dd68ea69cbbda9157002794"
         }
       ]
     }
@@ -77,7 +77,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#laws-of-thermodynamics",
           "quote": "- ∆S = S<sub>final</sub> – S<sub>initial</sub>",
-          "passageHash": "sha256:8011edea890f36f6c550abacc5fc405bbdd221f2afab194466a19d013256327e"
+          "passageHash": "sha256:efd20260823da0820b2a7ddd6d2e425bf7427dc29b94fd35e5f60313434f3ec4"
         }
       ]
     },
@@ -88,7 +88,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#gibbs-free-energy-g",
           "quote": "**Equation:** ∆G = ∆H – T∆S",
-          "passageHash": "sha256:cf5c8fc451ce886b8318d1c67c1048400b109e6f2a8da18cb07cb0de8d2a6be6"
+          "passageHash": "sha256:b4269bc5b0f3d01e803ebf0041fedee69dd87cb545c8a2973cf336e40e46098b"
         }
       ]
     },
@@ -99,7 +99,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#standard-free-energy",
           "quote": "- ∆G°′ = –RT ln K'<sub>eq</sub>",
-          "passageHash": "sha256:3611ee73cb628438b885f8f7c178fa74186fd2701a71f011b3be901959314362"
+          "passageHash": "sha256:0eb9d42452400d464854c0e2432f0f293fda6f428206fb834d2ec8329ea5a7b5"
         }
       ]
     },
@@ -110,7 +110,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#reaction-quotient-q-vs-actual-g",
           "quote": "**Equation:** ∆G = ∆G°′ + RT ln Q",
-          "passageHash": "sha256:ba3278fb265de54a6a66722846346cd392efb88bddc6334145f60c02500aae6f"
+          "passageHash": "sha256:53b41e4d72160a4e8240981f3c6f7c55b4531d1fdb9d3e555fea2206a63c416c"
         }
       ]
     }
@@ -129,7 +129,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#key-questions-answered",
           "quote": "| Can ∆G be negative if ∆G°′ is positive? | Yes, if RT ln Q is sufficiently negative |",
-          "passageHash": "sha256:216bede23e3b7b6aa5d643ee9efc0f0ea72e905e192cfa470b665d74e2afa724"
+          "passageHash": "sha256:5557d9e05ab04a7bc147f2277e4316baca51692fddef5c232b1ae9b7d9800df3"
         }
       ]
     },
@@ -147,7 +147,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#reaction-quotient-q-vs-actual-g",
           "quote": "**Le Châtelier's principle:** Adding reactants (Q < K) drives forward; adding products (Q > K) drives backward",
-          "passageHash": "sha256:ba3278fb265de54a6a66722846346cd392efb88bddc6334145f60c02500aae6f"
+          "passageHash": "sha256:2c4f1ac812aace1c2d2b0d3b8439630659df368fb9a7a47069c7940fcaec8656"
         }
       ]
     }
@@ -161,7 +161,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#key-questions-answered",
           "quote": "| Does K<sub>eq</sub> indicate reaction rate? | No — only relative concentrations at equilibrium |",
-          "passageHash": "sha256:216bede23e3b7b6aa5d643ee9efc0f0ea72e905e192cfa470b665d74e2afa724"
+          "passageHash": "sha256:d5785070cee716d73486475c5cb8add4c312a4ff83a3286ebf7e0b8525a9c739"
         }
       ],
       "reviewTarget": "thermodynamics vs kinetics"
@@ -174,7 +174,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#key-questions-answered",
           "quote": "| Large K<sub>eq</sub> → lower free energy? | Products |",
-          "passageHash": "sha256:216bede23e3b7b6aa5d643ee9efc0f0ea72e905e192cfa470b665d74e2afa724"
+          "passageHash": "sha256:05bf33fb3871f1da909aacb6e91a252c2820474f6edd16ab1c8e38c5551d5b35"
         }
       ],
       "reviewTarget": "standard free energy and equilibrium"
@@ -195,7 +195,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#reaction-quotient-q-vs-actual-g",
           "quote": "**Equation:** ∆G = ∆G°′ + RT ln Q",
-          "passageHash": "sha256:ba3278fb265de54a6a66722846346cd392efb88bddc6334145f60c02500aae6f"
+          "passageHash": "sha256:53b41e4d72160a4e8240981f3c6f7c55b4531d1fdb9d3e555fea2206a63c416c"
         }
       ],
       "reviewTarget": "reaction quotient and actual free energy"
@@ -214,7 +214,7 @@
         {
           "sourceId": "wiki/thermodynamics.md#key-questions-answered",
           "quote": "| Radiolabeled B added at equilibrium → where found? | Both A and B (dynamic equilibrium) |",
-          "passageHash": "sha256:216bede23e3b7b6aa5d643ee9efc0f0ea72e905e192cfa470b665d74e2afa724"
+          "passageHash": "sha256:af045c60c5c9cb974fbfc464d800cd108d02c82a63f6f126c0d5f8c5343fb019"
         }
       ],
       "reviewTarget": "equilibrium dynamics"

@@ -89,7 +89,7 @@ def module_passages(section_id: str) -> list[dict[str, str]]:
         passages.append(
             {
                 "sourceId": ref["sourceId"],
-                "sourceHash": _passage_hash(ref["quote"]),
+                "sourceHash": ref["passageHash"],
                 "label": f"{module['title']}, {anchor}",
                 "text": ref["quote"],
                 "chapter": module["title"],
@@ -176,6 +176,33 @@ def _choice_id(index: int) -> str:
     return chr(ord("a") + index)
 
 
+def _normalize_key(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
+
+
+def _section_match_score(check: dict[str, Any], section: dict[str, Any]) -> int:
+    review_target = _normalize_key(str(check.get("reviewTarget", "")))
+    if not review_target:
+        return 0
+    section_blob = " ".join(
+        [
+            str(section.get("id", "")),
+            str(section.get("title", "")),
+            str(section.get("content", "")),
+            str(section.get("reviewTarget", "")),
+        ]
+    )
+    normalized_blob = _normalize_key(section_blob)
+    score = 0
+    if review_target in normalized_blob:
+        score += 8
+    target_tokens = [token for token in review_target.split() if len(token) > 2]
+    for token in target_tokens:
+        if token in normalized_blob:
+            score += 1
+    return score
+
+
 def _checkpoint_from_check(check: dict[str, Any], section_id: str, index: int) -> dict[str, Any]:
     choices = check.get("choices")
     answer = str(check.get("answer", "")).strip()
@@ -234,13 +261,22 @@ def _auto_checkpoint(section: dict[str, Any], section_id: str, index: int) -> di
 
 
 def _build_sections(module: dict[str, Any], section_id: str) -> list[dict[str, Any]]:
-    checks = [
-        _checkpoint_from_check(check, section_id, index)
-        for index, check in enumerate(module.get("checks") or [])
-    ]
+    sections = list(module.get("sections") or [])
+    assigned: list[list[dict[str, Any]]] = [[] for _ in sections]
+    for index, check in enumerate(module.get("checks") or []):
+        scored = [
+            (_section_match_score(check, section), section_index)
+            for section_index, section in enumerate(sections)
+        ]
+        scored.sort(key=lambda item: (item[0], -item[1]), reverse=True)
+        best_score, best_index = scored[0]
+        if best_score <= 0:
+            continue
+        assigned[best_index].append(_checkpoint_from_check(check, section_id, index))
+
     result: list[dict[str, Any]] = []
-    for index, section in enumerate(module.get("sections") or []):
-        assigned = [checks[index]] if index < len(checks) else [_auto_checkpoint(section, section_id, index)]
+    for index, section in enumerate(sections):
+        section_checkpoints = assigned[index] or [_auto_checkpoint(section, section_id, index)]
         result.append(
             {
                 "id": str(section.get("id") or f"section-{index + 1}"),
@@ -252,7 +288,7 @@ def _build_sections(module: dict[str, Any], section_id: str) -> list[dict[str, A
                     {"title": "Key idea", "text": _first_sentence(str(section.get("content", "")))},
                     {"title": "Source", "text": "This section is grounded in the approved course passage listed in its citations."},
                 ],
-                "checkpoints": assigned,
+                "checkpoints": section_checkpoints,
             }
         )
     return result
@@ -316,5 +352,8 @@ def _quiz_question(item: dict[str, Any], section_id: str, index: int) -> dict[st
 
 
 def _build_final_quiz(module: dict[str, Any], section_id: str) -> list[dict[str, Any]]:
-    items = module.get("practiceQuestions") or module.get("checks") or []
+    items = module.get("practiceQuestions") or []
+    if items:
+        return [_quiz_question(item, section_id, index) for index, item in enumerate(items)]
+    items = module.get("checks") or []
     return [_quiz_question(item, section_id, index) for index, item in enumerate(items)]
