@@ -121,7 +121,14 @@ class Section71Handler(BaseHTTPRequestHandler):
             _json_response(self, HTTPStatus.OK, chapter)
             return
         if path == "/":
-            self._serve_index()
+            self._serve_repo_file(REPO / "app" / "index.html")
+            return
+        if path == "/app/index.html":
+            self._serve_repo_file(REPO / "app" / "index.html")
+            return
+        if path.startswith("/course-data/") and path.endswith(".json"):
+            requested = path.removeprefix("/course-data/").strip("/")
+            self._serve_repo_file(REPO / "course-data" / requested, root=REPO / "course-data")
             return
         if path in {"/learn", "/learn/", "/section-7-1", "/section-7-1.html"}:
             self._serve_static("chapter.html")
@@ -370,6 +377,24 @@ class Section71Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(encoded)))
         self.end_headers()
         self.wfile.write(encoded)
+
+    def _serve_repo_file(self, path: Path, root: Path | None = None) -> None:
+        root = (root or REPO).resolve()
+        path = path.resolve()
+        if root not in path.parents and path != root:
+            _json_response(self, HTTPStatus.NOT_FOUND, _error(404, "not_found", "Not found."))
+            return
+        if not path.exists() or not path.is_file():
+            _json_response(self, HTTPStatus.NOT_FOUND, _error(404, "not_found", "Not found."))
+            return
+        body = path.read_bytes()
+        content_type = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
 
     def _serve_static(self, filename: str) -> None:
         path = (STATIC_ROOT / filename).resolve()
