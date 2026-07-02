@@ -1,6 +1,6 @@
 {
   "artifactType": "claude-review-request",
-  "status": "pending-claude-review",
+  "status": "pending-claude-re-review",
   "phase": "Phase A + Phase B",
   "codexBranch": "codex/v2-foundation-ingestion",
   "scope": [
@@ -22,9 +22,27 @@
   "verificationCommands": [
     "python -m py_compile services\\ingestion\\chunking.py services\\ingestion\\extractors.py services\\ingestion\\service.py services\\ingestion\\cli.py services\\wiki-compiler\\council_boundary.py services\\wiki-compiler\\wiki_compiler.py services\\wiki-compiler\\cli.py packages\\schemas\\validator.py",
     "python -m unittest tests.test_v2_ingestion tests.test_v2_wiki_council tests.test_v2_vendor_provenance",
-    "python -m unittest discover -s tests"
+    "python -m tests.test_citations",
+    "python -m tests.test_course_module_chapters",
+    "python -m tests.test_migrate_citations",
+    "python -m tests.test_nvidia_council_phase1",
+    "python -m tests.test_open_notebook_integration",
+    "python -m tests.test_router",
+    "python -m tests.test_section71_server",
+    "python -m tests.test_thermodynamics_chapter",
+    "python -m tests.test_validation_guard"
   ],
-  "codexVerdict": "implementation-ready-for-independent-review",
+  "repairScope": [
+    "replace service-local lexical verifier with council.verification.CouncilVerifier adapter",
+    "tighten Council support verification so lexical overlap alone never verifies a claim",
+    "add false Gibbs-rate claim regression",
+    "preserve page-aware PDF extraction before chunking",
+    "add page-aware chunk lineage fields",
+    "rename/document schema helper as partial validation",
+    "separate v2 and legacy test commands honestly"
+  ],
+  "codexVerdict": "repair-ready-for-independent-re-review",
   "claudeVerdict": "REQUEST_CHANGES",
-  "claudeReviewArtifact": "agents/reviews/phase-a-b-foundation-ingestion.claude-review.json"
+  "claudeReviewArtifact": "agents/reviews/phase-a-b-foundation-ingestion.claude-review.json",
+  "codexSelfApproval": false
 }

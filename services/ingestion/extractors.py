@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import html
 import mimetypes
+import os
 import re
 import zipfile
 import zlib
@@ -22,6 +23,7 @@ class ExtractionResult:
     title: str
     raw_text: str
     status: str
+    pages: list[dict[str, Any]] = field(default_factory=list)
     sections: list[dict[str, Any]] = field(default_factory=list)
     figures: list[dict[str, Any]] = field(default_factory=list)
     log: list[dict[str, Any]] = field(default_factory=list)
@@ -48,9 +50,10 @@ def extract_document(path: Path) -> ExtractionResult:
         return ExtractionResult(
             media_type=media_type_for(path),
             title=path.stem,
-            raw_text="",
-            status="failed",
-            log=[{"event": "unsupported-media-type", "extension": suffix}],
+        raw_text="",
+        status="failed",
+        pages=[],
+        log=[{"event": "unsupported-media-type", "extension": suffix}],
         )
     if suffix == ".pdf":
         return _extract_pdf(path)
@@ -78,6 +81,7 @@ def _extract_text(path: Path) -> ExtractionResult:
         title=path.stem,
         raw_text=text,
         status="success" if text else "failed",
+        pages=[],
         sections=[{"id": "section-0001", "label": "Document", "startChar": 0, "endChar": len(text)}] if text else [],
         log=[{"event": "plain-text-extracted", "characters": len(text)}],
     )
@@ -102,6 +106,7 @@ def _extract_markdown(path: Path) -> ExtractionResult:
         title=_markdown_title(text) or path.stem,
         raw_text=text,
         status="success" if text else "failed",
+        pages=[],
         sections=_markdown_sections(text),
         figures=figures,
         log=[{"event": "markdown-extracted", "characters": len(text), "figures": len(figures)}],
@@ -138,7 +143,7 @@ def _extract_docx(path: Path) -> ExtractionResult:
             xml = archive.read("word/document.xml")
             media_files = sorted(name for name in archive.namelist() if name.startswith("word/media/"))
     except (KeyError, zipfile.BadZipFile) as exc:
-        return ExtractionResult(media_type=media_type_for(path), title=path.stem, raw_text="", status="failed", log=[{"event": "docx-extraction-failed", "reason": str(exc)}])
+        return ExtractionResult(media_type=media_type_for(path), title=path.stem, raw_text="", status="failed", pages=[], log=[{"event": "docx-extraction-failed", "reason": str(exc)}])
 
     root = ElementTree.fromstring(xml)
     ns = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
@@ -150,7 +155,7 @@ def _extract_docx(path: Path) -> ExtractionResult:
             paragraphs.append(text)
     raw_text = "\n\n".join(paragraphs)
     figures = [{"figureId": f"figure-{index:04d}", "kind": "docx-media", "path": name} for index, name in enumerate(media_files, start=1)]
-    return ExtractionResult(media_type=media_type_for(path), title=path.stem, raw_text=raw_text, status="success" if raw_text else "failed", sections=_paragraph_sections(paragraphs, raw_text), figures=figures, log=[{"event": "docx-extracted", "paragraphs": len(paragraphs), "figures": len(figures)}])
+    return ExtractionResult(media_type=media_type_for(path), title=path.stem, raw_text=raw_text, status="success" if raw_text else "failed", pages=[], sections=_paragraph_sections(paragraphs, raw_text), figures=figures, log=[{"event": "docx-extracted", "paragraphs": len(paragraphs), "figures": len(figures)}])
 
 
 def _paragraph_sections(paragraphs: list[str], raw_text: str) -> list[dict[str, Any]]:
@@ -165,16 +170,28 @@ def _paragraph_sections(paragraphs: list[str], raw_text: str) -> list[dict[str, 
 
 
 def _extract_pdf(path: Path) -> ExtractionResult:
-    pypdf_result = _extract_pdf_with_optional_library(path)
+    if os.environ.get("MCAT_FORCE_PDF_FALLBACK") != "1":
+        pypdf_result = _extract_pdf_with_optional_library(path)
+    else:
+        pypdf_result = None
     if pypdf_result is not None:
         return pypdf_result
 
     data = path.read_bytes()
-    text = "\n\n".join(part for part in _pdf_stream_text(data) if part).strip()
-    page_count = max(1, len(re.findall(rb"/Type\s*/Page\b", data)))
+    page_texts = _extract_pdf_pages_from_objects(data)
+    raw_text, pages = _build_pdf_page_segments(page_texts)
     figures = [{"figureId": f"figure-{index:04d}", "kind": "pdf-image-xobject"} for index, _ in enumerate(re.finditer(rb"/Subtype\s*/Image\b", data), start=1)]
-    sections = [{"id": f"page-{index:04d}", "label": f"Page {index}", "page": index} for index in range(1, page_count + 1)]
-    return ExtractionResult(media_type="application/pdf", title=path.stem, raw_text=text, status="success" if text else "failed", sections=sections, figures=figures, log=[{"event": "pdf-basic-extracted", "pages": page_count, "characters": len(text), "figures": len(figures)}])
+    status = "success" if raw_text.strip() else "failed"
+    return ExtractionResult(
+        media_type="application/pdf",
+        title=path.stem,
+        raw_text=raw_text,
+        status=status,
+        pages=pages,
+        sections=[_page_section(page) for page in pages],
+        figures=figures,
+        log=[{"event": "pdf-fallback-extracted", "pages": len(pages), "characters": len(raw_text), "figures": len(figures), "status": status}],
+    )
 
 
 def _extract_pdf_with_optional_library(path: Path) -> ExtractionResult | None:
@@ -193,9 +210,93 @@ def _extract_pdf_with_optional_library(path: Path) -> ExtractionResult | None:
         page_texts = [(page.extract_text() or "").strip() for page in reader.pages]
     except Exception:
         return None
-    raw_text = "\n\n".join(text for text in page_texts if text).strip()
-    sections = [{"id": f"page-{index:04d}", "label": f"Page {index}", "page": index} for index, _page in enumerate(page_texts, start=1)]
-    return ExtractionResult(media_type="application/pdf", title=path.stem, raw_text=raw_text, status="success" if raw_text else "failed", sections=sections, log=[{"event": "pdf-library-extracted", "pages": len(page_texts), "characters": len(raw_text)}])
+    raw_text, pages = _build_pdf_page_segments(page_texts)
+    return ExtractionResult(
+        media_type="application/pdf",
+        title=path.stem,
+        raw_text=raw_text,
+        status="success" if raw_text.strip() else "failed",
+        pages=pages,
+        sections=[_page_section(page) for page in pages],
+        log=[{"event": "pdf-library-extracted", "pages": len(page_texts), "characters": len(raw_text)}],
+    )
+
+
+def _build_pdf_page_segments(page_texts: list[str]) -> tuple[str, list[dict[str, Any]]]:
+    raw_parts: list[str] = []
+    pages: list[dict[str, Any]] = []
+    cursor = 0
+    for index, text in enumerate(page_texts, start=1):
+        if index > 1:
+            raw_parts.append("\n\n")
+            cursor += 2
+        normalized = "\n".join(line.rstrip() for line in text.splitlines()).strip()
+        start = cursor
+        raw_parts.append(normalized)
+        cursor += len(normalized)
+        pages.append(
+            {
+                "pageNumber": index,
+                "pageStartChar": start,
+                "pageEndChar": cursor,
+                "text": normalized,
+            }
+        )
+    return "".join(raw_parts), pages
+
+
+def _page_section(page: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": f"page-{page['pageNumber']:04d}",
+        "label": f"Page {page['pageNumber']}",
+        "page": page["pageNumber"],
+        "pageNumber": page["pageNumber"],
+        "startChar": page["pageStartChar"],
+        "endChar": page["pageEndChar"],
+        "pageStartChar": page["pageStartChar"],
+        "pageEndChar": page["pageEndChar"],
+    }
+
+
+def _extract_pdf_pages_from_objects(data: bytes) -> list[str]:
+    objects = {
+        int(match.group("id")): match.group("body")
+        for match in re.finditer(
+            rb"(?P<id>\d+)\s+\d+\s+obj(?P<body>.*?)endobj",
+            data,
+            flags=re.DOTALL,
+        )
+    }
+    pages: list[str] = []
+    for _object_id, body in sorted(objects.items()):
+        if not re.search(rb"/Type\s*/Page\b", body) or re.search(rb"/Type\s*/Pages\b", body):
+            continue
+        content_ids = _content_object_ids(body)
+        page_text = " ".join(
+            _decode_pdf_text_operators(_maybe_inflate(stream))
+            for content_id in content_ids
+            for stream in _object_streams(objects.get(content_id, b""))
+        ).strip()
+        pages.append(page_text)
+    if pages:
+        return pages
+    stream_text = " ".join(part for part in _pdf_stream_text(data) if part).strip()
+    return [stream_text] if stream_text else []
+
+
+def _content_object_ids(page_object: bytes) -> list[int]:
+    array_match = re.search(rb"/Contents\s*\[(?P<ids>.*?)\]", page_object, flags=re.DOTALL)
+    if array_match:
+        return [int(item) for item in re.findall(rb"(\d+)\s+\d+\s+R", array_match.group("ids"))]
+    single_match = re.search(rb"/Contents\s+(?P<id>\d+)\s+\d+\s+R", page_object)
+    return [int(single_match.group("id"))] if single_match else []
+
+
+def _object_streams(object_body: bytes) -> list[bytes]:
+    return [
+        match.group("body").strip()
+        for match in re.finditer(rb"stream\r?\n(?P<body>.*?)\r?\nendstream", object_body, flags=re.DOTALL)
+    ]
 
 
 def _pdf_stream_text(data: bytes) -> list[str]:

@@ -34,7 +34,7 @@ class IngestionService:
         digest = hashlib.sha256(file_bytes).hexdigest()
         source_id = f"source-{digest[:16]}"
         result = extract_document(path)
-        chunks = chunk_text(source_id, result.raw_text)
+        chunks = chunk_text(source_id, result.raw_text, pages=result.pages)
 
         source_dir = self.sources_root / source_id
         source_dir.mkdir(parents=True, exist_ok=True)
@@ -57,6 +57,12 @@ class IngestionService:
                     "sourceSpan": chunk.source_span,
                     "startChar": chunk.start_char,
                     "endChar": chunk.end_char,
+                    "absoluteStartChar": chunk.start_char,
+                    "absoluteEndChar": chunk.end_char,
+                    "pageStart": chunk.page_start,
+                    "pageEnd": chunk.page_end,
+                    "pageRelativeStart": chunk.page_relative_start,
+                    "pageRelativeEnd": chunk.page_relative_end,
                     "text": chunk.text,
                     "textHash": f"sha256:{hashlib.sha256(chunk.text.encode('utf-8')).hexdigest()}",
                 }
@@ -73,6 +79,7 @@ class IngestionService:
             "accessClassification": access_classification,
             "copyrightClassification": copyright_classification,
             "extractionStatus": result.status,
+            "pages": result.pages,
             "pageOrSectionMetadata": result.sections,
             "rawTextPath": "raw.txt",
             "chunkManifestPath": "chunks.json",

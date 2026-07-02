@@ -1,4 +1,9 @@
-"""Small schema checks for core v2 contracts."""
+"""Partial schema checks for core v2 contracts.
+
+These helpers intentionally do not replace a standards-compliant JSON Schema
+validator. They are limited ingestion-phase guards used by local tests until a
+full schema validation dependency is added.
+"""
 
 from __future__ import annotations
 
@@ -10,7 +15,7 @@ CONCEPT_ID = re.compile(r"^[a-z0-9]+(\.[a-z0-9-]+)+$")
 VERIFICATIONS = {"verified", "unsupported", "source-gap"}
 
 
-def validate_wiki_concept_page(page: dict[str, Any]) -> list[str]:
+def partial_validate_wiki_concept_page(page: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     for field in ("conceptId", "title", "summary", "claims", "equations", "examples", "figures", "relatedConcepts"):
         if field not in page:
@@ -35,3 +40,8 @@ def validate_wiki_concept_page(page: dict[str, Any]) -> list[str]:
         if not isinstance(confidence, (int, float)) or not 0 <= confidence <= 1:
             errors.append(f"claims[{index}] confidence must be between 0 and 1")
     return errors
+
+
+def validate_wiki_concept_page(page: dict[str, Any]) -> list[str]:
+    """Backward-compatible alias for the partial ingestion-phase validator."""
+    return partial_validate_wiki_concept_page(page)
