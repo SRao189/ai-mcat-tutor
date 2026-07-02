@@ -1,0 +1,8 @@
+repository: https://gist.github.com/442a6bf555914893e9891c11519de94f.git
+display_url: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+commit: ac46de1ad27f92b28ac95459c782c07f6b8c964a
+license: none stated
+vendored_via: plain source copy of llm-wiki.md
+vendored_path: vendor/llm-wiki/llm-wiki.md
+integration_date: 2026-07-02
+notice: This is a design-pattern reference document, not executable software. Do not describe it as MIT- or Apache-licensed.
