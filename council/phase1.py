@@ -176,3 +176,21 @@ def answer_question(
             recommended_next_action="retry_or_use_mock_mode",
             metadata={"liveModelCalls": 1},
         )
+    except Exception as exc:
+        if logger is not None:
+            logger.exception(
+                "unexpected_error %s",
+                {
+                    "requestId": request_id,
+                    "exceptionType": type(exc).__name__,
+                },
+            )
+        return CouncilResponse(
+            request_id=request_id,
+            status=ResponseStatus.MODEL_ERROR,
+            answer="The tutor failed safely before a verified answer could be returned.",
+            cited_sources=(),
+            uncertainty=("unexpected_internal_error",),
+            recommended_next_action="retry_or_ask_later",
+            metadata={"liveModelCalls": 0 if cfg.mock_mode else 1},
+        )

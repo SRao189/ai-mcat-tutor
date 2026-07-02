@@ -34,6 +34,7 @@ EXPECTED_TITLES.update(
         "amino-acids-proteins": "Amino Acids and Proteins",
         "lipids": "Lipids",
         "nucleic-acids": "Nucleic Acids",
+        "carbohydrates": "Carbohydrates and Carbohydrate Metabolism",
     }
 )
 
@@ -41,6 +42,7 @@ GROUNDING_QUESTIONS = {
     "amino-acids-proteins": "What type of inhibitor competes with substrate at the active site?",
     "lipids": "Where does fatty acid synthesis occur?",
     "nucleic-acids": "Which RNA type carries amino acids to the ribosome?",
+    "carbohydrates": "What does the pentose phosphate pathway make?",
 }
 
 

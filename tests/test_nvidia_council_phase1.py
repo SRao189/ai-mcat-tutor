@@ -99,6 +99,23 @@ class TimeoutReasoner(TutorReasoner):
         raise NvidiaClientError("NVIDIA request failed safely: timeout")
 
 
+class ExplodingRetriever:
+    def retrieve(self, question: str, *, limit: int = 5):
+        raise RuntimeError("synthetic retrieval failure with internal detail")
+
+
+def test_unexpected_exception_fails_safely_without_propagating():
+    response = answer_question(
+        "What is ATP?",
+        config=MOCK_CONFIG,
+        retriever=ExplodingRetriever(),
+    )
+    assert response.status == ResponseStatus.MODEL_ERROR, response.to_dict()
+    assert "failed safely" in response.answer
+    assert "synthetic retrieval failure" not in response.answer
+    assert response.uncertainty == ("unexpected_internal_error",)
+
+
 def test_model_timeout_fails_safely():
     response = answer_question(
         "What is ATP?",
