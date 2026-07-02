@@ -1,0 +1,261 @@
+{
+  "id": "module-6",
+  "title": "Amino Acids and Proteins",
+  "objectives": [
+    "Classify amino acids by side-chain chemistry and predict basic water-facing or protein-core behavior.",
+    "Use pH and pKa to determine whether amino acid functional groups are mostly protonated or deprotonated.",
+    "Connect peptide bonds, disulfide bonds, and termini to polypeptide structure.",
+    "Distinguish primary, secondary, tertiary, and quaternary protein structure.",
+    "Explain how enzymes lower activation energy without changing reaction Delta G.",
+    "Interpret Km, Vmax, cooperativity, common inhibition patterns, and Lineweaver-Burk features."
+  ],
+  "sections": [
+    {
+      "id": "amino-acid-classes",
+      "title": "Side chains define amino acid behavior",
+      "content": "All amino acids share a common backbone, but their R-groups determine chemical behavior. Acidic side chains are deprotonated at physiological pH, lysine and arginine are cationic, histidine can donate or accept protons near physiological pH, hydrophobic residues prefer protein interiors, and polar residues can hydrogen bond with water.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#amino-acid-structure-and-side-chain-categories",
+          "quote": "All 20 amino acids share the same nitrogen-carbon-carbon backbone. Each amino acid has a tetrahedral alpha-carbon connected to an amino group, a carboxyl group, hydrogen, and a variable R-group.",
+          "passageHash": "sha256:5e0dc80115574d118e9d0cb62e1f50e8361859eb1cb6267c5f6fcc14006240c3"
+        }
+      ]
+    },
+    {
+      "id": "acid-base-and-pi",
+      "title": "pH, pKa, and pI predict amino acid charge",
+      "content": "Amino acids are amphoteric because they contain acidic and basic groups. When pH is below a group's pKa, that group is mostly protonated; when pH is above pKa, it is mostly deprotonated. The isoelectric point is the pH where charges balance to zero net charge.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#amino-acid-acid-base-behavior-and-isoelectric-point",
+          "quote": "If the pH of the solution is less than the pKa of an acidic group, that group will mostly be protonated. If the pH is greater than the pKa, that group will mostly be deprotonated.",
+          "passageHash": "sha256:c3c1b39b1c77fb4cf077487ec8f11236207c11bdf6ea9a24447714b79f301d3e"
+        }
+      ]
+    },
+    {
+      "id": "peptides-and-disulfides",
+      "title": "Covalent bonds build and stabilize polypeptides",
+      "content": "Peptide bonds link amino acids into polypeptides and define the N-to-C written direction. Disulfide bonds form between cysteine thiols and help stabilize protein structure; cysteine becomes cystine after disulfide bonding.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#peptide-bonds-and-disulfide-bonds",
+          "quote": "A peptide bond is formed between the carboxyl group of one amino acid and the alpha-amino group of another amino acid with the loss of water.",
+          "passageHash": "sha256:675612b5896bd20f80ac8ebd34bdd4fca795bdf426f52cbdbbabe69614359a08"
+        }
+      ]
+    },
+    {
+      "id": "protein-structure",
+      "title": "Protein folding has four structural levels",
+      "content": "Primary structure is sequence, secondary structure is backbone hydrogen-bonded alpha-helices and beta-sheets, tertiary structure comes from interactions among distant side chains and water, and quaternary structure is the arrangement of separate subunits. Denaturation disrupts shape without breaking peptide bonds.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#levels-of-protein-structure-and-denaturation",
+          "quote": "Denaturation disrupts a protein's shape without breaking peptide bonds.",
+          "passageHash": "sha256:3c748481ac88141d98c9b4fd108856845dba49df6ba611ff9a763d3be53e32af"
+        }
+      ]
+    },
+    {
+      "id": "enzyme-function-regulation",
+      "title": "Enzymes are kinetic catalysts that can be regulated",
+      "content": "Enzymes lower activation energy and stabilize transition states, but they do not change Delta G or decide reaction direction. Cells can drive unfavorable steps by coupling them to favorable reactions such as ATP hydrolysis. Enzyme activity can be regulated by phosphorylation, proteolytic activation, subunit association, and allosteric regulators.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#enzymes-reaction-coupling-and-regulation",
+          "quote": "Enzymes are biological catalysts. They increase reaction rate by lowering activation energy, but they do not change the Delta G between reactants and products.",
+          "passageHash": "sha256:c2f1ffbdae581dfa3977ec15785f82235f4fcb3171774c7516467be24b77a046"
+        }
+      ]
+    },
+    {
+      "id": "enzyme-kinetics-inhibition",
+      "title": "Km, Vmax, and inhibitors describe enzyme kinetics",
+      "content": "At low substrate concentration, reaction rate rises with substrate; at saturation, rate reaches Vmax. Km is the substrate concentration at half Vmax and reflects substrate affinity. Competitive inhibitors increase Km without changing Vmax, noncompetitive inhibitors decrease Vmax without typically changing Km, uncompetitive inhibitors decrease both, and mixed inhibition decreases Vmax with variable Km effects.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#enzyme-kinetics-inhibition-and-lineweaver-burk-plots",
+          "quote": "Competitive inhibitors compete with substrate for the active site; inhibition can be overcome by adding more substrate, so Vmax is unchanged and Km increases.",
+          "passageHash": "sha256:628f33289e282f1da62bfddbac6d289e8e59d1a50c85fcf7bbc8adcc49cfed7a"
+        }
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "pH = pKa + log([base form]/[acid form])",
+      "meaning": "The Henderson-Hasselbalch relationship connects pH, pKa, and the ratio of protonated and deprotonated forms.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#amino-acid-acid-base-behavior-and-isoelectric-point",
+          "quote": "The Henderson-Hasselbalch relationship is pH = pKa + log([base form]/[acid form]).",
+          "passageHash": "sha256:c3c1b39b1c77fb4cf077487ec8f11236207c11bdf6ea9a24447714b79f301d3e"
+        }
+      ]
+    },
+    {
+      "expression": "pI = (pKa1 + pKa2) / 2 for a two-functional-group amino acid",
+      "meaning": "For glycine-like amino acids without ionizable side chains, average the two relevant pKa values to find pI.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#amino-acid-acid-base-behavior-and-isoelectric-point",
+          "quote": "For a molecule with two functional groups, such as glycine, the pI is calculated by averaging the pKas of the two functional groups.",
+          "passageHash": "sha256:c3c1b39b1c77fb4cf077487ec8f11236207c11bdf6ea9a24447714b79f301d3e"
+        }
+      ]
+    },
+    {
+      "expression": "Delta G_total = sum of coupled Delta G values",
+      "meaning": "Reaction coupling works because free energy changes are additive.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#enzymes-reaction-coupling-and-regulation",
+          "quote": "Thermodynamically unfavorable cellular reactions can be driven forward by reaction coupling, in which one very favorable reaction drives an unfavorable one because free energy changes are additive.",
+          "passageHash": "sha256:c2f1ffbdae581dfa3977ec15785f82235f4fcb3171774c7516467be24b77a046"
+        }
+      ]
+    },
+    {
+      "expression": "Lineweaver-Burk: y-intercept = 1/Vmax; x-intercept = -1/Km; slope = Km/Vmax",
+      "meaning": "The double reciprocal plot linearizes enzyme kinetics and helps distinguish inhibitor effects.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#enzyme-kinetics-inhibition-and-lineweaver-burk-plots",
+          "quote": "The y-axis is 1/V, the x-axis is 1/[S], the slope is Km/Vmax, the y-intercept is 1/Vmax, and the x-intercept is -1/Km.",
+          "passageHash": "sha256:628f33289e282f1da62bfddbac6d289e8e59d1a50c85fcf7bbc8adcc49cfed7a"
+        }
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "At pH 12, what happens to glycine's backbone carboxyl and ammonium groups?",
+      "steps": [
+        "Compare pH 12 with the typical carboxyl pKa near 2 and ammonium pKa near 9 or 10.",
+        "Since pH is above both pKa values, both groups are mostly deprotonated.",
+        "The carboxyl group is COO-, and the amino group is NH2, so glycine has net negative charge."
+      ],
+      "answer": "Both backbone groups are mostly deprotonated, giving glycine a net negative charge.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#amino-acid-acid-base-behavior-and-isoelectric-point",
+          "quote": "If the pH of the solution is less than the pKa of an acidic group, that group will mostly be protonated. If the pH is greater than the pKa, that group will mostly be deprotonated.",
+          "passageHash": "sha256:c3c1b39b1c77fb4cf077487ec8f11236207c11bdf6ea9a24447714b79f301d3e"
+        }
+      ]
+    },
+    {
+      "question": "How does a competitive inhibitor change Vmax and Km?",
+      "steps": [
+        "A competitive inhibitor binds at the active site and competes with substrate.",
+        "Adding enough substrate can outcompete the inhibitor, so Vmax is unchanged.",
+        "More substrate is needed to reach half-maximal velocity, so apparent Km increases."
+      ],
+      "answer": "Vmax is unchanged, and apparent Km increases.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#enzyme-kinetics-inhibition-and-lineweaver-burk-plots",
+          "quote": "Competitive inhibitors compete with substrate for the active site; inhibition can be overcome by adding more substrate, so Vmax is unchanged and Km increases.",
+          "passageHash": "sha256:628f33289e282f1da62bfddbac6d289e8e59d1a50c85fcf7bbc8adcc49cfed7a"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "Which side-chain category is most likely to be buried in the interior of a folded globular protein?",
+      "choices": [
+        "Hydrophobic",
+        "Acidic",
+        "Basic",
+        "Strongly polar"
+      ],
+      "answer": "Hydrophobic",
+      "explanation": "Hydrophobic residues associate with each other instead of water and are commonly found inside folded globular proteins.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#amino-acid-structure-and-side-chain-categories",
+          "quote": "Hydrophobic amino acids have aliphatic or aromatic side chains and tend to associate with each other rather than with water.",
+          "passageHash": "sha256:5e0dc80115574d118e9d0cb62e1f50e8361859eb1cb6267c5f6fcc14006240c3"
+        }
+      ],
+      "reviewTarget": "amino acid classes"
+    },
+    {
+      "question": "True or false: denaturation breaks peptide bonds.",
+      "answer": "False",
+      "explanation": "Denaturation disrupts protein shape without breaking peptide bonds.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#levels-of-protein-structure-and-denaturation",
+          "quote": "Denaturation disrupts a protein's shape without breaking peptide bonds.",
+          "passageHash": "sha256:3c748481ac88141d98c9b4fd108856845dba49df6ba611ff9a763d3be53e32af"
+        }
+      ],
+      "reviewTarget": "protein structure and denaturation"
+    },
+    {
+      "question": "What type of inhibitor binds at the active site and can be overcome by adding substrate?",
+      "answer": "Competitive inhibitor",
+      "explanation": "Competitive inhibitors compete with substrate for the active site, so increasing substrate can overcome the inhibition.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#enzyme-kinetics-inhibition-and-lineweaver-burk-plots",
+          "quote": "Competitive inhibitors compete with substrate for the active site; inhibition can be overcome by adding more substrate, so Vmax is unchanged and Km increases.",
+          "passageHash": "sha256:628f33289e282f1da62bfddbac6d289e8e59d1a50c85fcf7bbc8adcc49cfed7a"
+        }
+      ],
+      "reviewTarget": "enzyme kinetics inhibition"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Which statement best describes enzyme catalysis?",
+      "choices": [
+        "Enzymes lower activation energy without changing Delta G.",
+        "Enzymes make unfavorable reactions favorable by changing equilibrium constants.",
+        "Enzymes increase Delta G so products form faster.",
+        "Enzymes break peptide bonds during every reaction."
+      ],
+      "answer": "Enzymes lower activation energy without changing Delta G.",
+      "explanation": "The chapter states that enzymes increase rate by lowering activation energy but do not change Delta G between reactants and products.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#enzymes-reaction-coupling-and-regulation",
+          "quote": "Enzymes are biological catalysts. They increase reaction rate by lowering activation energy, but they do not change the Delta G between reactants and products.",
+          "passageHash": "sha256:c2f1ffbdae581dfa3977ec15785f82235f4fcb3171774c7516467be24b77a046"
+        }
+      ],
+      "reviewTarget": "enzyme function regulation"
+    },
+    {
+      "question": "Which interaction is characteristic of tertiary protein structure?",
+      "choices": [
+        "Disulfide bonds between distant cysteine residues in one chain",
+        "Peptide bonds linking adjacent residues",
+        "The written N-to-C sequence alone",
+        "Only hydrogen bonds between immediately adjacent peptide bonds"
+      ],
+      "answer": "Disulfide bonds between distant cysteine residues in one chain",
+      "explanation": "Tertiary structure includes interactions between distant side chains, including disulfide bonds between cysteine residues.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/amino-acids-proteins.md#levels-of-protein-structure-and-denaturation",
+          "quote": "Tertiary structure involves interactions between amino acid residues distant from each other in the polypeptide chain.",
+          "passageHash": "sha256:3c748481ac88141d98c9b4fd108856845dba49df6ba611ff9a763d3be53e32af"
+        }
+      ],
+      "reviewTarget": "protein structure"
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "wiki/amino-acids-proteins.md#amino-acid-structure-and-side-chain-categories",
+      "quote": "Proteins are composed of 20 different amino acids linked together in polymers, and the composition and sequence of amino acids in the polypeptide chain make each protein unique.",
+      "passageHash": "sha256:5e0dc80115574d118e9d0cb62e1f50e8361859eb1cb6267c5f6fcc14006240c3"
+    }
+  ],
+  "sourceGaps": []
+}

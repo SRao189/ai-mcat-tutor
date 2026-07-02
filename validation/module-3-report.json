@@ -1,7 +1,7 @@
 {
   "module": "course-data\\module-3.json",
-  "moduleHash": "sha256:d1c11cdda08f4a1d560695125c8b060c47fcaddc7a8aae75d8fc4dd0704e4cd1",
-  "validatedAt": "2026-06-27T10:10:06.846519+00:00",
+  "moduleHash": "sha256:b213df4d582ff7e176166e7b946adfafee95eb77386d3c2eccf78ce7aaea852c",
+  "validatedAt": "2026-07-02T03:21:23.302055+00:00",
   "valid": true,
   "legacyCitationCount": 3,
   "citationsVerified": true,

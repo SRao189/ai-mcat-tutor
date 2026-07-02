@@ -1,0 +1,12 @@
+{
+  "module": "course-data\\module-6.json",
+  "moduleHash": "sha256:f7f96252a2fd226e0a70b7b583261cb4393fe9c764bef34312b169c8e9fdd5b9",
+  "validatedAt": "2026-07-02T05:13:18.813283+00:00",
+  "valid": true,
+  "legacyCitationCount": 0,
+  "citationsVerified": true,
+  "errorCount": 0,
+  "warningCount": 0,
+  "errors": [],
+  "warnings": []
+}

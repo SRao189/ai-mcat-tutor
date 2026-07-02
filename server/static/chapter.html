@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCAT Chapter Tutor</title>
+    <link rel="stylesheet" href="/chapter.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="lesson-panel" aria-labelledby="lesson-title">
+        <div class="lesson-top">
+          <div>
+            <p class="eyebrow">MCAT Biochemistry Review</p>
+            <h1 id="lesson-title">Loading chapter...</h1>
+            <p class="lede">Work through short sections, answer checkpoints, and ask a citation-gated tutor for help using your current lesson context.</p>
+          </div>
+          <aside class="progress-panel" aria-label="Lesson progress">
+            <span id="progressCount">0/0 checkpoints</span>
+            <div class="progress-track"><span id="progressBar"></span></div>
+            <span id="quizScore">Quiz not submitted</span>
+          </aside>
+        </div>
+
+        <section class="objectives" aria-labelledby="objectives-title">
+          <h2 id="objectives-title">Learning Objectives</h2>
+          <ul id="objectivesList"></ul>
+        </section>
+
+        <div id="sectionsRoot" class="sections-root" aria-live="polite"></div>
+        <div id="workedExamplesRoot" class="sections-root"></div>
+        <section id="finalQuizRoot" class="quiz-panel" aria-labelledby="quiz-title"></section>
+      </section>
+
+      <section class="chat-panel" aria-labelledby="chat-title">
+        <div class="chat-header">
+          <div>
+            <p class="eyebrow">Verified Tutor</p>
+            <h2 id="chat-title">Ask This Chapter</h2>
+          </div>
+          <span id="statusBadge" class="status-badge idle">idle</span>
+        </div>
+
+        <div class="tutor-actions" aria-label="Tutor actions">
+          <button type="button" data-action="Explain this section">Explain this section</button>
+          <button type="button" data-action="Teach this differently">Teach this differently</button>
+          <button type="button" data-action="Give me an analogy">Give me an analogy</button>
+          <button type="button" data-action="Quiz me">Quiz me</button>
+          <button type="button" data-action="Why was my answer wrong?">Why was my answer wrong?</button>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="message assistant">
+            <p id="welcomeMessage">Hi! Ask anything about this chapter. Factual answers cite the approved passage they came from.</p>
+          </div>
+        </div>
+
+        <form id="chatForm" class="chat-form">
+          <label for="questionInput">Question</label>
+          <div class="input-row">
+            <textarea id="questionInput" maxlength="500" rows="3" placeholder="Ask about the current chapter"></textarea>
+            <button id="sendButton" type="submit">Send</button>
+          </div>
+          <div class="form-footer">
+            <span id="loadingIndicator" class="loading" hidden>Checking sources and gates...</span>
+            <span id="errorState" class="error" role="alert"></span>
+            <label class="debug-toggle"><input type="checkbox" id="debugToggle"> Developer details</label>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="/chapter.js"></script>
+  </body>
+</html>

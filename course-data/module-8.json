@@ -1,0 +1,261 @@
+{
+  "id": "module-8",
+  "title": "Nucleic Acids",
+  "objectives": [
+    "Describe phosphate, pyrophosphate, ATP, and nucleotide components.",
+    "Distinguish nucleosides, nucleotides, purines, pyrimidines, ribose, and deoxyribose.",
+    "Apply 5-prime to 3-prime polarity, phosphodiester bonding, complementarity, and Chargaff relationships.",
+    "Explain DNA double-helix stability, melting temperature, and helix dimensions.",
+    "Compare prokaryotic supercoiling with eukaryotic histone packaging, chromatin, centromeres, and telomeres.",
+    "Differentiate DNA and RNA chemistry and identify major coding and non-coding RNA types."
+  ],
+  "sections": [
+    {
+      "id": "phosphate-atp-nucleotides",
+      "title": "Phosphate chemistry powers nucleotide biology",
+      "content": "Phosphate can form high-energy anhydride linkages, including pyrophosphate and ATP phosphoanhydride bonds. Nucleotides contain a sugar, a purine or pyrimidine base at carbon 1, and one to three phosphate groups at carbon 5.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#phosphate-atp-and-nucleotides",
+          "quote": "Nucleotides are the building blocks of RNA and DNA. Each nucleotide contains a ribose or deoxyribose sugar, a purine or pyrimidine base joined to carbon 1 of the sugar ring, and one, two, or three phosphate units joined to carbon 5 of the sugar ring.",
+          "passageHash": "sha256:7d4948dc040e53efbb1a79537ae6324b2ea03be0e2614987e2817ab0f9be5abb"
+        }
+      ]
+    },
+    {
+      "id": "dna-nucleotide-structure",
+      "title": "DNA nucleotides combine deoxyribose, base, and phosphate",
+      "content": "DNA building blocks are deoxyribonucleoside 5-prime triphosphates. Deoxyribose lacks the 2-prime hydroxyl found in ribose, adenine and guanine are purines, cytosine and thymine are pyrimidines, and the sugar-phosphate portion is the invariant backbone.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#dna-nucleotide-structure",
+          "quote": "The sugar-phosphate portion of a nucleotide is the invariant backbone of nucleic acid, while the base is the variable portion.",
+          "passageHash": "sha256:920a66bd899e0da55ac461fae3a60e2704738645c2b97fb9478998f5efe35e51"
+        }
+      ]
+    },
+    {
+      "id": "polynucleotides-base-pairing",
+      "title": "Polynucleotides have direction and complementary base pairing",
+      "content": "Phosphodiester bonds connect the 3-prime hydroxyl of one sugar to the 5-prime phosphate of the next, so sequences are written 5-prime to 3-prime. In double-stranded DNA, antiparallel strands pair A with T and G with C.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#polynucleotides-and-base-pairing",
+          "quote": "In double-stranded DNA, two long polynucleotide chains hydrogen-bond in antiparallel orientation, meaning the 5-prime end of one chain is paired with the 3-prime end of the other.",
+          "passageHash": "sha256:8ae1036989a2260023f4a18f232f7bd49aed7f0f67aedce7e658de3bac3ba277"
+        }
+      ]
+    },
+    {
+      "id": "double-helix-stability",
+      "title": "Base stacking, hydrogen bonding, and GC content stabilize DNA",
+      "content": "The Watson-Crick model describes a right-handed double helix with bases inside and the sugar-phosphate backbone outside. GC-rich DNA has a higher melting temperature than AT-rich DNA because GC pairs have three hydrogen bonds while AT pairs have two.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#dna-double-helix-stability-and-dimensions",
+          "quote": "AT-rich DNA has a lower Tm than GC-rich DNA because AT pairs have two hydrogen bonds while GC pairs have three.",
+          "passageHash": "sha256:0ec56e189950394085aab706781a4bfe09e23b072bc0207531b0c69df1a68741"
+        }
+      ]
+    },
+    {
+      "id": "chromosome-packaging",
+      "title": "Genomes are compacted by supercoils or chromatin",
+      "content": "Prokaryotic circular chromosomes are compacted by DNA gyrase-mediated supercoils. Eukaryotic DNA wraps around histone octamers to form nucleosomes and chromatin; heterochromatin is denser and less accessible, while euchromatin is looser and more transcriptionally active.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#chromosome-packaging-centromeres-and-telomeres",
+          "quote": "DNA wrapped around histone octamers forms nucleosomes, giving a beads-on-a-string appearance before complete packing.",
+          "passageHash": "sha256:ac2f7035f029ede9c507e86a9e203c7cbd236be16d4f7a09acfe7ee36986463d"
+        }
+      ]
+    },
+    {
+      "id": "rna-types",
+      "title": "RNA is less stable and has coding and non-coding forms",
+      "content": "RNA is usually single-stranded, uses uracil instead of thymine, and contains ribose with a 2-prime hydroxyl that can attack the backbone phosphate. mRNA carries coding information, while tRNA, rRNA, snRNA, miRNA, siRNA, and long non-coding RNAs perform non-coding functions.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#rna-types-and-chemical-differences",
+          "quote": "RNA differs chemically from DNA in three important ways: RNA is single-stranded except in some viruses, RNA contains uracil instead of thymine, and RNA contains ribose rather than 2-prime deoxyribose.",
+          "passageHash": "sha256:817b5446ea2a153dfcb1515eb7c056b9de88d3a162ad94e878dddd49bbe3ff7c"
+        }
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "A = T; G = C; A + G = T + C",
+      "meaning": "Chargaff relationships follow from complementary purine-pyrimidine pairing in double-stranded DNA.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#polynucleotides-and-base-pairing",
+          "quote": "Chargaff's rule states that A equals T, G equals C, and A plus G equals T plus C.",
+          "passageHash": "sha256:8ae1036989a2260023f4a18f232f7bd49aed7f0f67aedce7e658de3bac3ba277"
+        }
+      ]
+    },
+    {
+      "expression": "GC pair = 3 hydrogen bonds; AT pair = 2 hydrogen bonds",
+      "meaning": "GC-rich DNA requires more thermal energy to melt than AT-rich DNA.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#polynucleotides-and-base-pairing",
+          "quote": "The GC pair has three hydrogen bonds, while the AT pair has two.",
+          "passageHash": "sha256:8ae1036989a2260023f4a18f232f7bd49aed7f0f67aedce7e658de3bac3ba277"
+        }
+      ]
+    },
+    {
+      "expression": "DNA helix turn = 34 angstroms = 10 base pairs",
+      "meaning": "The Watson-Crick helix repeats every 10 base pairs along the molecule.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#dna-double-helix-stability-and-dimensions",
+          "quote": "The helix completes a full turn every 34 angstroms, or every 10 base pairs, and the width of the double helix is always 20 angstroms.",
+          "passageHash": "sha256:0ec56e189950394085aab706781a4bfe09e23b072bc0207531b0c69df1a68741"
+        }
+      ]
+    },
+    {
+      "expression": "Pyrophosphate hydrolysis Delta G degrees approx -7 kcal/mol; cellular Delta G approx -12 kcal/mol",
+      "meaning": "Hydrolysis of linked phosphate anhydrides is strongly favorable and even more favorable under cellular conditions.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#phosphate-atp-and-nucleotides",
+          "quote": "The Delta G degrees for pyrophosphate hydrolysis is about -7 kcal/mol, and the actual cellular Delta G is about -12 kcal/mol.",
+          "passageHash": "sha256:7d4948dc040e53efbb1a79537ae6324b2ea03be0e2614987e2817ab0f9be5abb"
+        }
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Which strand is complementary to 5-prime-ATGTAT-3-prime?",
+      "steps": [
+        "Use A-T and G-C base pairing.",
+        "Remember the strands are antiparallel.",
+        "The complementary sequence written 5-prime to 3-prime is ATACAT."
+      ],
+      "answer": "5-prime-ATACAT-3-prime.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#polynucleotides-and-base-pairing",
+          "quote": "Two DNA strands are complementary if their bases can hydrogen bond when the strands are oriented antiparallel.",
+          "passageHash": "sha256:8ae1036989a2260023f4a18f232f7bd49aed7f0f67aedce7e658de3bac3ba277"
+        }
+      ]
+    },
+    {
+      "question": "Why is RNA less stable than DNA?",
+      "steps": [
+        "RNA contains ribose, which has a 2-prime hydroxyl.",
+        "The 2-prime hydroxyl can attack the backbone phosphate.",
+        "That attack can hydrolyze the RNA chain; DNA lacks this 2-prime hydroxyl."
+      ],
+      "answer": "RNA's 2-prime hydroxyl can attack the backbone phosphate and promote hydrolysis; DNA lacks that group.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#rna-types-and-chemical-differences",
+          "quote": "The 2-prime hydroxyl in RNA makes RNA less stable because it can nucleophilically attack the backbone phosphate group, causing hydrolysis when the remainder of the chain acts as a leaving group.",
+          "passageHash": "sha256:817b5446ea2a153dfcb1515eb7c056b9de88d3a162ad94e878dddd49bbe3ff7c"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "Which carbon of the sugar ring is joined to the phosphate units in a nucleotide?",
+      "choices": [
+        "Carbon 5",
+        "Carbon 1",
+        "Carbon 2",
+        "Carbon 3 only"
+      ],
+      "answer": "Carbon 5",
+      "explanation": "The nucleotide description places the base on carbon 1 and phosphate units on carbon 5.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#phosphate-atp-and-nucleotides",
+          "quote": "Each nucleotide contains a ribose or deoxyribose sugar, a purine or pyrimidine base joined to carbon 1 of the sugar ring, and one, two, or three phosphate units joined to carbon 5 of the sugar ring.",
+          "passageHash": "sha256:7d4948dc040e53efbb1a79537ae6324b2ea03be0e2614987e2817ab0f9be5abb"
+        }
+      ],
+      "reviewTarget": "phosphate ATP nucleotides"
+    },
+    {
+      "question": "True or false: GC-rich DNA generally has a lower Tm than AT-rich DNA.",
+      "answer": "False",
+      "explanation": "GC pairs have three hydrogen bonds while AT pairs have two, so AT-rich DNA has the lower Tm.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#dna-double-helix-stability-and-dimensions",
+          "quote": "AT-rich DNA has a lower Tm than GC-rich DNA because AT pairs have two hydrogen bonds while GC pairs have three.",
+          "passageHash": "sha256:0ec56e189950394085aab706781a4bfe09e23b072bc0207531b0c69df1a68741"
+        }
+      ],
+      "reviewTarget": "double helix stability"
+    },
+    {
+      "question": "What chromosomal region is the spindle-fiber attachment site during cell division?",
+      "answer": "Centromere",
+      "explanation": "The centromere is where spindle fibers attach through kinetochores.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#chromosome-packaging-centromeres-and-telomeres",
+          "quote": "A centromere is the chromosome region where spindle fibers attach during cell division through kinetochores.",
+          "passageHash": "sha256:ac2f7035f029ede9c507e86a9e203c7cbd236be16d4f7a09acfe7ee36986463d"
+        }
+      ],
+      "reviewTarget": "chromosome packaging"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Which choice correctly identifies the DNA purines?",
+      "choices": [
+        "Adenine and guanine",
+        "Cytosine and thymine",
+        "Uracil and thymine",
+        "Cytosine and uracil"
+      ],
+      "answer": "Adenine and guanine",
+      "explanation": "Adenine and guanine are purines with double-ring structures; cytosine and thymine are pyrimidines.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#dna-nucleotide-structure",
+          "quote": "Adenine and guanine are purines with a double-ring structure.",
+          "passageHash": "sha256:920a66bd899e0da55ac461fae3a60e2704738645c2b97fb9478998f5efe35e51"
+        }
+      ],
+      "reviewTarget": "dna nucleotide structure"
+    },
+    {
+      "question": "Which RNA type carries amino acids to the ribosome?",
+      "choices": [
+        "tRNA",
+        "mRNA",
+        "rRNA",
+        "hnRNA"
+      ],
+      "answer": "tRNA",
+      "explanation": "Transfer RNA carries amino acids from the cytoplasm to the ribosome and helps translate the genetic code.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/nucleic-acids.md#rna-types-and-chemical-differences",
+          "quote": "Transfer RNA carries amino acids from the cytoplasm to the ribosome and helps translate the genetic code.",
+          "passageHash": "sha256:817b5446ea2a153dfcb1515eb7c056b9de88d3a162ad94e878dddd49bbe3ff7c"
+        }
+      ],
+      "reviewTarget": "rna types"
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "wiki/nucleic-acids.md#phosphate-atp-and-nucleotides",
+      "quote": "Nucleotides are the building blocks of RNA and DNA.",
+      "passageHash": "sha256:7d4948dc040e53efbb1a79537ae6324b2ea03be0e2614987e2817ab0f9be5abb"
+    }
+  ],
+  "sourceGaps": []
+}

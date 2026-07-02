@@ -1,0 +1,285 @@
+{
+  "id": "module-9",
+  "title": "Carbohydrates and Carbohydrate Metabolism",
+  "objectives": [
+    "Classify monosaccharides, disaccharides, polysaccharides, and glycosidic linkages.",
+    "Explain how linkage stereochemistry affects digestion of glycogen, starch, cellulose, and lactose.",
+    "Track glucose through glycolysis, fermentation, the pyruvate dehydrogenase complex, the Krebs cycle, and oxidative phosphorylation.",
+    "Use NADH, FADH2, proton gradients, and ATP synthase to explain aerobic ATP production.",
+    "Distinguish gluconeogenesis, reciprocal regulation, glycogenesis, and glycogenolysis by pathway purpose and hormonal state.",
+    "Identify the products and regulation of the pentose phosphate pathway."
+  ],
+  "sections": [
+    {
+      "id": "carbohydrate-structures",
+      "title": "Carbohydrates are sugars joined by glycosidic linkages",
+      "content": "A monosaccharide is a simple sugar with the general formula CnH2nOn. Disaccharides, oligosaccharides, and polysaccharides form when monosaccharides are connected by glycosidic linkages. These covalent linkages form by enzyme-catalyzed dehydration and are described by both the linked carbons and alpha or beta configuration.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#monosaccharides-disaccharides-and-glycosidic-linkages",
+          "quote": "A single carbohydrate molecule is a monosaccharide, or simple sugar, and monosaccharides have the general formula CnH2nOn.",
+          "passageHash": "sha256:bf838faa85130203a422ea015208035c13bd16d479cf8ffdf19711bff29a81c6"
+        }
+      ]
+    },
+    {
+      "id": "polysaccharides-digestion",
+      "title": "Polysaccharide function depends on linkage chemistry",
+      "content": "Glycogen stores glucose in animals through alpha-1,4 linkages and alpha-1,6 branches, while starch serves a similar storage role in plants. Cellulose contains beta-glycosidic bonds that form straight fibrous polymers. Hydrolysis of polysaccharides is thermodynamically favored but requires specific enzymes; mammals generally cannot digest cellulose beta linkages, while lactase specifically digests lactose.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#polysaccharides-and-glycosidic-hydrolysis",
+          "quote": "Glycogen is an animal energy-storage carbohydrate made of thousands of glucose units joined mainly by alpha-1,4 linkages with alpha-1,6 branches.",
+          "passageHash": "sha256:ced09a655e5c8eac83d173339e7fc96dd9489c5572f4cedb67400be46fe58aea"
+        }
+      ]
+    },
+    {
+      "id": "glycolysis",
+      "title": "Glycolysis splits glucose in the cytoplasm",
+      "content": "Cellular respiration begins by capturing glucose energy in reduced electron carriers. Glycolysis occurs in the cytoplasm without requiring oxygen, splits one glucose into two pyruvate molecules, and yields a net 2 ATP and 2 NADH per glucose. Phosphofructokinase catalyzes the committed step, is inhibited by high ATP, and is activated by elevated AMP.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#cellular-respiration-overview-and-glycolysis",
+          "quote": "Glycolysis occurs in the cytoplasm and does not require oxygen.",
+          "passageHash": "sha256:790fe00eb0bc1087e80d603981b417233bee2772d37d05d10e2e4cd07c12d6c7"
+        }
+      ]
+    },
+    {
+      "id": "fermentation-pdc",
+      "title": "Fermentation regenerates NAD+, and PDC makes acetyl-CoA",
+      "content": "Without oxygen, electron transport cannot reoxidize NADH, so fermentation regenerates NAD+ and allows glycolysis to continue. Pyruvate can be reduced to lactate in human muscle. In aerobic metabolism, the pyruvate dehydrogenase complex in the mitochondrial matrix oxidatively decarboxylates pyruvate into acetyl-CoA, releases carbon dioxide, and produces NADH.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#fermentation-and-the-pyruvate-dehydrogenase-complex",
+          "quote": "Fermentation regenerates NAD+ under anaerobic conditions so glycolysis can continue.",
+          "passageHash": "sha256:09e5216ae97a18d9ffd60f1211d7f4ce7bac9e169b1f0e5e628884589512b5fb"
+        }
+      ]
+    },
+    {
+      "id": "krebs-oxidative-phosphorylation",
+      "title": "The Krebs cycle and oxidative phosphorylation harvest most glucose energy",
+      "content": "The Krebs cycle oxidizes acetyl-CoA in the mitochondrial matrix and, per glucose, produces 6 NADH, 2 FADH2, and 2 GTP. Electron transport in the inner mitochondrial membrane oxidizes NADH and FADH2, reduces oxygen to water, and pumps protons into the intermembrane space. ATP synthase uses the proton gradient to phosphorylate ADP to ATP.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#krebs-cycle-and-oxidative-phosphorylation",
+          "quote": "Per glucose, the Krebs cycle produces 6 NADH, 2 FADH2, and 2 GTP; pyruvate dehydrogenase produces 2 NADH per glucose before the cycle.",
+          "passageHash": "sha256:9766eb6d40cedfbe926f657f088feecf4462e04f73b46dc241a2b1640930f6f7"
+        }
+      ]
+    },
+    {
+      "id": "gluconeogenesis-regulation",
+      "title": "Gluconeogenesis and glycolysis are reciprocally regulated",
+      "content": "Gluconeogenesis makes glucose during fasting states when dietary glucose and liver glycogen are unavailable. It uses many glycolytic enzymes but bypasses irreversible glycolysis steps, costing four ATP, two GTP, and two NADH. Reciprocal regulation prevents futile cycling: AMP and fructose-2,6-bisphosphate stimulate PFK while inhibiting fructose-1,6-bisphosphatase.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#gluconeogenesis-and-reciprocal-regulation",
+          "quote": "Fructose-2,6-bisphosphate also stimulates PFK and inhibits fructose-1,6-bisphosphatase.",
+          "passageHash": "sha256:52edabd0735e9e750bd10b75ae579f040735c3b877264d65c322d32e666c9f81"
+        }
+      ]
+    },
+    {
+      "id": "glycogen-metabolism",
+      "title": "Glycogen metabolism stores or releases glucose",
+      "content": "Glycogen is the main animal carbohydrate storage polymer and is found in liver and skeletal muscle. Glycogenesis stores glucose by making UDP-glucose and adding it to glycogen with glycogen synthase. Glycogenolysis removes glucose units as glucose-1-phosphate. Liver glycogen maintains blood glucose during fasting, while muscle glycogen supplies muscle during exercise.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#glycogen-metabolism",
+          "quote": "Glycogen is a polymer of glucose found in muscle and liver cells and is the main carbohydrate storage form in animals.",
+          "passageHash": "sha256:a1bea26178074f42f06dfca19112bcd75f8fbdee208fd0542d90ffd89a3cbd6e"
+        }
+      ]
+    },
+    {
+      "id": "pentose-phosphate-pathway",
+      "title": "The pentose phosphate pathway makes NADPH and ribose-5-phosphate",
+      "content": "The pentose phosphate pathway diverts glucose-6-phosphate from glycolysis in the cytoplasm. Its oxidative phase produces NADPH and ribulose-5-phosphate, and its non-oxidative phase forms ribose-5-phosphate and glycolytic intermediates. NADPH supports anabolic reduction and reactive oxygen species defense, while ribose-5-phosphate supports nucleotide synthesis.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#pentose-phosphate-pathway",
+          "quote": "The pentose phosphate pathway, or hexose monophosphate shunt, diverts glucose-6-phosphate from glycolysis to make NADPH, ribose-5-phosphate, and glycolytic intermediates.",
+          "passageHash": "sha256:0df93386d4b291f22f0011e87ccc2061f27288d836d4422b9c7c4ba91640e64a"
+        }
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "Monosaccharide formula: CnH2nOn",
+      "meaning": "Simple sugars follow this general carbohydrate formula in the source.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#monosaccharides-disaccharides-and-glycosidic-linkages",
+          "quote": "A single carbohydrate molecule is a monosaccharide, or simple sugar, and monosaccharides have the general formula CnH2nOn.",
+          "passageHash": "sha256:bf838faa85130203a422ea015208035c13bd16d479cf8ffdf19711bff29a81c6"
+        }
+      ]
+    },
+    {
+      "expression": "Glucose + 2 ADP + 2 Pi + 2 NAD+ -> 2 pyruvate + 2 ATP + 2 NADH + 2 H2O + 2 H+",
+      "meaning": "Glycolysis splits one glucose into two pyruvate and nets ATP and NADH.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#cellular-respiration-overview-and-glycolysis",
+          "quote": "The overall glycolysis relationship from the source is: glucose + 2 ADP + 2 Pi + 2 NAD+ -> 2 pyruvate + 2 ATP + 2 NADH + 2 H2O + 2 H+.",
+          "passageHash": "sha256:790fe00eb0bc1087e80d603981b417233bee2772d37d05d10e2e4cd07c12d6c7"
+        }
+      ]
+    },
+    {
+      "expression": "One glucose through Krebs cycle -> 6 NADH + 2 FADH2 + 2 GTP",
+      "meaning": "Each glucose produces two acetyl-CoA, so the cycle output is counted twice per glucose.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#krebs-cycle-and-oxidative-phosphorylation",
+          "quote": "Per glucose, the Krebs cycle produces 6 NADH, 2 FADH2, and 2 GTP; pyruvate dehydrogenase produces 2 NADH per glucose before the cycle.",
+          "passageHash": "sha256:9766eb6d40cedfbe926f657f088feecf4462e04f73b46dc241a2b1640930f6f7"
+        }
+      ]
+    },
+    {
+      "expression": "Gluconeogenesis cost = 4 ATP + 2 GTP + 2 NADH",
+      "meaning": "Making glucose through gluconeogenesis requires six high-energy phosphate bonds and reducing power.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#gluconeogenesis-and-reciprocal-regulation",
+          "quote": "Altogether, gluconeogenesis requires six high-energy phosphate bonds, four ATP and two GTP, and two NADH.",
+          "passageHash": "sha256:52edabd0735e9e750bd10b75ae579f040735c3b877264d65c322d32e666c9f81"
+        }
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Why can a human digest lactose but not cellulose even though both involve beta linkages?",
+      "steps": [
+        "Hydrolysis enzymes are specific for the sugar linkage they hydrolyze.",
+        "Mammalian enzymes generally cannot break the beta-glycosidic linkages in cellulose.",
+        "Lactase is a specific exception that digests lactose, so the beta linkage alone is not enough; the exact substrate and enzyme matter."
+      ],
+      "answer": "Humans lack enzymes for cellulose beta linkages but can digest lactose if they produce lactase.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#polysaccharides-and-glycosidic-hydrolysis",
+          "quote": "Mammalian enzymes generally cannot break the beta-glycosidic linkages in cellulose.",
+          "passageHash": "sha256:ced09a655e5c8eac83d173339e7fc96dd9489c5572f4cedb67400be46fe58aea"
+        }
+      ]
+    },
+    {
+      "question": "What happens to glycolysis and gluconeogenesis when fructose-2,6-bisphosphate rises?",
+      "steps": [
+        "Fructose-2,6-bisphosphate stimulates PFK.",
+        "PFK promotes the committed step of glycolysis.",
+        "Fructose-2,6-bisphosphate inhibits fructose-1,6-bisphosphatase, suppressing gluconeogenesis."
+      ],
+      "answer": "Glycolysis increases and gluconeogenesis decreases.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#gluconeogenesis-and-reciprocal-regulation",
+          "quote": "Fructose-2,6-bisphosphate also stimulates PFK and inhibits fructose-1,6-bisphosphatase.",
+          "passageHash": "sha256:52edabd0735e9e750bd10b75ae579f040735c3b877264d65c322d32e666c9f81"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "Which linkage type is found in cellulose and is generally not digested by mammalian enzymes?",
+      "choices": [
+        "Beta-glycosidic linkages",
+        "Peptide bonds",
+        "Phosphodiester bonds",
+        "Alpha-1,6-only glycogen branches"
+      ],
+      "answer": "Beta-glycosidic linkages",
+      "explanation": "The chapter states that mammalian enzymes generally cannot break the beta-glycosidic linkages in cellulose.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#polysaccharides-and-glycosidic-hydrolysis",
+          "quote": "Mammalian enzymes generally cannot break the beta-glycosidic linkages in cellulose.",
+          "passageHash": "sha256:ced09a655e5c8eac83d173339e7fc96dd9489c5572f4cedb67400be46fe58aea"
+        }
+      ],
+      "reviewTarget": "polysaccharides digestion"
+    },
+    {
+      "question": "True or false: glycolysis requires oxygen.",
+      "answer": "False",
+      "explanation": "Glycolysis occurs in the cytoplasm and does not require oxygen.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#cellular-respiration-overview-and-glycolysis",
+          "quote": "Glycolysis occurs in the cytoplasm and does not require oxygen.",
+          "passageHash": "sha256:790fe00eb0bc1087e80d603981b417233bee2772d37d05d10e2e4cd07c12d6c7"
+        }
+      ],
+      "reviewTarget": "glycolysis"
+    },
+    {
+      "question": "What pathway diverts glucose-6-phosphate to make NADPH and ribose-5-phosphate?",
+      "answer": "Pentose phosphate pathway",
+      "explanation": "The pentose phosphate pathway diverts glucose-6-phosphate from glycolysis to make NADPH, ribose-5-phosphate, and glycolytic intermediates.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#pentose-phosphate-pathway",
+          "quote": "The pentose phosphate pathway, or hexose monophosphate shunt, diverts glucose-6-phosphate from glycolysis to make NADPH, ribose-5-phosphate, and glycolytic intermediates.",
+          "passageHash": "sha256:0df93386d4b291f22f0011e87ccc2061f27288d836d4422b9c7c4ba91640e64a"
+        }
+      ],
+      "reviewTarget": "pentose phosphate pathway"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "A cell has high fructose-2,6-bisphosphate. Which paired effect is expected?",
+      "choices": [
+        "Increased PFK activity and decreased fructose-1,6-bisphosphatase activity",
+        "Decreased PFK activity and increased fructose-1,6-bisphosphatase activity",
+        "Increased glycogen phosphorylase and no effect on gluconeogenesis",
+        "Decreased NADPH formation and increased cellulose digestion"
+      ],
+      "answer": "Increased PFK activity and decreased fructose-1,6-bisphosphatase activity",
+      "explanation": "Fructose-2,6-bisphosphate stimulates PFK, promoting glycolysis, and inhibits fructose-1,6-bisphosphatase, suppressing gluconeogenesis.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#gluconeogenesis-and-reciprocal-regulation",
+          "quote": "Fructose-2,6-bisphosphate also stimulates PFK and inhibits fructose-1,6-bisphosphatase.",
+          "passageHash": "sha256:52edabd0735e9e750bd10b75ae579f040735c3b877264d65c322d32e666c9f81"
+        }
+      ],
+      "reviewTarget": "gluconeogenesis regulation"
+    },
+    {
+      "question": "Which statement best describes liver glycogen during fasting?",
+      "choices": [
+        "It is broken down to help maintain blood glucose.",
+        "It cannot release glucose because liver lacks glucose-6-phosphatase.",
+        "It is converted directly into cellulose.",
+        "It is used only for muscle contraction and never for blood glucose."
+      ],
+      "answer": "It is broken down to help maintain blood glucose.",
+      "explanation": "The chapter distinguishes liver glycogen, which maintains blood glucose during fasting, from skeletal muscle glycogen, which supplies exercising muscle.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/carbohydrates.md#glycogen-metabolism",
+          "quote": "Liver glycogen is broken down to maintain blood glucose during fasting, while skeletal muscle glycogen is broken down to supply glucose for muscle during exercise.",
+          "passageHash": "sha256:a1bea26178074f42f06dfca19112bcd75f8fbdee208fd0542d90ffd89a3cbd6e"
+        }
+      ],
+      "reviewTarget": "glycogen metabolism"
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "wiki/carbohydrates.md#monosaccharides-disaccharides-and-glycosidic-linkages",
+      "quote": "The covalent bond between sugar molecules is a glycosidic linkage, formed by an enzyme-catalyzed dehydration reaction.",
+      "passageHash": "sha256:bf838faa85130203a422ea015208035c13bd16d479cf8ffdf19711bff29a81c6"
+    }
+  ],
+  "sourceGaps": []
+}

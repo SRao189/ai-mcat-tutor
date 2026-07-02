@@ -1,0 +1,261 @@
+{
+  "id": "module-7",
+  "title": "Lipids",
+  "objectives": [
+    "Explain the three primary physiological roles of lipids and the chemical basis of hydrophobicity.",
+    "Relate fatty acid saturation to shape, micelle formation, and membrane fluidity.",
+    "Describe triacylglycerol structure and why fats store energy efficiently.",
+    "Connect phospholipids, cholesterol, and membrane proteins to membrane structure and signaling.",
+    "Recognize terpenes, steroids, sphingolipids, waxes, fat-soluble vitamins, and prostaglandins.",
+    "Track the major outputs and contexts of beta-oxidation, ketogenesis, fatty acid synthesis, and fuel-state shifts."
+  ],
+  "sections": [
+    {
+      "id": "lipid-roles-fatty-acids",
+      "title": "Lipids are hydrophobic molecules with storage, membrane, and hormone roles",
+      "content": "Lipids store energy as triglycerides, build membranes as phospholipids, and provide cholesterol for steroid hormone synthesis. Fatty acids are long hydrocarbon chains with carboxylic acids; saturation keeps chains straight, while cis unsaturation introduces bends.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#lipid-roles-hydrophobicity-and-fatty-acids",
+          "quote": "Lipids are oily or fatty substances with three primary physiological roles. In adipose cells, triglycerides store energy. In cellular membranes, phospholipids form a barrier between intracellular and extracellular environments. Cholesterol is a special lipid that serves as the building block for hydrophobic steroid hormones.",
+          "passageHash": "sha256:16be280fc969524166bddb062bb7dc2edab7b0754b3367959a7a1e584b948201"
+        }
+      ]
+    },
+    {
+      "id": "triacylglycerols-energy",
+      "title": "Triacylglycerols are efficient energy stores",
+      "content": "Triacylglycerols contain three fatty acids esterified to glycerol. Fats pack densely because they are hydrophobic and store more energy than carbohydrates because they are more reduced.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#triacylglycerols-and-energy-storage",
+          "quote": "Fats are more efficient energy storage molecules than carbohydrates for two reasons: packing and energy content.",
+          "passageHash": "sha256:51edb27763cddf6d8eed49ee9e46a219628e2cb565c23e5c493217ddd13b9a1d"
+        }
+      ]
+    },
+    {
+      "id": "membranes-fluidity",
+      "title": "Phospholipids form bilayers whose fluidity is tuned",
+      "content": "Phospholipids form bilayers through hydrophobic interactions, with van der Waals forces stabilizing long tails. More unsaturation and shorter tails increase membrane fluidity, while cholesterol helps maintain optimal fluidity across temperature changes.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#phospholipids-membranes-and-fluidity",
+          "quote": "The structural determinants of membrane fluidity are degree of saturation, tail length, and amount of cholesterol.",
+          "passageHash": "sha256:41c7b5393b00394ad1c8f6f9fa2c114476d220cea76aa10859b82b40c5b10891"
+        }
+      ]
+    },
+    {
+      "id": "steroids-other-lipids",
+      "title": "Steroids and other lipids have specialized structures and roles",
+      "content": "Terpenes are built from isoprene units, steroids have a tetracyclic ring system, steroid hormones diffuse through membranes to intracellular receptors, sphingomyelin is a human sphingolipid in myelin, waxes are hydrophobic barriers, and vitamins A, D, E, and K are fat-soluble.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#terpenes-steroids-and-steroid-hormones",
+          "quote": "Steroid hormones are made from cholesterol. Testosterone and estradiol are examples. Because steroids are highly hydrophobic, they can diffuse through the lipid bilayer into the cytoplasm.",
+          "passageHash": "sha256:50f3ff0f7e36f750ee9fedc6e146800a4d91bb02579e108d346e08c6885bf873"
+        }
+      ]
+    },
+    {
+      "id": "oxidation-ketogenesis",
+      "title": "Beta-oxidation feeds acetyl-CoA and ketogenesis",
+      "content": "Fatty acid activation costs two ATP equivalents. Each beta-oxidation round releases acetyl-CoA and generates one FADH2 and one NADH. During starvation, liver mitochondria convert acetyl-CoA into ketone bodies that can cross the blood-brain barrier and be reconverted to acetyl-CoA.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#fatty-acid-oxidation-and-ketogenesis",
+          "quote": "In the matrix, fatty acyl-CoA undergoes a repeated four-reaction series that cleaves the bond between the alpha and beta carbons, releases acetyl-CoA, and generates one FADH2 and one NADH per round.",
+          "passageHash": "sha256:5b0ec259e183f0c8087d1d5808d3508949b0fafa6476828649973adef3457b1d"
+        }
+      ]
+    },
+    {
+      "id": "synthesis-metabolic-state",
+      "title": "Fatty acid synthesis and fuel use depend on metabolic state",
+      "content": "Fatty acid synthesis occurs in the cytoplasm, begins with ATP-dependent carboxylation of acetyl-CoA to malonyl-CoA, and uses NADPH on fatty acid synthase. High blood sugar favors glycolysis, glycogenesis, and fatty acid synthesis; starvation favors glycogenolysis, gluconeogenesis, beta-oxidation, and ketogenesis.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#fatty-acid-synthesis-and-metabolic-state",
+          "quote": "Fatty acid catabolism occurs in the mitochondrial matrix, while fatty acid synthesis occurs in the cytoplasm.",
+          "passageHash": "sha256:a9c54db0d86d3f65104eb89ee14155e501407f648fc2279658cb97fb1eae141d"
+        }
+      ]
+    }
+  ],
+  "equations": [
+    {
+      "expression": "Terpene formula: (C5H8)n",
+      "meaning": "Terpenes are built from repeating isoprene units.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#terpenes-steroids-and-steroid-hormones",
+          "quote": "Terpenes are built from isoprene units with the general formula (C5H8)n.",
+          "passageHash": "sha256:50f3ff0f7e36f750ee9fedc6e146800a4d91bb02579e108d346e08c6885bf873"
+        }
+      ]
+    },
+    {
+      "expression": "Fatty acid activation cost = 2 ATP equivalents",
+      "meaning": "Activation by acyl-CoA synthetase invests two ATP equivalents before mitochondrial oxidation.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#fatty-acid-oxidation-and-ketogenesis",
+          "quote": "Acyl-CoA synthetase catalyzes this reaction, which invests two ATP equivalents to generate fatty acyl-CoA for transport into the mitochondrion.",
+          "passageHash": "sha256:5b0ec259e183f0c8087d1d5808d3508949b0fafa6476828649973adef3457b1d"
+        }
+      ]
+    },
+    {
+      "expression": "One beta-oxidation round -> acetyl-CoA + FADH2 + NADH",
+      "meaning": "Each oxidation cycle shortens the fatty acyl chain and captures reducing equivalents.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#fatty-acid-oxidation-and-ketogenesis",
+          "quote": "In the matrix, fatty acyl-CoA undergoes a repeated four-reaction series that cleaves the bond between the alpha and beta carbons, releases acetyl-CoA, and generates one FADH2 and one NADH per round.",
+          "passageHash": "sha256:5b0ec259e183f0c8087d1d5808d3508949b0fafa6476828649973adef3457b1d"
+        }
+      ]
+    },
+    {
+      "expression": "Acetyl-CoA + ATP + CO2 -> malonyl-CoA",
+      "meaning": "The committed step of fatty acid synthesis activates acetyl-CoA by carboxylation.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#fatty-acid-synthesis-and-metabolic-state",
+          "quote": "Before building the chain, acetyl-CoA is activated by carboxylation to malonyl-CoA. This committed step requires ATP and is catalyzed by acetyl-CoA carboxylase.",
+          "passageHash": "sha256:a9c54db0d86d3f65104eb89ee14155e501407f648fc2279658cb97fb1eae141d"
+        }
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "question": "Why does cis unsaturation increase membrane fluidity?",
+      "steps": [
+        "Cis double bonds bend fatty acid tails.",
+        "Bent tails pack less orderly with neighboring hydrophobic tails.",
+        "Less orderly packing prevents solidification and increases fluidity."
+      ],
+      "answer": "Cis unsaturation disrupts tail packing, which increases membrane fluidity.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#phospholipids-membranes-and-fluidity",
+          "quote": "Unsaturation in phospholipid fatty acid tails increases membrane fluidity because double bonds disrupt orderly packing of hydrophobic tails.",
+          "passageHash": "sha256:41c7b5393b00394ad1c8f6f9fa2c114476d220cea76aa10859b82b40c5b10891"
+        }
+      ]
+    },
+    {
+      "question": "What products are made by five rounds of beta-oxidation of lauric acid before the Krebs cycle?",
+      "steps": [
+        "The source identifies lauric acid as a 12-carbon saturated fatty acid.",
+        "Its complete beta-oxidation uses five rounds.",
+        "Those rounds generate five FADH2, five NADH, and six acetyl-CoA."
+      ],
+      "answer": "Five FADH2, five NADH, and six acetyl-CoA.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#fatty-acid-oxidation-and-ketogenesis",
+          "quote": "This generates five FADH2, five NADH, and six acetyl-CoA, which enter the Krebs cycle; after the electron transport chain and subtracting activation cost, the source gives 78 ATP from lauric acid.",
+          "passageHash": "sha256:5b0ec259e183f0c8087d1d5808d3508949b0fafa6476828649973adef3457b1d"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "Which lipid class is the direct storage form of fatty acids in fat cells?",
+      "choices": [
+        "Triacylglycerols",
+        "Prostaglandins",
+        "Nucleotides",
+        "Histones"
+      ],
+      "answer": "Triacylglycerols",
+      "explanation": "Triacylglycerols are the storage form of fatty acids and are stored in fat cells as an energy source.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#triacylglycerols-and-energy-storage",
+          "quote": "Triacylglycerols are stored in fat cells as an energy source.",
+          "passageHash": "sha256:51edb27763cddf6d8eed49ee9e46a219628e2cb565c23e5c493217ddd13b9a1d"
+        }
+      ],
+      "reviewTarget": "triacylglycerols energy"
+    },
+    {
+      "question": "True or false: increasing phospholipid tail unsaturation tends to increase membrane fluidity.",
+      "answer": "True",
+      "explanation": "Unsaturation disrupts orderly tail packing and increases membrane fluidity.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#phospholipids-membranes-and-fluidity",
+          "quote": "Unsaturation in phospholipid fatty acid tails increases membrane fluidity because double bonds disrupt orderly packing of hydrophobic tails.",
+          "passageHash": "sha256:41c7b5393b00394ad1c8f6f9fa2c114476d220cea76aa10859b82b40c5b10891"
+        }
+      ],
+      "reviewTarget": "membranes fluidity"
+    },
+    {
+      "question": "Where does fatty acid synthesis occur?",
+      "answer": "Cytoplasm",
+      "explanation": "The source contrasts mitochondrial-matrix catabolism with cytoplasmic synthesis.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#fatty-acid-synthesis-and-metabolic-state",
+          "quote": "Fatty acid catabolism occurs in the mitochondrial matrix, while fatty acid synthesis occurs in the cytoplasm.",
+          "passageHash": "sha256:a9c54db0d86d3f65104eb89ee14155e501407f648fc2279658cb97fb1eae141d"
+        }
+      ],
+      "reviewTarget": "fatty acid synthesis metabolic state"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "A steroid hormone reaches a target cell. Where should its receptor be expected?",
+      "choices": [
+        "Inside the cell",
+        "Only on the cell surface",
+        "Inside a micelle",
+        "On circulating chylomicrons"
+      ],
+      "answer": "Inside the cell",
+      "explanation": "Steroid hormones are hydrophobic and diffuse through the lipid bilayer, so their receptors are inside cells rather than on the surface.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#terpenes-steroids-and-steroid-hormones",
+          "quote": "Steroid hormone receptors are located inside cells rather than on the cell surface, in contrast to peptide hormones such as insulin.",
+          "passageHash": "sha256:50f3ff0f7e36f750ee9fedc6e146800a4d91bb02579e108d346e08c6885bf873"
+        }
+      ],
+      "reviewTarget": "steroids other lipids"
+    },
+    {
+      "question": "During prolonged starvation after glycogen stores are used, which pathway becomes important for fatty acids released from adipose tissue?",
+      "choices": [
+        "Beta-oxidation",
+        "Glycogenesis",
+        "DNA annealing",
+        "Protein splicing"
+      ],
+      "answer": "Beta-oxidation",
+      "explanation": "In prolonged starvation, triglycerides are broken down and cells take up fatty acids to run beta-oxidation.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/lipids.md#fatty-acid-synthesis-and-metabolic-state",
+          "quote": "If starvation continues after glycogen stores are used, triglycerides from adipose tissue are broken down into free fatty acids and glycerol, cells run beta-oxidation, glycerol can support gluconeogenesis, and some acetyl-CoA is converted into ketone bodies.",
+          "passageHash": "sha256:a9c54db0d86d3f65104eb89ee14155e501407f648fc2279658cb97fb1eae141d"
+        }
+      ],
+      "reviewTarget": "oxidation ketogenesis"
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "wiki/lipids.md#lipid-roles-hydrophobicity-and-fatty-acids",
+      "quote": "Lipids are oily or fatty substances with three primary physiological roles.",
+      "passageHash": "sha256:16be280fc969524166bddb062bb7dc2edab7b0754b3367959a7a1e584b948201"
+    }
+  ],
+  "sourceGaps": []
+}

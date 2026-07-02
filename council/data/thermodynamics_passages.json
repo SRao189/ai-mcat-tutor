@@ -1,0 +1,55 @@
+{
+  "contentId": "mcat-biochemistry-thermodynamics",
+  "title": "Thermodynamics",
+  "sourcePolicy": "Approved Thermodynamics passage store drawn from wiki/thermodynamics.md and module-1 sourceRefs.",
+  "passages": [
+    {
+      "sourceId": "thermo-passage-01",
+      "sourceHash": "sha256:d91c362fdfc77531d41520488b43fe3acaf255127426ac96c363843692d5c3b8",
+      "label": "Thermodynamics, Key concepts",
+      "chapter": "Thermodynamics",
+      "section": "thermo",
+      "text": "Energy exists in two primary forms: kinetic energy, the movement of molecules, and potential energy, energy stored in chemical bonds. In biological systems, ATP is the most important potential energy storage molecule, with energy stored in ester bonds between phosphate groups."
+    },
+    {
+      "sourceId": "thermo-passage-02",
+      "sourceHash": "sha256:4024198287590718bac0f96fb04fdca846d24080e9914487f00475950c82765d",
+      "label": "Thermodynamics, Laws of thermodynamics",
+      "chapter": "Thermodynamics",
+      "section": "thermo",
+      "text": "The First Law states that the energy of the universe is constant: when system energy decreases, surroundings energy increases, and vice versa. The Second Law states that disorder, or entropy S, of the universe tends to increase. Spontaneous reactions increase universal disorder. Entropy change is Delta S = S_final - S_initial, and a negative Delta S means disorder decreased."
+    },
+    {
+      "sourceId": "thermo-passage-03",
+      "sourceHash": "sha256:5a00e70e47034686b1b51a95658402b8b0d82f2fcc11edbf50f18ab6284a332b",
+      "label": "Thermodynamics, Gibbs free energy",
+      "chapter": "Thermodynamics",
+      "section": "thermo",
+      "text": "Gibbs free energy (Delta G) determines reaction spontaneity. Delta G = Delta H - TDelta S, where Delta H is enthalpy change, T is temperature in Kelvin, and Delta S is entropy change. In cells, volume change is approximately zero, so Delta H is approximately Delta E. Delta G less than 0 means spontaneous and exergonic, Delta G greater than 0 means nonspontaneous and endergonic, and Delta G equals 0 means equilibrium."
+    },
+    {
+      "sourceId": "thermo-passage-04",
+      "sourceHash": "sha256:a981214eb055704ca0dfb66e73d0fc06a52ad234e532ea85c42733f5fb5c4180",
+      "label": "Thermodynamics, Standard free energy",
+      "chapter": "Thermodynamics",
+      "section": "thermo",
+      "text": "Biochemical standard free energy, Delta G degrees prime, uses 1 M concentration for all solutes except H+ and pH 7. Its relationship to equilibrium is Delta G degrees prime = -RT ln K'_eq, where K'_eq = [C]^c[D]^d / [A]^a[B]^b at equilibrium. When K'_eq = 1, Delta G degrees prime = 0 because ln 1 = 0."
+    },
+    {
+      "sourceId": "thermo-passage-05",
+      "sourceHash": "sha256:b0a5a399159db6367e5305f712685a4f1b1f3e58f3cd9e9e0d1966abfddf66dd",
+      "label": "Thermodynamics, Actual cellular free energy",
+      "chapter": "Thermodynamics",
+      "section": "thermo",
+      "text": "Actual cellular free energy is Delta G = Delta G degrees prime + RT ln Q, where Q uses actual cellular concentrations rather than equilibrium concentrations. When Q < K_eq, Delta G < 0 and the forward reaction is spontaneous. When Q > K_eq, Delta G > 0 and the reverse reaction is spontaneous. When Q = K_eq, Delta G = 0 and the system is at equilibrium. Spontaneity in cells depends on intrinsic properties, K_eq, and concentrations, RT ln Q."
+    },
+    {
+      "sourceId": "thermo-passage-06",
+      "sourceHash": "sha256:8e364bcf11857417e081042f447e7f14fb744d6d033105c1160da76da29010e2",
+      "label": "Thermodynamics, Le Chatelier and key questions",
+      "chapter": "Thermodynamics",
+      "section": "thermo",
+      "text": "Le Chatelier's principle states that adding reactants, so Q < K, drives a reaction forward, while adding products, so Q > K, drives it backward. Delta G can be negative even if Delta G degrees prime is positive when RT ln Q is sufficiently negative. K_eq indicates only relative concentrations at equilibrium, not reaction rate. A large K_eq indicates products have lower free energy. At Delta G = 0, neither direction is favored."
+    }
+  ]
+}
