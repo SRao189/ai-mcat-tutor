@@ -180,8 +180,8 @@ def test_server_greeting_hides_gate_internals():
 # ---------------- frontend relabeling ----------------
 
 def test_frontend_relabels_and_gates_developer_details():
-    js = (REPO / "server" / "static" / "section-7-1.js").read_text("utf-8")
-    html = (REPO / "server" / "static" / "section-7-1.html").read_text("utf-8")
+    js = (REPO / "server" / "static" / "chapter.js").read_text("utf-8")
+    html = (REPO / "server" / "static" / "chapter.html").read_text("utf-8")
     # conversational handled + suggestions
     assert "conversational" in js
     assert "addSuggestions" in js

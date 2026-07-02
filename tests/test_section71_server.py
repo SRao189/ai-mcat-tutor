@@ -28,8 +28,11 @@ def _start_server():
 
 
 def _get(base: str, path: str):
-    with urllib.request.urlopen(base + path, timeout=20) as response:
-        return response.status, response.read().decode("utf-8")
+    try:
+        with urllib.request.urlopen(base + path, timeout=20) as response:
+            return response.status, response.read().decode("utf-8")
+    except urllib.error.HTTPError as exc:
+        return exc.code, exc.read().decode("utf-8")
 
 
 def _post(base: str, path: str, payload, *, session: str = "test-session"):
@@ -80,6 +83,49 @@ def test_verified_response():
         assert status == 200
         assert payload["status"] == "verified", payload
         assert payload["citedSources"][0]["sourceId"] == "chapter-7-1-passage-01"
+
+    _with_server(run)
+
+
+def test_chapter_endpoint_returns_section_71():
+    def run(base):
+        status, body = _get(base, "/api/chapter/7.1")
+        assert status == 200
+        payload = json.loads(body)
+        assert payload["sectionId"] == "7.1"
+        assert payload["title"] == "Phosphorus-Containing Compounds"
+        assert payload["finalQuiz"]["questions"][0]["id"] == "quiz-triprotic"
+
+    _with_server(run)
+
+
+def test_chapters_endpoint_lists_section_71():
+    def run(base):
+        status, body = _get(base, "/api/chapters")
+        assert status == 200
+        payload = json.loads(body)
+        assert {"id": "7.1", "title": "Phosphorus-Containing Compounds"} in payload
+
+    _with_server(run)
+
+
+def test_unknown_chapter_rejected():
+    def run(base):
+        status, body = _get(base, "/api/chapter/9.9")
+        assert status == 404
+        payload = json.loads(body)
+        assert payload["code"] == "invalid_section"
+
+    _with_server(run)
+
+
+def test_index_lists_chapters():
+    def run(base):
+        status, body = _get(base, "/")
+        assert status == 200
+        assert "Interactive Chapters" in body
+        assert "/learn?chapter=7.1" in body
+        assert "Phosphorus-Containing Compounds" in body
 
     _with_server(run)
 
@@ -185,6 +231,38 @@ def test_api_key_not_exposed():
     _with_server(run)
 
 
+def test_checkpoint_and_final_quiz_grade_section_71():
+    def run(base):
+        status, checkpoint = _post(
+            base,
+            "/api/checkpoint",
+            {"sectionId": "7.1", "checkpointId": "cp-pka-order", "answer": "2.1, 7.2, 12.4"},
+        )
+        assert status == 200
+        assert checkpoint["evaluation"]["result"] == "correct"
+        assert checkpoint["learnerState"]["chapter"] == "7.1"
+        assert "cp-pka-order" in checkpoint["learnerState"]["completedCheckpoints"]
+
+        status, quiz = _post(
+            base,
+            "/api/final-quiz",
+            {
+                "sectionId": "7.1",
+                "answers": {
+                    "quiz-triprotic": "a",
+                    "quiz-pyro-dg": "a",
+                    "quiz-atp": "a",
+                },
+                "learnerState": checkpoint["learnerState"],
+            },
+        )
+        assert status == 200
+        assert quiz["score"] == {"correct": 3, "total": 3}
+        assert all(result["result"] == "correct" for result in quiz["results"])
+
+    _with_server(run)
+
+
 def test_raw_path_not_exposed():
     def run(base):
         status, payload = _post(
@@ -202,8 +280,8 @@ def test_raw_path_not_exposed():
 
 
 def test_frontend_renders_citations():
-    html = (REPO / "server" / "static" / "section-7-1.html").read_text("utf-8")
-    js = (REPO / "server" / "static" / "section-7-1.js").read_text("utf-8")
+    html = (REPO / "server" / "static" / "chapter.html").read_text("utf-8")
+    js = (REPO / "server" / "static" / "chapter.js").read_text("utf-8")
     assert "messages" in html
     assert "citedSources" in js
     assert "source.sourceId" in js
@@ -211,13 +289,20 @@ def test_frontend_renders_citations():
 
 
 def test_frontend_handles_loading_and_error_states():
-    html = (REPO / "server" / "static" / "section-7-1.html").read_text("utf-8")
-    js = (REPO / "server" / "static" / "section-7-1.js").read_text("utf-8")
+    html = (REPO / "server" / "static" / "chapter.html").read_text("utf-8")
+    js = (REPO / "server" / "static" / "chapter.js").read_text("utf-8")
     assert "loadingIndicator" in html
     assert "errorState" in html
     assert "setBusy(true)" in js
     assert "model_error" in js
     assert "Retry" in js
+
+
+def test_frontend_uses_url_chapter_and_per_chapter_state():
+    js = (REPO / "server" / "static" / "chapter.js").read_text("utf-8")
+    assert 'params.get("chapter") || "7.1"' in js
+    assert '"chapter-" + chapterId + "-state"' in js
+    assert "sectionId: chapterId" in js
 
 
 def _run_all():
