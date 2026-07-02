@@ -35,8 +35,11 @@ services:
     healthcheck:
       test:
         [
-          "CMD-SHELL",
-          "surreal isready --conn http://127.0.0.1:8000 || exit 1",
+          "CMD",
+          "/surreal",
+          "is-ready",
+          "--endpoint",
+          "http://localhost:8000",
         ]
       interval: 20s
       timeout: 5s
