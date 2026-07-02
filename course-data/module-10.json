@@ -1,0 +1,233 @@
+{
+  "id": "module-10",
+  "title": "Complex II SDHD Journal Article Analysis",
+  "objectives": [
+    "Identify the organism, cell-line groups, and experimental manipulation in the SDHD study.",
+    "Separate article results from critical-analysis interpretation when reading a primary-literature passage.",
+    "Use controls, comparisons, p-values, and non-significant results to evaluate claims about SDHD mutation and idebenone.",
+    "Explain why the ORCWS framework flags the idebenone dose response as an unexpected result."
+  ],
+  "sections": [
+    {
+      "id": "jr1-organism-organization",
+      "title": "O: Organism and organization",
+      "content": "The study used human embryonic kidney HEK293 cells. The key comparison was parent HEK293 cells versus CRISPR/Cas9-generated HEK293 Delta SDHD cells, with mitochondrial respiration and related outcomes measured against the parent cell line.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-organism-and-organization",
+          "quote": "The Princeton Review solution identifies the experimental system as a human cell line: human embryonic kidney HEK293 cells.",
+          "passageHash": "sha256:098bd076b13a0f068893421c4d8c4e140e9e78a529026f5bf94600e74f416090"
+        }
+      ]
+    },
+    {
+      "id": "jr1-results",
+      "title": "R: Results",
+      "content": "Results appeared as graphs, sequence images, and gel images. The independent variables were time and presence or absence of SDHD; dependent variables included growth, ROS, apoptosis, necrosis, oxygen consumption, glycolysis, and ATP synthesis.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-results",
+          "quote": "It identifies cell growth, ROS levels, apoptosis, necrosis, oxygen consumption, glycolysis, and ATP synthesis as dependent variables.",
+          "passageHash": "sha256:074f8f80df732e8b51c5811375601a5856cc3c76c9996843a24ac1fc959db857"
+        }
+      ]
+    },
+    {
+      "id": "jr1-control-comparison",
+      "title": "C: Control and comparison",
+      "content": "The parent HEK293 cell line was the main control for the SDHD mutant comparison. In idebenone experiments, DMSO-treated mutant cells served as the vehicle comparison for idebenone-treated mutant cells.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-control-and-comparison",
+          "quote": "The control group is the parent HEK293 cell line.",
+          "passageHash": "sha256:0784bb125ff15b42d6a58716a3e930a18de4d48fd06548c58f5f02886e125212"
+        }
+      ]
+    },
+    {
+      "id": "jr1-weirdness",
+      "title": "W: Weirdness",
+      "content": "The unexpected pattern was that higher idebenone was not automatically better: 1 micromolar improved long-term recovered cell number, while 5 micromolar did not improve growth.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-weirdness",
+          "quote": "The Princeton Review solution flags one unexpected pattern: 5 micromolar idebenone treatment was less effective than 1 micromolar idebenone in the long-term growth experiment.",
+          "passageHash": "sha256:36b7912549edb10d120fd598b2cb1d47c4ac45cd08b93efd823a090c0cf26e38"
+        }
+      ]
+    },
+    {
+      "id": "jr1-statistics",
+      "title": "S: Statistics",
+      "content": "The study used Student's t-tests with p < 0.05 as the significance threshold. The critical-analysis solution emphasizes p-values, error bars, asterisks, and examples of non-significant results.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-statistics",
+          "quote": "The study used statistical testing and presented p-values, error bars, and asterisks.",
+          "passageHash": "sha256:bc72c97b623559cde2af427708af0d65d7e51b6915ce7fc12c68626afd0a68bf"
+        }
+      ]
+    },
+    {
+      "id": "jr1-interpretation-summary",
+      "title": "Interpreting the data and final summary",
+      "content": "The supported interpretation is that SDHD is important for mitochondrial respiration, ATP synthesis, glycolysis-associated measurements, and cell growth in this in vitro system. Idebenone partially restored selected mutant phenotypes, but the source does not support saying it fully corrected all defects.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#interpreting-the-data",
+          "quote": "It also supports the narrower conclusion that idebenone partially restored selected mutant phenotypes, not that it fully corrected all defects.",
+          "passageHash": "sha256:885d1093c86d0aaa7760f39a9c7b7307eaf8d74c060f61c4a8bfb45691d45a9a"
+        }
+      ]
+    }
+  ],
+  "equations": [],
+  "workedExamples": [
+    {
+      "question": "How should a reader interpret the idebenone dose result without overclaiming?",
+      "steps": [
+        "Identify the comparison: idebenone-treated mutant cells versus DMSO-treated mutant cells.",
+        "Read the actual dose results instead of assuming a larger dose must work better.",
+        "State the limited conclusion: selected outcomes improved, but the defects were only partially restored."
+      ],
+      "answer": "Use the DMSO comparison and report that 1 micromolar idebenone improved recovered mutant cell number while 5 micromolar did not improve growth; this supports partial restoration, not a full rescue.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-weirdness",
+          "quote": "This is a useful MCAT-style \"weirdness\" point because a higher dose is not automatically more effective.",
+          "passageHash": "sha256:36b7912549edb10d120fd598b2cb1d47c4ac45cd08b93efd823a090c0cf26e38"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "In the main SDHD experiment, what is the best control group for the HEK293 Delta SDHD cells?",
+      "choices": [
+        "Parent HEK293 cells",
+        "A blinded human placebo group",
+        "The 10 micromolar idebenone condition",
+        "The unrelated Complex III subunit alone"
+      ],
+      "answer": "Parent HEK293 cells",
+      "explanation": "The ORCWS control section identifies the parent HEK293 cell line as the control for the SDHD mutant comparison.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-control-and-comparison",
+          "quote": "The control group is the parent HEK293 cell line.",
+          "passageHash": "sha256:0784bb125ff15b42d6a58716a3e930a18de4d48fd06548c58f5f02886e125212"
+        }
+      ],
+      "reviewTarget": "control comparison"
+    },
+    {
+      "question": "Which dependent variable list matches the Princeton Review ORCWS results analysis for JR1?",
+      "choices": [
+        "Cell growth, ROS levels, apoptosis, necrosis, oxygen consumption, glycolysis, and ATP synthesis",
+        "Only DNA sequence identity and subject age",
+        "Blood LDL, HDL, and triglycerides only",
+        "Blood pressure, respiratory rate, and ECG only"
+      ],
+      "answer": "Cell growth, ROS levels, apoptosis, necrosis, oxygen consumption, glycolysis, and ATP synthesis",
+      "explanation": "The ORCWS results section names those outcomes as dependent variables for the SDHD study.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-results",
+          "quote": "It identifies cell growth, ROS levels, apoptosis, necrosis, oxygen consumption, glycolysis, and ATP synthesis as dependent variables.",
+          "passageHash": "sha256:074f8f80df732e8b51c5811375601a5856cc3c76c9996843a24ac1fc959db857"
+        }
+      ],
+      "reviewTarget": "results dependent variables"
+    },
+    {
+      "question": "What was the main weirdness point in the JR1 ORCWS walkthrough?",
+      "choices": [
+        "5 micromolar idebenone was less effective than 1 micromolar in the long-term growth experiment",
+        "The study was double-blinded",
+        "The placebo group had the largest LDL reduction",
+        "No p-values were reported anywhere"
+      ],
+      "answer": "5 micromolar idebenone was less effective than 1 micromolar in the long-term growth experiment",
+      "explanation": "The ORCWS weirdness section flags that higher idebenone was not automatically better.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-weirdness",
+          "quote": "The Princeton Review solution flags one unexpected pattern: 5 micromolar idebenone treatment was less effective than 1 micromolar idebenone in the long-term growth experiment.",
+          "passageHash": "sha256:36b7912549edb10d120fd598b2cb1d47c4ac45cd08b93efd823a090c0cf26e38"
+        }
+      ],
+      "reviewTarget": "weirdness idebenone"
+    },
+    {
+      "question": "Which result did the JR1 statistics section identify as not statistically significant?",
+      "choices": [
+        "The Complex III subunit comparison between HEK293 and HEK293 Delta SDHD cells",
+        "The decrease in SDHB expression",
+        "The increase in apoptosis at all measured time points",
+        "The four-day growth difference"
+      ],
+      "answer": "The Complex III subunit comparison between HEK293 and HEK293 Delta SDHD cells",
+      "explanation": "The statistics walkthrough specifically names the Complex III subunit comparison as an example of non-significant data.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#orcws-statistics",
+          "quote": "The Princeton Review solution identifies examples of non-significant data: the Complex III subunit comparison between HEK293 and HEK293 Delta SDHD cells, and the comparison between DMSO and 5 micromolar idebenone treatment in the growth experiment.",
+          "passageHash": "sha256:bc72c97b623559cde2af427708af0d65d7e51b6915ce7fc12c68626afd0a68bf"
+        }
+      ],
+      "reviewTarget": "statistics non-significant results"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "A student concludes that idebenone fully rescued the SDHD mutant because some respiration and growth outcomes improved. What is the best critique?",
+      "choices": [
+        "The article supports only partial restoration of selected mutant phenotypes",
+        "The article did not test idebenone at all",
+        "The parent HEK293 cells lacked SDHD",
+        "The study had no control comparisons"
+      ],
+      "answer": "The article supports only partial restoration of selected mutant phenotypes",
+      "explanation": "The interpretation section states that idebenone partially restored selected mutant phenotypes and warns against saying it fully corrected all defects.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#interpreting-the-data",
+          "quote": "It also supports the narrower conclusion that idebenone partially restored selected mutant phenotypes, not that it fully corrected all defects.",
+          "passageHash": "sha256:885d1093c86d0aaa7760f39a9c7b7307eaf8d74c060f61c4a8bfb45691d45a9a"
+        }
+      ],
+      "reviewTarget": "interpretation partial restoration"
+    },
+    {
+      "question": "Which next-step question best follows from the JR1 interpretation section?",
+      "choices": [
+        "Do the same SDHD and idebenone patterns hold in additional cell types or rescue experiments?",
+        "Can LDL cholesterol be reduced by statin cotherapy?",
+        "Does RNAi prevent PCSK9 translation in hepatocytes?",
+        "Can a double-blind human trial replace all cell-culture controls?"
+      ],
+      "answer": "Do the same SDHD and idebenone patterns hold in additional cell types or rescue experiments?",
+      "explanation": "The interpretation section suggests asking whether the patterns hold in additional cell types, SDHD rescue experiments, or longer-term and in vivo settings.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/complex-ii-sdhd-journal-article.md#interpreting-the-data",
+          "quote": "A next critical-analysis step would be to ask whether the same patterns hold in additional cell types, in rescue experiments that restore SDHD, or in longer-term and in vivo settings.",
+          "passageHash": "sha256:885d1093c86d0aaa7760f39a9c7b7307eaf8d74c060f61c4a8bfb45691d45a9a"
+        }
+      ],
+      "reviewTarget": "interpreting data next experiment"
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "wiki/complex-ii-sdhd-journal-article.md#background-and-citation",
+      "quote": "This Journal Article Exercise analyzes Aloka B. Bandara, Joshua C. Drake, and David A. Brown, \"Complex II subunit SDHD is critical for cell growth and metabolism, which can be partially restored with a synthetic ubiquinone analog,\" published in BMC Molecular and Cell Biology, volume 22, article 35, in 2021.",
+      "passageHash": "sha256:76b4159365a75dc5c1101bc4c88a4810cada7b0c37fc47e9bde45ace4b7f776a"
+    }
+  ],
+  "sourceGaps": [
+    "The raw JR1 extraction contains OCR artifacts, including \"SDHS\" in the Princeton Review control answer; the module uses SDHD based on the article title, background, and mutant description.",
+    "The raw JR1 Figure 5 extraction includes unrelated-looking Nerolidol/IBD labels, so glycolysis and ATP claims are grounded in the surrounding article prose rather than those corrupted figure labels.",
+    "JR1 does not include a ready-made multiple-choice question set after the ORCWS solution, so its checks and practice questions are synthesized from the article and ORCWS content."
+  ]
+}

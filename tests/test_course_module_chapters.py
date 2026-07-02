@@ -35,6 +35,8 @@ EXPECTED_TITLES.update(
         "lipids": "Lipids",
         "nucleic-acids": "Nucleic Acids",
         "carbohydrates": "Carbohydrates and Carbohydrate Metabolism",
+        "complex-ii-sdhd": "Complex II SDHD Journal Article Analysis",
+        "pcsk9-rnai": "PCSK9 RNAi Journal Article Analysis",
     }
 )
 
@@ -43,6 +45,8 @@ GROUNDING_QUESTIONS = {
     "lipids": "Where does fatty acid synthesis occur?",
     "nucleic-acids": "Which RNA type carries amino acids to the ribosome?",
     "carbohydrates": "What does the pentose phosphate pathway make?",
+    "complex-ii-sdhd": "What was the control group for the SDHD mutant cells?",
+    "pcsk9-rnai": "How does inclisiran reduce PCSK9 protein levels?",
 }
 
 

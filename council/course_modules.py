@@ -23,6 +23,8 @@ MODULE_BY_SECTION: dict[str, str] = {
     "lipids": "module-7",
     "nucleic-acids": "module-8",
     "carbohydrates": "module-9",
+    "complex-ii-sdhd": "module-10",
+    "pcsk9-rnai": "module-11",
 }
 
 
