@@ -254,6 +254,34 @@ def test_quality_dedupes_candidate_questions():  # failure #6
     assert total == 2 and rep["duplicate_questions"]
 
 
+def test_enforce_source_refs_normalizes_missing_and_stale_refs():
+    cand = _base(["core"])
+    cand["sections"][0]["sourceRefs"] = ["raw/Chapter 3.txt#old-slug"]
+    del cand["practiceQuestions"][0]["sourceRefs"]
+    clean, rep = core.enforce_source_refs(cand, "raw/Chapter 3.txt#3.1")
+    assert clean["sections"][0]["sourceRefs"] == ["raw/Chapter 3.txt#3.1"]
+    assert clean["practiceQuestions"][0]["sourceRefs"] == ["raw/Chapter 3.txt#3.1"]
+    assert clean["sourceRefs"] == ["raw/Chapter 3.txt#3.1"]
+    assert rep["disallowed"] and rep["missing"] and len(rep["normalized"]) == 2
+
+
+def test_enforce_source_refs_uses_subsection_packet_refs():
+    from pipeline import chapter
+    sub = chapter._prefix_and_tag({
+        "objectives": ["o"], "sections": [
+            {"id": "s", "title": "T", "content": "c", "sourceRefs": ["raw/Chapter 3.txt#3.2"]}],
+        "equations": [], "workedExamples": [], "checks": [_q("q", target="s")],
+        "practiceQuestions": [], "sourceRefs": ["raw/Chapter 3.txt#3.2"], "sourceGaps": []},
+        "3.1")
+    clean, rep = core.enforce_source_refs(
+        sub, "raw/Chapter 3.txt#chapter-3",
+        {"3.1": "raw/Chapter 3.txt#3.1", "3.2": "raw/Chapter 3.txt#3.2"})
+    assert clean["sections"][0]["sourceRefs"] == ["raw/Chapter 3.txt#3.1"]
+    assert clean["checks"][0]["sourceRefs"] == ["raw/Chapter 3.txt#3.1"]
+    assert clean["sourceRefs"] == ["raw/Chapter 3.txt#3.1"]
+    assert len(rep["normalized"]) == 2
+
+
 def test_render_uses_final_session_only():  # failure #7
     # The renderer is a pure function of the session object it is handed; nothing
     # else (no stale candidate) can leak into the preview.

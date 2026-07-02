@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI MCAT Tutor | Public Demo</title>
+  <meta
+    name="description"
+    content="Public static lesson demo for the AI MCAT Tutor portfolio showcase."
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="index.html" aria-label="Back to portfolio showcase">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">
+          <strong>AI MCAT Tutor</strong>
+          <span>Public demo</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Showcase</a>
+        <a href="index.html#chapters">Chapters</a>
+        <a href="index.html#case-study">Case Study</a>
+        <a href="about.html">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="demo-hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container demo-hero-layout">
+      <div class="demo-copy">
+        <p class="eyebrow">Static lesson preview</p>
+        <h1>Explore the chapter demo without exposing pipeline internals.</h1>
+        <p>
+          This page uses a sanitized public data bundle copied from the course output. It is enough to
+          present the lesson structure and chapter inventory without shipping source PDFs, logs, or private files.
+        </p>
+        <div class="demo-actions">
+          <a class="button button-light" href="index.html">Back to showcase</a>
+          <a class="button button-secondary" href="index.html#chapters">All chapters</a>
+        </div>
+      </div>
+      <div class="window-frame">
+        <div class="window-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+          <div class="window-url">docs/demo.html</div>
+        </div>
+        <div class="window-body">
+          <div class="lesson-preview">
+            <div class="lesson-preview-header">
+              <div>
+                <p class="lesson-label">Current lesson</p>
+                <h2 id="demoTitle">Thermodynamics</h2>
+                <p class="lesson-meta" id="demoSummary"></p>
+              </div>
+              <div class="lesson-statuses">
+                <span>Static demo</span>
+                <span>Sanitized preview</span>
+                <span>GitHub Pages ready</span>
+              </div>
+            </div>
+            <div id="demoStats"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="demo-shell">
+    <div class="container demo-layout">
+      <aside class="demo-sidebar">
+        <p class="eyebrow">Modules</p>
+        <h2>Chapter navigation</h2>
+        <p class="demo-muted">Select a chapter to swap the lesson preview on this page.</p>
+        <div class="demo-nav" id="demoNav"></div>
+      </aside>
+
+      <section class="demo-main">
+        <article class="demo-card">
+          <h3 id="demoSectionTitle">Key Concepts</h3>
+          <p id="demoSectionContent"></p>
+          <div class="citation-line">Public note: citation internals are intentionally omitted from this GitHub Pages build.</div>
+        </article>
+
+        <div class="demo-question-grid">
+          <article class="demo-card">
+            <h3>Worked Example</h3>
+            <p><strong id="demoWorkedQuestion"></strong></p>
+            <p id="demoWorkedAnswer"></p>
+          </article>
+
+          <article class="demo-card">
+            <h3>Practice Question</h3>
+            <p id="demoPracticeQuestion"></p>
+            <ol class="choice-list" id="demoPracticeChoices"></ol>
+            <div class="demo-answer" id="demoPracticeAnswer"></div>
+          </article>
+        </div>
+
+        <article class="demo-card">
+          <h3>Why this page is separate</h3>
+          <ul class="feature-list compact">
+            <li>The lesson demo stays static and self-contained under <code>docs/</code>.</li>
+            <li>Only the fields needed for public presentation are copied into the site bundle.</li>
+            <li>The generation, validation, and production-pilot pipeline remains untouched elsewhere in the repository.</li>
+          </ul>
+          <p class="demo-footer-note">Public demo build year: <span id="year"></span></p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <script src="public-course-data.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>

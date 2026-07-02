@@ -1,0 +1,80 @@
+services:
+  mcat_tutor:
+    image: python:3.12-slim
+    working_dir: /workspace
+    command: python server/app.py --host 0.0.0.0 --port 8765
+    ports:
+      - "8765:8765"
+    volumes:
+      - .:/workspace:ro
+    env_file:
+      - .env
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/health', timeout=5)",
+        ]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  surrealdb:
+    image: surrealdb/surrealdb:v2
+    command: start --log info --user ${SURREAL_USER:-root} --pass ${SURREAL_PASSWORD:-root} rocksdb:/mydata/mydatabase.db
+    user: root
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./surreal_data:/mydata
+    environment:
+      - SURREAL_EXPERIMENTAL_GRAPHQL=true
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "/surreal",
+          "is-ready",
+          "--endpoint",
+          "http://localhost:8000",
+        ]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    pull_policy: always
+
+  open_notebook:
+    image: lfnovo/open_notebook:v1-latest
+    ports:
+      - "8502:8502"
+      - "5055:5055"
+    environment:
+      - OPEN_NOTEBOOK_ENCRYPTION_KEY=${OPEN_NOTEBOOK_ENCRYPTION_KEY:-local-dev-open-notebook-key}
+      - OPEN_NOTEBOOK_PASSWORD=${OPEN_NOTEBOOK_PASSWORD:-}
+      - SURREAL_URL=ws://surrealdb:8000/rpc
+      - SURREAL_USER=${SURREAL_USER:-root}
+      - SURREAL_PASSWORD=${SURREAL_PASSWORD:-root}
+      - SURREAL_NAMESPACE=${SURREAL_NAMESPACE:-open_notebook}
+      - SURREAL_DATABASE=${SURREAL_DATABASE:-open_notebook}
+    volumes:
+      - ./notebook_data:/app/data
+    depends_on:
+      surrealdb:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5055/api/notebooks', timeout=5)",
+        ]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    pull_policy: always

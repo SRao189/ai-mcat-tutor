@@ -357,13 +357,15 @@ def process_chapter(chapter: dict, models: dict, out_root: Path) -> dict[str, An
 
         candidate, sani = core.sanitize_candidate(candidate)
         candidate, qual = core.quality_filter(candidate, source_text)
+        candidate, citation = core.enforce_source_refs(candidate, chapter["source_ref"])
         if sani["removed_sections"] or sani["dropped_worked"]:
             print(f"  sanitized: removed sections={sani['removed_sections']} "
                   f"dropped_worked={len(sani['dropped_worked'])}")
         if any(qual.values()):
             print(f"  quality gate dropped: { {k: len(v) for k, v in qual.items() if v} }")
         (out / "candidate-cleaning-report.json").write_text(
-            json.dumps({"sanitation": sani, "quality": qual}, indent=2), encoding="utf-8")
+            json.dumps({"sanitation": sani, "quality": qual, "citations": citation}, indent=2),
+            encoding="utf-8")
         candidate["metadata"] = {
             "chapter": chapter["title"], "source_ref": chapter["source_ref"],
             "raw_source": chapter["raw_source"], "generator_model": gmodel,
@@ -424,6 +426,10 @@ def process_chapter(chapter: dict, models: dict, out_root: Path) -> dict[str, An
                                                  encoding="utf-8")
             stage_time("enrich", t0, patch_res["meta"])
             merged = core.apply_patch(candidate, patch, source_text)
+            merged["enriched"], citation = core.enforce_source_refs(
+                merged["enriched"], chapter["source_ref"])
+            (out / "enrichment-citation-report.json").write_text(
+                json.dumps(citation, indent=2), encoding="utf-8")
             rejected_additions = merged["rejected"]
             if merged["safe_no_op"]:
                 enrich_note = "SAFE_NO_OP"

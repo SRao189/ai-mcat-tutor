@@ -1,0 +1,47 @@
+{
+  "contentId": "mcat-biochemistry-chapter-7-section-7.1",
+  "title": "Phosphorus-Containing Compounds",
+  "sourcePolicy": "Private approved Chapter 7.1 passage store. Learner-facing labels omit raw file paths.",
+  "passages": [
+    {
+      "sourceId": "chapter-7-1-passage-01",
+      "sourceHash": "sha256:e1ec34d5e4edcdb50d290d71afde22815158645c3d323f0d969a73ff09664163",
+      "label": "Chapter 7.1, Phosphoric acid dissociation",
+      "chapter": "7",
+      "section": "7.1",
+      "text": "Phosphoric acid is an inorganic acid with the potential to donate three protons. The pKas for the three acid dissociation equilibria are 2.1, 7.2, and 12.4. At physiological pH, phosphoric acid is significantly dissociated and exists largely in anionic form. The most common species, approximately 60% in extracellular fluid, is hydrogen phosphate (HPO4 2-), and the second most common, approximately 40%, is dihydrogen phosphate (H2PO4 -)."
+    },
+    {
+      "sourceId": "chapter-7-1-passage-02",
+      "sourceHash": "sha256:df9ec12dc343a73b21910fc236500731f5b11fd4d5fad67a490f580abe7b9960",
+      "label": "Chapter 7.1, Pyrophosphate hydrolysis",
+      "chapter": "7",
+      "section": "7.1",
+      "text": "Phosphate is also known as orthophosphate. Two orthophosphates bound together via an anhydride linkage form pyrophosphate. The P-O-P bond in pyrophosphate is a high-energy phosphate bond because hydrolysis of pyrophosphate is thermodynamically extremely favorable. The standard free energy change for hydrolysis of pyrophosphate is about -7 kcal/mol, and the actual cellular free energy change is about -12 kcal/mol."
+    },
+    {
+      "sourceId": "chapter-7-1-passage-03",
+      "sourceHash": "sha256:aa657528853944309d1eff385f7fe4bdf2038f137f7ee86ea2f1d22f2e2f4ee2",
+      "label": "Chapter 7.1, Phosphate anhydride energy",
+      "chapter": "7",
+      "section": "7.1",
+      "text": "There are three reasons that phosphate anhydride bonds store so much energy: linked phosphates have strongly repelling negative charges, orthophosphate has more resonance forms and lower free energy than linked phosphates, and orthophosphate interacts more favorably with water than linked phosphates."
+    },
+    {
+      "sourceId": "chapter-7-1-passage-04",
+      "sourceHash": "sha256:26c5d7fe03dfec7dc35b86a60bdd0a2d46ec2f529d77a7cda91f750ec09a7a2a",
+      "label": "Chapter 7.1, Nucleotide structure",
+      "chapter": "7",
+      "section": "7.1",
+      "text": "Nucleotides are building blocks of RNA and DNA. Each nucleotide contains a ribose or deoxyribose sugar group, a purine or pyrimidine base joined to carbon number one of the ribose ring, and one, two, or three phosphate units joined to carbon five of the ribose ring."
+    },
+    {
+      "sourceId": "chapter-7-1-passage-05",
+      "sourceHash": "sha256:a660685b15a474b7157642149686b4fe5e6e8c21dab7b9b2be8eddee811b80ee",
+      "label": "Chapter 7.1, ATP and nucleotide energy",
+      "chapter": "7",
+      "section": "7.1",
+      "text": "Adenosine triphosphate, ATP, plays a central role in cellular metabolism in addition to being an RNA precursor. ATP is the universal short-term energy storage molecule and is a ribonucleotide. Energy extracted from oxidation of foodstuffs is immediately stored in the phosphoanhydride bonds of ATP and used to power cellular processes. Other nucleotides can also be used for energy less often; GTP is used for energy in protein synthesis, and UTP is used to activate glucose-1-P in glycogenesis."
+    }
+  ]
+}

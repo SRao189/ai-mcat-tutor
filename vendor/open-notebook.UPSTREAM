@@ -1,0 +1,7 @@
+repository: https://github.com/lfnovo/open-notebook
+branch: main
+commit: 14ba8f51e81f34855cd21c390f2576215d8808dd
+license: MIT
+vendored_via: git subtree --squash
+vendored_path: vendor/open-notebook
+integration_date: 2026-07-01

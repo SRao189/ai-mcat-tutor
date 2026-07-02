@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI MCAT Tutor | Portfolio Showcase</title>
+  <meta
+    name="description"
+    content="Static portfolio showcase for the AI MCAT Tutor project, prepared for GitHub Pages deployment."
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="#top" aria-label="AI MCAT Tutor showcase home">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">
+          <strong>AI MCAT Tutor</strong>
+          <span>Portfolio showcase for GitHub Pages</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#chapters">Chapters</a>
+        <a href="#case-study">Case Study</a>
+        <a href="about.html">About Me</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="container hero-layout">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">Featured project: source-grounded MCAT tutor</p>
+          <h1>Building AI study tools that explain their work.</h1>
+          <p class="hero-text">
+            This public showcase packages the strongest parts of the project into a deployable
+            static site: product framing, chapter previews, validation-gate context, and a
+            lightweight lesson demo built from sanitized course preview data.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="demo.html">View Demo</a>
+            <a class="button button-secondary" href="#case-study">How It Works</a>
+          </div>
+          <dl class="hero-metrics">
+            <div class="metric-pill">
+              <dt>5</dt>
+              <dd>lesson modules</dd>
+            </div>
+            <div class="metric-pill">
+              <dt>24</dt>
+              <dd>teaching sections</dd>
+            </div>
+            <div class="metric-pill">
+              <dt>15</dt>
+              <dd>practice prompts</dd>
+            </div>
+            <div class="metric-pill">
+              <dt>56</dt>
+              <dd>repo test cases</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-preview" data-reveal>
+          <div class="window-frame">
+            <div class="window-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="window-url">docs/demo.html?module=module-1</div>
+            </div>
+            <div class="window-body">
+              <div class="lesson-preview" id="heroPreview" aria-label="MCAT tutor lesson preview"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Selected work</p>
+          <h2>One portfolio, anchored by the strongest case study.</h2>
+          <p>
+            The MCAT tutor is the center of gravity because it combines product design,
+            source-grounded generation, deterministic validation, and a deployable front-end surface.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project project-featured" data-reveal>
+            <div class="project-copy">
+              <div class="project-label-row">
+                <span class="project-kicker">Flagship project</span>
+                <span class="project-status">Static demo + validation pipeline</span>
+              </div>
+              <h3>AI-Powered MCAT Learning Platform</h3>
+              <p>
+                The system transforms source material into structured lessons, then checks whether
+                those lessons remain intact, grounded, and supportable before they reach students.
+              </p>
+              <ul class="feature-list">
+                <li>Source-verified explanations and lesson organization</li>
+                <li>Worked examples, practice questions, and review checks</li>
+                <li>Three validation gates for integrity, citation quality, and claim support</li>
+                <li>Static public demo prepared for GitHub Pages deployment</li>
+              </ul>
+              <div class="tag-row">
+                <span>AI systems</span>
+                <span>Education</span>
+                <span>Validation</span>
+                <span>Static web app</span>
+              </div>
+            </div>
+            <div class="project-aside">
+              <div class="stat-card">
+                <strong>4 / 4</strong>
+                <span>accepted pilot subsections in benchmark output</span>
+              </div>
+              <div class="stat-card">
+                <strong>16</strong>
+                <span>rendered lesson sections in chapter benchmark</span>
+              </div>
+              <div class="stat-card">
+                <strong>10</strong>
+                <span>equations plus 10 lesson checks in pilot artifacts</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project" data-reveal>
+            <p class="project-kicker">Public packaging</p>
+            <h3>GitHub Pages Deployment Surface</h3>
+            <p>
+              This version is intentionally isolated under <code>docs/</code> so the portfolio can
+              ship publicly without exposing private source inputs, local paths, or internal logs.
+            </p>
+            <div class="tag-row">
+              <span>GitHub Pages</span>
+              <span>Static hosting</span>
+            </div>
+          </article>
+
+          <article class="project" data-reveal>
+            <p class="project-kicker">Portfolio framing</p>
+            <h3>Case Study Presentation</h3>
+            <p>
+              The site is structured for review: a clear hero, chapter inventory, validation narrative,
+              and an interactive preview page that works under the project subpath.
+            </p>
+            <div class="tag-row">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Light JS</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-contrast" id="chapters">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Public chapter preview</p>
+          <h2>Chapter cards generated from sanitized lesson data.</h2>
+          <p>
+            These cards expose only the fields needed for the public demo: titles, counts, short summaries,
+            and the specific preview content rendered on the demo page.
+          </p>
+        </div>
+        <div class="chapter-grid" id="chapterGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="case-study">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Flagship case study</p>
+          <h2>From source packet to student-facing lesson.</h2>
+          <p>
+            The point of this project is not simply generating study text. It is generating lessons
+            while preserving explicit checks for what can be trusted, what must be rejected, and what
+            needs review before shipping.
+          </p>
+        </div>
+
+        <div class="case-grid">
+          <article class="case-panel" data-reveal>
+            <h3>What the learner sees</h3>
+            <p>
+              Structured chapter lessons with explanations, worked examples, and practice prompts that
+              feel like a study product rather than a raw model output.
+            </p>
+            <ul class="feature-list compact">
+              <li>Five public module previews</li>
+              <li>Worked examples and practice questions</li>
+              <li>Lesson checks and chapter progression</li>
+            </ul>
+          </article>
+
+          <article class="case-panel" data-reveal>
+            <h3>What the system checks</h3>
+            <p>
+              The generation pipeline enforces artifact integrity, citation integrity, and contradiction-safe
+              claim support before lesson content is considered ready to ship.
+            </p>
+            <ul class="feature-list compact">
+              <li>Gate 1: artifact integrity</li>
+              <li>Gate 2: citation integrity</li>
+              <li>Gate 3: claim-support validation</li>
+            </ul>
+          </article>
+
+          <article class="case-panel" data-reveal>
+            <h3>What is public here</h3>
+            <p>
+              This deployment excludes source PDFs, environment files, logs, and internal research artifacts.
+              The public site only ships the static assets and preview data needed for presentation.
+            </p>
+            <ul class="feature-list compact">
+              <li>56 repo test definitions counted from current test files</li>
+              <li>Benchmark summary values copied into the portfolio narrative</li>
+              <li>No local filesystem paths or hidden inputs exposed</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-step" data-reveal>
+            <span class="step-index">01</span>
+            <h3>Source PDFs</h3>
+            <p>Raw chapter material defines the factual boundary for lesson generation.</p>
+          </article>
+          <article class="process-step" data-reveal>
+            <span class="step-index">02</span>
+            <h3>Extraction and cleaning</h3>
+            <p>Relevant passages are narrowed and normalized before lesson composition begins.</p>
+          </article>
+          <article class="process-step" data-reveal>
+            <span class="step-index">03</span>
+            <h3>Lesson generation</h3>
+            <p>Sections, equations, examples, and assessments are emitted into course modules.</p>
+          </article>
+          <article class="process-step" data-reveal>
+            <span class="step-index">04</span>
+            <h3>Citation checks</h3>
+            <p>Source anchors are validated before content is treated as grounded.</p>
+          </article>
+          <article class="process-step" data-reveal>
+            <span class="step-index">05</span>
+            <h3>Claim support</h3>
+            <p>Numbers, equations, and directional claims are screened for unsupported or contradictory statements.</p>
+          </article>
+          <article class="process-step" data-reveal>
+            <span class="step-index">06</span>
+            <h3>Static student lesson</h3>
+            <p>The public demo ships as a static lesson experience that works under a GitHub Pages project path.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>AI MCAT Tutor</span>
+      <span>Prepared for GitHub Pages deployment from the repository docs folder.</span>
+    </div>
+  </footer>
+
+  <script src="public-course-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

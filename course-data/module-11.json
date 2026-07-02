@@ -1,0 +1,288 @@
+{
+  "id": "module-11",
+  "title": "PCSK9 RNAi Journal Article Analysis",
+  "objectives": [
+    "Identify the participant groups, dose schedules, controls, and measured outcomes in the inclisiran study.",
+    "Explain how siRNA-mediated RNA interference is used to target PCSK9 mRNA.",
+    "Interpret PCSK9 and LDL graph results using dose, statin status, placebo comparisons, and p-values.",
+    "Evaluate study limitations such as small sample size, single blinding, and limited demographic representation."
+  ],
+  "sections": [
+    {
+      "id": "jr2-organism-organization",
+      "title": "O: Organism and organization",
+      "content": "The study was conducted in humans with LDL cholesterol of at least 100 mg per deciliter. Participants received inclisiran or placebo in single-dose or multidose protocols, and some multidose participants also received statin cotherapy.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#orcws-organism-and-organization",
+          "quote": "The Princeton Review solution identifies the organisms as humans: 21 women and 48 men.",
+          "passageHash": "sha256:c5bba551dbf3617a72d5ec4831edeaae45963fc6c4c99a38dfb698d96d904cce"
+        }
+      ]
+    },
+    {
+      "id": "jr2-results",
+      "title": "R: Results",
+      "content": "The results were presented in tables and graphs. The key independent variables were time, inclisiran versus placebo, and statin versus no statin; the key dependent variables were LDL and PCSK9 levels.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#orcws-results",
+          "quote": "The dependent variables are LDL levels and PCSK9 levels.",
+          "passageHash": "sha256:00ffb10be61462db2a8da2886dc322fcaf8182947e33bca9c5c31f1d1db99dce"
+        }
+      ]
+    },
+    {
+      "id": "jr2-control-comparison",
+      "title": "C: Control and comparison",
+      "content": "Placebo was the control. Single-dose groups varied by one dose from 25 to 800 mg, while multidose groups varied by dose schedule and by statin cotherapy status.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#orcws-control-and-comparison",
+          "quote": "The control group was placebo.",
+          "passageHash": "sha256:7465a91ae98591ff5c4852d6148843787f99bd4b1e2dd1c333fc8683ae4ff0f2"
+        }
+      ]
+    },
+    {
+      "id": "jr2-weirdness",
+      "title": "W: Weirdness",
+      "content": "The ORCWS weirdness point is that dose schedule matters: the single-dose threshold and the multidose response should not be compared as though total milligrams were the only variable.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#orcws-weirdness",
+          "quote": "For MCAT critical analysis, the lesson is to separate single-dose and multidose protocols instead of comparing dose numbers as if schedule, timing, and repeated exposure did not matter.",
+          "passageHash": "sha256:ed28c8b9b20477c980bebbcdea52378295b4dd97c26ace081fdd589d0fc4cb28"
+        }
+      ]
+    },
+    {
+      "id": "jr2-statistics",
+      "title": "S: Statistics",
+      "content": "The article used repeated-measures ANCOVA and p < 0.05 as the significance threshold. The critical reader must distinguish significant inclisiran effects from placebo branches and from conditions that were not significant for every endpoint.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#orcws-statistics",
+          "quote": "The study used statistical analysis.",
+          "passageHash": "sha256:bc16212c6134144c4a713c7c38d6086f36907de04adf49a801f9cfb5ac0ed6cf"
+        }
+      ]
+    },
+    {
+      "id": "jr2-interpretation-summary",
+      "title": "Interpreting the data and final summary",
+      "content": "The source interpretation is that inclisiran could reduce LDL in people with LDL of at least 100 mg per deciliter, with or without statin use, but that the study needs larger follow-up trials because of limited size, single blinding, and demographic limits.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#interpreting-the-data",
+          "quote": "The source also asks students to recognize limitations.",
+          "passageHash": "sha256:6372606e2307f751ab4fee0ad71e774e5ada4536397e1b5fda1608b986d82638"
+        }
+      ]
+    },
+    {
+      "id": "jr2-practice-passage",
+      "title": "Practice passage focus",
+      "content": "The practice passage tests graph reading, RNAi mechanism, statistical interpretation, cardiovascular implications of high LDL, and study-design limitations using the adapted PCSK9 and LDL figures.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#practice-passage-summary",
+          "quote": "The five practice questions test graph reading, RNAi mechanism, statistical interpretation, cardiovascular consequence of high LDL, and study-design limitations.",
+          "passageHash": "sha256:93af704c2ab3baa326695a64a5b14815ffc7115cbcb1ad4fce83b2fb06c8db39"
+        }
+      ]
+    }
+  ],
+  "equations": [],
+  "workedExamples": [
+    {
+      "question": "Why does inclisiran lower PCSK9 protein according to the source mechanism?",
+      "steps": [
+        "Identify inclisiran as an siRNA directed against PCSK9.",
+        "siRNA guides RISC to cleave PCSK9 mRNA.",
+        "Cleaved mRNA is unavailable for translation, decreasing PCSK9 protein."
+      ],
+      "answer": "Inclisiran promotes RNAi-mediated cleavage of PCSK9 mRNA, reducing translation of PCSK9 protein.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#background-and-citation",
+          "quote": "The siRNA engages RNA interference by guiding RISC to cleave PCSK9 mRNA, decreasing availability of the transcript for translation and reducing PCSK9 protein levels.",
+          "passageHash": "sha256:1534385d6796f5ec0b4e5e5b8370c9e9c60a05368e1915d76f80a46ab60a4a4c"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "question": "What was the control treatment in the inclisiran study?",
+      "choices": [
+        "Placebo",
+        "CRISPR/Cas9 knockout",
+        "Idebenone",
+        "Ubiquinone only"
+      ],
+      "answer": "Placebo",
+      "explanation": "The control and comparison section states that placebo was the control and that both single-dose and multidose portions included placebo recipients.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#orcws-control-and-comparison",
+          "quote": "The control group was placebo.",
+          "passageHash": "sha256:7465a91ae98591ff5c4852d6148843787f99bd4b1e2dd1c333fc8683ae4ff0f2"
+        }
+      ],
+      "reviewTarget": "control comparison"
+    },
+    {
+      "question": "Which variables did the ORCWS results section identify as the key dependent variables?",
+      "choices": [
+        "LDL levels and PCSK9 levels",
+        "Apoptosis and necrosis",
+        "Oxygen consumption and ATP synthesis",
+        "DNA sequence and off-target sites"
+      ],
+      "answer": "LDL levels and PCSK9 levels",
+      "explanation": "The results section identifies LDL and PCSK9 levels as the dependent variables.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#orcws-results",
+          "quote": "The dependent variables are LDL levels and PCSK9 levels.",
+          "passageHash": "sha256:00ffb10be61462db2a8da2886dc322fcaf8182947e33bca9c5c31f1d1db99dce"
+        }
+      ],
+      "reviewTarget": "results dependent variables"
+    },
+    {
+      "question": "Which limitation is supported by both the article discussion and the Princeton Review interpretation?",
+      "choices": [
+        "The study had a limited number of participants and needs larger follow-up trials",
+        "The study lacked any placebo control",
+        "No PCSK9 measurements were collected",
+        "The source did not report whether participants were human"
+      ],
+      "answer": "The study had a limited number of participants and needs larger follow-up trials",
+      "explanation": "The interpretation section says the source asks students to recognize limitations, including small size and need for larger follow-up trials.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#interpreting-the-data",
+          "quote": "The article discussion similarly warns that the trial was single-blind, had a limited number of participants, and included mainly healthy participants with relatively normal lipid profiles apart from LDL of at least 100 mg per deciliter.",
+          "passageHash": "sha256:6372606e2307f751ab4fee0ad71e774e5ada4536397e1b5fda1608b986d82638"
+        }
+      ],
+      "reviewTarget": "interpreting data limitations"
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "question": "Based on the experimental data at approximately two months, which treatment might be interpreted as most effective?",
+      "choices": [
+        "Multiple doses of placebo paired with a statin",
+        "Single 100 mg dose of inclisiran",
+        "Multiple 500 mg doses of inclisiran not paired with a statin",
+        "Multiple 500 mg doses of inclisiran paired with a statin"
+      ],
+      "answer": "Multiple 500 mg doses of inclisiran paired with a statin",
+      "sourceAnswer": "D",
+      "explanation": "The source answer is D. At about 60 days, placebo is less effective than treatment, a single 100 mg dose produces a smaller decrease, and multiple 500 mg doses with statin lower LDL further than the same multidose inclisiran condition without statin.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#practice-passage-summary",
+          "quote": "It asks students to use Figures 1 and 2 to compare single-dose and multidose effects on PCSK9 and LDL over time, including statin and no-statin multidose groups.",
+          "passageHash": "sha256:93af704c2ab3baa326695a64a5b14815ffc7115cbcb1ad4fce83b2fb06c8db39"
+        }
+      ],
+      "reviewTarget": "practice graph reading"
+    },
+    {
+      "question": "It is most likely that inclisiran will have what effect on treated cells?",
+      "choices": [
+        "RNA polymerase will be prevented from binding promoter sequences for the targeted genes.",
+        "Transcripts for the targeted genes will be broken down before they are translated.",
+        "Post-transcriptional modification will be prevented as methylated guanine is blocked from binding the 5-prime end of the transcript.",
+        "The sense strand of the DNA helix will be transcribed instead of the anti-sense strand."
+      ],
+      "answer": "Transcripts for the targeted genes will be broken down before they are translated.",
+      "sourceAnswer": "B",
+      "explanation": "The source answer is B. Inclisiran is an siRNA, and siRNAs trigger post-transcriptional destruction of mRNA transcripts before translation rather than blocking RNA polymerase, capping, or strand choice during transcription.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#background-and-citation",
+          "quote": "The siRNA engages RNA interference by guiding RISC to cleave PCSK9 mRNA, decreasing availability of the transcript for translation and reducing PCSK9 protein levels.",
+          "passageHash": "sha256:1534385d6796f5ec0b4e5e5b8370c9e9c60a05368e1915d76f80a46ab60a4a4c"
+        }
+      ],
+      "reviewTarget": "practice rnai mechanism"
+    },
+    {
+      "question": "According to the data in Figures 1 and 2, what conclusion about PCSK9 and LDL is best supported?",
+      "choices": [
+        "Compared to placebo, multiple doses of inclisiran with statin have a statistically significant effect on the level of PCSK9, but not on the level of LDL.",
+        "Statistically speaking, multiple doses of inclisiran given without additional statin have the same effect on the level of PCSK9 and the level of LDL.",
+        "The single dose protocol of inclisiran only shows a statistically significant effect when paired with statin treatment.",
+        "Compared to placebo, the single dose protocol of inclisiran has a statistically significant effect on the level of PCSK9 and LDL."
+      ],
+      "answer": "Compared to placebo, the single dose protocol of inclisiran has a statistically significant effect on the level of PCSK9 and LDL.",
+      "sourceAnswer": "D",
+      "explanation": "The source answer is D. The graph captions in the practice passage provide p-values; single-dose inclisiran has statistically significant effects on both PCSK9 and LDL, while the other choices misstate the statin or significance comparisons.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#practice-passage-summary",
+          "quote": "The five practice questions test graph reading, RNAi mechanism, statistical interpretation, cardiovascular consequence of high LDL, and study-design limitations.",
+          "passageHash": "sha256:93af704c2ab3baa326695a64a5b14815ffc7115cbcb1ad4fce83b2fb06c8db39"
+        }
+      ],
+      "reviewTarget": "practice statistical interpretation"
+    },
+    {
+      "question": "If LDL levels remain above 100 mg/dL for an extended period, the amount of oxygen supplied to the cardiac muscle will:",
+      "choices": [
+        "decrease due to increased stiffness in coronary blood vessels and decreased flow due to plaque blockage.",
+        "decrease due to hardening in the vessels involved in external respiration in the lungs.",
+        "increase due to the stabilizing effect produced with hardening of blood vessels.",
+        "increase due to a higher respiratory rate resulting from the stress of coronary artery disease."
+      ],
+      "answer": "decrease due to increased stiffness in coronary blood vessels and decreased flow due to plaque blockage.",
+      "sourceAnswer": "A",
+      "explanation": "The source answer is A. The passage connects LDL above 100 mg/dL with plaque formation and vessel hardening; plaque-limited coronary blood flow would reduce oxygen delivery to cardiac muscle.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#practice-passage-summary",
+          "quote": "The Princeton Review passage adapted from the article frames LDL as a cholesterol-transport particle that can contribute to plaque formation when elevated above 100 mg per deciliter.",
+          "passageHash": "sha256:93af704c2ab3baa326695a64a5b14815ffc7115cbcb1ad4fce83b2fb06c8db39"
+        }
+      ],
+      "reviewTarget": "practice cardiovascular consequence"
+    },
+    {
+      "question": "Based on the available experimental data, what limitation is evident in the design of the protocol?",
+      "choices": [
+        "The small number of different doses of inclisiran that were included in both",
+        "Statins were not tested on their own",
+        "Small sample size (N) restricts the power of the experiment",
+        "Statistical analysis requires calculation of both p values and standard deviation"
+      ],
+      "answer": "Small sample size (N) restricts the power of the experiment",
+      "sourceAnswer": "C",
+      "explanation": "The source answer is C. The graphs show small treatment arms, which restricts power. The source explanation also notes that placebo plus statin effectively tests statin alone and that standard deviation is not required when p-values are reported.",
+      "sourceRefs": [
+        {
+          "sourceId": "wiki/pcsk9-rnai-journal-article.md#interpreting-the-data",
+          "quote": "The source also asks students to recognize limitations.",
+          "passageHash": "sha256:6372606e2307f751ab4fee0ad71e774e5ada4536397e1b5fda1608b986d82638"
+        }
+      ],
+      "reviewTarget": "practice study limitations"
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "wiki/pcsk9-rnai-journal-article.md#background-and-citation",
+      "quote": "This Journal Article Exercise analyzes Kevin Fitzgerald, Suellen White, Anna Borodovsky, Brian R. Bettencourt, Andrew Strahs, Valerie Clausen, Peter Wijngaard, Jay D. Horton, Jorg Taubel, Ashley Brooks, Chamikara Fernando, Robert S. Kauffman, David Kallend, Akshay Vaishnaw, and Amy Simon, \"A Highly Durable RNAi Therapeutic Inhibitor of PCSK9,\" published in the New England Journal of Medicine, volume 376, pages 41-51, in 2017.",
+      "passageHash": "sha256:1534385d6796f5ec0b4e5e5b8370c9e9c60a05368e1915d76f80a46ab60a4a4c"
+    }
+  ],
+  "sourceGaps": [
+    "The raw JR2 extraction labels this as Journal Article Exercise 3, while the batch request calls it JR2; module and section naming follow the batch request.",
+    "The Princeton Review ORCWS final summary says all multidose trial groups showed significant decreases, while the article text says LDL reduction was significant for all multiple-dose regimens except the 125 mg weekly cohort; the module uses the article-level exception when stating study results.",
+    "The practice-question answer explanations are reused from the Princeton Review drill, but answer fields use full answer text so the existing course adapter can grade choices."
+  ]
+}
