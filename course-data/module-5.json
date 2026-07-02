@@ -15,12 +15,12 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#overview",
           "quote": "This chapter covers foundational biochemistry concepts tested on the MCAT: thermodynamics, kinetics, redox reactions, and acid/base chemistry.",
-          "passageHash": "sha256:5fab2f146146a8204e4718269d9e6270929f460408a350c88dc1384b3989be5d"
+          "passageHash": "sha256:338a8527c0f1af5dec46dd735d02d2851a4e416c3f2cd604692a8f8b85d87e68"
         },
         {
           "sourceId": "wiki/chapter-3-summary.md#practice-questions-cross-reference",
           "quote": "*Source: Princeton Review MCAT Biochemistry Review, Chapter 3*",
-          "passageHash": "sha256:d665470462b51cfb389da1486007c23cd3b988d111d310380b48efdb66f0a761"
+          "passageHash": "sha256:e61c2b9ac8eaa5e4e09fd9828d3e1f669281d07cc1878ef6864ee05203059178"
         }
       ]
     },
@@ -32,7 +32,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#major-topics",
           "quote": "### 1. [[thermodynamics]]\n- **Gibbs free energy:** ∆G = ∆H – T∆S\n- **Spontaneity:** ∆G < 0 (exergonic) vs ∆G > 0 (endergonic)\n- **Standard free energy:** ∆G°′ = –RT ln K'<sub>eq</sub> (pH 7, 1 M solutes)\n- **Actual cellular ∆G:** ∆G = ∆G°′ + RT ln Q\n- **Le Châtelier's principle:** Q vs K<sub>eq</sub> drives reaction direction\n- **Key:** Two factors determine spontaneity in cells — intrinsic properties (K<sub>eq</sub>) + concentrations (RT ln Q)\n\n### 2. [[kinetics]]\n- **Thermodynamics** ≠ **Kinetics** (∆G says nothing about rate)\n- **Activation energy (E<sub>a</sub>):** Barrier to reaching transition state [TS]‡\n- **Catalysts/Enzymes:** Lower E<sub>a</sub> by stabilizing TS, **do not change ∆G or K<sub>eq</sub>**\n- **Enzymes:** Biological catalysts, kinetic role only\n\n### 3. [[oxidation-reduction]]\n- **Oxidation** = loss of e⁻/H / gain of O\n- **Reduction** = gain of e⁻/H / loss of O\n- **Redox pairs:** One oxidized, one reduced (always coupled)\n- **Metabolism:** Catabolism = oxidative (releases energy); Anabolism = reductive (requires ATP)\n- **Glucose oxidation:** C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O\n\n### 4. [[acids-bases]]\n- **Brønsted-Lowry:** Acid = H⁺ donor, Base = H⁺ acceptor\n- **Lewis:** Acid = e⁻ pair acceptor, Base = e⁻ pair donor\n- **Conjugate pairs:** Differ by one H⁺\n- **Strength:** Lower pK<sub>a</sub> = stronger acid; Lower pK<sub>b</sub> = stronger base\n- **Amphoteric:** Can act as acid or base (e.g., HCO₃⁻, amino acids)\n- **pH = –log[H⁺]; pH + pOH = 14 (at 25°C)**\n- **Buffers:** Weak acid + conjugate base resist pH change\n- **Bicarbonate buffer:** CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻ (key in blood)",
-          "passageHash": "sha256:3cd91a4d06b0c47f4b73a1af5a874dc950c77184bbcf78292398f526293dade7"
+          "passageHash": "sha256:c1ceedb1c06151b6ffe7570455393c111f0421e1931d362904c3a8f2e9bdfc7b"
         }
       ]
     },
@@ -44,7 +44,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
           "quote": "1. **ATP** = primary energy currency (high-energy phosphate bonds)\n2. **∆G < 0** = spontaneous; **∆G = 0** = equilibrium\n3. **Enzymes** lower E<sub>a</sub>, **do not** change ∆G or K<sub>eq</sub>\n4. **Catalysts** speed up both forward and reverse reactions equally\n5. **Redox:** OIL RIG (Oxidation Is Loss, Reduction Is Gain)\n6. **pK<sub>a</sub>:** Lower = stronger acid; Higher = weaker acid/more basic\n7. **Bicarbonate buffer** = main blood buffer; CO₂ accumulation → pH drops\n8. **Amphoteric** substances (HCO₃⁻, amino acids) can donate or accept H⁺",
-          "passageHash": "sha256:8b7239d4bb7f0d464ccc46b4a0567972184fd85ea2a237dd5cb7928d58aa4c0d"
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
         }
       ]
     }
@@ -57,7 +57,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
           "quote": "| ∆G = ∆H – T∆S | Thermodynamic spontaneity |",
-          "passageHash": "sha256:4cd65fdab92cc2c2757abac324aa2c717f4d940cb579f3fd9297445cf6c39438"
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
         }
       ]
     },
@@ -68,7 +68,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
           "quote": "| ∆G°′ = –RT ln K'<sub>eq</sub> | Standard free energy ↔ equilibrium |",
-          "passageHash": "sha256:dbf1d17630d8b16323f256a78391e0ea6b3a9761fd3605085e00b9973db18a80"
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
         }
       ]
     },
@@ -79,7 +79,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
           "quote": "| ∆G = ∆G°′ + RT ln Q | Actual cellular ∆G from concentrations |",
-          "passageHash": "sha256:ff03c16d599e2c41ddfc0d26b8e4c0eb488ec619d2ff18d39e97ac6d675c6e75"
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
         }
       ]
     },
@@ -90,7 +90,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
           "quote": "| pH = –log[H⁺] | Acidity |",
-          "passageHash": "sha256:e145fdff5ab528ae341e5f62beda5c1231a93de5c3b093ec4917e34b2b78e51c"
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
         }
       ]
     },
@@ -101,7 +101,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
           "quote": "| pH + pOH = 14 | Acid-base relationship (25°C) |",
-          "passageHash": "sha256:ae964520c0a945abb837cc463705657f5bb4cd06f1fa101d00f79b7a1ea5e6cb"
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
         }
       ]
     },
@@ -112,7 +112,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
           "quote": "| pK<sub>a</sub> = –log K<sub>a</sub> | Acid strength |",
-          "passageHash": "sha256:575ea2d6b69c6cb70a011139f075e2f901d9333d2b18d095f0a7bf57b07c40c2"
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
         }
       ]
     },
@@ -123,7 +123,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#key-equations-to-memorize",
           "quote": "| pK<sub>b</sub> = –log K<sub>b</sub> | Base strength |",
-          "passageHash": "sha256:02f2cd46f9202d78029f8d98ee718063d6fa183cc44d6b35a3ee22c16b4453b0"
+          "passageHash": "sha256:a82fefc6ab5361242f261535581b922e9e40061f0c3ed1862aa4dfd42ce7952e"
         }
       ]
     }
@@ -141,7 +141,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
           "quote": "3. **Enzymes** lower E<sub>a</sub>, **do not** change ∆G or K<sub>eq</sub>",
-          "passageHash": "sha256:979d5f22301c97a01d3c29a00c1385685e0fa4efe8334ec8919401f78c450abd"
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
         }
       ]
     }
@@ -155,7 +155,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
           "quote": "4. **Catalysts** speed up both forward and reverse reactions equally",
-          "passageHash": "sha256:728135651f0bda99b0af99a32911e09c20d9aa8c48aba676211a69ecebb32497"
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
         }
       ],
       "reviewTarget": "high-yield facts for MCAT"
@@ -168,7 +168,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
           "quote": "7. **Bicarbonate buffer** = main blood buffer; CO₂ accumulation → pH drops",
-          "passageHash": "sha256:59b406091b92f8cca73f96f1b713ac87849d2a62f51590e596b1fe30ceb17ed2"
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
         }
       ],
       "reviewTarget": "high-yield facts for MCAT"
@@ -187,7 +187,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#high-yield-facts-for-mcat",
           "quote": "8. **Amphoteric** substances (HCO₃⁻, amino acids) can donate or accept H⁺",
-          "passageHash": "sha256:e66ea1f45a98c2eb290415f0e95e8eee4353feda4997f8136bb5e84bfdd6c0ca"
+          "passageHash": "sha256:93c1da5bad482f47cf1fd2f25af3bb73430e9df5665b8052920357ca3e74a2e3"
         }
       ],
       "reviewTarget": "high-yield facts for MCAT"
@@ -208,7 +208,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#1-thermodynamics",
           "quote": "- **Actual cellular ∆G:** ∆G = ∆G°′ + RT ln Q",
-          "passageHash": "sha256:d01c4b661ea656f753bfa9575da0b1ea8d11734c3a2e0c9c322fad787ee86670"
+          "passageHash": "sha256:523b2f6e72895435974b9b1103a64f27ede6e4e57a6c25f30244b911872c80a3"
         }
       ],
       "reviewTarget": "major topics recap"
@@ -221,7 +221,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#1-thermodynamics",
           "quote": "- **Key:** Two factors determine spontaneity in cells — intrinsic properties (K<sub>eq</sub>) + concentrations (RT ln Q)",
-          "passageHash": "sha256:d51a395ce29cae9075495b55d5aa93de31042e51ad8ca2d136cdd3380e988456"
+          "passageHash": "sha256:523b2f6e72895435974b9b1103a64f27ede6e4e57a6c25f30244b911872c80a3"
         }
       ],
       "reviewTarget": "major topics recap"
@@ -234,7 +234,7 @@
         {
           "sourceId": "wiki/chapter-3-summary.md#practice-questions-cross-reference",
           "quote": "*Source: Princeton Review MCAT Biochemistry Review, Chapter 3*",
-          "passageHash": "sha256:d665470462b51cfb389da1486007c23cd3b988d111d310380b48efdb66f0a761"
+          "passageHash": "sha256:e61c2b9ac8eaa5e4e09fd9828d3e1f669281d07cc1878ef6864ee05203059178"
         }
       ],
       "reviewTarget": "overview"

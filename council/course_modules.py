@@ -8,6 +8,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from scripts import citations as gate_citations
+
 
 REPO = Path(__file__).resolve().parents[1]
 COURSE_DATA = REPO / "course-data"
@@ -50,7 +52,12 @@ def parse_source_ref(value: Any) -> dict[str, str] | None:
 
     if not source_id or not quote or not passage_hash:
         return None
-    return {"sourceId": source_id, "quote": quote, "passageHash": passage_hash}
+    return {
+        "baseSourceId": source_id,
+        "sourceId": _compound_source_id(source_id, quote),
+        "quote": quote,
+        "passageHash": passage_hash,
+    }
 
 
 def _collect_refs(value: Any) -> list[dict[str, str]]:
@@ -85,13 +92,16 @@ def module_passages(section_id: str) -> list[dict[str, str]]:
     module = load_module(section_id)
     passages: list[dict[str, str]] = []
     for ref in module_refs(module):
-        anchor = ref["sourceId"].split("#", 1)[-1].replace("-", " ")
+        ok, reason, passage = gate_citations._resolve(REPO, ref["baseSourceId"])  # type: ignore[attr-defined]
+        if not ok:
+            raise ValueError(f"cannot resolve {ref['baseSourceId']!r}: {reason}")
+        anchor = ref["baseSourceId"].split("#", 1)[-1].replace("-", " ")
         passages.append(
             {
                 "sourceId": ref["sourceId"],
-                "sourceHash": ref["passageHash"],
+                "sourceHash": gate_citations.passage_hash(passage),
                 "label": f"{module['title']}, {anchor}",
-                "text": ref["quote"],
+                "text": passage,
                 "chapter": module["title"],
                 "section": section_id,
             }
@@ -105,6 +115,11 @@ def _normalize_text(text: str) -> str:
 
 def _passage_hash(text: str) -> str:
     return "sha256:" + hashlib.sha256(_normalize_text(text).encode("utf-8")).hexdigest()
+
+
+def _compound_source_id(source_id: str, quote: str) -> str:
+    digest = _passage_hash(quote).split(":", 1)[1][:12]
+    return f"{source_id}::{digest}"
 
 
 def build_course_chapter(section_id: str) -> dict[str, Any]:

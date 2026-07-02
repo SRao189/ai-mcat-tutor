@@ -16,7 +16,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
-from council.course_modules import MODULE_BY_SECTION  # noqa: E402
+from council.course_modules import MODULE_BY_SECTION, load_module, module_refs  # noqa: E402
 from council.source_store import passage_hash, passage_store_for_section  # noqa: E402
 from server import app as server_app  # noqa: E402
 from server.interactive_chapter import get_chapter, validate_chapter_schema  # noqa: E402
@@ -93,6 +93,18 @@ def test_course_module_passage_hashes_match():
         assert {passage.section for passage in passages} == {section_id}
         for passage in passages:
             assert passage.source_hash == passage_hash(passage.text)
+
+
+def test_every_source_ref_round_trips_through_passage_store():
+    for section_id in EXPECTED_TITLES:
+        store = passage_store_for_section(section_id)
+        by_id = store.by_id()
+        refs = module_refs(load_module(section_id))
+        assert refs
+        for ref in refs:
+            passage = by_id[ref["sourceId"]]
+            assert passage.source_hash == ref["passageHash"]
+            assert passage_hash(passage.text) == ref["passageHash"]
 
 
 def test_course_modules_are_served_and_listed():
