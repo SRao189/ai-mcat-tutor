@@ -44,7 +44,7 @@
     ask_about_phosphorus_containing_compounds: "Ask a question about phosphorus-containing compounds.",
     review_phosphoric_acid_dissociation: "Review how phosphoric acid loses each proton.",
     review_cited_passages: "Review the cited passage.",
-    review_chapter_7_1_passage: "Review the cited Chapter 7.1 passage.",
+    review_chapter_7_1_passage: "Review the cited passage.",
     configure_missing_environment_variables: "The tutor isn't fully configured yet.",
     retry_or_use_mock_mode: "Try again in a moment."
   };

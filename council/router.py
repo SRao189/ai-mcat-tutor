@@ -78,38 +78,33 @@ def classify(text: str) -> str:
     return FACTUAL
 
 
-# Conversational replies. These reference Section 7.1 *topic labels* only — no
-# scientific claims — so they need no citation. Suggestions are phrased so that
+# Conversational replies avoid scientific claims, so they need no citation.
+# Suggestions are phrased so that
 # clicking one becomes a FACTUAL question that DOES go through the gates.
-SECTION = "7.1"
-SECTION_NAME = "phosphorus-containing compounds"
-
 _REPLIES: dict[str, tuple[str, tuple[str, ...]]] = {
     GREETING: (
-        "Hi! I'm your biochemistry tutor. You're in Section 7.1, on "
-        "phosphorus-containing compounds. Where would you like to start?",
+        "Hi! I'm your biochemistry tutor. Where would you like to start in this chapter?",
         (
-            "Review phosphoric acid dissociation",
-            "Explain why pyrophosphate bonds are high-energy",
-            "Quiz me on Section 7.1",
-            "Ask a question about Section 7.1",
+            "Review the current section",
+            "Explain the main equation",
+            "Quiz me on this chapter",
+            "Ask a question about this chapter",
         ),
     ),
     CASUAL: (
-        "Anytime. Want to keep going in Section 7.1?",
+        "Anytime. Want to keep going in this chapter?",
         (
-            "Continue with phosphoric acid",
-            "Quiz me on ATP and pyrophosphate",
-            "Ask a question about Section 7.1",
+            "Continue the lesson",
+            "Quiz me on this chapter",
+            "Ask a question about this chapter",
         ),
     ),
     NAVIGATION: (
-        "This early version only covers Section 7.1 (phosphorus-containing "
-        "compounds). More sections are coming. Want to dig into 7.1?",
+        "Use the chapter list or the current lesson sections to navigate. What would you like to review?",
         (
-            "Review phosphoric acid dissociation",
-            "Explain ATP's role",
-            "Ask a question about Section 7.1",
+            "Review the current section",
+            "Open the final quiz",
+            "Ask a question about this chapter",
         ),
     ),
     CLARIFICATION: (
@@ -123,7 +118,7 @@ _REPLIES: dict[str, tuple[str, tuple[str, ...]]] = {
 }
 
 
-def _conversational_response(intent: str) -> CouncilResponse:
+def _conversational_response(intent: str, *, section_id: str = "") -> CouncilResponse:
     text, suggestions = _REPLIES.get(intent, _REPLIES[GREETING])
     return CouncilResponse(
         request_id=new_request_id(),
@@ -134,7 +129,7 @@ def _conversational_response(intent: str) -> CouncilResponse:
         metadata={
             "liveModelCalls": 0,
             "intent": intent,
-            "section": SECTION,
+            "section": section_id,
             "suggestions": list(suggestions),
         },
     )
@@ -145,6 +140,7 @@ def route_message(
     *,
     answer_fn: AnswerFn,
     learner_state: dict[str, Any] | None = None,
+    section_id: str = "7.1",
     config: Any | None = None,
     logger: logging.Logger | None = None,
 ) -> dict[str, Any]:
@@ -159,11 +155,12 @@ def route_message(
         logger.info("route %s", {"intent": intent})
 
     if intent in CONVERSATIONAL_INTENTS:
-        return _conversational_response(intent).to_dict()
+        return _conversational_response(intent, section_id=section_id).to_dict()
 
     # Safe default: the gated factual pipeline, unchanged.
     return answer_fn(
         question,
+        section_id=section_id,
         learner_state=learner_state,
         config=config,
         logger=logger,

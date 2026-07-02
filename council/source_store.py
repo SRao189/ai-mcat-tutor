@@ -1,4 +1,4 @@
-"""Approved Chapter 7.1 passage store for Phase 1 Council retrieval."""
+"""Approved passage stores for Phase 1 Council retrieval."""
 
 from __future__ import annotations
 
@@ -22,9 +22,17 @@ def passage_hash(text: str) -> str:
     return "sha256:" + hashlib.sha256(normalize_text(text).encode("utf-8")).hexdigest()
 
 
-class Chapter71PassageStore:
-    def __init__(self, path: Path | None = None) -> None:
-        self.path = path or Path(__file__).with_name("data") / "chapter_7_1_passages.json"
+class ChapterPassageStore:
+    def __init__(
+        self,
+        path: Path,
+        *,
+        default_chapter: str,
+        default_section: str,
+    ) -> None:
+        self.path = path
+        self.default_chapter = default_chapter
+        self.default_section = default_section
         self._passages: tuple[SourcePassage, ...] | None = None
 
     def load(self) -> tuple[SourcePassage, ...]:
@@ -47,8 +55,8 @@ class Chapter71PassageStore:
                     source_hash=expected_hash,
                     label=item["label"],
                     text=text,
-                    chapter=item.get("chapter", "7"),
-                    section=item.get("section", "7.1"),
+                    chapter=item.get("chapter", self.default_chapter),
+                    section=item.get("section", self.default_section),
                 )
             )
         self._passages = tuple(passages)
@@ -72,3 +80,29 @@ class Chapter71PassageStore:
                 }
             )
         return tuple(labels)
+
+
+class Chapter71PassageStore(ChapterPassageStore):
+    def __init__(self, path: Path | None = None) -> None:
+        super().__init__(
+            path or Path(__file__).with_name("data") / "chapter_7_1_passages.json",
+            default_chapter="7",
+            default_section="7.1",
+        )
+
+
+class ThermodynamicsPassageStore(ChapterPassageStore):
+    def __init__(self, path: Path | None = None) -> None:
+        super().__init__(
+            path or Path(__file__).with_name("data") / "thermodynamics_passages.json",
+            default_chapter="Thermodynamics",
+            default_section="thermo",
+        )
+
+
+def passage_store_for_section(section_id: str) -> ChapterPassageStore:
+    if section_id == "7.1":
+        return Chapter71PassageStore()
+    if section_id == "thermo":
+        return ThermodynamicsPassageStore()
+    raise PassageStoreError(f"no approved passage store for sectionId {section_id!r}")

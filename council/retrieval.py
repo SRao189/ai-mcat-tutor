@@ -1,4 +1,4 @@
-"""Retrieval interfaces and deterministic Chapter 7.1 keyword retrieval."""
+"""Retrieval interfaces and deterministic keyword retrieval."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ import re
 from abc import ABC, abstractmethod
 
 from .schema import RetrievalCandidate
-from .source_store import Chapter71PassageStore
+from .source_store import Chapter71PassageStore, ChapterPassageStore
 
 
 class Retriever(ABC):
@@ -33,9 +33,9 @@ def tokenize(text: str) -> list[str]:
     ]
 
 
-class KeywordChapter71Retriever(Retriever):
-    def __init__(self, store: Chapter71PassageStore | None = None) -> None:
-        self.store = store or Chapter71PassageStore()
+class KeywordPassageRetriever(Retriever):
+    def __init__(self, store: ChapterPassageStore) -> None:
+        self.store = store
 
     def retrieve(self, question: str, limit: int = 5) -> tuple[RetrievalCandidate, ...]:
         terms = set(tokenize(question))
@@ -55,6 +55,11 @@ class KeywordChapter71Retriever(Retriever):
             )
         candidates.sort(key=lambda item: item.score, reverse=True)
         return tuple(candidates[:limit])
+
+
+class KeywordChapter71Retriever(KeywordPassageRetriever):
+    def __init__(self, store: Chapter71PassageStore | None = None) -> None:
+        super().__init__(store or Chapter71PassageStore())
 
 
 class EmbeddingRetriever(Retriever):

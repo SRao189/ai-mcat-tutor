@@ -5,7 +5,13 @@ from __future__ import annotations
 import re
 
 from .schema import Claim, GateOutcome, SourcePassage, TutorDraft
-from .source_store import Chapter71PassageStore, PassageStoreError, normalize_text, passage_hash
+from .source_store import (
+    ChapterPassageStore,
+    PassageStoreError,
+    normalize_text,
+    passage_hash,
+    passage_store_for_section,
+)
 
 
 def _tokens(text: str) -> set[str]:
@@ -31,8 +37,8 @@ def _equation_like(text: str) -> bool:
 
 
 class CouncilVerifier:
-    def __init__(self, store: Chapter71PassageStore | None = None) -> None:
-        self.store = store or Chapter71PassageStore()
+    def __init__(self, store: ChapterPassageStore | None = None, *, section_id: str = "7.1") -> None:
+        self.store = store or passage_store_for_section(section_id)
 
     def verify(self, draft: TutorDraft) -> tuple[bool, bool, tuple[GateOutcome, ...]]:
         """Return (gate2_ok, gate3_ok, outcomes)."""

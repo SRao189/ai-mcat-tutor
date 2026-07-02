@@ -8,9 +8,10 @@ from typing import Any
 from .config import CouncilConfig, CouncilConfigError
 from .nvidia_client import NvidiaClientError
 from .rerank import LexicalReranker, Reranker
-from .retrieval import KeywordChapter71Retriever, Retriever
+from .retrieval import KeywordPassageRetriever, Retriever
 from .roles import TutorReasoner, new_request_id, reasoner_for_config
 from .schema import CouncilResponse, ResponseStatus
+from .source_store import passage_store_for_section
 from .verification import CouncilVerifier
 
 
@@ -22,6 +23,7 @@ def _log(logger: logging.Logger | None, event: str, payload: dict[str, Any]) -> 
 def answer_question(
     question: str,
     *,
+    section_id: str = "7.1",
     learner_state: dict[str, Any] | None = None,
     config: CouncilConfig | None = None,
     retriever: Retriever | None = None,
@@ -32,9 +34,10 @@ def answer_question(
 ) -> CouncilResponse:
     request_id = new_request_id()
     cfg = config or CouncilConfig.from_env()
-    retrieve = retriever or KeywordChapter71Retriever()
+    store = passage_store_for_section(section_id)
+    retrieve = retriever or KeywordPassageRetriever(store)
     rerank = reranker or LexicalReranker()
-    verify = verifier or CouncilVerifier()
+    verify = verifier or CouncilVerifier(store)
     tutor = reasoner or reasoner_for_config(cfg)
 
     try:
@@ -66,10 +69,10 @@ def answer_question(
             return CouncilResponse(
                 request_id=request_id,
                 status=ResponseStatus.INSUFFICIENT_EVIDENCE,
-                answer="No approved Chapter 7.1 passage supports a verified answer to that question.",
+                answer="No approved passage in this chapter supports a verified answer to that question.",
                 cited_sources=(),
                 uncertainty=("retrieval returned no approved passages",),
-                recommended_next_action="ask_about_phosphorus_containing_compounds",
+                recommended_next_action="ask_about_this_chapter",
                 metadata={"liveModelCalls": 0},
             )
 
@@ -131,7 +134,7 @@ def answer_question(
             source_ids = ()
             status = ResponseStatus.AMBIGUOUS
             answer = (
-                "I found relevant Chapter 7.1 material, but the generated answer did not pass citation and claim-support checks."
+                "I found relevant chapter material, but the generated answer did not pass citation and claim-support checks."
             )
 
         response = CouncilResponse(

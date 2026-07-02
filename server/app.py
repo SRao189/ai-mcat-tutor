@@ -259,6 +259,7 @@ class Section71Handler(BaseHTTPRequestHandler):
                 question,
                 answer_fn=ANSWER_QUESTION,
                 learner_state=build_tutor_context(learner_state, section_id),
+                section_id=section_id,
                 config=config,
                 logger=LOGGER,
             )

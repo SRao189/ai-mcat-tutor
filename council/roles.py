@@ -45,12 +45,12 @@ class MockTutorReasoner(TutorReasoner):
         if not candidates:
             return (
                 TutorDraft(
-                    answer="I do not have enough approved Chapter 7.1 evidence to answer that as a verified textbook-grounded response.",
+                    answer="I do not have enough approved chapter evidence to answer that as a verified textbook-grounded response.",
                     claims=(),
                     citation_source_ids=(),
-                    uncertainty=("No approved Chapter 7.1 passage was retrieved.",),
+                    uncertainty=("No approved passage was retrieved.",),
                     insufficient_evidence=True,
-                    recommended_next_action="try_a_question_about_chapter_7_1",
+                    recommended_next_action="try_a_question_about_this_chapter",
                 ),
                 0,
                 "mock",
@@ -72,6 +72,19 @@ class MockTutorReasoner(TutorReasoner):
                 confidence=0.9,
             )
             answer = claim.text
+        elif candidates[0].passage.section == "thermo" and (
+            "gibbs" in q or "delta g" in q or "free energy" in q
+        ):
+            source_id = "thermo-passage-03"
+            claim = Claim(
+                text="Gibbs free energy (Delta G) determines reaction spontaneity.",
+                source_ids=(source_id,),
+                confidence=0.95,
+            )
+            answer = (
+                "Gibbs free energy (Delta G) determines reaction spontaneity. "
+                "The chapter gives Delta G = Delta H - TDelta S, and Delta G less than 0 means a reaction is spontaneous and exergonic."
+            )
         elif "pka" in q or "physiological" in q or "phosphoric" in q:
             source_id = "chapter-7-1-passage-01"
             claim = Claim(
@@ -80,7 +93,7 @@ class MockTutorReasoner(TutorReasoner):
                 confidence=0.95,
             )
             answer = (
-                "Phosphoric acid can donate three protons. In the approved Chapter 7.1 passage, "
+                "Phosphoric acid can donate three protons. In the approved passage, "
                 "its three dissociation pKas are 2.1, 7.2, and 12.4, and at physiological pH it exists largely in anionic form."
             )
         elif "atp" in q:
@@ -109,7 +122,7 @@ class MockTutorReasoner(TutorReasoner):
                 citation_source_ids=claim.source_ids,
                 uncertainty=(),
                 insufficient_evidence=False,
-                recommended_next_action="review_chapter_7_1_passage",
+                recommended_next_action="review_cited_passage",
             ),
             0,
             "mock",
@@ -139,9 +152,9 @@ class NvidiaTutorReasoner(TutorReasoner):
                     answer="Insufficient approved evidence was retrieved.",
                     claims=(),
                     citation_source_ids=(),
-                    uncertainty=("No approved Chapter 7.1 passage was retrieved.",),
+                    uncertainty=("No approved passage was retrieved.",),
                     insufficient_evidence=True,
-                    recommended_next_action="ask_about_chapter_7_1",
+                    recommended_next_action="ask_about_this_chapter",
                 ),
                 None,
                 self.config.tutor_model,
@@ -197,11 +210,11 @@ class NvidiaTutorReasoner(TutorReasoner):
                     "\n"
                     "Insufficient-evidence example:\n"
                     "{\n"
-                    '  "answer": "The approved Chapter 7.1 passages do not provide enough evidence to answer that.",\n'
+                    '  "answer": "The approved chapter passages do not provide enough evidence to answer that.",\n'
                     '  "claims": [],\n'
                     '  "uncertainty": ["No provided SOURCE_TEXT supports the requested claim."],\n'
                     '  "insufficientEvidence": true,\n'
-                    '  "recommendedNextAction": "ask_about_chapter_7_1_phosphorus_containing_compounds"\n'
+                    '  "recommendedNextAction": "ask_about_this_chapter"\n'
                     "}"
                 ),
             },

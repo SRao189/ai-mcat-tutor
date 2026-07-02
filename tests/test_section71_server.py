@@ -105,6 +105,7 @@ def test_chapters_endpoint_lists_section_71():
         assert status == 200
         payload = json.loads(body)
         assert {"id": "7.1", "title": "Phosphorus-Containing Compounds"} in payload
+        assert {"id": "thermo", "title": "Thermodynamics"} in payload
 
     _with_server(run)
 
@@ -126,6 +127,8 @@ def test_index_lists_chapters():
         assert "Interactive Chapters" in body
         assert "/learn?chapter=7.1" in body
         assert "Phosphorus-Containing Compounds" in body
+        assert "/learn?chapter=thermo" in body
+        assert "Thermodynamics" in body
 
     _with_server(run)
 

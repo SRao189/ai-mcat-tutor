@@ -1,1 +1,1 @@
-"""Local Section 7.1 web server package."""
+"""Local interactive chapter web server package."""
