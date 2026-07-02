@@ -6,6 +6,8 @@ import copy
 import re
 from typing import Any
 
+from council.course_modules import MODULE_BY_SECTION, build_course_chapter
+
 
 CHAPTER_7_1: dict[str, Any] = {
     "id": "chapter-7-section-7.1",
@@ -482,6 +484,9 @@ CHAPTERS: dict[str, dict[str, Any]] = {
     "7.1": CHAPTER_7_1,
     "thermo": CHAPTER_THERMODYNAMICS,
 }
+
+for _section_id in MODULE_BY_SECTION:
+    CHAPTERS[_section_id] = build_course_chapter(_section_id)
 
 
 def list_chapters() -> list[dict[str, str]]:
