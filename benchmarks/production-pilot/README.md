@@ -30,6 +30,9 @@ A model stage gets **one automatic retry**. Qwen only runs when Phi reports an
 actionable concern; its patch is applied only if every addition is
 source-grounded, non-duplicative, and deletes nothing — otherwise the Gemma
 candidate is kept (`SAFE_NO_OP` / `enrichment_rejected_kept_candidate`).
+Before structural validation, item-level `sourceRefs` are normalized by code to
+the configured packet reference (or the matching subsection packet reference in
+chapter mode), with citation repairs recorded in the cleaning/citation reports.
 
 ## Separation of concerns (and what changes for AWS)
 

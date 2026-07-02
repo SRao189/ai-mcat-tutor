@@ -16,7 +16,7 @@
         {
           "sourceId": "wiki/acids-bases.md#definitions",
           "quote": "### Brønsted-Lowry (Most important for MCAT)\n- **Acid** = proton (H⁺) donor\n- **Base** = proton (H⁺) acceptor\n- Any anion or neutral species with a lone pair can be a base\n\n**Example:**\n```\nH₂CO₃ + H₂O ⇌ H₃O⁺ + HCO₃⁻\nAcids: H₂CO₃, H₃O⁺\nBases: HCO₃⁻, H₂O\n```\n\n### Lewis (Broader)\n- **Acid** = electron-pair acceptor\n- **Base** = electron-pair donor\n- Forms coordinate covalent bonds\n\n**Example (heme group):** O₂ binds to Fe²⁺\n- O₂ donates electron pair → **Lewis base**\n- Fe²⁺ accepts electron pair → **Lewis acid**",
-          "passageHash": "sha256:d2eefc43ca758b3cf3696bbc9752388d7640e31f5963a535e31570df10c1df2b"
+          "passageHash": "sha256:e327fd01da6a06e721852bce77dc94113b9ac3525f766a66f99e27a1e611a974"
         }
       ]
     },
@@ -28,7 +28,7 @@
         {
           "sourceId": "wiki/acids-bases.md#conjugate-acid-base-pairs",
           "quote": "**Conjugate base** = acid minus H⁺\n**Conjugate acid** = base plus H⁺\n\n```\nNH₃ + H₂O ⇌ NH₄⁺ + OH⁻\n          ↑      ↑\n        base   acid\n        \nForward:  NH₃ = base, H₂O = acid\n          NH₄⁺ = conj. acid of NH₃\n          OH⁻ = conj. base of H₂O\n\nReverse:  NH₄⁺ = acid, OH⁻ = base\n          NH₃ = conj. base of NH₄⁺\n          H₂O = conj. acid of OH⁻\n```",
-          "passageHash": "sha256:638b05f8bfd2f63808a9a6c9c4b5236293a17d865b561203b7b9c455c5ef4737"
+          "passageHash": "sha256:b9fb3ce6c4245bd3e70019e6b870e82b1b2b65ab1ec708b50992b7004d20d2fe"
         }
       ]
     },
@@ -40,7 +40,7 @@
         {
           "sourceId": "wiki/acids-bases.md#acidbase-strength",
           "quote": "### Acid Dissociation Constant (K<sub>a</sub>)\n```\nHA + H₂O ⇌ H₃O⁺ + A⁻\nKₐ = [H₃O⁺][A⁻] / [HA]\n```\n- Larger K<sub>a</sub> → stronger acid\n- pK<sub>a</sub> = –log K<sub>a</sub>\n- **Lower pK<sub>a</sub> → stronger acid**\n\n### Base Dissociation Constant (K<sub>b</sub>)\n```\nB + H₂O ⇌ HB⁺ + OH⁻\nK_b = [HB⁺][OH⁻] / [B]\n```\n- Larger K<sub>b</sub> → stronger base\n- pK<sub>b</sub> = –log K<sub>b</sub>\n- **Lower pK<sub>b</sub> → stronger base**",
-          "passageHash": "sha256:0f4e1fefa9dbaf1b81f8e6e8c8a96b53861b8f6ad42031604b43dfdc7d8ee8e6"
+          "passageHash": "sha256:02e2342ecedd63d1f7bef3f689a18f4082db2bf83be0d3c68e9b228ef97c94d5"
         }
       ]
     },
@@ -64,7 +64,7 @@
         {
           "sourceId": "wiki/acids-bases.md#ph-and-poh",
           "quote": "**pH = –log[H⁺]** (or –log[H₃O⁺])\n- [H⁺] = 10⁻ᵖᴴ\n- Pure water: [H⁺] = 10⁻⁷ M → pH = 7 (neutral at 25°C)\n\n| pH Range | Solution |\n|----------|----------|\n| < 7 | Acidic |\n| = 7 | Neutral |\n| > 7 | Basic |\n\n**pOH = –log[OH⁻]**\n- [OH⁻] = 10⁻ᵖᴼᴴ\n- At 25°C: **pH + pOH = 14**",
-          "passageHash": "sha256:2c5be4adff437c4c6f2a491a0c56c587395eebdfc94ee25cbdf9e39741f5b4c5"
+          "passageHash": "sha256:4912ce35fc31bcd8b1ebd9422d3ca4b77efa0a184866ab9607dfcdabbfb0f888"
         }
       ]
     },
@@ -76,7 +76,7 @@
         {
           "sourceId": "wiki/acids-bases.md#buffer-solutions",
           "quote": "**Buffer** = resists pH change when small amounts of acid/base added\n- Contains weak acid + conjugate base (or weak base + conjugate acid)\n- In roughly equal concentrations\n\n### Bicarbonate Buffer System (Most important in blood)\n```\nReaction 1:  H₂CO₃ ⇌ H⁺ + HCO₃⁻\nReaction 2:  CO₂ + H₂O ⇌ H₂CO₃\n```\n\n**During exercise:** Muscles produce lactic acid → H⁺ increases\n- Reaction 1 shifts LEFT (Le Châtelier's principle)\n- Free H⁺ reduced → pH drop minimized\n\n**Holding breath:** CO₂ accumulates → Reaction 2 shifts RIGHT → more H₂CO₃ → more H⁺ → **pH decreases**",
-          "passageHash": "sha256:07070440e87cb12023af759361b83be1889a76389e58b2e448bd5d582e0935db"
+          "passageHash": "sha256:775ee68e98b83f9785854981355160cf29133f99b614828eedca637cef3466d6"
         }
       ]
     },
@@ -88,7 +88,7 @@
         {
           "sourceId": "wiki/acids-bases.md#quick-reference",
           "quote": "| Property | Stronger Acid | Stronger Base |\n|----------|---------------|---------------|\n| K value | Larger K<sub>a</sub> | Larger K<sub>b</sub> |\n| pK value | **Lower** pK<sub>a</sub> | **Lower** pK<sub>b</sub> |\n| pH | Lower | Higher |\n\n**Examples:**\n- Lactic acid (pK<sub>a</sub> = 3.9) > Uric acid (pK<sub>a</sub> = 5.6)\n- Lowest [H₃O⁺] = highest pH (seawater pH 8.5)\n- Least acidic = highest pK<sub>a</sub> (bicarbonate pK<sub>a</sub> = 10.33)",
-          "passageHash": "sha256:59b9955f1f1af472f8ff3c0d39645f0bc256d98277ba8c7baa4661482a9d4ae7"
+          "passageHash": "sha256:d766fb52cf010f547c5cfebc3f8d8388008a659ab2fc18bc8a2d3722bbaa7c3c"
         }
       ]
     }
@@ -101,7 +101,7 @@
         {
           "sourceId": "wiki/acids-bases.md#acid-dissociation-constant-ksubasub",
           "quote": "Kₐ = [H₃O⁺][A⁻] / [HA]",
-          "passageHash": "sha256:ec1c67084d3a47587befbd07a958bb547936b6dfb495e3607a5f47fb443b04ae"
+          "passageHash": "sha256:3d8275e6015eb07ca62165271712cc1dd83fc6800905f9344d9db698e4579649"
         }
       ]
     },
@@ -112,7 +112,7 @@
         {
           "sourceId": "wiki/acids-bases.md#acid-dissociation-constant-ksubasub",
           "quote": "- pK<sub>a</sub> = –log K<sub>a</sub>\n- **Lower pK<sub>a</sub> → stronger acid**",
-          "passageHash": "sha256:ec1c67084d3a47587befbd07a958bb547936b6dfb495e3607a5f47fb443b04ae"
+          "passageHash": "sha256:143bc8975b2524467e0a9184d3e991b088482e664d9d36992b51d411d4ac86d9"
         }
       ]
     },
@@ -123,7 +123,7 @@
         {
           "sourceId": "wiki/acids-bases.md#base-dissociation-constant-ksubbsub",
           "quote": "K_b = [HB⁺][OH⁻] / [B]",
-          "passageHash": "sha256:9d782b841cdb7f586744e2b8871f21c17e8af0bed144ddeb3c38084958eab09e"
+          "passageHash": "sha256:eb4470ad61b6d19eafb73ff7a3026af7c434ce1e862e6e7d14e7699b69578fa2"
         }
       ]
     },
@@ -134,7 +134,7 @@
         {
           "sourceId": "wiki/acids-bases.md#base-dissociation-constant-ksubbsub",
           "quote": "- pK<sub>b</sub> = –log K<sub>b</sub>\n- **Lower pK<sub>b</sub> → stronger base**",
-          "passageHash": "sha256:9d782b841cdb7f586744e2b8871f21c17e8af0bed144ddeb3c38084958eab09e"
+          "passageHash": "sha256:2903545d28e93779647b7f80fcd2a14ec1ad49bf94c29cccee2a7d88980b7817"
         }
       ]
     },
@@ -145,7 +145,7 @@
         {
           "sourceId": "wiki/acids-bases.md#ph-and-poh",
           "quote": "**pH = –log[H⁺]** (or –log[H₃O⁺])",
-          "passageHash": "sha256:2c5be4adff437c4c6f2a491a0c56c587395eebdfc94ee25cbdf9e39741f5b4c5"
+          "passageHash": "sha256:b6d7fb89bac0b540440015617d34fdefa70ff7acd1450f07222a5cfbe6b89376"
         }
       ]
     },
@@ -156,7 +156,7 @@
         {
           "sourceId": "wiki/acids-bases.md#ph-and-poh",
           "quote": "- At 25°C: **pH + pOH = 14**",
-          "passageHash": "sha256:2c5be4adff437c4c6f2a491a0c56c587395eebdfc94ee25cbdf9e39741f5b4c5"
+          "passageHash": "sha256:6b24659afa4814c049c7ab60f3022d70a028af6f8218486a9b087a87cfb6810f"
         }
       ]
     }
@@ -174,7 +174,7 @@
         {
           "sourceId": "wiki/acids-bases.md#conjugate-acid-base-pairs",
           "quote": "NH₃ + H₂O ⇌ NH₄⁺ + OH⁻\n          ↑      ↑\n        base   acid\n        \nForward:  NH₃ = base, H₂O = acid\n          NH₄⁺ = conj. acid of NH₃\n          OH⁻ = conj. base of H₂O",
-          "passageHash": "sha256:638b05f8bfd2f63808a9a6c9c4b5236293a17d865b561203b7b9c455c5ef4737"
+          "passageHash": "sha256:53bedadb89d279cf7d1426a5b8599a930e989d722cb4cd72fc02566de9027e53"
         }
       ]
     },
@@ -190,12 +190,12 @@
         {
           "sourceId": "wiki/acids-bases.md#acid-dissociation-constant-ksubasub",
           "quote": "- **Lower pK<sub>a</sub> → stronger acid**",
-          "passageHash": "sha256:ec1c67084d3a47587befbd07a958bb547936b6dfb495e3607a5f47fb443b04ae"
+          "passageHash": "sha256:12ec707dba4fe9efb7ae80b6007a8ac95f49ec23f7bbabbd62e05bd3f0d2da92"
         },
         {
           "sourceId": "wiki/acids-bases.md#quick-reference",
           "quote": "- Lactic acid (pK<sub>a</sub> = 3.9) > Uric acid (pK<sub>a</sub> = 5.6)",
-          "passageHash": "sha256:59b9955f1f1af472f8ff3c0d39645f0bc256d98277ba8c7baa4661482a9d4ae7"
+          "passageHash": "sha256:60d7f6b98dc592f483b9860d22dec721de046ab6daf9200c87b416a070e1d827"
         }
       ]
     }
@@ -209,7 +209,7 @@
         {
           "sourceId": "wiki/acids-bases.md#lewis-broader",
           "quote": "- **Acid** = electron-pair acceptor\n- **Base** = electron-pair donor\n- Forms coordinate covalent bonds",
-          "passageHash": "sha256:63bda03dbdbc076e5520ca82df511d89d0955c5999090e1fa757207ac8167507"
+          "passageHash": "sha256:260d5a270c34d2d32bab30fdc415ab527fdc1ca288326a05699792a4b8cea299"
         }
       ],
       "reviewTarget": "definitions: Brønsted-Lowry and Lewis"
@@ -222,7 +222,7 @@
         {
           "sourceId": "wiki/acids-bases.md#amphoteric-substances",
           "quote": "## Amphoteric Substances\n- Can act as **both** acid and base\n- Conjugate base of a weak polyprotic acid is always amphoteric\n- Example: HCO₃⁻ (bicarbonate)\n  - As base: HCO₃⁻ + H₂O ⇌ H₂CO₃ + OH⁻\n  - As acid: HCO₃⁻ + H₂O ⇌ CO₃²⁻ + H₃O⁺",
-          "passageHash": "sha256:1df157706ac70b881decedd4706138635ae53ce02dd9961be75005522a46b397"
+          "passageHash": "sha256:aaf070e79565f9afcf6ef9b035b6489dbd6ffb1daaf9a46dcc5c9806ef70dcb2"
         }
       ],
       "reviewTarget": "amphoteric substances"
@@ -241,7 +241,7 @@
         {
           "sourceId": "wiki/acids-bases.md#bicarbonate-buffer-system-most-important-in-blood",
           "quote": "**During exercise:** Muscles produce lactic acid → H⁺ increases\n- Reaction 1 shifts LEFT (Le Châtelier's principle)\n- Free H⁺ reduced → pH drop minimized",
-          "passageHash": "sha256:b31ae1b5a41d5fa7414c59c001796cf682aa8809ec32ef466fea6a48791b61eb"
+          "passageHash": "sha256:25de220bca2b68298fcb7ea83d33f03f940d84a7027dfde1228ecdf5c910f743"
         }
       ],
       "reviewTarget": "buffer solutions and the bicarbonate buffer system"
@@ -254,7 +254,7 @@
         {
           "sourceId": "wiki/acids-bases.md#ph-and-poh",
           "quote": "**pH = –log[H⁺]** (or –log[H₃O⁺])\n- [H⁺] = 10⁻ᵖᴴ\n- Pure water: [H⁺] = 10⁻⁷ M → pH = 7 (neutral at 25°C)\n\n| pH Range | Solution |\n|----------|----------|\n| < 7 | Acidic |\n| = 7 | Neutral |",
-          "passageHash": "sha256:2c5be4adff437c4c6f2a491a0c56c587395eebdfc94ee25cbdf9e39741f5b4c5"
+          "passageHash": "sha256:001ac28cbc3d7f15efbca74b2a2cf79f800f33ff8e9a85b7eb23a81494ed2765"
         }
       ],
       "reviewTarget": "pH and pOH"
@@ -275,7 +275,7 @@
         {
           "sourceId": "wiki/acids-bases.md#brønsted-lowry-most-important-for-mcat",
           "quote": "### Brønsted-Lowry (Most important for MCAT)",
-          "passageHash": "sha256:68ec280b7cf38a08e26a49ff2f17ba96fb71d91be8be766bee46af1e984801d1"
+          "passageHash": "sha256:c581734b258ea69b217787247905dbb13a5552dbff0f770fd861da32f16eebf4"
         }
       ],
       "reviewTarget": "definitions: Brønsted-Lowry and Lewis"
@@ -288,7 +288,7 @@
         {
           "sourceId": "wiki/acids-bases.md#acid-dissociation-constant-ksubasub",
           "quote": "- Larger K<sub>a</sub> → stronger acid",
-          "passageHash": "sha256:ec1c67084d3a47587befbd07a958bb547936b6dfb495e3607a5f47fb443b04ae"
+          "passageHash": "sha256:dd77da77ed9081c13c5dffb7c8284feb11917863cbe2d0fe7f2c743e2db00585"
         }
       ],
       "reviewTarget": "acid/base strength"
@@ -307,7 +307,7 @@
         {
           "sourceId": "wiki/acids-bases.md#buffer-solutions",
           "quote": "**Buffer** = resists pH change when small amounts of acid/base added\n- Contains weak acid + conjugate base (or weak base + conjugate acid)\n- In roughly equal concentrations",
-          "passageHash": "sha256:07070440e87cb12023af759361b83be1889a76389e58b2e448bd5d582e0935db"
+          "passageHash": "sha256:85bb5260cae62749f808698d471c0a55b3337fc0160f10381a5e00977b2b6b53"
         }
       ],
       "reviewTarget": "buffer solutions and the bicarbonate buffer system"
@@ -320,7 +320,7 @@
         {
           "sourceId": "wiki/acids-bases.md#quick-reference",
           "quote": "- Lowest [H₃O⁺] = highest pH (seawater pH 8.5)",
-          "passageHash": "sha256:59b9955f1f1af472f8ff3c0d39645f0bc256d98277ba8c7baa4661482a9d4ae7"
+          "passageHash": "sha256:55be4e2d3a695d547fe0f6e848071f2b0b5883e86d3771ef102308b3029b41c6"
         }
       ],
       "reviewTarget": "quick reference: acid and base strength"

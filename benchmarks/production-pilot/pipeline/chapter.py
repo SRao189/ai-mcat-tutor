@@ -65,6 +65,7 @@ def _gen_subsection(gmodel: str, subid: str, ctx: str, body: str, ref: str,
     sub = _prefix_and_tag(sub, subid)
     sub, _ = core.sanitize_candidate(sub)
     sub, _ = core.quality_filter(sub, body)  # per-subsection caps apply here
+    sub, _ = core.enforce_source_refs(sub, ref, {subid: ref})
     tokens = {k: m.get("eval_count") for k, m in
               (("lesson", ml), ("eqworked", me), ("assessment", ma))}
     return sub, tokens
@@ -217,8 +218,10 @@ def build_chapter(chapter_cfg: dict, models: dict, out_root: Path) -> dict[str, 
     _migrate_legacy_cache(out, comp_dir)
     gmodel = models["generator"]
     sub_results: list[tuple] = []
+    subsection_refs: dict[str, str] = {}
     for subid, title, body in subs:
         ref = f'{chapter_cfg["raw_source"]}#{subid}'
+        subsection_refs[subid] = ref
         ctx = source.build_context_packet(
             body, f"{title} ({subid})", ref, chapter_cfg["raw_source"])
         (ctx_dir / f"{subid}.md").write_text(ctx, encoding="utf-8")
@@ -244,6 +247,8 @@ def build_chapter(chapter_cfg: dict, models: dict, out_root: Path) -> dict[str, 
     session = assemble_chapter(chapter_cfg, sub_results)
     session, _ = core.sanitize_candidate(session)
     session, qual = core.quality_filter(session, normalized, cap=False)
+    session, citation = core.enforce_source_refs(
+        session, chapter_cfg["source_ref"], subsection_refs)
     session["equations"] = _dedup_equations(session.get("equations", []))
     session["practiceQuestions"] = session.get("practiceQuestions", [])[:10]  # 5-10 review
     session["metadata"] = {
@@ -253,7 +258,7 @@ def build_chapter(chapter_cfg: dict, models: dict, out_root: Path) -> dict[str, 
         "subsections": [{"id": s[0], "title": s[1], "status": s[3]} for s in sub_results],
     }
     (out / "chapter-cleaning-report.json").write_text(
-        json.dumps(qual, indent=2), encoding="utf-8")
+        json.dumps({"quality": qual, "citations": citation}, indent=2), encoding="utf-8")
     core.save_checkpoint(cp, "MERGED")
 
     final = out / "final-session.json"
@@ -265,6 +270,10 @@ def build_chapter(chapter_cfg: dict, models: dict, out_root: Path) -> dict[str, 
     audit = _chapter_audit(session, models["auditor"], out, perf)
     core.save_checkpoint(cp, "AUDITED", {"verdict": audit.get("verdict")})
     session = _maybe_enrich(session, audit, normalized, models["enricher"], out, perf)
+    session, citation = core.enforce_source_refs(
+        session, chapter_cfg["source_ref"], subsection_refs)
+    (out / "final-citation-report.json").write_text(
+        json.dumps(citation, indent=2), encoding="utf-8")
     final.write_text(json.dumps(session, indent=2, ensure_ascii=False), encoding="utf-8")
     ok2, fvout = core.run_validator(final, out / "final-validation.json")
     if not ok2:

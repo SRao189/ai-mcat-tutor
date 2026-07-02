@@ -15,7 +15,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#core-concept",
           "quote": "**Oxidation** = loss of electrons\n**Reduction** = gain of electrons\n\n**Mnemonic:** OIL RIG — Oxidation Is Loss, Reduction Is Gain\n\nWhen one atom is oxidized, another **must** be reduced → **redox pair**",
-          "passageHash": "sha256:d011b74824bad9f355ca4ea1bef431b88dcee435b9c86d0bb29905425a743a66"
+          "passageHash": "sha256:efe019ac87bace1ef56716c0a74bdafb784847970de76d4ff35e7c91cf2c3ca4"
         }
       ]
     },
@@ -39,7 +39,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#quick-examples",
           "quote": "| Change | Classification | Reason |\n|--------|----------------|--------|\n| CH₃CH₃ → H₂C=CH₂ | Oxidation | Hydrogens removed |\n| Fe³⁺ → Fe²⁺ | Reduction | Electron added |\n| O₂ → H₂O | Reduction | Hydrogens added to O₂ |\n| Disulfide bond formation | Oxidation | Hydrogens removed |",
-          "passageHash": "sha256:e175bba7d980ef111baf1e24aaa1633fde3b67cbd5c3d64c10104771923dc371"
+          "passageHash": "sha256:73d673d5e1043195c55fc710867e5b3806d86dd6131a0b449b79569560c1c0a8"
         }
       ]
     },
@@ -51,7 +51,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#energy-metabolism-context",
           "quote": "**Photosynthesis:** Plants (photoautotrophs) store solar energy in carbohydrates\n**Cellular respiration:** Animals (chemoheterotrophs) oxidize reduced molecules (carbs, fats) → CO₂ + ATP\n\n**Glucose oxidation:**\n```\nC₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O\n```\n- Carbons in glucose → oxidized (to CO₂)\n- Oxygen → reduced (to H₂O)\n- Redox pair: C (oxidized) / O (reduced)",
-          "passageHash": "sha256:54594064475c002f870f1c897bdb5fd37f09c160d96a9f1990970dc31ffd734d"
+          "passageHash": "sha256:060341bacd9e6eca03052e74119a9f1d240d48c440639aa8a681191f6cb9a53e"
         }
       ]
     },
@@ -63,7 +63,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#catabolism-vs-anabolism",
           "quote": "## Catabolism vs. Anabolism\n\n| Process | Direction | Redox | Energy |\n|---------|-----------|-------|--------|\n| **Catabolism** | Breaking down | Oxidative | Releases energy |\n| **Anabolism** | Building up | Reductive | Requires energy (ATP) |\n\n- Fatty acid synthesis = successive reductions of carbon chain\n- ATP stores energy from catabolism; drives anabolism",
-          "passageHash": "sha256:829ddf5f6d8cea1b9caad075681eb5e4f6c75a4a03cc30b0ef47bde860e92f77"
+          "passageHash": "sha256:1b42e7c57c7c07fbe260c8706669af23b6a7b54d4726fd6aaf054a2b3f90bfbf"
         }
       ]
     }
@@ -76,7 +76,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#energy-metabolism-context",
           "quote": "**Glucose oxidation:**\n```\nC₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O\n```\n- Carbons in glucose → oxidized (to CO₂)\n- Oxygen → reduced (to H₂O)\n- Redox pair: C (oxidized) / O (reduced)",
-          "passageHash": "sha256:54594064475c002f870f1c897bdb5fd37f09c160d96a9f1990970dc31ffd734d"
+          "passageHash": "sha256:9a8a6aab43f76694f216da1525693d7ffed4a228accd8f1ea26cc52af2356935"
         }
       ]
     }
@@ -94,12 +94,12 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#core-concept",
           "quote": "**Oxidation** = loss of electrons\n**Reduction** = gain of electrons\n\n**Mnemonic:** OIL RIG — Oxidation Is Loss, Reduction Is Gain",
-          "passageHash": "sha256:d011b74824bad9f355ca4ea1bef431b88dcee435b9c86d0bb29905425a743a66"
+          "passageHash": "sha256:2f4215c0dd9dced3f44ea6214ca48ad9ed93e4e741b1bab6a51535961682d33c"
         },
         {
           "sourceId": "wiki/oxidation-reduction.md#quick-examples",
           "quote": "| Fe³⁺ → Fe²⁺ | Reduction | Electron added |",
-          "passageHash": "sha256:e175bba7d980ef111baf1e24aaa1633fde3b67cbd5c3d64c10104771923dc371"
+          "passageHash": "sha256:df18c2b2d9e2632cece8f34a340e59329640d1ed0bfadde24f4419925b1ca65f"
         }
       ]
     },
@@ -117,7 +117,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#energy-metabolism-context",
           "quote": "**Glucose oxidation:**\n```\nC₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O\n```\n- Carbons in glucose → oxidized (to CO₂)\n- Oxygen → reduced (to H₂O)\n- Redox pair: C (oxidized) / O (reduced)",
-          "passageHash": "sha256:54594064475c002f870f1c897bdb5fd37f09c160d96a9f1990970dc31ffd734d"
+          "passageHash": "sha256:9a8a6aab43f76694f216da1525693d7ffed4a228accd8f1ea26cc52af2356935"
         }
       ]
     }
@@ -131,7 +131,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#core-concept",
           "quote": "When one atom is oxidized, another **must** be reduced → **redox pair**",
-          "passageHash": "sha256:d011b74824bad9f355ca4ea1bef431b88dcee435b9c86d0bb29905425a743a66"
+          "passageHash": "sha256:198a8fed90a8e16ad1c1a45b1b02e5d994da359ad6bf22ff1717573b788d27e1"
         }
       ],
       "reviewTarget": "core concept"
@@ -144,7 +144,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#quick-examples",
           "quote": "| Disulfide bond formation | Oxidation | Hydrogens removed |",
-          "passageHash": "sha256:e175bba7d980ef111baf1e24aaa1633fde3b67cbd5c3d64c10104771923dc371"
+          "passageHash": "sha256:3bac97f1e72c4d5aded8993721236b537b6d6c0860c7aa34ead615cecbb89d03"
         }
       ],
       "reviewTarget": "three ways to identify redox reactions"
@@ -163,7 +163,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#catabolism-vs-anabolism",
           "quote": "## Catabolism vs. Anabolism\n\n| Process | Direction | Redox | Energy |\n|---------|-----------|-------|--------|\n| **Catabolism** | Breaking down | Oxidative | Releases energy |\n| **Anabolism** | Building up | Reductive | Requires energy (ATP) |\n\n- Fatty acid synthesis = successive reductions of carbon chain\n- ATP stores energy from catabolism; drives anabolism",
-          "passageHash": "sha256:829ddf5f6d8cea1b9caad075681eb5e4f6c75a4a03cc30b0ef47bde860e92f77"
+          "passageHash": "sha256:1b42e7c57c7c07fbe260c8706669af23b6a7b54d4726fd6aaf054a2b3f90bfbf"
         }
       ],
       "reviewTarget": "catabolism vs. anabolism"
@@ -184,7 +184,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#core-concept",
           "quote": "**Mnemonic:** OIL RIG — Oxidation Is Loss, Reduction Is Gain",
-          "passageHash": "sha256:d011b74824bad9f355ca4ea1bef431b88dcee435b9c86d0bb29905425a743a66"
+          "passageHash": "sha256:0fa2ea7ac0720802f26f1deb1fb9e862918a10ce65363bb619915e3ee556b3aa"
         }
       ],
       "reviewTarget": "core concept"
@@ -197,7 +197,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#quick-examples",
           "quote": "| Change | Classification | Reason |\n|--------|----------------|--------|\n| CH₃CH₃ → H₂C=CH₂ | Oxidation | Hydrogens removed |",
-          "passageHash": "sha256:e175bba7d980ef111baf1e24aaa1633fde3b67cbd5c3d64c10104771923dc371"
+          "passageHash": "sha256:1bf2195b3216dd7558d05c81703c931fda3cc6a64f58530f3b500a0628825f01"
         }
       ],
       "reviewTarget": "quick examples"
@@ -216,7 +216,7 @@
         {
           "sourceId": "wiki/oxidation-reduction.md#catabolism-vs-anabolism",
           "quote": "| Process | Direction | Redox | Energy |\n|---------|-----------|-------|--------|\n| **Catabolism** | Breaking down | Oxidative | Releases energy |\n| **Anabolism** | Building up | Reductive | Requires energy (ATP) |\n\n- Fatty acid synthesis = successive reductions of carbon chain\n- ATP stores energy from catabolism; drives anabolism",
-          "passageHash": "sha256:829ddf5f6d8cea1b9caad075681eb5e4f6c75a4a03cc30b0ef47bde860e92f77"
+          "passageHash": "sha256:3f6b681263ccd672bb65671d6beb4abf1a9ab38bda02d6dca966ca357a1374cb"
         }
       ],
       "reviewTarget": "catabolism vs. anabolism"

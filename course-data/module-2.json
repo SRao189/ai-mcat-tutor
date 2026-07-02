@@ -51,7 +51,7 @@
         {
           "sourceId": "wiki/kinetics.md#kinetics-and-activation-energy",
           "quote": "## Reaction Coordinate Graph\n\n```\nFree Energy\n  ↑\n  │    [TS]‡ (no catalyst)\n  │   / \\\n  │  /   \\       Ea without catalyst\n  │ /     \\\n  │/       \\______________ Products\n  │\n  │    [TS]‡ (with catalyst)\n  │   / \\\n  │  /   \\       Ea with catalyst (lower)\n  │ /     \\\n  │/       \\______________ Products\n  │\n  └──────────────────────→ Reaction Coordinate\n  Reactants\n```\n\n- x-axis: reaction progress (reaction coordinate)\n- y-axis: free energy\n- ∆G = G<sub>products</sub> – G<sub>reactants</sub> (unchanged by catalyst)\n\n## Key Concept Summary\n\n| Concept | Thermodynamic or Kinetic? | Affected by Catalyst? |\n|---------|---------------------------|----------------------|\n| ∆G (spontaneity) | Thermodynamic | No |\n| K<sub>eq</sub> (equilibrium) | Thermodynamic | No |\n| E<sub>a</sub> (activation energy) | Kinetic | **Yes** (lowered) |\n| Reaction rate | Kinetic | **Yes** (increased) |\n| Equilibrium concentrations | Thermodynamic | No |",
-          "passageHash": "sha256:5ba496ad21b22dc365756c9af0a0cf21dad3bc4e6e8c9b2101538dca307f8bd4"
+          "passageHash": "sha256:87766484c58e7e71c0b47fcffbeaa28b40157a0cd147637130bf22489fbd8b89"
         }
       ]
     }
@@ -64,7 +64,7 @@
         {
           "sourceId": "wiki/kinetics.md#reaction-coordinate-graph",
           "quote": "- ∆G = G<sub>products</sub> – G<sub>reactants</sub> (unchanged by catalyst)",
-          "passageHash": "sha256:3d514514aaf58673237d419b73fa545000cb8e77f537d427868f57eb1835469b"
+          "passageHash": "sha256:f6c200e4984b91b1bdcfd3471b9b9fb7b5b59f16d29a4d73f7eebfa7ecb2445b"
         }
       ]
     }
@@ -83,7 +83,7 @@
         {
           "sourceId": "wiki/kinetics.md#thermodynamics-vs-kinetics",
           "quote": "**Thermodynamics** (∆G): Tells you *if* a reaction will occur and *where* it ends\n- ∆G < 0 = spontaneous (energetically favorable)\n- Says **nothing** about reaction rate or pathway\n\n**Kinetics** (E<sub>a</sub>): Tells you *how fast* a reaction occurs\n- Study of reaction rates = chemical kinetics\n\n**Key distinction:** \"Spontaneous\" in thermodynamics ≠ \"fast\" in common usage\n- Example: Wood burning is spontaneous (∆G < 0) but needs a match (activation energy) to start",
-          "passageHash": "sha256:7e596fc54883bc6b80234de4af4de762e68a2c0b6efa14ed50a8694221288286"
+          "passageHash": "sha256:18fc31589cf7972441c4ecb13e0816da7b3ac25e67763bf3d6bf5d7d591ca23d"
         }
       ]
     }
@@ -97,7 +97,7 @@
         {
           "sourceId": "wiki/kinetics.md#catalysts",
           "quote": "**Enzymes** = biological catalysts\n- Kinetic role only (affect rate, not equilibrium)\n- Can increase rate enormously (years → seconds)\n- **Do not alter** equilibrium concentrations of reactants/products",
-          "passageHash": "sha256:261efaa3fa40285a841bf444688271827deddd566d46b39487bd4051be3bb5f2"
+          "passageHash": "sha256:e9b4e3f75467b0852efb5d988318774028d02567f0a10a0a7ee54ba3bc548bc1"
         }
       ],
       "reviewTarget": "catalysts and enzymes"
@@ -110,7 +110,7 @@
         {
           "sourceId": "wiki/kinetics.md#activation-energy-esubasub",
           "quote": "**Definition:** Minimum energy required to reach the transition state [TS]‡\n\n**Transition state:**\n- Unstable, high-energy intermediate\n- intermediate\n- Exists momentarily → either forms products or reverts to reactants\n- Written as [TS]‡ in square brackets with double-cross symbol",
-          "passageHash": "sha256:9170136490fec7547c433b77f3aba26290801ed5f8de185d7c7ec899ddfe59bf"
+          "passageHash": "sha256:0e0b12d36a56ad3d4f104fd4a7cda030ccb640d4544a490983cc23e9bbec594e"
         }
       ],
       "reviewTarget": "activation energy and the transition state"
@@ -129,7 +129,7 @@
         {
           "sourceId": "wiki/kinetics.md#key-concept-summary",
           "quote": "| Concept | Thermodynamic or Kinetic? | Affected by Catalyst? |\n|---------|---------------------------|----------------------|\n| ∆G (spontaneity) | Thermodynamic | No |\n| K<sub>eq</sub> (equilibrium) | Thermodynamic | No |\n| E<sub>a</sub> (activation energy) | Kinetic | **Yes** (lowered) |\n| Reaction rate | Kinetic | **Yes** (increased) |\n| Equilibrium concentrations | Thermodynamic | No |",
-          "passageHash": "sha256:eb58fe352005efce794a0c8abe1100ead7cd7327510cafc1b69f96827e5044e0"
+          "passageHash": "sha256:f852989af0655a5cac4d632d7b5a157698e3b0227f1df6a2f0f309da11078db0"
         }
       ],
       "reviewTarget": "reaction coordinate and key concept summary"
@@ -150,7 +150,7 @@
         {
           "sourceId": "wiki/kinetics.md#thermodynamics-vs-kinetics",
           "quote": "## Thermodynamics vs. Kinetics\n\n**Thermodynamics** (∆G): Tells you *if* a reaction will occur and *where* it ends\n- ∆G < 0 = spontaneous (energetically favorable)\n- Says **nothing** about reaction rate or pathway\n\n**Kinetics** (E<sub>a</sub>): Tells you *how fast* a reaction occurs\n- Study of reaction rates = chemical kinetics",
-          "passageHash": "sha256:7e596fc54883bc6b80234de4af4de762e68a2c0b6efa14ed50a8694221288286"
+          "passageHash": "sha256:76bce90aa0a565db0112156da17c1d8672afd4ca76811023a20a89960bb94e11"
         }
       ],
       "reviewTarget": "thermodynamics vs. kinetics"
@@ -169,7 +169,7 @@
         {
           "sourceId": "wiki/kinetics.md#catalysts",
           "quote": "**Enzymes** = biological catalysts\n- Kinetic role only (affect rate, not equilibrium)\n- Can increase rate enormously (years → seconds)\n- **Do not alter** equilibrium concentrations of reactants/products",
-          "passageHash": "sha256:261efaa3fa40285a841bf444688271827deddd566d46b39487bd4051be3bb5f2"
+          "passageHash": "sha256:e9b4e3f75467b0852efb5d988318774028d02567f0a10a0a7ee54ba3bc548bc1"
         }
       ],
       "reviewTarget": "catalysts and enzymes"

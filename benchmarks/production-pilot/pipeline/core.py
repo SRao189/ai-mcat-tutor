@@ -486,6 +486,75 @@ def quality_filter(
     return c, report
 
 
+def enforce_source_refs(
+    candidate: dict[str, Any],
+    default_source_ref: str,
+    subsection_refs: dict[str, str] | None = None,
+) -> tuple[dict[str, Any], dict[str, list[dict[str, str]]]]:
+    """Make deterministic citation authority explicit.
+
+    The generator may omit refs or cite a stale packet slug. This gate never
+    changes factual content; it only rewrites item-level sourceRefs to the
+    configured packet ref that the orchestrator actually supplied. In chapter
+    mode, subsection-tagged items must cite their own subsection packet.
+    """
+    c: dict[str, Any] = json.loads(json.dumps(candidate, ensure_ascii=False))
+    subsection_refs = subsection_refs or {}
+    allowed = {default_source_ref, *subsection_refs.values()}
+    report: dict[str, list[dict[str, str]]] = {
+        "normalized": [], "missing": [], "disallowed": [],
+    }
+
+    def canonical(item: dict[str, Any]) -> str:
+        sub = item.get("subsection")
+        if sub in subsection_refs:
+            return subsection_refs[sub]
+        return default_source_ref
+
+    def normalize_item_refs(coll: str, item: dict[str, Any]) -> None:
+        want = canonical(item)
+        refs = item.get("sourceRefs")
+        valid_refs = [r for r in refs if isinstance(r, str) and r in allowed] \
+            if isinstance(refs, list) else []
+        original = refs if isinstance(refs, list) else []
+        if not original:
+            report["missing"].append({"collection": coll, "item": _item_label(item)})
+        bad = [str(r) for r in original if not isinstance(r, str) or r not in allowed]
+        if bad:
+            report["disallowed"].append({
+                "collection": coll, "item": _item_label(item), "refs": ", ".join(bad)
+            })
+        if valid_refs != [want]:
+            item["sourceRefs"] = [want]
+            report["normalized"].append({
+                "collection": coll, "item": _item_label(item), "sourceRef": want
+            })
+        else:
+            item["sourceRefs"] = valid_refs
+
+    for coll in ("sections", "equations", "workedExamples", "checks", "practiceQuestions"):
+        for item in c.get(coll, []):
+            if isinstance(item, dict):
+                normalize_item_refs(coll, item)
+
+    refs: list[str] = []
+    for coll in ("sections", "equations", "workedExamples", "checks", "practiceQuestions"):
+        for item in c.get(coll, []):
+            for ref in item.get("sourceRefs", []):
+                if ref not in refs:
+                    refs.append(ref)
+    c["sourceRefs"] = refs or [default_source_ref]
+    return c, report
+
+
+def _item_label(item: dict[str, Any]) -> str:
+    for key in ("id", "title", "question", "expression"):
+        val = item.get(key)
+        if val:
+            return str(val)[:70]
+    return "item"
+
+
 def meets_minimums(candidate: dict[str, Any]) -> tuple[bool, list[str]]:
     """Educational acceptance floor applied after quality_filter. Failing any of
     these quarantines the chapter (the other chapter still proceeds)."""
