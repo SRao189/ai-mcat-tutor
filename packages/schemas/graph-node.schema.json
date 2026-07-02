@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Concept Graph Node",
+  "description": "Phase D output: one node in the Understand-Anything-derived prerequisite/misconception graph. Consumed by the pedagogy engine to drive sequencing and remediation, not a passive visualization artifact.",
+  "type": "object",
+  "required": ["conceptId", "prerequisites", "misconceptions", "supports"],
+  "properties": {
+    "conceptId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$",
+      "description": "Must match a conceptId in the wiki (wiki-concept-page.schema.json)."
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$" },
+      "description": "conceptIds that must be mastered before this one."
+    },
+    "misconceptions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Misconception ids/slugs the pedagogy engine can detect from checkpoint answers and route remediation for."
+    },
+    "supports": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$" },
+      "description": "conceptIds that this concept is a prerequisite for (inverse edge, denormalized for fast lookup)."
+    }
+  }
+}

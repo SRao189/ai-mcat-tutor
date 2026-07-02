@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Verified Wiki Concept Page",
+  "description": "Phase C output: one canonical, NVIDIA-Council-verified concept page in the LLM wiki.",
+  "type": "object",
+  "required": [
+    "conceptId",
+    "title",
+    "summary",
+    "claims",
+    "equations",
+    "examples",
+    "figures",
+    "relatedConcepts"
+  ],
+  "properties": {
+    "conceptId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$",
+      "description": "Dotted identifier, e.g. biochem.amino-acid.isoelectric-point. Same id space used by graph nodes and tutor requests."
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim" }
+    },
+    "equations": { "type": "array", "items": { "type": "object" } },
+    "examples": { "type": "array", "items": { "type": "object" } },
+    "figures": { "type": "array", "items": { "type": "object" } },
+    "relatedConcepts": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$" }
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "required": ["text", "sourceId", "sourceSpan", "verification", "confidence"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "sourceId": { "type": "string", "minLength": 1 },
+        "sourceSpan": { "type": "string", "minLength": 1 },
+        "verification": {
+          "type": "string",
+          "enum": ["verified", "unsupported", "source-gap"],
+          "description": "NVIDIA Council ingestion-verification outcome for this claim. Only 'verified' claims may reach a learner."
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

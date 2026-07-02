@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tutor Request",
+  "description": "Phase G contract: what the pedagogy engine hands the NVIDIA-Council-backed tutor for a single turn. The tutor's final answer must still pass Council support/citation gates before reaching the learner.",
+  "type": "object",
+  "required": [
+    "learnerId",
+    "activeConcept",
+    "visibleLesson",
+    "currentObjective",
+    "latestQuestion",
+    "learnerAnswer",
+    "misconceptions",
+    "masteryState",
+    "retrievedWikiPages",
+    "retrievedGraphNodes",
+    "openNotebookPassages"
+  ],
+  "properties": {
+    "learnerId": { "type": "string", "minLength": 1 },
+    "activeConcept": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$"
+    },
+    "visibleLesson": { "type": "string" },
+    "currentObjective": { "type": "string" },
+    "latestQuestion": { "type": "string" },
+    "learnerAnswer": { "type": "string" },
+    "misconceptions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "masteryState": {
+      "type": "object",
+      "description": "conceptId -> mastery level (new | learning | proficient | mastered)."
+    },
+    "retrievedWikiPages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "conceptIds of wiki pages retrieved for this turn, scoped to activeConcept's graph neighborhood — must not include stale context from another chapter."
+    },
+    "retrievedGraphNodes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "openNotebookPassages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Open Notebook citation-candidate passage ids, subject to the same Council support gate as wiki claims."
+    }
+  }
+}
